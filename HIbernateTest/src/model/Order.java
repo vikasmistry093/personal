@@ -15,7 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ORDER")
+@Table(name="ORDERS")
 public class Order {
 
 	@Id
@@ -27,6 +27,7 @@ public class Order {
 	@JoinTable(name="ORDERED_PRODUCT", joinColumns={@JoinColumn(name="ORDER_ID")}, inverseJoinColumns={@JoinColumn(name="PRODUCT_ID")})
 	private List<Product> orderedProduct;
 	
+	@JoinColumn(name="PAYMENT")
 	@OneToOne(cascade=CascadeType.ALL)
 	private Payment payment;
 

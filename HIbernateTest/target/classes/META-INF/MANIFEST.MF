@@ -1,5 +1,11 @@
 Manifest-Version: 1.0
+Implementation-Title: HIbernateTest
+Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: vikasm
+Implementation-Vendor-Id: HIbernateTest
 Build-Jdk: 1.8.0_144
+Implementation-URL: http://projects.spring.io/spring-boot/HIbernateTes
+ t/
 Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
 
