@@ -15,13 +15,20 @@ public class Address {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ADDRESS_ID")
 	private long addressId;
-
-	public long getAddressId() {
-		return addressId;
-	}
-
-	public void setAddressId(long addressId) {
-		this.addressId = addressId;
-	}
 	
+	@Column(name="STREET")
+	private String street;
+	
+	@Column(name="LANDMARK")
+	private String landMark;
+	
+	@Column(name="CITY")
+	private String city;
+	
+	@Column(name="PIN")
+	private String pin;
+	
+	@Column(name="STATE")
+	private String state;
+
 }

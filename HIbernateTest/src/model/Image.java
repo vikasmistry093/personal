@@ -15,13 +15,13 @@ public class Image {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="IMAGE_ID")
 	private long imageId;
-
-	public long getImageId() {
-		return imageId;
-	}
-
-	public void setImageId(long imageId) {
-		this.imageId = imageId;
-	}
 	
+	@Column(name="IMAGE_TITLE")
+	private String imageTitle;
+	
+	@Column(name="IMAGE_URL")
+	private String imageURL;
+	
+	@Column(name="STATUS")
+	private String status;
 }

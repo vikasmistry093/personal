@@ -16,12 +16,13 @@ public class Category {
 	@Column(name="CATEGORY_ID")
 	private long categoryId;
 
-	public long getCategoryId() {
-		return categoryId;
-	}
-
-	public void setCategoryId(long categoryId) {
-		this.categoryId = categoryId;
-	}
+	@Column(name="CATEGORY_NAME")
+	private String name;
+	
+	@Column(name="PARENT_CATEGORY")
+	private Category parentCategory;
+	
+	@Column(name="STATUS")
+	private String status;
 	
 }

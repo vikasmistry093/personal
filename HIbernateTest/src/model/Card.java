@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,13 +17,14 @@ public class Card {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="CARD_ID")
 	private long cardId;
-
-	public long getCardId() {
-		return cardId;
-	}
-
-	public void setCardId(long cardId) {
-		this.cardId = cardId;
-	}
 	
+	@Column(name="CARD_NUMBER")
+	private long cardNumber;
+	
+	@Column(name="OWNER_NAME")
+	private String ownerName;
+	
+	@Column(name="EXPIRY_DATE")
+	private Date expiryDate;
+
 }

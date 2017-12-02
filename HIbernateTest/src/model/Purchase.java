@@ -30,28 +30,4 @@ public class Purchase {
 	@JoinTable(name="PURCHASED_PRODUCT", joinColumns={@JoinColumn(name="PURCHASE_ID")}, inverseJoinColumns={@JoinColumn(name="PRODUCT_ID")})
 	private List<Product> products;
 
-	public long getPurchaseId() {
-		return purchaseId;
-	}
-
-	public void setPurchaseId(long purchaseId) {
-		this.purchaseId = purchaseId;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public List<Product> getProducts() {
-		return products;
-	}
-
-	public void setProducts(List<Product> products) {
-		this.products = products;
-	}
-	
 }

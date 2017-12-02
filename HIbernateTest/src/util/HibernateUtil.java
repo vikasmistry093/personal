@@ -9,9 +9,7 @@ public class HibernateUtil {
 	
 	public static SessionFactory buildSessionFactory() {
 		Configuration configuration = new Configuration();
-		
 		sessionFactory = configuration.configure().buildSessionFactory();
-		
 		return sessionFactory;
 	}
 
@@ -22,5 +20,4 @@ public class HibernateUtil {
 	public static void shutDown() {
 		sessionFactory.close();;
 	}
-
 }

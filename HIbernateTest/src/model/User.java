@@ -15,7 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="USER")
+@Table(name="USERS")
 public class User {
 	
 	@Id
@@ -32,6 +32,7 @@ public class User {
 	private List<Address> userAddress;
 	
 	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="RECOMMENDATION")
 	private Recommendation recommendation;
 	
 	@OneToMany(cascade=CascadeType.ALL)
@@ -39,6 +40,7 @@ public class User {
 	private List<Order> orders;
 	
 	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="WISHLIST")
 	private WishList wishList;
 
 	public long getUserId() {
