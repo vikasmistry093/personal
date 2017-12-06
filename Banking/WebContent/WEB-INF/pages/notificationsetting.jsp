@@ -9,7 +9,7 @@
 <%@include file="includes/includer.html"%>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Welcome to DBS Bank:DTH Recharge</title>
+<title>Welcome to DBS Bank:Account Setting</title>
 </head>
 <body>
 	<%@include file="includes/header.html"%>
@@ -34,56 +34,25 @@
 					</div>
 				</div>
 			</div>
-				<!-- benificiary type DTH Recharge hoga  -->	            	
-						
-			<div class="col-sm-5">
+
+			<div class="col-sm-6">
 				<div class="panel panel-primary">
-				<form:form action="">
-	            	<table>
+					<div class="panel-heading">Notification Setting</div>
+					<table>
 						<tr>
-						<td>
-						<label>Holder's Account Number:</label>
-						<label>${AccountNumber}</label>
-						</td>
+							<th colspan="6"><h3>Setting</h3></th>
 						</tr>
-						
 						<tr>
-						<td>
-						<label>Benificiary Name(Service provider):</label><br>
-						<form:input type="text" class="form-control" path="benificiaryName" placeholder="Reciever Name" size="10" requried="true"/><br>
-						</td>
+							<td align="left" colspan="3"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg"  class="img-rounded" alt="email" width="100%" height="41%"/></td>
+							<td align="center" colspan="3"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="mobile" width="100%" height="41%"/></td>
 						</tr>
-						
-						<tr>
-						<td>
-						<label>Benificiary Account Number(CV/Mobile Number):</label><br>
-						<form:input type="number" class="form-control" path="benificiaryAccNo" placeholder="Account No" size="10" requried="true"/><br>
-						</td>
-						</tr>
-					
-						<tr>
-						<td>
-						<label>Amount:</label><br>
-						<form:input type="number" class="form-control" path="amount" placeholder="Rs" requried="true"/><br>
-						</td>
-						</tr>
-						
-						<tr>
-						<td align='right'>
-						<input type='submit' name='SUBMIT' value="Proceed"/>
-						</td>
-						</tr>
-						            	
-	            	</table>			
-				</form:form>
+			       	</table>			
 			    </div>
 		   </div>
-
-			<div class="col-sm-3">
-			<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advertisement.jpg" width="100%" height="500px"/>
-			</div>
-		</div>
-	</div>
+		
+		   <div class="col-sm-3">
+				<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advertisement.jpg" width="100%" height="500px"/>
+		   </div>
 	<%@include file="includes/footer.html"%>
   </body>
 </html>

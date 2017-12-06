@@ -17,7 +17,6 @@
 		<h1>Welcome ${username}</h1>
 		<div class="row">
 			<div class="col-sm-3">
-
 				<div class="list-group">
 					<div class="panel panel-primary">
 						<div class="panel-heading" align="center">Menu</div>
@@ -36,61 +35,55 @@
 				</div>
 			</div>
 
-			<div class="col-sm-5">
+			<div class="col-sm-6">
 				<div class="panel panel-primary">
 					<div class="panel-heading">Account Summary</div>
 					<table>
+						
 						<tr>
-							<td><label>User Name:</label><label>${username}</label></td>
+							<td colspan="3"><label>User Name: </label></td>
+							<td><label>${username}</label></td>
+						</tr>
+						
+						<tr>
+							<td colspan="3"><label>Mobile Number: </label></td>
+							<td><label>${username}</label></td>
+						</tr>
+						
+						<tr>
+							<td colspan="3"><label>Account Number: </label></td>
+							<td><label>${accountNumber}</label></td>
 						</tr>
 						<tr>
-							<td><label>Account Number:</label><label>${accountNumber}</label></td>
+							<td  colspan="3"><label>Account Type: </label></td>
+							<td><label>${accountType}</label></td>
 						</tr>
 						<tr>
-							<td><label>Account Type:</label><label>${accountType}</label></td>
-						</tr>
-						<tr>
-							<td><label>Current Balance:</label><label>${currentBalance}</label></td>
+							<td colspan="3"><label>Current Balance: </label></td>
+							<td><label>${currentBalance}</label></td>
 						</tr>
 					</table>
 				</div>
-			</div>
-
-			<div class="col-sm-5">
+				
 				<div class="panel panel-primary">
 					<div class="panel-heading">Quick Access</div>
-					<!-- 	<table> 
-			<tr>
-			<th>Quick Profile</th>
-			<td>My Profile</td>
-			<td>Transaction</td>
-			<td>Edit Account</td>
-			</tr>
-		
-			<tr>
-			<th>Quick Recharge</th>
-			<td>Mobile Recharge</td>
-			<td>DTH Recharge</td>
-			<td>Other Recharge</td>
-			</tr>
-			</table>	 -->
 
 					<table>
 						<tr>
-							<th colspan="3">Quick Profile</th>
+							<th colspan="6">Quick Profile</th>
 						</tr>
 						<tr>
-							<td align="left"> <img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="MyProfile" width="50" height="50"/></td>
-							<td align="center"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="Transaction" width="50" height="50"/></td>
-							<td align="right"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="EditAccount" width="50" height="50"/></td>
+							<td align="left" colspan="2"> <img src="${pageContext.request.contextPath}/resources/images/chase.jpg"  class="img-rounded" alt="MyProfile" width="100%" height="41%"/></td>
+							<td align="center" colspan="2"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="Transaction" width="100%" height="41%"/></td>
+							<td align="right" colspan="2"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="EditAccount" width="100%" height="41%"/></td>
 						</tr>
 						<tr>
-							<th colspan="3">Quick Recharge</th>
+							<th colspan="6">Quick Recharge</th>
 						</tr>
 						<tr>	
-							 <td align="left"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="MobileRecharge" width="50" height="50"/></td>
-							<td align="center"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="DTHRecharge" width="50" height="50"/></td>
-							<td align="right"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="OtherRecharge" width="50" height="50"/></td>
+							 <td align="left" colspan="2"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="MobileRecharge" width="100%" height="41%"/></td>
+							<td align="center" colspan="2"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="DTHRecharge" width="100%" height="41%"/></td>
+							<td align="right" colspan="2"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="OtherRecharge" width="100%" height="41%"/></td>
 						</tr>
 					</table>
 
@@ -98,8 +91,7 @@
 			</div>
 
 			<div class="col-sm-3">
-				<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advertisement.jpg" width="50px"
-					height="100px" />
+				<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advertisement.jpg"  width="100%" height="510px"/>
 			</div>
 		</div>
 	</div>

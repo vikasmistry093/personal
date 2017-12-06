@@ -1,9 +1,10 @@
 package org.bank.controller;
 
+
+import org.bank.model.Account;
+import org.bank.model.Customer;
+import org.bank.model.Transaction;
 import org.bank.model.User;
-import org.bank.service.BankServices;
-import org.bank.service.IBankServices;
-import org.bank.util.HibernateUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,12 +13,12 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class BankController {
 	
-	private IBankServices bankService;
+	//private IBankServices bankService;
 	
 	
 	public BankController() {
-		bankService = new BankServices();
-		HibernateUtil.getSession().isOpen();
+		//bankService = new BankServices();
+		//HibernateUtil.getSession().isOpen();
 	}
 	
 	@RequestMapping("/")
@@ -44,12 +45,7 @@ public class BankController {
 		return model;
 	}
 	
-	@RequestMapping("/newuser")
-	public ModelAndView newuser() {
-		System.out.println("in new user");
-		ModelAndView model=new ModelAndView("newuser");
-		return model;
-	}
+	
 	@RequestMapping("/error")
 	public ModelAndView error() {
 		System.out.println("in error ");
@@ -57,38 +53,116 @@ public class BankController {
 		return model;
 	}
 
-	@RequestMapping("/newtable")
+	@RequestMapping("/signup")
 	public ModelAndView newtable() {
-		System.out.println("in new table");
-		ModelAndView model=new ModelAndView("newtable");
+		System.out.println("in signup");
+		Customer customer = new Customer();
+		ModelAndView model=new ModelAndView("signup");
+		model.addObject("customer", customer);
 		return model;
 	}
 	
-	@RequestMapping("/selection")
-	public ModelAndView selection() {
-		System.out.println("in selection");
-		ModelAndView model=new ModelAndView("selection");
-		return model;
-	}
+	
 	
 	@RequestMapping("/transfer")
 	public ModelAndView transfer() {
 		System.out.println("in transfer");
+		Transaction transaction=new Transaction();
 		ModelAndView model=new ModelAndView("transfer");
+		model.addObject("transaction",transaction);
 		return model;
 	}
 	
-	@RequestMapping("/dthrecharge")
+	@RequestMapping("/recharge")
+	public ModelAndView recharge() {
+		System.out.println("in recharge");
+		ModelAndView model=new ModelAndView();
+		return model;
+	}
+	
+	@RequestMapping("../dthrecharge")
 	public ModelAndView dthrecharge() {
 		System.out.println("in DTHrecharge");
+		Transaction transaction=new Transaction();
 		ModelAndView model=new ModelAndView("dthrecharge");
+		model.addObject("transaction", transaction);
 		return model;
 	}
 	
-	@RequestMapping("/mobilerecharge")
+	@RequestMapping("../mobilerecharge")
 	public ModelAndView mobilerecharge() {
 		System.out.println("in mobilerecharge");
+		Transaction transaction=new Transaction();
 		ModelAndView model=new ModelAndView("mobilerecharge");
+		model.addObject("transaction", transaction);
 		return model;
 	}
+	
+	@RequestMapping("../gasrecharge")
+	public ModelAndView gasrecharge() {
+		System.out.println("in gasrecharge");
+		Transaction transaction=new Transaction();
+		ModelAndView model=new ModelAndView("gasrecharge");
+		model.addObject("transaction", transaction);
+		return model;
+	}
+	
+	@RequestMapping("/addresssetting")
+	public ModelAndView addresssetting() {
+		System.out.println("in address setting");
+		Customer customer=new Customer();
+		ModelAndView model=new ModelAndView("addresssetting");
+		model.addObject("customer", customer);
+		return model;
+	}
+	
+	@RequestMapping("/emailsetting")
+	public ModelAndView emailsetting() {
+		System.out.println("in email setting");
+		Customer customer=new Customer();
+		ModelAndView model=new ModelAndView("emailsetting");
+		model.addObject("customer", customer);
+		return model;
+	}
+	
+	@RequestMapping("/mobilesetting")
+	public ModelAndView mobilesetting() {
+		System.out.println("in moblie number setting");
+		Customer customer=new Customer();
+		ModelAndView model=new ModelAndView("mobilesetting");
+		model.addObject("customer", customer);
+		return model;
+	}
+	
+	@RequestMapping("/passwordsetting")
+	public ModelAndView passwordsetting() {
+		System.out.println("in password setting");
+		User user=new User();
+		ModelAndView model=new ModelAndView("passwordsetting");
+		model.addObject("user", user);
+		return model;
+	}
+	
+	@RequestMapping("/generalsetting")
+	public ModelAndView generalsetting() {
+		System.out.println("in general setting");
+		ModelAndView model=new ModelAndView("generalsetting");
+		return model;
+	}
+	
+	@RequestMapping("/notificationsetting")
+	public ModelAndView notificationsetting() {
+		System.out.println("in notification setting");
+		ModelAndView model=new ModelAndView("notificationsetting");
+		return model;
+	}
+	
+	@RequestMapping("/setting")
+	public ModelAndView setting() {
+		System.out.println("in setting");
+		ModelAndView model=new ModelAndView("setting");
+		return model;
+	}
+	
+	
 }

@@ -9,7 +9,7 @@
 <%@include file="includes/includer.html"%>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Welcome to DBS Bank:Recharge</title>
+<title>Welcome to DBS Bank: Home</title>
 </head>
 <body>
 	<%@include file="includes/header.html"%>
@@ -17,7 +17,7 @@
 		<h1>Welcome ${username}</h1>
 		<div class="row">
 			<div class="col-sm-3">
-			<div class="list-group">
+				<div class="list-group">
 					<div class="panel panel-primary">
 						<div class="panel-heading" align="center">Menu</div>
 						<a href="#" class="list-group-item">My Profile</a> 
@@ -34,56 +34,34 @@
 					</div>
 				</div>
 			</div>
-				<!-- benificiary type Mobile Recharge hoga  -->	            	
-						
-			<div class="col-sm-5">
+
+			<div class="col-sm-6">
 				<div class="panel panel-primary">
-				<form:form action="">
-	            	<table>
+					<table>
 						<tr>
-						<td>
-						<label>Holder's Account Number:</label>
-						<label>${AccountNumber}</label>
-						</td>
+							<th colspan="6">Quick Recharge</th>
+						</tr>
+						<tr>	
+							<td align="left" colspan="2"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="MobileRecharge" width="100%" height="41%"/></td>
+							<td align="center" colspan="2"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="DTHRecharge" width="100%" height="41%"/></td>
+							<td align="right" colspan="2"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="Gasrecharge" width="100%" height="41%"/></td>
 						</tr>
 						
-						<tr>
-						<td>
-						<label>Benificiary Name(Service provider):</label><br>
-						<form:input type="text" class="form-control" path="benificiaryName" placeholder="Reciever Name" size="10" requried="true"/><br>
-						</td>
-						</tr>
-						
-						<tr>
-						<td>
-						<label>Benificiary Account Number(Mobile Number):</label><br>
-						<form:input type="number" class="form-control" path="benificiaryAccNo" placeholder="Account No" size="10" requried="true"/><br>
-						</td>
-						</tr>
-					
-						<tr>
-						<td>
-						<label>Amount:</label><br>
-						<form:input type="number" class="form-control" path="amount" placeholder="Rs" requried="true"/><br>
-						</td>
-						</tr>
-						
-						<tr>
-						<td align='right'>
-						<input type='submit' name='SUBMIT' value="Proceed"/>
-						</td>
-						</tr>
-						            	
-	            	</table>			
-				</form:form>
-			    </div>
-		   </div>
+					</table>
+				</div>
+				
+				<div>
+					<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advertisement.jpg"  width="100%" height="510px"/>
+				</div>
+			</div>
 
 			<div class="col-sm-3">
-			<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advertisement.jpg" width="100%" height="500px"/>
+				<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advertisement.jpg"  width="100%" height="510px"/>
 			</div>
 		</div>
 	</div>
 	<%@include file="includes/footer.html"%>
-  </body>
+	</body>
 </html>
+						
+						

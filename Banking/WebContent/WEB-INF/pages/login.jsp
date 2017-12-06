@@ -22,12 +22,15 @@ body {
 	<div class="bodyContent">
 		<h1>Welcome</h1>
 		<div class="row">
-			<div class="col-sm-3">
+			<div class="col-sm-4">
 			<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advertisement.jpg" width="100%" height="500px"/>
 			</div>
 				
 			<div class="col-sm-4">
-			     	<legend>User Login</legend>
+				<div class="panel panel-primary">
+					<div class="panel-heading">USER LOGIN </div>
+				</div>
+				
 				 	<form:form action="${pageContext.request.contextPath}/home" modelAttribute="user" method="post">
 					
 					<label>User name:</label>
@@ -36,13 +39,11 @@ body {
 					<label>Password:</label>
 					<form:input type="password" class="form-control" path="userPassword" name="userPassword" placeholder="Password"/><br>
 				     
-				    <!--  <a href="newuser.jsp"> -->
-					<form:button type="button" class="btn btn-default" style="float: left;" onclick="getSignUpPage()">Sign Up</form:button> 
-			         <!-- </a> -->
+					<form:button type="button" class="btn btn-default" style="float: left;" onclick="getSignUpPage();">Sign Up</form:button> 
 			    	<form:button type="submit" class="btn btn-default" style="float: right;">Login</form:button>
 				</form:form><br>
 	 		</div>
-			<div class="col-sm-3">
+			<div class="col-sm-4">
 			<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advertisement.jpg" width="100%" height="500px"/>
 			</div>
 		</div>

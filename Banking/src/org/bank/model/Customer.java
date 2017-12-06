@@ -30,7 +30,7 @@ public class Customer {
 	private long customerID;
 	
 	@Column(name="SALUTATION",nullable=false)
-	private String slautation;
+	private String salutatn;
 	
 	@Column(name="FIRST_NAME",nullable=false)
 	private String firstName;
@@ -55,10 +55,10 @@ public class Customer {
 	private long mobileNumber;
 	
 	@Column(name="PANCARD",nullable=false)
-	private long pancard;
+	private String pancard;
 	
 	@Column(name="AADHAR_CARD",nullable=false)
-	private long aadharcard;
+	private String aadharcard;
 	
 	@Column(name="NOMINEE_NAME")
 	private String nomineeName;
@@ -88,13 +88,13 @@ public class Customer {
 	
 	
 
-	public Customer(long customerID, String slautation, String firstName, String middleName,
-			String lastName, String address, Date dob, String email, long mobileNumber, long pancard, long aadharcard,
+	public Customer(long customerID, String salutatn, String firstName, String middleName,
+			String lastName, String address, Date dob, String email, long mobileNumber, String pancard, String aadharcard,
 			String nomineeName, String nomineeRelation, Timestamp createdTimestamp, Timestamp updateTimestamp,
 			User user, List<Account> accounts) {
 		super();
 		this.customerID = customerID;
-		this.slautation = slautation;
+		this.salutatn = salutatn;
 		this.firstName = firstName;
 		this.middleName = middleName;
 		this.lastName = lastName;
@@ -125,13 +125,13 @@ public class Customer {
 	}
 
 
-	public String getSlautation() {
-		return slautation;
+	public String getsalutatn() {
+		return salutatn;
 	}
 
 
-	public void setSlautation(String slautation) {
-		this.slautation = slautation;
+	public void setsalutatn(String salutatn) {
+		this.salutatn = salutatn;
 	}
 
 
@@ -205,22 +205,22 @@ public class Customer {
 	}
 
 
-	public long getPancard() {
+	public String getPancard() {
 		return pancard;
 	}
 
 
-	public void setPancard(long pancard) {
+	public void setPancard(String pancard) {
 		this.pancard = pancard;
 	}
 
 
-	public long getAadharcard() {
+	public String getAadharcard() {
 		return aadharcard;
 	}
 
 
-	public void setAadharcard(long aadharcard) {
+	public void setAadharcard(String aadharcard) {
 		this.aadharcard = aadharcard;
 	}
 

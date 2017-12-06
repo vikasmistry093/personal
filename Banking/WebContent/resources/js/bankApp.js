@@ -17,8 +17,7 @@ function opentab(evt, Detials) {
 
 function getSignUpPage() {
 	console.log("in getSignUpPage methd")
-	
-	
+	 window.location.href = "http://localhost:9090/Banking/signup";
 }
 
 function on() {
@@ -27,4 +26,9 @@ function on() {
 
 function off() {
     document.getElementById("overlay").style.display = "none";
+}
+
+//success prompt window
+function mysuccessalert() {
+    alert("Successfully Done");
 }
