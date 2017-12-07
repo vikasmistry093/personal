@@ -17,22 +17,7 @@
 		<h1>Welcome ${username}</h1>
 		<div class="row">
 			<div class="col-sm-3">
-			<div class="list-group">
-					<div class="panel panel-primary">
-						<div class="panel-heading" align="center">Menu</div>
-						<a href="#" class="list-group-item">My Profile</a> 
-						<a href="#" class="list-group-item">PassBook</a> 
-						<a href="#" class="list-group-item">Recharge</a> 
-						<a href="#" class="list-group-item">Transfer</a> 
-						<a href="#" class="list-group-item">Edit Account</a> 
-						<a href="#" class="list-group-item">Create Loan</a> 
-						<a href="#" class="list-group-item">Card Details</a> 
-						<a href="#" class="list-group-item">What's New</a>
-						<a href="#" class="list-group-item">Help</a>
-						<a href="#" class="list-group-item">FAQ'S</a>
-						<a href="#" class="list-group-item">About Us</a>
-					</div>
-				</div>
+			  <%@include file="../includes/menu.html"%>
 			</div>
 				<!-- benificiary type Mobile Recharge hoga  -->	            	
 			<div class="col-sm-6">
