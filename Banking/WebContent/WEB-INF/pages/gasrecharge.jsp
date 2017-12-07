@@ -6,18 +6,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<%@include file="../includes/includer.html"%>
+<%@include file="includes/includer.html"%>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Welcome to DBS Bank:Recharge</title>
 </head>
 <body>
-	<%@include file="../includes/header.html"%>
+	<%@include file="includes/logoutheader.html"%>
 	<div class="bodyContent">
 		<h1>Welcome ${username}</h1>
 		<div class="row">
 			<div class="col-sm-3">
-			  <%@include file="../includes/menu.html"%>
+			  <%@include file="includes/menu.html"%>
 			</div>
 				<!-- benificiary type Mobile Recharge hoga  -->	            	
 			<div class="col-sm-6">
@@ -39,7 +39,7 @@
 								
 								<tr>
 									<td>
-										<label>Provider Name:</label>
+										<label>Gas Provider Name:</label>
 									</td>
 									<td colspan="3">
 										<form:input type="text" class="form-control" path="benificiaryName" placeholder="Reciever Name" size="10" requried="true"/><br>
@@ -98,12 +98,12 @@
 			            	</table>			
 						</form:form>
 				    </div>
-		   </div>
 
 			<div class="col-sm-3">
 			<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advertisement.jpg" width="100%" height="500px"/>
 			</div>
-		</div>
-	<%@include file="../includes/footer.html"%>
+		 </div>	
+	</div>
+	<%@include file="includes/footer.html"%>
   </body>
 </html>

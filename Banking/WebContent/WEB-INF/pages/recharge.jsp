@@ -12,7 +12,7 @@
 <title>Welcome to DBS Bank: Home</title>
 </head>
 <body>
-	<%@include file="includes/header.html"%>
+	<%@include file="includes/logoutheader.html"%>
 	<div class="bodyContent">
 		<h1>Welcome ${username}</h1>
 		<div class="row">
@@ -22,6 +22,7 @@
 
 			<div class="col-sm-6">
 				<div class="panel panel-primary">
+					<div class="panel-heading">Recharge</div>
 					<table>
 						<tr>
 							<th colspan="6">Quick Recharge</th>
@@ -36,7 +37,7 @@
 				</div>
 				
 				<div>
-					<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advertisement.jpg"  width="100%" height="510px"/>
+					<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advertisement.jpg"  width="100%" height="320px"/>
 				</div>
 			</div>
 

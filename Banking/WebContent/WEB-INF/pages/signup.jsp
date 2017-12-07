@@ -93,7 +93,7 @@
 						</tr>
 								
 						<tr>
-							<th colspan="4"><h3>Other Details</h3></th>
+							<th colspan="4"><h3>Other Details </h3></th>
 						</tr>
 						
 						<tr>

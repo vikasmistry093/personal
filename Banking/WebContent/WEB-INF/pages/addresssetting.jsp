@@ -12,7 +12,7 @@
 <title>Welcome to DBS Bank: General Setting</title>
 </head>
 <body>
-	<%@include file="includes/header.html"%>
+	<%@include file="includes/logoutheader.html"%>
 	<div class="bodyContent">
 		<h1>Welcome ${username}</h1>
 		<div class="row">

@@ -80,7 +80,7 @@ public class BankController {
 		return model;
 	}
 	
-	@RequestMapping("../dthrecharge")
+	@RequestMapping("/dthrecharge")
 	public ModelAndView dthrecharge() {
 		System.out.println("in DTHrecharge");
 		Transaction transaction=new Transaction();
@@ -89,7 +89,7 @@ public class BankController {
 		return model;
 	}
 	
-	@RequestMapping("../mobilerecharge")
+	@RequestMapping("/mobilerecharge")
 	public ModelAndView mobilerecharge() {
 		System.out.println("in mobilerecharge");
 		Transaction transaction=new Transaction();
@@ -98,7 +98,7 @@ public class BankController {
 		return model;
 	}
 	
-	@RequestMapping("../gasrecharge")
+	@RequestMapping("/gasrecharge")
 	public ModelAndView gasrecharge() {
 		System.out.println("in gasrecharge");
 		Transaction transaction=new Transaction();
@@ -164,5 +164,10 @@ public class BankController {
 		return model;
 	}
 	
-	
+	@RequestMapping("/myprofile")
+	public ModelAndView myprofile() {
+		System.out.println("in myprofile");
+		ModelAndView model=new ModelAndView("myprofile");
+		return model;
+	}
 }
