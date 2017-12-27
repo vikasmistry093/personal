@@ -39,6 +39,8 @@
 			  				</td>
 						</tr>
 						<%-- 
+						                 //Create a string for account type 
+						
 						<tr>
 							<td>
 								<label>Account Type: </label>

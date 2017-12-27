@@ -24,4 +24,5 @@ public class Image {
 	
 	@Column(name="STATUS")
 	private String status;
+	
 }

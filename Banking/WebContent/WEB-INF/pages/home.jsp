@@ -14,7 +14,7 @@
 <body>
 	<%@include file="includes/logoutheader.html"%>
 	<div class="bodyContent">
-		<h1>Welcome ${username}</h1>
+		<h1>Welcome Akash Mistry</h1>
 		<div class="row">
 		
 			<div class="col-sm-3">
@@ -28,25 +28,25 @@
 						
 						<tr>
 							<td colspan="3"><label>User Name: </label></td>
-							<td><label>${username}</label></td>
+							<td><label>${username} Akash Anil Mistry</label></td>
 						</tr>
 						
 						<tr>
 							<td colspan="3"><label>Mobile Number: </label></td>
-							<td><label>${username}</label></td>
+							<td><label>${username} 8286515987</label></td>
 						</tr>
 						
 						<tr>
 							<td colspan="3"><label>Account Number: </label></td>
-							<td><label>${accountNumber}</label></td>
+							<td><label>${accountNumber} Ak1997</label></td>
 						</tr>
 						<tr>
 							<td  colspan="3"><label>Account Type: </label></td>
-							<td><label>${accountType}</label></td>
+							<td><label>${accountType} Saving</label></td>
 						</tr>
 						<tr>
 							<td colspan="3"><label>Current Balance: </label></td>
-							<td><label>${currentBalance}</label></td>
+							<td><label>${currentBalance} 7000</label></td>
 						</tr>
 					</table>
 				</div>

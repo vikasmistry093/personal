@@ -27,4 +27,46 @@ public class Card {
 	@Column(name="EXPIRY_DATE")
 	private Date expiryDate;
 
+	public Card() {}
+	
+	public Card(long cardId, long cardNumber, String ownerName, Date expiryDate) {
+		super();
+		this.cardId = cardId;
+		this.cardNumber = cardNumber;
+		this.ownerName = ownerName;
+		this.expiryDate = expiryDate;
+	}
+
+	public long getCardId() {
+		return cardId;
+	}
+
+	public void setCardId(long cardId) {
+		this.cardId = cardId;
+	}
+
+	public long getCardNumber() {
+		return cardNumber;
+	}
+
+	public void setCardNumber(long cardNumber) {
+		this.cardNumber = cardNumber;
+	}
+
+	public String getOwnerName() {
+		return ownerName;
+	}
+
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
+	}
+
+	public Date getExpiryDate() {
+		return expiryDate;
+	}
+
+	public void setExpiryDate(Date expiryDate) {
+		this.expiryDate = expiryDate;
+	}
+	
 }

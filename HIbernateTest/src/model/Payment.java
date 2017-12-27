@@ -30,5 +30,6 @@ public class Payment {
 	@CreationTimestamp
 	@Column(name="CREATED_TIMESTAMP")
 	private Timestamp createdTimestamp;
+	
 
 }

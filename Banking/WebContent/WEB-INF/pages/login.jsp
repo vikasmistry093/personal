@@ -7,11 +7,6 @@
 <html>
 <head>
 <%@include file="includes/includer.html"%>
-<!-- <style type="text/css">
-body {
-    background-image: url("${pageContext.request.contextPath}/resources/images/background.jpg");
-}
-</style> -->
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Welcome to DBS Bank: Home</title>
@@ -20,7 +15,7 @@ body {
 <body>
 	<%@include file="includes/header.html"%>
 	<div class="bodyContent">
-		<h1>Welcome</h1>
+		<h1>Welcome </h1>
 		<div class="row">
 			<div class="col-sm-4">
 			<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advertisement.jpg" width="100%" height="500px"/>
@@ -31,13 +26,15 @@ body {
 					<div class="panel-heading">USER LOGIN </div>
 				</div>
 				
-				 	<form:form action="${pageContext.request.contextPath}/home" modelAttribute="user" method="post">
+				 	<form:form action="${pageContext.request.contextPath}/home" modelAttribute="user" commandName="user" method="post" >
 					
 					<label>User name:</label>
-					<form:input type="text" class="form-control" path="userName" name="userName" placeholder="User Name"/><br>
+					<form:input type="text" class="form-control" path="userName" name="userName" placeholder="User Name" />
+					<%-- <form:errors path="userName"></form:errors><br> --%>
 					
 					<label>Password:</label>
-					<form:input type="password" class="form-control" path="userPassword" name="userPassword" placeholder="Password"/><br>
+					<form:input type="password" class="form-control" path="userPassword" name="userPassword" placeholder="Password"/>
+					<%-- <form:errors path="userPassword"></form:errors><br> --%>
 				     
 					<form:button type="button" class="btn btn-default" style="float: left;" onclick="getSignUpPage();">Sign Up</form:button> 
 			    	<form:button type="submit" class="btn btn-default" style="float: right;">Login</form:button>

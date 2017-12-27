@@ -9,12 +9,12 @@
 <%@include file="includes/includer.html"%>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Welcome to DBS Bank: Home</title>
+<title>Welcome to DBS Bank: Setting</title>
 </head>
 <body>
 	<%@include file="includes/logoutheader.html"%>
 	<div class="bodyContent">
-		<h1>Welcome ${username}</h1>
+		<h1>Welcome ${username} Akash Mistry</h1>
 		<div class="row">
 			<div class="col-sm-3">
 				<%@include file="includes/menu.html"%>

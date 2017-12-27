@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -20,9 +21,11 @@ public class User {
 	@Column(name="USER_ID")
 	private long userID;
 	
+	@NotNull(message="Please enter the user name.")
 	@Column(name="USER_NAME", unique=true)
 	private String userName;
 	
+	@NotNull(message="Please enter the password")
 	@Column(name="USER_PASSWORD",nullable=false)
 	private String userPassword;
 	

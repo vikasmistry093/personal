@@ -1,11 +1,13 @@
 package org.bank.controller;
 
 
-import org.bank.model.Account;
+import javax.validation.Valid;
+
 import org.bank.model.Customer;
 import org.bank.model.Transaction;
 import org.bank.model.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,10 +34,17 @@ public class BankController {
 	}
 	
 	@RequestMapping("/home")
-	public ModelAndView home(@ModelAttribute("user") User user){
+	public ModelAndView home(@ModelAttribute("user") @Valid User user, BindingResult result){
 		System.out.println("In Home");
 		System.out.println("In Controller: " + user.getUserName());
 		ModelAndView model;
+		if(result.hasErrors()) {
+			model = new ModelAndView("login");
+			model.addObject("user", user);
+			return model;
+			
+		}
+		
 		
 		//boolean isValidUser = bankService.isValidUser(user);
 		//if(isValidUser)
@@ -64,11 +73,11 @@ public class BankController {
 	
 	
 	
-	@RequestMapping("/transfer")
-	public ModelAndView transfer() {
-		System.out.println("in transfer");
+	@RequestMapping("/transaction")
+	public ModelAndView transaction() {
+		System.out.println("in transaction");
 		Transaction transaction=new Transaction();
-		ModelAndView model=new ModelAndView("transfer");
+		ModelAndView model=new ModelAndView("transaction");
 		model.addObject("transaction",transaction);
 		return model;
 	}

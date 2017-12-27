@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,6 +15,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 @Table(name="USERS")
 public class User {
@@ -22,6 +26,21 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="USER_ID")
 	private long userId;
+	
+	@Column(name="NAME")
+	private String name;
+	
+	@Column(name="CONTACT")
+	private String contact;
+	
+	@Column(name="EMAIL")
+	private String email;
+	
+	@Column(name="PASSWORD")
+	private String password;
+	
+	@Column(name="STATUS")
+	private String status;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="USER_CARDS", joinColumns={@JoinColumn(name="USER_ID")}, inverseJoinColumns={@JoinColumn(name="CARD_ID")})
@@ -43,52 +62,11 @@ public class User {
 	@JoinColumn(name="WISHLIST")
 	private WishList wishList;
 
-	public long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(long userId) {
-		this.userId = userId;
-	}
-
-	public List<Card> getCardDetails() {
-		return cardDetails;
-	}
-
-	public void setCardDetails(List<Card> cardDetails) {
-		this.cardDetails = cardDetails;
-	}
-
-	public List<Address> getUserAddress() {
-		return userAddress;
-	}
-
-	public void setUserAddress(List<Address> userAddress) {
-		this.userAddress = userAddress;
-	}
-
-	public Recommendation getRecommendation() {
-		return recommendation;
-	}
-
-	public void setRecommendation(Recommendation recommendation) {
-		this.recommendation = recommendation;
-	}
-
-	public List<Order> getOrders() {
-		return orders;
-	}
-
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
-	}
-
-	public WishList getWishList() {
-		return wishList;
-	}
-
-	public void setWishList(WishList wishList) {
-		this.wishList = wishList;
-	}
+	@Column(name="CREATED_TIMESTAMP")
+	@CreationTimestamp
+	private Timestamp createdTimestamp;
 	
+	@Column(name="UPDATED_TIMESTAMP")
+	@UpdateTimestamp
+	private Timestamp updatedTimestamp;
 }

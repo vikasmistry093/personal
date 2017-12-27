@@ -14,7 +14,7 @@
 <body>
 	<%@include file="includes/logoutheader.html"%>
 	<div class="bodyContent">
-		<h1>Welcome ${username}</h1>
+		<h1>Welcome Akash Mistry</h1>
 		<div class="row">
 			<div class="col-sm-3">
 			  <%@include file="includes/menu.html"%>
@@ -32,7 +32,7 @@
 							<td align="center" colspan="3"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="address" width="100%" height="41%"/></td>
 						</tr>
 			       	</table>			
-			    </div>
+			    </div> 
 		   </div>
 		
 		   <div class="col-sm-3">

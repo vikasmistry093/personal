@@ -14,7 +14,7 @@
 <body>
 	<%@include file="includes/logoutheader.html"%>
 	<div class="bodyContent">
-		<h1>Welcome ${username}</h1>
+		<h1>Welcome Akash Mistry</h1>
 		<div class="row">
 			<div class="col-sm-3">
 				<%@include file="includes/menu.html"%>
@@ -27,7 +27,7 @@
 					<form:form action="${pageContext.request.contextPath}/home" method="post" modelAttribute="customer" >
 					<table>
 						<tr>
-							<th><h3>Edit Mobile Number Details</h3></th>
+							<th><h3>Edit Mobile Number Details:</h3></th>
 						</tr>
 						
 						<tr>

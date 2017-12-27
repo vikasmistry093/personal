@@ -26,20 +26,4 @@ public class Recommendation {
 	@JoinTable(name="RECOMMENDED_PRODUCT", joinColumns={@JoinColumn(name="RECOMMENDATION_ID")}, inverseJoinColumns={@JoinColumn(name="PRODUCT_ID")})
 	private List<Product> recommendedProduct;
 
-	public long getRecommendationId() {
-		return recommendationId;
-	}
-
-	public void setRecommendationId(long recommendationId) {
-		this.recommendationId = recommendationId;
-	}
-
-	public List<Product> getRecommendedProduct() {
-		return recommendedProduct;
-	}
-
-	public void setRecommendedProduct(List<Product> recommendedProduct) {
-		this.recommendedProduct = recommendedProduct;
-	}
-
 }

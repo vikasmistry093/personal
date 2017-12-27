@@ -14,7 +14,7 @@
 <body>
 	<%@include file="includes/logoutheader.html"%>
 	<div class="bodyContent">
-		<h1>Welcome ${username}</h1>
+		<h1>Welcome ${username}Akash Mistry</h1>
 		<div class="row">
 			<div class="col-sm-3">
 				<%@include file="includes/menu.html"%>

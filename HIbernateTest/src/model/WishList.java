@@ -26,20 +26,4 @@ public class WishList {
 	@JoinTable(name="WISHED_PRODUCTS", joinColumns={@JoinColumn(name="WISHLIST_ID")}, inverseJoinColumns={@JoinColumn(name="PRODUCT_ID")})
 	private List<Product> products;
 
-	public long getWishListId() {
-		return wishListId;
-	}
-
-	public void setWishListId(long wishListId) {
-		this.wishListId = wishListId;
-	}
-
-	public List<Product> getProducts() {
-		return products;
-	}
-
-	public void setProducts(List<Product> products) {
-		this.products = products;
-	}
-	
 }
