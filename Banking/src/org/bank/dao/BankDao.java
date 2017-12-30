@@ -1,5 +1,6 @@
 package org.bank.dao;
 
+import org.bank.model.Customer;
 import org.bank.model.User;
 import org.bank.util.HibernateUtil;
 import org.hibernate.Query;
@@ -32,6 +33,14 @@ public class BankDao implements IBankDao {
 		session.save(user);
 		
 		transaction.commit();
+	}
+
+	@Override
+	public boolean saveCustomer(Customer customer) {
+		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSession();
+		session.save(customer);
+		return true;
 	}
 	
 

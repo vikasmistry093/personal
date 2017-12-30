@@ -1,9 +1,12 @@
 package org.bank.service;
 
-import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.bank.dao.BankDao;
 import org.bank.dao.IBankDao;
+import org.bank.model.Account;
+import org.bank.model.Customer;
 import org.bank.model.User;
 
 public class BankServices implements IBankServices {
@@ -26,8 +29,19 @@ public class BankServices implements IBankServices {
 		user.setUserName("akash");
 		user.setUserPassword("password");
 		user.setUserType("ADMIN");
-		user.setLastLoginTime(new Timestamp(System.currentTimeMillis()));
 		dao.saveUser(user);
+	}
+
+	@Override
+	public boolean registerNewCustomer(Customer customer) {
+		// TODO Auto-generated method stub
+		List<Account> accs = new ArrayList<>();
+		Account acc = customer.getAccount();
+		accs.add(acc);
+		
+		customer.setAccounts(accs);
+		boolean isSuccess = dao.saveCustomer(customer);
+		return false;
 	}
 	
 

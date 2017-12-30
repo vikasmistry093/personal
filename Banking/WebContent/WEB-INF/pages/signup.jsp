@@ -10,7 +10,7 @@
 <title>Information Details</title>
 </head>
 <body>
-<%@include file="includes/header.html"%>
+<%@include file="includes/header.jsp"%>
 
 	<div class="bodyContent">
 		<div class="row">
@@ -22,7 +22,7 @@
 				<div class="panel panel-primary">
 					<div class="panel-heading">SIGN UP</div>
 				</div>
-				<form:form action="${pageContext.request.contextPath}/home" method="post" modelAttribute="customer" >
+				<form:form action="${pageContext.request.contextPath}/registration" method="post" modelAttribute="customer" >
 					<table>
 						<tr><th colspan="4"><h3>Personal Details</h3></th></tr>
 						
@@ -35,23 +35,20 @@
 								<form:radiobutton path="salutatn" name="salutation" value="miss"/> Miss &nbsp;
 							    <form:radiobutton path="salutatn" name="salutation" value="mrs"/> Mrs &nbsp;
 			  					<form:radiobutton path="salutatn" name="salutation" value="ms"/> Ms &nbsp;
-			  					<form:radiobutton path="salutatn" name="salutation" value="mr"/> Mr &nbsp;
+			  					<form:radiobutton path="salutatn" name="salutation" value="mr"/> Mr<br> &nbsp;
 			  				</td>
 						</tr>
-						<%-- 
-						                 //Create a string for account type 
-						
+
 						<tr>
 							<td>
 								<label>Account Type: </label>
 							</td>
 							<td colspan="3">
-								<form:radiobutton path="accountType" name="current" value="current"/> Current &nbsp;
-								<form:radiobutton path="accountType" name="saving" value="saving"/> Saving &nbsp;
-								<form:radiobutton path="accountType" name="Loan" value="Loan"/> Loan &nbsp;	
+								<form:radiobutton path="account.accountType" name="current" value="current"/> Current &nbsp;
+								<form:radiobutton path="account.accountType" name="saving" value="saving"/> Saving<br> &nbsp;
 							</td>
 						</tr>
-						 --%>					
+											
 						<tr>
 							<td>
 								<label>Name: </label>

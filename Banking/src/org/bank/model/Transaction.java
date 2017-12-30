@@ -1,6 +1,6 @@
 package org.bank.model;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.*;
 
 import javax.persistence.Column;
@@ -28,7 +28,7 @@ public class Transaction {
 	
 	@CreationTimestamp
 	@Column(name="TRANSACTION_TMSTMP",nullable=false)
-	private Timestamp transactionTimestamp;
+	private LocalDateTime transactionTimestamp;
 	
 	@Column(name="IFSC_CODE",nullable=false)
 	private long ifscCode;
@@ -54,7 +54,7 @@ public class Transaction {
 	public Transaction() {	}
 	
 	
-	public Transaction(long transactionID, Date transactionDate, Timestamp transactionTimestamp, long ifscCode,
+	public Transaction(long transactionID, Date transactionDate, LocalDateTime transactionTimestamp, long ifscCode,
 			long benificiaryAccNo, String benificiaryName, String benificiaryType, String description,
 			double transactionAmount, String transactionType) {
 		super();
@@ -69,22 +69,6 @@ public class Transaction {
 		this.transactionAmount = transactionAmount;
 		this.transactionType = transactionType;
 	}
-
-	public Transaction(Date transactionDate, Timestamp transactionTimestamp, long ifscCode,
-			long benificiaryAccNo, String benificiaryName, String benificiaryType, String description,
-			double transactionAmount, String transactionType) {
-		super();
-		this.transactionDate = transactionDate;
-		this.transactionTimestamp = transactionTimestamp;
-		this.ifscCode = ifscCode;
-		this.benificiaryAccNo = benificiaryAccNo;
-		this.benificiaryName = benificiaryName;
-		this.benificiaryType = benificiaryType;
-		this.description = description;
-		this.transactionAmount = transactionAmount;
-		this.transactionType = transactionType;
-	}
-
 
 	
 	public long getTransactionID() {
@@ -107,12 +91,12 @@ public class Transaction {
 	}
 
 
-	public Timestamp getTransactionTimestamp() {
+	public LocalDateTime getTransactionTimestamp() {
 		return transactionTimestamp;
 	}
 
 
-	public void setTransactionTimestamp(Timestamp transactionTimestamp) {
+	public void setTransactionTimestamp(LocalDateTime transactionTimestamp) {
 		this.transactionTimestamp = transactionTimestamp;
 	}
 

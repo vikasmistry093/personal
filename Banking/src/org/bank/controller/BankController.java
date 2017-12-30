@@ -4,8 +4,11 @@ package org.bank.controller;
 import javax.validation.Valid;
 
 import org.bank.model.Customer;
+import org.bank.model.Loan;
 import org.bank.model.Transaction;
 import org.bank.model.User;
+import org.bank.service.BankServices;
+import org.bank.service.IBankServices;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class BankController {
 	
-	//private IBankServices bankService;
+	//private IBankServices bankService = new BankServices();
 	
 	
 	public BankController() {
@@ -38,13 +41,13 @@ public class BankController {
 		System.out.println("In Home");
 		System.out.println("In Controller: " + user.getUserName());
 		ModelAndView model;
-		if(result.hasErrors()) {
+		/*if(result.hasErrors()) {
 			model = new ModelAndView("login");
 			model.addObject("user", user);
 			return model;
 			
 		}
-		
+		*/
 		
 		//boolean isValidUser = bankService.isValidUser(user);
 		//if(isValidUser)
@@ -179,4 +182,32 @@ public class BankController {
 		ModelAndView model=new ModelAndView("myprofile");
 		return model;
 	}
+	
+	@RequestMapping("/transactionsummary")
+	public ModelAndView transactionsummary() {
+		System.out.println("in transactionsummary");
+		ModelAndView model=new ModelAndView("transactionsummary");
+		return model;
+	}
+	
+	@RequestMapping("/loan")
+	public ModelAndView loan() {
+		System.out.println("in loan");
+		Loan loan=new Loan();
+		ModelAndView model=new ModelAndView("loan");
+		model.addObject("loan",loan);
+		return model;
+	}
+	
+/*	@RequestMapping("/registration")
+	public ModelAndView registration(@ModelAttribute("customer") Customer customer) {
+		System.out.println("in registration");
+		System.out.println(customer.getFirstName());
+		
+		boolean isSuccess = bankService.registerNewCustomer(customer);
+		
+		ModelAndView model=new ModelAndView("succ_registration");
+		return model;
+	}
+*/	
 }

@@ -18,270 +18,222 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name="CUSTOMER")
+@Table(name = "CUSTOMER")
 public class Customer {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="CUSTOMER_ID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "CUSTOMER_ID")
 	private long customerID;
-	
-	@Column(name="SALUTATION",nullable=false)
+
+	@Column(name = "SALUTATION", nullable = false)
 	private String salutatn;
-	
-	@Column(name="FIRST_NAME",nullable=false)
+
+	@Column(name = "FIRST_NAME", nullable = false)
 	private String firstName;
 
-	@Column(name="MIDDLE_NAME",nullable=false)
+	@Column(name = "MIDDLE_NAME", nullable = false)
 	private String middleName;
-	
-	@Column(name="LAST_NAME",nullable=false)
+
+	@Column(name = "LAST_NAME", nullable = false)
 	private String lastName;
-	
-	@Column(name="ADDRESS",nullable=false)
+
+	@Column(name = "ADDRESS", nullable = false)
 	private String address;
 
-	@DateTimeFormat(pattern="DD/MM/YYYY")
-	@Column(name="DOB",nullable=false)
+	@DateTimeFormat(pattern = "DD/MM/YYYY")
+	@Column(name = "DOB", nullable = false)
 	private Date dob;
 
-	@Column(name="EMAIL_ID",nullable=false)
+	@Column(name = "EMAIL_ID", nullable = false)
 	private String email;
 
-	@Column(name="MOBILE_NUMBER",nullable=false)
+	@Column(name = "MOBILE_NUMBER", nullable = false)
 	private long mobileNumber;
-	
-	@Column(name="PANCARD",nullable=false)
+
+	@Column(name = "PANCARD", nullable = false)
 	private String pancard;
-	
-	@Column(name="AADHAR_CARD",nullable=false)
+
+	@Column(name = "AADHAR_CARD", nullable = false)
 	private String aadharcard;
-	
-	@Column(name="NOMINEE_NAME")
+
+	@Column(name = "NOMINEE_NAME")
 	private String nomineeName;
-	
-	@Column(name="NOMINEE_RELATION")
+
+	@Column(name = "NOMINEE_RELATION")
 	private String nomineeRelation;
-	
+
 	@CreationTimestamp
-	@Column(name="CRTED_TMSTMP",nullable=false)
-	private Timestamp createdTimestamp;
-	
+	@Column(name = "CRTED_TMSTMP")
+	private LocalDateTime createdTimestamp;
+
 	@UpdateTimestamp
-	@Column(name="UPTD_TMSTMP",nullable=false)
-	private Timestamp updateTimestamp;
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="USER_DETAIL")
+	@Column(name = "UPTD_TMSTMP")
+	private LocalDateTime updateTimestamp;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "USER_DETAIL")
 	private User user;
-	
+
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "CUSTOMER_ACCOUNT_DETAILS", joinColumns = {@JoinColumn(name="ACCOUNT_ID") }, inverseJoinColumns = { @JoinColumn(name="CUSTOMER_ID")})
+	@JoinTable(name = "CUSTOMER_ACCOUNT_DETAILS", joinColumns = {
+			@JoinColumn(name = "ACCOUNT_ID") }, inverseJoinColumns = { @JoinColumn(name = "CUSTOMER_ID") })
 	private List<Account> accounts;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "CUSTOMER_LOAN_DETAILS", joinColumns = {
+			@JoinColumn(name = "LOAN_ID") }, inverseJoinColumns = { @JoinColumn(name = "CUSTOMER_ID") })
+	private List<Loan> loans;
 	
-	public Customer() { }
+
+	private Account account;
 
 	
-	
-
-	public Customer(long customerID, String salutatn, String firstName, String middleName,
-			String lastName, String address, Date dob, String email, long mobileNumber, String pancard, String aadharcard,
-			String nomineeName, String nomineeRelation, Timestamp createdTimestamp, Timestamp updateTimestamp,
-			User user, List<Account> accounts) {
-		super();
-		this.customerID = customerID;
-		this.salutatn = salutatn;
-		this.firstName = firstName;
-		this.middleName = middleName;
-		this.lastName = lastName;
-		this.address = address;
-		this.dob = dob;
-		this.email = email;
-		this.mobileNumber = mobileNumber;
-		this.pancard = pancard;
-		this.aadharcard = aadharcard;
-		this.nomineeName = nomineeName;
-		this.nomineeRelation = nomineeRelation;
-		this.createdTimestamp = createdTimestamp;
-		this.updateTimestamp = updateTimestamp;
-		this.user = user;
-		this.accounts = accounts;
-	}
-
-
-
-
 	public long getCustomerID() {
 		return customerID;
 	}
-
 
 	public void setCustomerID(long customerID) {
 		this.customerID = customerID;
 	}
 
-
-	public String getsalutatn() {
+	public String getSalutatn() {
 		return salutatn;
 	}
 
-
-	public void setsalutatn(String salutatn) {
+	public void setSalutatn(String salutatn) {
 		this.salutatn = salutatn;
 	}
-
 
 	public String getFirstName() {
 		return firstName;
 	}
 
-
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
 
 	public String getMiddleName() {
 		return middleName;
 	}
 
-
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
-
 
 	public String getLastName() {
 		return lastName;
 	}
 
-
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
 
 	public String getAddress() {
 		return address;
 	}
 
-
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
 
 	public Date getDob() {
 		return dob;
 	}
 
-
 	public void setDob(Date dob) {
 		this.dob = dob;
 	}
-
 
 	public String getEmail() {
 		return email;
 	}
 
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 
 	public long getMobileNumber() {
 		return mobileNumber;
 	}
 
-
 	public void setMobileNumber(long mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
-
 
 	public String getPancard() {
 		return pancard;
 	}
 
-
 	public void setPancard(String pancard) {
 		this.pancard = pancard;
 	}
-
 
 	public String getAadharcard() {
 		return aadharcard;
 	}
 
-
 	public void setAadharcard(String aadharcard) {
 		this.aadharcard = aadharcard;
 	}
-
 
 	public String getNomineeName() {
 		return nomineeName;
 	}
 
-
 	public void setNomineeName(String nomineeName) {
 		this.nomineeName = nomineeName;
 	}
-
 
 	public String getNomineeRelation() {
 		return nomineeRelation;
 	}
 
-
 	public void setNomineeRelation(String nomineeRelation) {
 		this.nomineeRelation = nomineeRelation;
 	}
 
-
-	public Timestamp getCreatedTimestamp() {
+	public LocalDateTime getCreatedTimestamp() {
 		return createdTimestamp;
 	}
 
-
-	public void setCreatedTimestamp(Timestamp createdTimestamp) {
+	public void setCreatedTimestamp(LocalDateTime createdTimestamp) {
 		this.createdTimestamp = createdTimestamp;
 	}
 
-
-	public Timestamp getUpdateTimestamp() {
+	public LocalDateTime getUpdateTimestamp() {
 		return updateTimestamp;
 	}
 
-
-	public void setUpdateTimestamp(Timestamp updateTimestamp) {
+	public void setUpdateTimestamp(LocalDateTime updateTimestamp) {
 		this.updateTimestamp = updateTimestamp;
 	}
-
 
 	public User getUser() {
 		return user;
 	}
 
-
 	public void setUser(User user) {
 		this.user = user;
 	}
-
 
 	public List<Account> getAccounts() {
 		return accounts;
 	}
 
-
 	public void setAccounts(List<Account> accounts) {
 		this.accounts = accounts;
 	}
-	
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
 }

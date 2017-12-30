@@ -1,6 +1,6 @@
 package org.bank.model;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -21,11 +20,9 @@ public class User {
 	@Column(name="USER_ID")
 	private long userID;
 	
-	@NotNull(message="Please enter the user name.")
 	@Column(name="USER_NAME", unique=true)
 	private String userName;
 	
-	@NotNull(message="Please enter the password")
 	@Column(name="USER_PASSWORD",nullable=false)
 	private String userPassword;
 	
@@ -33,12 +30,12 @@ public class User {
 	private String userType;
 	
 	@UpdateTimestamp
-	@Column(name="LAST_LOGIN_TMSTMP",nullable=false)
-	private Timestamp lastLoginTime;
+	@Column(name="LAST_LOGIN_TMSTMP")
+	private LocalDateTime lastLoginTime;
 	
 	public User() { }
 	
-	public User(long userID, String userName, String userPassword, String userType, Timestamp lastLoginTime) {
+	public User(long userID, String userName, String userPassword, String userType, LocalDateTime lastLoginTime) {
 		super();
 		this.userID = userID;
 		this.userName = userName;
@@ -81,11 +78,11 @@ public class User {
 		this.userType = string;
 	}
 
-	public Timestamp getLastLoginTime() {
+	public LocalDateTime getLastLoginTime() {
 		return lastLoginTime;
 	}
 
-	public void setLastLoginTime(Timestamp lastLoginTime) {
+	public void setLastLoginTime(LocalDateTime lastLoginTime) {
 		this.lastLoginTime = lastLoginTime;
 	}
 

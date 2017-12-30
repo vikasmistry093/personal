@@ -9,13 +9,12 @@
 <%@include file="includes/includer.html"%>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Welcome to DBS Bank: Home</title>
+<title>Welcome to ABS Bank</title>
 </head>
 
 <body>
-	<%@include file="includes/header.html"%>
+	<%@include file="includes/header.jsp"%>
 	<div class="bodyContent">
-		<h1>Welcome </h1>
 		<div class="row">
 			<div class="col-sm-4">
 			<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advertisement.jpg" width="100%" height="500px"/>
@@ -33,7 +32,7 @@
 					<%-- <form:errors path="userName"></form:errors><br> --%>
 					
 					<label>Password:</label>
-					<form:input type="password" class="form-control" path="userPassword" name="userPassword" placeholder="Password"/>
+					<form:input type="password" class="form-control" path="userPassword" name="userPassword" placeholder="Password"/><br>
 					<%-- <form:errors path="userPassword"></form:errors><br> --%>
 				     
 					<form:button type="button" class="btn btn-default" style="float: left;" onclick="getSignUpPage();">Sign Up</form:button> 

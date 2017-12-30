@@ -33,13 +33,11 @@ public class Cards {
 	@Column(name="EXPIRY_DETAILS",nullable=false)
 	private Date expiryDate;
 	
-	@Column(name="CARD_LIMIT",columnDefinition="int default 0",nullable=false)
-	private Double cardLimit;
 	public Cards() {}
 	
 
 	public Cards(long cardID, String cardName, long cvvNumber,String cardType, long cardNumber,
-			Date expiryDate, Double cardLimit) {
+			Date expiryDate) {
 		super();
 		this.cardID = cardID;
 		this.cardName = cardName;
@@ -47,7 +45,6 @@ public class Cards {
 		this.cardType = cardType;
 		this.cardNumber = cardNumber;
 		this.expiryDate = expiryDate;
-		this.cardLimit = cardLimit;
 	}
 
 
@@ -101,13 +98,5 @@ public class Cards {
 		this.expiryDate = expiryDate;
 	}
 
-	public Double getCardLimit() {
-		return cardLimit;
-	}
-
-	public void setCardLimit(Double cardLimit) {
-		this.cardLimit = cardLimit;
-	}
 	
-
 }

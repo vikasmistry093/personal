@@ -12,93 +12,157 @@
 <title>Welcome to DBS Bank: My Profile</title>
 </head>
 <body>
-	<%@include file="includes/logoutheader.html"%>
+	<%@include file="includes/logoutheader.jsp"%>
 	<div class="bodyContent">
-		<h1>Welcome ${username} Akash Mistry</h1>
 		<div class="row">
 			<div class="col-sm-3">
 				<%@include file="includes/menu.html"%>
 			</div>
 
-			<div class="col-sm-6">
+			<div class="col-sm-7">
 				<div class="panel panel-primary">
-					<div class="panel-heading">Akash's ${username} Details </div>
+					<div class="panel-heading">My Profile</div>
 				</div>	
 					<table>
+						
 						<tr>
-							<td><th colspan="4"><h3>Personal Details </h3></th>
+							<th colspan="5" align="left"><h3>Personal Details</h3></th>
 						</tr>
-
+						
 						<tr>	
-							<td colspan="2">
-								<label>User Name: Akash ${firstname} Anil ${middelname} Mistry ${lastname}</label>
+							<td>
+								<label>Name:</label>
 							</td>
 							
 							<td>
-								<label>Account Type: ${accounttype} Saving</label>
+								<input type="text" class="form-control" name="userName" value="${username}Akash Anil Mistry" readonly="readonly">
+							</td>
+							
+								<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							
+							<td>
+								<label>Account Type:</label>
 							</td>
 							
 							<td>
-								<label>Last Time Logged In: ${lastLoginTime} 17may1997 7:00pm</label>
+								<input type="text" class="form-control" name="accounttype" value="${accounttye}Saving" readonly="readonly"><br>
 							</td>
+							
 						</tr>
 						
 						<tr>
-							<td colspan="2">
-								<label>Account Number: ${accountNumber} Ak1997</label>
+							<td>
+								<label>Account Number:</label>
 							</td>
-							<td colspan="2">
-								<label>Current Balance: ${balance} 7000</label>
+							
+							<td >
+								<input type="text" class="form-control" name="accuntnumber" value="${accountnumber}Ak1997" readonly="readonly">
+							</td>
+							
+							<td></td>
+							
+							<td>
+								<label>Current Balance:</label>
+							</td>
+							
+							<td >
+								<input type="text" class="form-control" name="balance" value="${balance}7000" readonly="readonly"><br>
 							</td>	
 						</tr>
 						
 						<tr>
-							<td colspan="2">
-								<label>Address: ${address} B-21/404,Anand Nagar,Dahisar(e)</label><a href="#">edit</a>
+							<td>
+								<label>Address:</label>
 							</td>
-							<td colspan="2">
-								<label>DOb: ${dob} 17 may 1997</label>
+							
+							<td >
+								<input type="text" class="form-control" name="address" value="${address}B-21/404,Anand Nagar,Dahisar(e)" readonly="readonly">
 							</td>
-						</tr>
-						
-						<tr>
-							<td colspan="2">
-								<label>Mobile Number: ${mobilenumber} 8286515987</label><a href="#">edit</a>
+							
+							<td></td>
+							
+							<td>
+								<label>DOb:</label>
 							</td>
-							<td colspan="2">
-								<label>Email Address: ${email} akashmsitry097@gmail.com</label><a href="#">edit</a>
-							</td>
-						</tr>
-						
-						<tr>
-							<td><th colspan="4"><h3>Other Details </h3></th>
-						</tr>
-						
-						<tr>
-							<td colspan="2">
-								<label>Aadhaar Card Number: ${aadharcard} 0987654321</label>
-							</td>
-							<td colspan="2">
-								<label>Pancard Number: ${pancard} 1234567890</label>
+							
+							<td >
+								<input type="text" class="form-control" name="dob" value="${dob}17 May 1997" readonly="readonly"><br>
 							</td>
 						</tr>
 						
 						<tr>
-							<td><th colspan="4"><h3>Nominee Details </h3></th>
+							<td>
+								<label>Mobile Number:</label>
+							</td>
+							
+							<td>
+								<input type="text" class="form-control" name="mobilenumber" value="${mobilenumber}8286515987" readonly="readonly">
+							</td>
+							
+							<td></td>
+							
+							<td>
+								<label>Email Address:</label>
+							</td>
+							
+							<td>
+								<input type="text" class="form-control" name="email" value="${email}akashmistry097@gmail.com" readonly="readonly">
+							</td>
+						</tr>
+						
+						
+						<tr>
+							<th colspan="5" align="left"><h3>Other Details </h3></th>
 						</tr>
 						
 						<tr>
-							<td colspan="2">
-								<label>Nominee Name: ${nomineeName} N_abc</label>
+							<td>
+								<label>Aadhaar Card Number:</label>
 							</td>
-							<td colspan="2">
-								<label>Nominee Relation: ${nomineeRelation} NR_relation</label>
+							
+							<td>
+								<input type="text" class="form-control" name="aadharcard" value="${aadhaarcard}0987654321" readonly="readonly">
+							</td>
+							
+							<td></td>
+							
+							<td>
+								<label>Pancard Number:</label>
+							</td>
+							
+							<td>
+								<input type="text" class="form-control" name="pancard" value="${pancard}1234567890" readonly="readonly">
+							</td>
+						</tr>
+						
+						<tr>
+							<th colspan="5" align="left"><h3>Nominee Details</h3></th>
+						</tr>
+						
+						 
+						<tr>
+							<td>
+								<label>Nominee Name:</label>
+							</td>
+							
+							<td>
+								<input type="text" class="form-control" name="nomineeName" value="${nomineeName}N_name" readonly="readonly">
+							</td>
+							
+							<td></td>
+							
+							<td>
+								<label>Nominee Relation:</label>
+							</td>
+							
+							<td>
+								<input type="text" class="form-control" name="nomineeRelation" value="${nomineeRelation}N_relationship" readonly="readonly"><br>
 							</td>
 						</tr>
 					</table>
 			</div>
 
-			<div class="col-sm-3">
+			<div class="col-sm-2">
 				<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advertisement.jpg"  width="100%" height="510px"/>
 			</div>
 		</div>

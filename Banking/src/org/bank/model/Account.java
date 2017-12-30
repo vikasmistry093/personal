@@ -1,6 +1,6 @@
 package org.bank.model;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.*;
 
 import javax.persistence.CascadeType;
@@ -22,9 +22,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Table(name="ACCOUNT")
 public class Account
 {
-	
-	public static enum accountType { CREDIT, DEBIT, LOAN }
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ACCOUNT_ID")
@@ -37,12 +34,12 @@ public class Account
 	private String accountType;
 	
 	@CreationTimestamp
-	@Column(name="CRTED_TMSTMP",nullable=false)
-	private Timestamp createTimestamp;
+	@Column(name="CRTED_TMSTMP")
+	private LocalDateTime createTimestamp;
 	
 	@UpdateTimestamp
-	@Column(name="UPTD_TMSTMP",nullable=false)
-	private Timestamp updateTimestamp;
+	@Column(name="UPTD_TMSTMP")
+	private LocalDateTime updateTimestamp;
 	
 	@Column(name="BALANCE",columnDefinition = "int default 0",nullable=false)
 	private double balance;
@@ -62,23 +59,9 @@ public class Account
 	
 	public Account() {}
 
-	public Account(long accountID,long accountNumber, String accountType, Timestamp createTimestamp,
-			Timestamp updateTimestamp, double balance, RateOfInterest rateOfInterest, List<Cards> cardDetails,
-			List<Transaction> transactionDetails) {
-		super();
-		this.accountID=accountID;
-		this.accountNumber = accountNumber;
-		this.accountType = accountType;
-		this.createTimestamp = createTimestamp;
-		this.updateTimestamp = updateTimestamp;
-		this.balance = balance;
-		this.rateOfInterest = rateOfInterest;
-		this.cardDetails = cardDetails;
-		this.transactionDetails = transactionDetails;
-	}
 	
-	public Account(long accountNumber, String accountType, Timestamp createTimestamp,
-			Timestamp updateTimestamp, double balance, RateOfInterest rateOfInterest, List<Cards> cardDetails,
+	public Account(long accountNumber, String accountType, LocalDateTime createTimestamp,
+			LocalDateTime updateTimestamp, double balance, RateOfInterest rateOfInterest, List<Cards> cardDetails,
 			List<Transaction> transactionDetails) {
 		super();
 		this.accountNumber = accountNumber;
@@ -115,19 +98,19 @@ public class Account
 		this.accountType = accountType;
 	}
 
-	public Timestamp getCreateTimestamp() {
+	public LocalDateTime getCreateTimestamp() {
 		return createTimestamp;
 	}
 
-	public void setCreateTimestamp(Timestamp createTimestamp) {
+	public void setCreateTimestamp(LocalDateTime createTimestamp) {
 		this.createTimestamp = createTimestamp;
 	}
 
-	public Timestamp getUpdateTimestamp() {
+	public LocalDateTime getUpdateTimestamp() {
 		return updateTimestamp;
 	}
 
-	public void setUpdateTimestamp(Timestamp updateTimestamp) {
+	public void setUpdateTimestamp(LocalDateTime updateTimestamp) {
 		this.updateTimestamp = updateTimestamp;
 	}
 

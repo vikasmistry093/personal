@@ -1,5 +1,6 @@
 package org.bank.dao;
 
+import org.bank.model.Customer;
 import org.bank.model.User;
 
 public interface IBankDao {
@@ -7,5 +8,7 @@ public interface IBankDao {
 	User getUserByUserNameAndPassword(String userName, String userPassword);
 
 	void saveUser(User user);
+
+	boolean saveCustomer(Customer customer);
 
 }
