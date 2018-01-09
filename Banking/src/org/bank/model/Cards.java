@@ -33,22 +33,6 @@ public class Cards {
 	@Column(name="EXPIRY_DETAILS",nullable=false)
 	private Date expiryDate;
 	
-	public Cards() {}
-	
-
-	public Cards(long cardID, String cardName, long cvvNumber,String cardType, long cardNumber,
-			Date expiryDate) {
-		super();
-		this.cardID = cardID;
-		this.cardName = cardName;
-		this.cvvNumber = cvvNumber;
-		this.cardType = cardType;
-		this.cardNumber = cardNumber;
-		this.expiryDate = expiryDate;
-	}
-
-
-
 
 	public long getCardID() {
 		return cardID;

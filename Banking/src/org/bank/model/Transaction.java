@@ -1,6 +1,6 @@
 package org.bank.model;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 import java.util.*;
 
 import javax.persistence.Column;
@@ -28,7 +28,7 @@ public class Transaction {
 	
 	@CreationTimestamp
 	@Column(name="TRANSACTION_TMSTMP",nullable=false)
-	private LocalDateTime transactionTimestamp;
+	private Timestamp transactionTimestamp;
 	
 	@Column(name="IFSC_CODE",nullable=false)
 	private long ifscCode;
@@ -51,25 +51,6 @@ public class Transaction {
 	@Column(name="TRANSACTION_TYPE")
 	private String transactionType;
 	
-	public Transaction() {	}
-	
-	
-	public Transaction(long transactionID, Date transactionDate, LocalDateTime transactionTimestamp, long ifscCode,
-			long benificiaryAccNo, String benificiaryName, String benificiaryType, String description,
-			double transactionAmount, String transactionType) {
-		super();
-		this.transactionID = transactionID;
-		this.transactionDate = transactionDate;
-		this.transactionTimestamp = transactionTimestamp;
-		this.ifscCode = ifscCode;
-		this.benificiaryAccNo = benificiaryAccNo;
-		this.benificiaryName = benificiaryName;
-		this.benificiaryType = benificiaryType;
-		this.description = description;
-		this.transactionAmount = transactionAmount;
-		this.transactionType = transactionType;
-	}
-
 	
 	public long getTransactionID() {
 		return transactionID;
@@ -91,12 +72,12 @@ public class Transaction {
 	}
 
 
-	public LocalDateTime getTransactionTimestamp() {
+	public Timestamp getTransactionTimestamp() {
 		return transactionTimestamp;
 	}
 
 
-	public void setTransactionTimestamp(LocalDateTime transactionTimestamp) {
+	public void setTransactionTimestamp(Timestamp transactionTimestamp) {
 		this.transactionTimestamp = transactionTimestamp;
 	}
 

@@ -26,18 +26,6 @@ public class RateOfInterest
 	private float interestRate;
 	
 	
-	public RateOfInterest() {}
-	
-	public RateOfInterest(long rateOfInetrestID, String name, String description, float interestRate) {
-		super();
-		this.rateOfInetrestID = rateOfInetrestID;
-		this.name = name;
-		this.description = description;
-		this.interestRate = interestRate;
-	}
-
-	
-
 	
 	public long getRateOfInetrestID() {
 		return rateOfInetrestID;

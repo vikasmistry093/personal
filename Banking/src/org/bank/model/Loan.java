@@ -1,6 +1,6 @@
 package org.bank.model;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,89 +19,89 @@ public class Loan {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="LOAN_ID")
-	private long loan_id;
+	private long loanId;
 	
 	@Column(name="LOAN_AMOUNT",nullable=false)
-	private Double loanamount;
+	private Double loanAmount;
 	
 	@Column(name="LOAN_TYPE", nullable=false)
-	private String loantype;
+	private String loanType;
 	
 	@Column(name="LOAN_PERIOD", nullable=false )
-	private int loanperiod;
+	private int loanPeriod;
 	
 	@Column(name="LOAN_DOCUMENT" ,nullable=false)
-	private String loandocument;
+	private String loanDocument;
 	
 	@Column(name="LOAN_STATUS", nullable=false)
-	private String loanstatus;
+	private String loanStatus;
 	
 	@Column(name="LOAN_EMI", nullable=false )
-	private float loanemi;
+	private float loanEmi;
 	
 	@Column(name="STATUS", nullable=false)
 	private String status;
 	
 	@CreationTimestamp
 	@Column(name="CREATED_LOAN_TS")
-	private LocalDateTime createdtimestamp;
+	private Timestamp createdTimestamp;
 	
 	public Loan() { }
 
-	public long getLoan_id() {
-		return loan_id;
+	public long getLoanId() {
+		return loanId;
 	}
 
-	public void setLoan_id(long loan_id) {
-		this.loan_id = loan_id;
+	public void setLoanId(long loanId) {
+		this.loanId = loanId;
 	}
 
-	public Double getLoanamount() {
-		return loanamount;
+	public Double getLoanAmount() {
+		return loanAmount;
 	}
 
-	public void setLoanamount(Double loanamount) {
-		this.loanamount = loanamount;
+	public void setLoanAmount(Double loanAmount) {
+		this.loanAmount = loanAmount;
 	}
 
-	public String getLoantype() {
-		return loantype;
+	public String getLoanType() {
+		return loanType;
 	}
 
-	public void setLoantype(String loantype) {
-		this.loantype = loantype;
+	public void setLoanType(String loanType) {
+		this.loanType = loanType;
 	}
 
-	public int getLoanperiod() {
-		return loanperiod;
+	public int getLoanPeriod() {
+		return loanPeriod;
 	}
 
-	public void setLoanperiod(int loanperiod) {
-		this.loanperiod = loanperiod;
+	public void setLoanPeriod(int loanPeriod) {
+		this.loanPeriod = loanPeriod;
 	}
 
-	public String getLoandocument() {
-		return loandocument;
+	public String getLoanDocument() {
+		return loanDocument;
 	}
 
-	public void setLoandocument(String loandocument) {
-		this.loandocument = loandocument;
+	public void setLoanDocument(String loanDocument) {
+		this.loanDocument = loanDocument;
 	}
 
-	public String getLoanstatus() {
-		return loanstatus;
+	public String getLoanStatus() {
+		return loanStatus;
 	}
 
-	public void setLoanstatus(String loanstatus) {
-		this.loanstatus = loanstatus;
+	public void setLoanStatus(String loanStatus) {
+		this.loanStatus = loanStatus;
 	}
 
-	public float getLoanemi() {
-		return loanemi;
+	public float getLoanEmi() {
+		return loanEmi;
 	}
 
-	public void setLoanemi(float loanemi) {
-		this.loanemi = loanemi;
+	public void setLoanEmi(float loanEmi) {
+		this.loanEmi = loanEmi;
 	}
 
 	public String getStatus() {
@@ -112,13 +112,12 @@ public class Loan {
 		this.status = status;
 	}
 
-	public LocalDateTime getCreatedtimestamp() {
-		return createdtimestamp;
+	public Timestamp getCreatedTimestamp() {
+		return createdTimestamp;
 	}
 
-	public void setCreatedtimestamp(LocalDateTime createdtimestamp) {
-		this.createdtimestamp = createdtimestamp;
+	public void setCreatedTimestamp(Timestamp createdTimestamp) {
+		this.createdTimestamp = createdTimestamp;
 	}
-	
-	
+
 }

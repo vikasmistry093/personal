@@ -44,8 +44,8 @@
 								<label>Account Type: </label>
 							</td>
 							<td colspan="3">
-								<form:radiobutton path="account.accountType" name="current" value="current"/> Current &nbsp;
-								<form:radiobutton path="account.accountType" name="saving" value="saving"/> Saving<br> &nbsp;
+								<form:radiobutton path="account.accountType" name="accountType" value="current"/> Current &nbsp;
+								<form:radiobutton path="account.accountType" name="accountType" value="saving"/> Saving<br> &nbsp;
 							</td>
 						</tr>
 											
@@ -78,7 +78,7 @@
 								<label>Date Of Birth: </label>
 							</td>
 							<td colspan="3">
-								<form:input type="date" class="form-control" path="dob" placeholder="Date Of Birth" requried="true"/><br>
+								<form:input class="form-control" path="dob" placeholder="Date Of Birth" requried="true"/><br>
 							</td>
 						</tr>
 						

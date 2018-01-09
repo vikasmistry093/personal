@@ -1,5 +1,6 @@
 package org.bank.service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,10 +9,12 @@ import org.bank.dao.IBankDao;
 import org.bank.model.Account;
 import org.bank.model.Customer;
 import org.bank.model.User;
+import org.bank.util.BankUtil;
 
 public class BankServices implements IBankServices {
 	
 	private IBankDao dao = new BankDao();
+	private BankUtil bankUtil = new BankUtil();
 	
 	@Override
 	public boolean isValidUser(User user) {
@@ -37,11 +40,18 @@ public class BankServices implements IBankServices {
 		// TODO Auto-generated method stub
 		List<Account> accs = new ArrayList<>();
 		Account acc = customer.getAccount();
+		acc.setAccountNumber(123455);
+		acc.setBalance(0);
 		accs.add(acc);
+		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+		customer.setCreatedTimestamp(currentTime);
+		customer.setUpdateTimestamp(currentTime);
+		
+		customer.setUser(bankUtil.createNewUser(customer));
 		
 		customer.setAccounts(accs);
 		boolean isSuccess = dao.saveCustomer(customer);
-		return false;
+		return isSuccess;
 	}
 	
 

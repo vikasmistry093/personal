@@ -36,8 +36,8 @@
 							<form:select path="loantype">
 								<form:option value="personalloan">Personal Loan</form:option>
 								<form:option value="carloan">Car Loan</form:option>
-							</form:select>
-							<br></td>
+							</form:select><br>
+							</td>
 
 						</tr>
 
@@ -50,7 +50,8 @@
 
 							<td><form:input type="number" class="form-control"
 									path="loanamount" placeholder="Amount" size="10"
-									requried="true" /><br></td>
+									requried="true" /><br>
+							</td>
 						</tr>
 
 						<tr>
@@ -67,8 +68,8 @@
 								<form:option value="5">5</form:option>
 								<form:option value="10">10</form:option>
 								<form:option value="15">15</form:option>
-							</form:select>		
-							<br></td>
+							</form:select><br>
+							</td>
 						</tr>
 
 						<tr>
@@ -79,8 +80,8 @@
 							<td></td>
 
 							<td>
-							<form:input type="file"  name="loandocument" accept="images/*"  path="loandocument"/>
-							<br></td>
+							<form:input type="file"  name="loandocument" accept="images/*"  path="loandocument"/><br>
+							</td>
 						</tr>
 
 						<tr>

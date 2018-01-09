@@ -1,6 +1,6 @@
 package org.bank.model;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 import java.util.*;
 
 import javax.persistence.CascadeType;
@@ -35,11 +35,11 @@ public class Account
 	
 	@CreationTimestamp
 	@Column(name="CRTED_TMSTMP")
-	private LocalDateTime createTimestamp;
+	private Timestamp createTimestamp;
 	
 	@UpdateTimestamp
 	@Column(name="UPTD_TMSTMP")
-	private LocalDateTime updateTimestamp;
+	private Timestamp updateTimestamp;
 	
 	@Column(name="BALANCE",columnDefinition = "int default 0",nullable=false)
 	private double balance;
@@ -56,23 +56,6 @@ public class Account
 	@JoinTable(name="ACCOUNT_TRANSACTION_DETAILS", joinColumns = {@JoinColumn(name="ACCOUNT_ID") }, inverseJoinColumns = { @JoinColumn(name="TRASACTION_ID")})
 	private List<Transaction> transactionDetails;
 
-	
-	public Account() {}
-
-	
-	public Account(long accountNumber, String accountType, LocalDateTime createTimestamp,
-			LocalDateTime updateTimestamp, double balance, RateOfInterest rateOfInterest, List<Cards> cardDetails,
-			List<Transaction> transactionDetails) {
-		super();
-		this.accountNumber = accountNumber;
-		this.accountType = accountType;
-		this.createTimestamp = createTimestamp;
-		this.updateTimestamp = updateTimestamp;
-		this.balance = balance;
-		this.rateOfInterest = rateOfInterest;
-		this.cardDetails = cardDetails;
-		this.transactionDetails = transactionDetails;
-	}
 
 	public long getAccountID() {
 		return accountID;
@@ -98,19 +81,19 @@ public class Account
 		this.accountType = accountType;
 	}
 
-	public LocalDateTime getCreateTimestamp() {
+	public Timestamp getCreateTimestamp() {
 		return createTimestamp;
 	}
 
-	public void setCreateTimestamp(LocalDateTime createTimestamp) {
+	public void setCreateTimestamp(Timestamp createTimestamp) {
 		this.createTimestamp = createTimestamp;
 	}
 
-	public LocalDateTime getUpdateTimestamp() {
+	public Timestamp getUpdateTimestamp() {
 		return updateTimestamp;
 	}
 
-	public void setUpdateTimestamp(LocalDateTime updateTimestamp) {
+	public void setUpdateTimestamp(Timestamp updateTimestamp) {
 		this.updateTimestamp = updateTimestamp;
 	}
 

@@ -1,8 +1,6 @@
 package org.bank.controller;
 
 
-import javax.validation.Valid;
-
 import org.bank.model.Customer;
 import org.bank.model.Loan;
 import org.bank.model.Transaction;
@@ -18,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class BankController {
 	
-	//private IBankServices bankService = new BankServices();
+	private IBankServices bankService = new BankServices();
 	
 	
 	public BankController() {
@@ -37,23 +35,16 @@ public class BankController {
 	}
 	
 	@RequestMapping("/home")
-	public ModelAndView home(@ModelAttribute("user") @Valid User user, BindingResult result){
+	public ModelAndView home(@ModelAttribute("user") User user){
 		System.out.println("In Home");
 		System.out.println("In Controller: " + user.getUserName());
 		ModelAndView model;
-		/*if(result.hasErrors()) {
-			model = new ModelAndView("login");
-			model.addObject("user", user);
-			return model;
-			
-		}
-		*/
-		
-		//boolean isValidUser = bankService.isValidUser(user);
-		//if(isValidUser)
+
+		boolean isValidUser = bankService.isValidUser(user);
+		if(isValidUser)
 			 model = new  ModelAndView("home");
-	//	else 
-		//	model = new ModelAndView("newuser");
+		else 
+			model = new ModelAndView("login");
 		return model;
 	}
 	
@@ -199,15 +190,19 @@ public class BankController {
 		return model;
 	}
 	
-/*	@RequestMapping("/registration")
+	@RequestMapping("/registration")
 	public ModelAndView registration(@ModelAttribute("customer") Customer customer) {
 		System.out.println("in registration");
 		System.out.println(customer.getFirstName());
+		ModelAndView model;
 		
 		boolean isSuccess = bankService.registerNewCustomer(customer);
-		
-		ModelAndView model=new ModelAndView("succ_registration");
+		System.out.println(isSuccess);
+		if(isSuccess)
+			model = new ModelAndView("succ_registration");
+		else
+			model = new ModelAndView("error");
 		return model;
 	}
-*/	
+	
 }

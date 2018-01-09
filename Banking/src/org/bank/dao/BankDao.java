@@ -39,7 +39,10 @@ public class BankDao implements IBankDao {
 	public boolean saveCustomer(Customer customer) {
 		// TODO Auto-generated method stub
 		Session session = HibernateUtil.getSession();
+		transaction = session.beginTransaction();
 		session.save(customer);
+		
+		transaction.commit();
 		return true;
 	}
 	

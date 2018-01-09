@@ -1,6 +1,6 @@
 package org.bank.model;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,20 +31,8 @@ public class User {
 	
 	@UpdateTimestamp
 	@Column(name="LAST_LOGIN_TMSTMP")
-	private LocalDateTime lastLoginTime;
+	private Timestamp lastLoginTime;
 	
-	public User() { }
-	
-	public User(long userID, String userName, String userPassword, String userType, LocalDateTime lastLoginTime) {
-		super();
-		this.userID = userID;
-		this.userName = userName;
-		this.userPassword = userPassword;
-		this.userType = userType;
-		this.lastLoginTime = lastLoginTime;
-	}
-
-
 
 	public long getUserID() {
 		return userID;
@@ -78,11 +66,11 @@ public class User {
 		this.userType = string;
 	}
 
-	public LocalDateTime getLastLoginTime() {
+	public Timestamp getLastLoginTime() {
 		return lastLoginTime;
 	}
 
-	public void setLastLoginTime(LocalDateTime lastLoginTime) {
+	public void setLastLoginTime(Timestamp lastLoginTime) {
 		this.lastLoginTime = lastLoginTime;
 	}
 

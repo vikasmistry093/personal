@@ -19,5 +19,8 @@
 		<mapping class="org.bank.model.Customer" />
 		<mapping class="org.bank.model.RateOfInterest" />
 		<mapping class="org.bank.model.Transaction" />
+		<mapping class="org.bank.model.Loan" />
+		
+		<mapping class="org.bank.test.Test" />
 	</session-factory>
 </hibernate-configuration>

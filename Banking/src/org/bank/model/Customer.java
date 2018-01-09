@@ -13,12 +13,12 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "CUSTOMER")
@@ -44,7 +44,6 @@ public class Customer {
 	@Column(name = "ADDRESS", nullable = false)
 	private String address;
 
-	@DateTimeFormat(pattern = "DD/MM/YYYY")
 	@Column(name = "DOB", nullable = false)
 	private Date dob;
 
@@ -68,11 +67,11 @@ public class Customer {
 
 	@CreationTimestamp
 	@Column(name = "CRTED_TMSTMP")
-	private LocalDateTime createdTimestamp;
+	private Timestamp createdTimestamp;
 
 	@UpdateTimestamp
 	@Column(name = "UPTD_TMSTMP")
-	private LocalDateTime updateTimestamp;
+	private Timestamp updateTimestamp;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "USER_DETAIL")
@@ -82,13 +81,13 @@ public class Customer {
 	@JoinTable(name = "CUSTOMER_ACCOUNT_DETAILS", joinColumns = {
 			@JoinColumn(name = "ACCOUNT_ID") }, inverseJoinColumns = { @JoinColumn(name = "CUSTOMER_ID") })
 	private List<Account> accounts;
-	
+
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "CUSTOMER_LOAN_DETAILS", joinColumns = {
-			@JoinColumn(name = "LOAN_ID") }, inverseJoinColumns = { @JoinColumn(name = "CUSTOMER_ID") })
+			@JoinColumn(name="LOAN_ID")	}, inverseJoinColumns = { @JoinColumn(name = "CUSTOMER_ID") })
 	private List<Loan> loans;
 	
-
+	@Transient
 	private Account account;
 
 	
@@ -196,19 +195,19 @@ public class Customer {
 		this.nomineeRelation = nomineeRelation;
 	}
 
-	public LocalDateTime getCreatedTimestamp() {
+	public Timestamp getCreatedTimestamp() {
 		return createdTimestamp;
 	}
 
-	public void setCreatedTimestamp(LocalDateTime createdTimestamp) {
+	public void setCreatedTimestamp(Timestamp createdTimestamp) {
 		this.createdTimestamp = createdTimestamp;
 	}
 
-	public LocalDateTime getUpdateTimestamp() {
+	public Timestamp getUpdateTimestamp() {
 		return updateTimestamp;
 	}
 
-	public void setUpdateTimestamp(LocalDateTime updateTimestamp) {
+	public void setUpdateTimestamp(Timestamp updateTimestamp) {
 		this.updateTimestamp = updateTimestamp;
 	}
 
@@ -226,6 +225,14 @@ public class Customer {
 
 	public void setAccounts(List<Account> accounts) {
 		this.accounts = accounts;
+	}
+	
+	public List<Loan> getLoans() {
+		return loans;
+	}
+	
+	public void setLoans(List<Loan> loans) {
+		this.loans = loans;
 	}
 
 	public Account getAccount() {
