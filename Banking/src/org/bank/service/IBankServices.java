@@ -11,4 +11,8 @@ public interface IBankServices {
 
 	boolean registerNewCustomer(Customer customer);
 
+	Customer getCustomerByUser(User user);
+
+	String isNewUserName(Customer customer);
+
 }

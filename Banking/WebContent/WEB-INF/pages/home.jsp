@@ -27,11 +27,11 @@
 					<table>
 						<tr>
 							<td>
-								<label>User Name: </label>
+								<label>User Name:</label>
 							</td>
 							
 							<td>
-								<input type="text" class="form-control" name="userName" value="${username}Akash Anil Mistry" readonly="readonly"><br>
+								<input type="text" class="form-control" name="userName" value="${customer.username}" readonly="readonly"><br>
 							</td>
 
 							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -41,7 +41,7 @@
 							</td>
 							
 							<td>
-								<input type="text" class="form-control" name="mobilenumber" value="${mobilenumber}8286515987" readonly="readonly"><br>
+								<input type="text" class="form-control" name="mobilenumber" value="${customer.mobilenumber}" readonly="readonly"><br>
 							</td>
 						</tr>
 						
@@ -51,7 +51,7 @@
 							</td>
 							
 							<td>
-								<input type="text" class="form-control" name="accuntnumber" value="${accountnumber}Ak1997" readonly="readonly"><br>
+								<input type="text" class="form-control" name="accuntnumber" value="${customer.accountnumber}" readonly="readonly"><br>
 							</td>
 						
 							<td></td>
@@ -61,7 +61,7 @@
 							</td>
 							
 							<td>
-								<input type="text" class="form-control" name="accounttype" value="${accounttye}Saving" readonly="readonly"><br>
+								<input type="text" class="form-control" name="accounttype" value="${customer.account}" readonly="readonly"><br>
 							</td>
 						</tr>
 						<tr>
@@ -70,7 +70,7 @@
 							</td>
 							
 							<td>
-								<input type="text" class="form-control" name="balance" value="${balance}7000" readonly="readonly">
+								<input type="text" class="form-control" name="balance" value="${customer.balance}" readonly="readonly">
 							</td>
 						</tr>
 					</table>
@@ -81,10 +81,7 @@
 				</div>	
 					
 					<table>
-						<!-- <tr>
-							<th colspan="6">Quick Profile</th>
-						</tr>
-						 --><tr>
+						<tr>
 							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/myprofile"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg"  class="img-rounded" alt="MyProfile" width="38%" height="30%"/></a></td>
 							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/transaction"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="Transaction" width="38%" height="30%"/></a></td>
 							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/setting"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="EditAccount" width="38%" height="30%"/></a></td>
@@ -95,11 +92,7 @@
 							<td align="center" colspan="2"><h3>Setting</h3></td>
 						</tr>
 						
-						<!-- 
-						<tr>
-							<th colspan="6">Quick Recharge</th>
-						</tr>
-						 --><tr>	
+						<tr>	
 							 <td align="center" colspan="2"><a href="${pageContext.request.contextPath}/mobilerecharge"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="MobileRecharge" width="38%" height="30%"/></a></td>
 							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/dthrecharge"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="DTHRecharge" width="38%" height="30%"/></a></td>
 							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/gasrecharge"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="OtherRecharge" width="38%" height="30%"/></a></td>

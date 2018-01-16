@@ -23,6 +23,8 @@ public class BankDao implements IBankDao {
 		
 		user = (User) query.uniqueResult();
 		transaction.commit();
+		
+		HibernateUtil.shutdown();
 		return user;
 	}
 
@@ -44,6 +46,50 @@ public class BankDao implements IBankDao {
 		
 		transaction.commit();
 		return true;
+	}
+
+	@Override
+	public Customer getCustomerByUser(User user) {
+		// TODO Auto-generated method stub
+		
+		Session session = HibernateUtil.getSession();
+		transaction = session.beginTransaction();
+		Customer customerDetail = null;
+		
+		Query query = session.createQuery("from User where user=:user");
+		query.setEntity("user", user);
+		customerDetail = (Customer) query.uniqueResult(); 
+		return customerDetail;
+	}
+
+	@Override
+	public User getUserName(String userName) {
+		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSession();
+		transaction = session.beginTransaction();
+		User newUser = null;
+		Query query = session.createQuery("from User where userName=:userName");
+		query.setString("userName", userName);
+		newUser = (User) query.uniqueResult();
+		
+		return newUser;
+	}
+
+	@Override
+	public User getNewUserName(String newUserName) {
+		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSession();
+		transaction = session.beginTransaction();
+		User newUser = null;
+		Query query = session.createQuery("frome User where userName=:newUserName");
+		query.setString("userName", newUserName);
+			
+		newUser = (User) query.uniqueResult();
+		
+		transaction.commit();
+		HibernateUtil.shutdown();
+		
+		return newUser;
 	}
 	
 

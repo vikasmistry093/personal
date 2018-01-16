@@ -8,7 +8,6 @@ import org.bank.model.User;
 import org.bank.service.BankServices;
 import org.bank.service.IBankServices;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -38,13 +37,16 @@ public class BankController {
 	public ModelAndView home(@ModelAttribute("user") User user){
 		System.out.println("In Home");
 		System.out.println("In Controller: " + user.getUserName());
-		ModelAndView model;
+		ModelAndView model = new ModelAndView("login");
 
 		boolean isValidUser = bankService.isValidUser(user);
-		if(isValidUser)
-			 model = new  ModelAndView("home");
-		else 
-			model = new ModelAndView("login");
+		if(isValidUser) {
+			model = new  ModelAndView("home");
+			
+			Customer customer = bankService.getCustomerByUser(user);
+			model.addObject("customer", customer);
+		}
+		
 		return model;
 	}
 	
@@ -205,4 +207,13 @@ public class BankController {
 		return model;
 	}
 	
+	@RequestMapping("/succ_registration")
+	public ModelAndView succ_registration(){
+		System.out.println("in succ_registration");
+		ModelAndView model = new ModelAndView("succ_registration");
+		return model;
+	}
+	
 }
+	
+

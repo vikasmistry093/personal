@@ -11,4 +11,11 @@ public interface IBankDao {
 
 	boolean saveCustomer(Customer customer);
 
+	Customer getCustomerByUser(User user);
+
+	User getUserName(String userName);
+
+	User getNewUserName(String newUserName);
+
+
 }

@@ -10,3 +10,9 @@ function getSignUpPage() {
 function mysuccessalert() {
     alert("Successfully Done");
 }
+
+//successfully-registration
+function getLoginPage(){
+	console.log("in registration");
+	window.location.href = "http://localhost:9090/Banking/";
+}

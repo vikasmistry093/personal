@@ -3,6 +3,7 @@ package org.bank.service;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.bank.dao.BankDao;
 import org.bank.dao.IBankDao;
@@ -40,19 +41,51 @@ public class BankServices implements IBankServices {
 		// TODO Auto-generated method stub
 		List<Account> accs = new ArrayList<>();
 		Account acc = customer.getAccount();
-		acc.setAccountNumber(123455);
+		acc.setAccountNumber(ThreadLocalRandom.current().nextLong(1000,5000));
 		acc.setBalance(0);
 		accs.add(acc);
 		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 		customer.setCreatedTimestamp(currentTime);
 		customer.setUpdateTimestamp(currentTime);
 		
-		customer.setUser(bankUtil.createNewUser(customer));
+		User user = new User();
+		user.setUserName(isNewUserName(customer));
+		
+		customer.setUser(user);
 		
 		customer.setAccounts(accs);
 		boolean isSuccess = dao.saveCustomer(customer);
 		return isSuccess;
 	}
-	
 
+	@Override
+	public Customer getCustomerByUser(User user) {
+		// TODO Auto-generated method stub
+		Customer customer_Details = dao.getCustomerByUser(user);
+		
+		if (customer_Details != null)
+			return customer_Details;
+		
+		return null;
+	}
+
+	@Override
+	public String isNewUserName(Customer customer) {
+		// TODO Auto-generated method stub
+		String newUserName = "";
+		
+		if(customer.getFirstName().length() > 3 && customer.getLastName().length() > 3)
+		newUserName = customer.getFirstName().substring(0, 3).toLowerCase() + customer.getLastName().substring(0, 3).toLowerCase();
+		 
+		User newUser = dao.getNewUserName(newUserName);
+		 if (newUser == null) {
+			return newUserName;
+		} else {
+			customer.getUser().setUserName(newUserName + customer.getAadharcard().substring(0, 3));
+			isNewUserName(customer);
+		}
+		
+		return newUserName;
+	}
+	
 }

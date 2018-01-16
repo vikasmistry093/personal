@@ -32,10 +32,10 @@
 								
 							</td>
 							<td colspan="3">	
-								<form:radiobutton path="salutatn" name="salutation" value="miss"/> Miss &nbsp;
-							    <form:radiobutton path="salutatn" name="salutation" value="mrs"/> Mrs &nbsp;
-			  					<form:radiobutton path="salutatn" name="salutation" value="ms"/> Ms &nbsp;
-			  					<form:radiobutton path="salutatn" name="salutation" value="mr"/> Mr<br> &nbsp;
+								<form:radiobutton path="salutatn" name="salutation" value="Miss"/> Miss &nbsp;
+							    <form:radiobutton path="salutatn" name="salutation" value="Mrs"/> Mrs &nbsp;
+			  					<form:radiobutton path="salutatn" name="salutation" value="Ms"/> Ms &nbsp;
+			  					<form:radiobutton path="salutatn" name="salutation" value="Mr"/> Mr<br> &nbsp;
 			  				</td>
 						</tr>
 
