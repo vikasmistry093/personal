@@ -41,10 +41,12 @@ public class BankController {
 
 		boolean isValidUser = bankService.isValidUser(user);
 		if(isValidUser) {
+			
 			model = new  ModelAndView("home");
 			
 			Customer customer = bankService.getCustomerByUser(user);
 			model.addObject("customer", customer);
+		
 		}
 		
 		return model;

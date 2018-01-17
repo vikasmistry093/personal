@@ -50,6 +50,8 @@ public class BankServices implements IBankServices {
 		
 		User user = new User();
 		user.setUserName(isNewUserName(customer));
+		user.setUserPassword("newUser");
+		user.setUserType("user");
 		
 		customer.setUser(user);
 		

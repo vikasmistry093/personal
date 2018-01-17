@@ -24,7 +24,7 @@ public class BankDao implements IBankDao {
 		user = (User) query.uniqueResult();
 		transaction.commit();
 		
-		HibernateUtil.shutdown();
+	//	HibernateUtil.shutdown();
 		return user;
 	}
 
@@ -58,7 +58,8 @@ public class BankDao implements IBankDao {
 		
 		Query query = session.createQuery("from User where user=:user");
 		query.setEntity("user", user);
-		customerDetail = (Customer) query.uniqueResult(); 
+		customerDetail = (Customer) query.uniqueResult();
+		
 		return customerDetail;
 	}
 
@@ -81,13 +82,13 @@ public class BankDao implements IBankDao {
 		Session session = HibernateUtil.getSession();
 		transaction = session.beginTransaction();
 		User newUser = null;
-		Query query = session.createQuery("frome User where userName=:newUserName");
-		query.setString("userName", newUserName);
+		Query query = session.createQuery("from User where userName=:newUserName");
+		query.setString("newUserName", newUserName);
 			
 		newUser = (User) query.uniqueResult();
 		
 		transaction.commit();
-		HibernateUtil.shutdown();
+		
 		
 		return newUser;
 	}
