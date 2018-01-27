@@ -9,7 +9,7 @@ import org.hibernate.Transaction;
 
 public class BankDao implements IBankDao {
 	
-	private static Transaction transaction;
+	private Transaction transaction;
 	
 	@Override
 	public User getUserByUserNameAndPassword(String userName, String userPassword) {
@@ -56,9 +56,11 @@ public class BankDao implements IBankDao {
 		transaction = session.beginTransaction();
 		Customer customerDetail = null;
 		
-		Query query = session.createQuery("from User where user=:user");
+		Query query = session.createQuery("from Customer where user=:user");
 		query.setEntity("user", user);
 		customerDetail = (Customer) query.uniqueResult();
+		
+		transaction.commit();
 		
 		return customerDetail;
 	}
@@ -72,6 +74,8 @@ public class BankDao implements IBankDao {
 		Query query = session.createQuery("from User where userName=:userName");
 		query.setString("userName", userName);
 		newUser = (User) query.uniqueResult();
+		
+		transaction.commit();
 		
 		return newUser;
 	}

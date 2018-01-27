@@ -35,39 +35,24 @@
 							</td>
 							
 							<td>
-								<input type="text" class="form-control" name="userName" value="${username}Akash Anil Mistry" readonly="readonly">
+								<input type="text" class="form-control" name="userName" value="${customer.firstName} ${customer.middleName} ${customer.lastName}" readonly="readonly">
 							</td>
 							
 								<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-							
 							<td>
-								<label>Account Type:</label>
+								<label>Mobile Number:</label>
 							</td>
 							
 							<td>
-								<input type="text" class="form-control" name="accounttype" value="${accounttye}Saving" readonly="readonly"><br>
+								<input type="text" class="form-control" name="mobilenumber" value="${customer.mobileNumber}" readonly="readonly"><br>
 							</td>
 							
 						</tr>
 						
 						<tr>
-							<td>
-								<label>Account Number:</label>
-							</td>
-							
-							<td >
-								<input type="text" class="form-control" name="accuntnumber" value="${accountnumber}Ak1997" readonly="readonly">
-							</td>
 							
 							<td></td>
 							
-							<td>
-								<label>Current Balance:</label>
-							</td>
-							
-							<td >
-								<input type="text" class="form-control" name="balance" value="${balance}7000" readonly="readonly"><br>
-							</td>	
 						</tr>
 						
 						<tr>
@@ -76,7 +61,7 @@
 							</td>
 							
 							<td >
-								<input type="text" class="form-control" name="address" value="${address}B-21/404,Anand Nagar,Dahisar(e)" readonly="readonly">
+								<input type="text" class="form-control" name="address" value="${customer.address}" readonly="readonly">
 							</td>
 							
 							<td></td>
@@ -86,27 +71,27 @@
 							</td>
 							
 							<td >
-								<input type="text" class="form-control" name="dob" value="${dob}17 May 1997" readonly="readonly"><br>
+								<input type="text" class="form-control" name="dob" value="${customer.dob}" readonly="readonly"><br>
 							</td>
 						</tr>
 						
 						<tr>
 							<td>
-								<label>Mobile Number:</label>
+								<label>Email Address:</label>
 							</td>
 							
 							<td>
-								<input type="text" class="form-control" name="mobilenumber" value="${mobilenumber}8286515987" readonly="readonly">
+								<input type="text" class="form-control" name="email" value="${customer.email}" readonly="readonly">
 							</td>
 							
 							<td></td>
 							
 							<td>
-								<label>Email Address:</label>
+								
 							</td>
 							
 							<td>
-								<input type="text" class="form-control" name="email" value="${email}akashmistry097@gmail.com" readonly="readonly">
+								
 							</td>
 						</tr>
 						
@@ -121,7 +106,7 @@
 							</td>
 							
 							<td>
-								<input type="text" class="form-control" name="aadharcard" value="${aadhaarcard}0987654321" readonly="readonly">
+								<input type="text" class="form-control" name="aadharcard" value="${customer.aadharcard}" readonly="readonly">
 							</td>
 							
 							<td></td>
@@ -131,7 +116,7 @@
 							</td>
 							
 							<td>
-								<input type="text" class="form-control" name="pancard" value="${pancard}1234567890" readonly="readonly">
+								<input type="text" class="form-control" name="pancard" value="${customer.pancard}" readonly="readonly">
 							</td>
 						</tr>
 						
@@ -146,7 +131,7 @@
 							</td>
 							
 							<td>
-								<input type="text" class="form-control" name="nomineeName" value="${nomineeName}N_name" readonly="readonly">
+								<input type="text" class="form-control" name="nomineeName" value="${customer.nomineeName}" readonly="readonly">
 							</td>
 							
 							<td></td>
@@ -156,7 +141,7 @@
 							</td>
 							
 							<td>
-								<input type="text" class="form-control" name="nomineeRelation" value="${nomineeRelation}N_relationship" readonly="readonly"><br>
+								<input type="text" class="form-control" name="nomineeRelation" value="${customer.nomineeRelation}" readonly="readonly"><br>
 							</td>
 						</tr>
 					</table>

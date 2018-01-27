@@ -21,60 +21,26 @@
 			</div>
 			<div class="col-sm-7">
 				<div class="panel panel-primary">
-					<div class="panel-heading">Account Summary</div>
-					</div>
-				<div class="panel-body">
-					<table>
+					<div class="panel-heading">Customer Summary</div>
+				</div>
+					<h3 align="center">Welcome,${customer.firstName} ${customer.middleName} ${customer.lastName}</h3><br>
+				<div class="panel panel-primary">
+					<div class="panel-heading">Account Details</div>
+				</div>	
+					<table width="100%">
 						<tr>
-							<td>
-								<label>User Name:</label>
-							</td>
-							
-							<td>
-								<input type="text" class="form-control" name="userName" value="${customer.username}" readonly="readonly"><br>
-							</td>
-
-							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-							
-							<td>
-								<label>Mobile Number: </label>
-							</td>
-							
-							<td>
-								<input type="text" class="form-control" name="mobilenumber" value="${customer.mobilenumber}" readonly="readonly"><br>
-							</td>
-						</tr>
-						
-						<tr>
-							<td>
-								<label>Account Number: </label>
-							</td>
-							
-							<td>
-								<input type="text" class="form-control" name="accuntnumber" value="${customer.accountnumber}" readonly="readonly"><br>
-							</td>
-						
-							<td></td>
-							
-							<td>	
-								<label>Account Type: </label>
-							</td>
-							
-							<td>
-								<input type="text" class="form-control" name="accounttype" value="${customer.account}" readonly="readonly"><br>
-							</td>
+							<th>Account's</th>
+							<th id="accountTable">Account Type</th>
+							<th id="accountTable">Account Number</th>
+							<th id="accountTable">Current Balance</th>
 						</tr>
 						<tr>
-							<td>
-								<label>Current Balance: </label>
-							</td>
-							
-							<td>
-								<input type="text" class="form-control" name="balance" value="${customer.balance}" readonly="readonly">
-							</td>
+							<th>Account's</th>
+							<th id="accountTable">Account Type</th>
+							<th id="accountTable">Account Number</th>
+							<th id="accountTable">Current Balance</th>
 						</tr>
 					</table>
-				</div>
 				
 				<div class="panel panel-primary">
 					<div class="panel-heading">Quick Access</div>

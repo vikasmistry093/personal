@@ -5,7 +5,7 @@ import org.bank.model.User;
 
 public interface IBankServices {
 
-	boolean isValidUser(User user);
+	User isValidUser(User user);
 
 	void saveUser(User user);
 

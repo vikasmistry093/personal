@@ -1,6 +1,10 @@
 package org.bank.controller;
 
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.bank.model.Account;
 import org.bank.model.Customer;
 import org.bank.model.Loan;
 import org.bank.model.Transaction;
@@ -15,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class BankController {
 	
+	private static HttpSession session;
 	private IBankServices bankService = new BankServices();
 	
 	
@@ -34,24 +39,45 @@ public class BankController {
 	}
 	
 	@RequestMapping("/home")
-	public ModelAndView home(@ModelAttribute("user") User user){
+	public ModelAndView home(@ModelAttribute("user") User user, HttpServletRequest request){
 		System.out.println("In Home");
 		System.out.println("In Controller: " + user.getUserName());
 		ModelAndView model = new ModelAndView("login");
-
-		boolean isValidUser = bankService.isValidUser(user);
-		if(isValidUser) {
-			
-			model = new  ModelAndView("home");
-			
-			Customer customer = bankService.getCustomerByUser(user);
-			model.addObject("customer", customer);
+		session = request.getSession();
 		
+		if(user.getUserName() != null)
+			session.setAttribute("user", user);
+		else
+			user = (User) session.getAttribute("user");
+		
+		User userDetail = bankService.isValidUser(user);
+		if(userDetail != null) {
+			model = new  ModelAndView("home");
+			session.setAttribute("user", userDetail);
+			
+			Customer customer = bankService.getCustomerByUser(userDetail);
+			model.addObject("customer", customer);
 		}
 		
 		return model;
 	}
 	
+	@RequestMapping("/myprofile")
+	public ModelAndView myprofile( HttpServletRequest request) {
+		System.out.println("in myprofile");
+		User user = (User) session.getAttribute("user");
+		
+		ModelAndView model=new ModelAndView("login");
+		
+		if(user != null){
+			Customer customer = bankService.getCustomerByUser(user);
+			System.out.println(customer.getFirstName());
+			model=new ModelAndView("myprofile");
+			model.addObject("customer",customer);
+		}
+
+		return model;
+	}
 	
 	@RequestMapping("/error")
 	public ModelAndView error() {
@@ -171,12 +197,7 @@ public class BankController {
 		return model;
 	}
 	
-	@RequestMapping("/myprofile")
-	public ModelAndView myprofile() {
-		System.out.println("in myprofile");
-		ModelAndView model=new ModelAndView("myprofile");
-		return model;
-	}
+	
 	
 	@RequestMapping("/transactionsummary")
 	public ModelAndView transactionsummary() {
@@ -213,6 +234,23 @@ public class BankController {
 	public ModelAndView succ_registration(){
 		System.out.println("in succ_registration");
 		ModelAndView model = new ModelAndView("succ_registration");
+		return model;
+	}
+	
+	@RequestMapping("/createaccount")
+	public ModelAndView createaccount(HttpServletRequest request) {
+		System.out.println("in create account");
+		User user = (User) session.getAttribute("user");
+		ModelAndView model = new ModelAndView("login");
+
+		if(user != null){
+			Customer customer = bankService.getCustomerByUser(user);
+			System.out.println(customer.getFirstName());
+			model=new ModelAndView("createaccount");
+			model.addObject("customer",customer);
+			Account account = new Account();
+			model.addObject("account", account);
+		}
 		return model;
 	}
 	

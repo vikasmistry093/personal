@@ -18,13 +18,13 @@ public class BankServices implements IBankServices {
 	private BankUtil bankUtil = new BankUtil();
 	
 	@Override
-	public boolean isValidUser(User user) {
+	public User isValidUser(User user) {
 		User user_detail = dao.getUserByUserNameAndPassword(user.getUserName(),user.getUserPassword());
 		
 		if(user_detail != null)
-			return true;
+			return user_detail;
 		
-		return false;
+		return null;
 	}
 
 	@Override
