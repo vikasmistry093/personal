@@ -9,6 +9,7 @@ import org.bank.dao.BankDao;
 import org.bank.dao.IBankDao;
 import org.bank.model.Account;
 import org.bank.model.Customer;
+import org.bank.model.BankTransaction;
 import org.bank.model.User;
 import org.bank.util.BankUtil;
 
@@ -89,5 +90,89 @@ public class BankServices implements IBankServices {
 		
 		return newUserName;
 	}
-	
+
+	@Override
+	public Account getAccountByCustomer(Customer customer) {
+		// TODO Auto-generated method stub
+	Account accountDetails = dao.getAccountByCustomer(customer);
+		
+	if(accountDetails != null)
+			return accountDetails;
+		
+	return null;
+	}
+
+	@Override
+	public boolean performtransaction(BankTransaction transactions) {
+		// TODO Auto-generated method stub
+		 
+		long accountNumber = transactions.getAccount().getAccountNumber();
+		Account account = dao.getAccountByAccountNumber(accountNumber);
+		transactions.setAccount(account);
+		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+		transactions.setTransactionDate(currentTime);
+		transactions.setTransactionTimestamp(currentTime);
+		
+		transactions.setBenificiaryType("transaction");
+		transactions.setTransactionType("debit");
+		boolean isCompleteTransaction = dao.isCompleteTransaction(transactions);
+		return isCompleteTransaction;
+	}
+
+	@Override
+	public boolean performdthrecharge(BankTransaction transactions) {
+		// TODO Auto-generated method stub
+		long accountNumber = transactions.getAccount().getAccountNumber();
+		Account account = dao.getAccountByAccountNumber(accountNumber);
+		transactions.setAccount(account);
+		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+		transactions.setTransactionDate(currentTime);
+		transactions.setTransactionTimestamp(currentTime);
+		
+		transactions.setBenificiaryType("DTH recharge");
+		transactions.setTransactionType("debit");
+		boolean isCompleteTransaction = dao.isCompleteTransaction(transactions);
+		
+		return isCompleteTransaction;
+	}
+
+	@Override
+	public boolean performgasrecharge(BankTransaction transactions) {
+		// TODO Auto-generated method stub
+		long accountNumber = transactions.getAccount().getAccountNumber();
+		Account account = dao.getAccountByAccountNumber(accountNumber);
+		transactions.setAccount(account);
+		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+		transactions.setTransactionDate(currentTime);
+		transactions.setTransactionTimestamp(currentTime);
+		
+		transactions.setBenificiaryType("Gas recharge");
+		transactions.setTransactionType("debit");
+		boolean isCompleteTransaction = dao.isCompleteTransaction(transactions);
+		
+		return isCompleteTransaction;
+	}
+
+	@Override
+	public boolean performmobilerecharge(BankTransaction transactions) {
+		// TODO Auto-generated method stub
+		long accountNumber = transactions.getAccount().getAccountNumber();
+		Account account = dao.getAccountByAccountNumber(accountNumber);
+		transactions.setAccount(account);
+		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+		transactions.setTransactionDate(currentTime);
+		transactions.setTransactionTimestamp(currentTime);
+		
+		transactions.setBenificiaryType("Mobile recharge");
+		transactions.setTransactionType("debit");
+		boolean isCompleteTransaction = dao.isCompleteTransaction(transactions);
+		
+		return isCompleteTransaction;
+	}
+
+	@Override
+	public List<BankTransaction> getTrasactionByAccountNumber(String accountNumber) {
+		List<BankTransaction> transaction = dao.getTrasactionByAccountNumber(accountNumber);
+		return transaction;
+	}
 }

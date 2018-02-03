@@ -1,12 +1,17 @@
 package org.bank.dao;
 
+import java.util.List;
+
+import org.bank.model.Account;
 import org.bank.model.Customer;
 import org.bank.model.User;
+import org.bank.model.BankTransaction;
 import org.bank.util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+@SuppressWarnings("unchecked")
 public class BankDao implements IBankDao {
 	
 	private Transaction transaction;
@@ -96,6 +101,58 @@ public class BankDao implements IBankDao {
 		
 		return newUser;
 	}
-	
+
+	@Override
+	public Account getAccountByCustomer(Customer customer) {
+		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSession();
+		transaction = session.beginTransaction();
+		Account accountDetials = null;
+		
+		Query query = session.createQuery("from Account where customer=:customer");
+		query.setEntity("customer", customer);
+		accountDetials = (Account) query.uniqueResult();
+		transaction.commit();
+		return accountDetials;
+	}
+
+	@Override
+	public Account getAccountByAccountNumber(long accountNumber) {
+		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSession();
+		transaction = session.beginTransaction();
+		Account accountByNumber = null;
+		
+		Query query = session.createQuery("from Account where accountNumber=:accountNumber");
+		query.setLong("accountNumber", accountNumber);
+		accountByNumber = (Account) query.uniqueResult();
+		transaction.commit();
+		return accountByNumber;
+	}
+
+	@Override
+	public boolean isCompleteTransaction(BankTransaction transactions) {
+		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSession();
+		transaction = session.beginTransaction();
+		session.save(transactions);
+		
+		transaction.commit();
+		return true;
+	}
+
+	@Override
+	public List<BankTransaction> getTrasactionByAccountNumber(String accountNumber) {
+		Session session = HibernateUtil.getSession();
+		transaction = session.beginTransaction();
+		List<BankTransaction> transactionDetails = null;
+		
+		Query query = session.createQuery("from BankTransaction where account.accountNumber=:accountNumber");
+		query.setLong("accountNumber", Long.parseLong(accountNumber));
+		transactionDetails = query.list();
+		transaction.commit();
+		return transactionDetails;
+	}
+
 
 }

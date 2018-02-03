@@ -1,19 +1,23 @@
 package org.bank.controller;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.bank.model.Account;
 import org.bank.model.Customer;
 import org.bank.model.Loan;
-import org.bank.model.Transaction;
+import org.bank.model.BankTransaction;
 import org.bank.model.User;
 import org.bank.service.BankServices;
 import org.bank.service.IBankServices;
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -98,11 +102,84 @@ public class BankController {
 	
 	
 	@RequestMapping("/transaction")
-	public ModelAndView transaction() {
+	public ModelAndView transaction(HttpServletRequest request) {
 		System.out.println("in transaction");
-		Transaction transaction=new Transaction();
-		ModelAndView model=new ModelAndView("transaction");
+		BankTransaction transaction = new BankTransaction();
+		User user = (User) session.getAttribute("user");
+		ModelAndView model = new ModelAndView("login");
+		
+		if(user != null) {
+			model=new ModelAndView("transaction");
+			
+			Customer customer = bankService.getCustomerByUser(user);
+			model.addObject("customer", customer);
+		}
 		model.addObject("transaction",transaction);
+		return model;
+	}
+	
+	@RequestMapping("/completetransaction")
+	public ModelAndView completetransaction( @ModelAttribute("transaction") BankTransaction transaction , HttpServletRequest request) {
+		System.out.println("completetransaction ");
+		User user = (User) session.getAttribute("user");
+		ModelAndView model = new ModelAndView("redirect:/login");
+		
+		if(user != null) {
+			model = new ModelAndView("redirect:/home");
+			boolean donetransaction = bankService.performtransaction(transaction);
+				if(donetransaction == false)
+					model = new ModelAndView("redirect:/error");
+					
+		}
+		return model;
+	
+	}
+	
+	@RequestMapping("/completedthrecharge")
+	public ModelAndView completedthrecharge(@ModelAttribute("transaction") BankTransaction transaction , HttpServletRequest request) {
+	System.out.println("complete dth recharge");
+	User user = (User) session.getAttribute("user");
+	ModelAndView model = new ModelAndView("redirect:/login");
+	 
+	if(user != null){
+		model = new ModelAndView("redirect:/home");
+		boolean donedthrecharge = bankService.performdthrecharge(transaction);
+			if(donedthrecharge == false)
+				model = new ModelAndView("redirect:/error");
+		
+		}
+		return model;
+	}
+	
+	@RequestMapping("/completegasrecharge")
+	public ModelAndView completegasrecharge(@ModelAttribute("transaction") BankTransaction transaction , HttpServletRequest request) {
+	System.out.println("complete gas recharge");
+	User user = (User) session.getAttribute("user");
+	ModelAndView model = new ModelAndView("redirect:/login");
+	 
+	if(user != null){
+		model = new ModelAndView("redirect:/home");
+		boolean donegasrecharge = bankService.performgasrecharge(transaction);
+			if(donegasrecharge == false)
+				model = new ModelAndView("redirect:/error");
+		
+		}
+		return model;
+	}
+	
+	@RequestMapping("/completemobilerecharge")
+	public ModelAndView completemobilerecharge(@ModelAttribute("transaction") BankTransaction transaction , HttpServletRequest request) {
+	System.out.println("complete gas recharge");
+	User user = (User) session.getAttribute("user");
+	ModelAndView model = new ModelAndView("redirect:/login");
+	 
+	if(user != null){
+		model = new ModelAndView("redirect:/home");
+		boolean donemobilerecharge = bankService.performmobilerecharge(transaction);
+			if(donemobilerecharge == false)
+				model = new ModelAndView("redirect:/error");
+		
+		}
 		return model;
 	}
 	
@@ -115,28 +192,52 @@ public class BankController {
 	
 	@RequestMapping("/dthrecharge")
 	public ModelAndView dthrecharge() {
-		System.out.println("in DTHrecharge");
-		Transaction transaction=new Transaction();
-		ModelAndView model=new ModelAndView("dthrecharge");
-		model.addObject("transaction", transaction);
+		System.out.println("in DTH transaction");
+		BankTransaction transaction = new BankTransaction();
+		User user = (User) session.getAttribute("user");
+		ModelAndView model = new ModelAndView("login");
+		
+		if(user != null) {
+			model=new ModelAndView("dthrecharge");
+			
+			Customer customer = bankService.getCustomerByUser(user);
+			model.addObject("customer", customer);
+		}
+		model.addObject("transaction",transaction);
 		return model;
 	}
 	
 	@RequestMapping("/mobilerecharge")
 	public ModelAndView mobilerecharge() {
-		System.out.println("in mobilerecharge");
-		Transaction transaction=new Transaction();
-		ModelAndView model=new ModelAndView("mobilerecharge");
-		model.addObject("transaction", transaction);
+		System.out.println("in mobile transaction");
+		BankTransaction transaction = new BankTransaction();
+		User user = (User) session.getAttribute("user");
+		ModelAndView model = new ModelAndView("login");
+		
+		if(user != null) {
+			model=new ModelAndView("mobilerecharge");
+			
+			Customer customer = bankService.getCustomerByUser(user);
+			model.addObject("customer", customer);
+		}
+		model.addObject("transaction",transaction);
 		return model;
 	}
 	
 	@RequestMapping("/gasrecharge")
 	public ModelAndView gasrecharge() {
-		System.out.println("in gasrecharge");
-		Transaction transaction=new Transaction();
-		ModelAndView model=new ModelAndView("gasrecharge");
-		model.addObject("transaction", transaction);
+		System.out.println("in Gas transaction");
+		BankTransaction transaction = new BankTransaction();
+		User user = (User) session.getAttribute("user");
+		ModelAndView model = new ModelAndView("login");
+		
+		if(user != null) {
+			model=new ModelAndView("gasrecharge");
+			
+			Customer customer = bankService.getCustomerByUser(user);
+			model.addObject("customer", customer);
+		}
+		model.addObject("transaction",transaction);
 		return model;
 	}
 	
@@ -202,7 +303,28 @@ public class BankController {
 	@RequestMapping("/transactionsummary")
 	public ModelAndView transactionsummary() {
 		System.out.println("in transactionsummary");
-		ModelAndView model=new ModelAndView("transactionsummary");
+		User user = (User) session.getAttribute("user");
+		
+		ModelAndView model=new ModelAndView("login");
+		
+		if(user != null){
+			model=new ModelAndView("transactionsummary");
+			Customer customer = bankService.getCustomerByUser(user);
+			System.out.println(customer.getFirstName());
+			
+			model.addObject("customer",customer);
+		}
+		return model;
+	}
+	
+	@RequestMapping("/transactionDetails")
+	public ModelAndView transactionDetails(@RequestParam("accNumber") String accountNumber) {
+		System.out.println(accountNumber);
+		ModelAndView model=new ModelAndView("transactionDetail");
+		List<BankTransaction> transaction = bankService.getTrasactionByAccountNumber(accountNumber);
+		if(transaction.size() != 0) {
+			model.addObject("transactionDetails", transaction);
+		}
 		return model;
 	}
 	

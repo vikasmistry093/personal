@@ -38,7 +38,8 @@
 								<input type="text" class="form-control" name="userName" value="${customer.firstName} ${customer.middleName} ${customer.lastName}" readonly="readonly">
 							</td>
 							
-								<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							
 							<td>
 								<label>Mobile Number:</label>
 							</td>
@@ -46,12 +47,6 @@
 							<td>
 								<input type="text" class="form-control" name="mobilenumber" value="${customer.mobileNumber}" readonly="readonly"><br>
 							</td>
-							
-						</tr>
-						
-						<tr>
-							
-							<td></td>
 							
 						</tr>
 						
@@ -84,15 +79,6 @@
 								<input type="text" class="form-control" name="email" value="${customer.email}" readonly="readonly">
 							</td>
 							
-							<td></td>
-							
-							<td>
-								
-							</td>
-							
-							<td>
-								
-							</td>
 						</tr>
 						
 						
@@ -123,7 +109,6 @@
 						<tr>
 							<th colspan="5" align="left"><h3>Nominee Details</h3></th>
 						</tr>
-						
 						 
 						<tr>
 							<td>

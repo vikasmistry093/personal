@@ -3,11 +3,13 @@ package org.bank.model;
 import java.sql.Timestamp;
 import java.util.*;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -15,12 +17,15 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="TRANSACTION")
-public class Transaction {
+public class BankTransaction {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="TRANSACTION_ID")
 	private long transactionID;
+
+	@ManyToOne(cascade=CascadeType.ALL)
+	private Account account;
 	
 	@DateTimeFormat(pattern="DD/MM/YYYY")
 	@Column(name="TRANSACTION_DATE",nullable=false)
@@ -39,7 +44,7 @@ public class Transaction {
 	@Column(name="BENIFICIARY_NAME",nullable=false)
 	private String benificiaryName;
 	
-	@Column(name="BENIFICIARY_TYPE",nullable=false)
+	@Column(name="BENIFICIARY_TYPE")
 	private String benificiaryType;
 	
 	@Column(name="DESCRIPTION")
@@ -59,6 +64,14 @@ public class Transaction {
 
 	public void setTransactionID(long transactionID) {
 		this.transactionID = transactionID;
+	}
+	
+	public Account getAccount() {
+		return account;
+	}
+	
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 

@@ -54,7 +54,7 @@ public class Account
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="ACCOUNT_TRANSACTION_DETAILS", joinColumns = {@JoinColumn(name="ACCOUNT_ID") }, inverseJoinColumns = { @JoinColumn(name="TRASACTION_ID")})
-	private List<Transaction> transactionDetails;
+	private List<BankTransaction> transactionDetails;
 
 
 	public long getAccountID() {
@@ -121,11 +121,11 @@ public class Account
 		this.cardDetails = cardDetails;
 	}
 
-	public List<Transaction> getTransactionDetails() {
+	public List<BankTransaction> getTransactionDetails() {
 		return transactionDetails;
 	}
 
-	public void setTransactionDetails(List<Transaction> transactionDetails) {
+	public void setTransactionDetails(List<BankTransaction> transactionDetails) {
 		this.transactionDetails = transactionDetails;
 	}
 

@@ -20,26 +20,25 @@
 				<%@include file="includes/menu.html"%>
 			</div>
 			<div class="col-sm-7">
-				<div class="panel panel-primary">
-					<div class="panel-heading">Customer Summary</div>
-				</div>
-					<h3 align="center">Welcome,${customer.firstName} ${customer.middleName} ${customer.lastName}</h3><br>
+					<h2>Welcome,${customer.firstName} ${customer.middleName} ${customer.lastName}.</h2><br>
 				<div class="panel panel-primary">
 					<div class="panel-heading">Account Details</div>
 				</div>	
-					<table width="100%">
-						<tr>
+					<table width="100%" border="2px;">
+						<tr >
 							<th>Account's</th>
 							<th id="accountTable">Account Type</th>
 							<th id="accountTable">Account Number</th>
 							<th id="accountTable">Current Balance</th>
 						</tr>
+						<c:forEach varStatus="i" var="account" items="${customer.accounts}" >
 						<tr>
-							<th>Account's</th>
-							<th id="accountTable">Account Type</th>
-							<th id="accountTable">Account Number</th>
-							<th id="accountTable">Current Balance</th>
+							<th>${i.index + 1}</th>
+							<th id="accountTable"><label>${account.accountType}</label></th>
+							<th id="accountTable"><label>${account.accountNumber}</label></th>
+							<th id="accountTable"><label>${account.balance}</label></th>
 						</tr>
+						</c:forEach>
 					</table>
 				
 				<div class="panel panel-primary">

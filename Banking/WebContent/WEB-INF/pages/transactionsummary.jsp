@@ -27,14 +27,20 @@
 				<div class="panel-body">
 					<table>
 						<tr>
-							<th>Date</th>
-							<th id="transactionTable">Benificiary Acc_No</th>
-							<th id="transactionTable">Description</th>
-							<th id="transactionTable">Amount</th>
-							<th id="transactionTable">Transtion Type</th>
-							<th id="transactionTable">Closing Balance</th>
+							<td>Select Account Number: </td>
+							<td>
+								<select id="transactionAcountNumber" onchange="getPassbookByAccount();">
+									<option value="0" selected="selected">--- Selected ---</option>
+									<c:forEach var="account" items="${customer.accounts }">
+										<option value="${account.accountNumber }">${account.accountNumber }</option>
+									</c:forEach>
+								</select>
+							</td>
 						</tr>
 					</table>
+					
+					<div id="trasactionSummary">  </div>
+					
 				</div>
 			</div>
 
@@ -45,5 +51,6 @@
 		</div>
 	</div>
 	<%@include file="includes/footer.html"%>
+	
 </body>
 </html>

@@ -38,13 +38,14 @@
 						
 						<tr>
 							<td style="padding-left: 160px;">
-								<form:radiobutton path = "accountType"  value = "saving" /><label>Saving Account</label>
+								<form:radiobutton path = "accountType"  value = "saving" /><label>Saving Account</label><br>
+								
                   				<form:radiobutton path = "accountType" value = "current"/><label>Current Account</label><br>
 							</td>
 						</tr>
 						
 						<tr>
-							<td style="padding-left: 160px;"><form:button type="submit" class="btn btn-default" style="float: right;">submit</form:button></td>
+							<td style="padding-left: 160px;"><form:button type="submit" class="btn btn-default" onclick="mysuccessalert();" style="float: right;">submit</form:button></td>
 						</tr>			
 							
 					</table>

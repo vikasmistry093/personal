@@ -22,7 +22,7 @@
 				<div class="panel panel-primary">
 					<div class="panel-heading" align="center">Gas Recharge</div>
 				</div>
-						<form:form action="${pageContext.request.contextPath}/recharge" method="post" modelAttribute="transaction">
+						<form:form action="${pageContext.request.contextPath}/completegasrecharge" method="post" modelAttribute="transaction">
 			            	<table>
 						   <tr>
 			            		 <td style="padding-left: 160px;"></td>
@@ -34,7 +34,12 @@
 									 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 									 
 									 <td >
-										<input type="text" class="form-control" name="accuntnumber" value="${accountnumber}Ak1997" readonly="readonly"><br>
+										<form:select path="account.accountNumber">
+											<form:option value="0" selected="selected">--- Select ---</form:option>
+											<c:forEach var="account" items="${customer.accounts}">
+												<form:option value="${account.accountNumber}">${account.accountNumber}</form:option>
+											</c:forEach>
+										</form:select>
 									 </td>
 							
 								</tr>

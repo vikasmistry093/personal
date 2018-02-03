@@ -24,7 +24,7 @@
 				<div class="panel panel-primary">
 					<div class="panel-heading" align="center">Transaction Process </div>
 				</div>
-				<form:form action="${pageContext.request.contextPath}/home" method="post" modelAttribute="transaction">
+				<form:form action="${pageContext.request.contextPath}/completetransaction" method="post" modelAttribute="transaction">
 			    	<table>
 						 	  <tr>
 			            		 <td style="padding-left: 160px;"></td>
@@ -36,7 +36,12 @@
 									 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 									 
 									 <td >
-										<input type="text" class="form-control" name="accuntnumber" value="${accountnumber}Ak1997" readonly="readonly"><br>
+										<form:select path="account.accountNumber">
+											<form:option value="0" selected="selected">--- Select ---</form:option>
+											<c:forEach var="account" items="${customer.accounts}">
+												<form:option value="${account.accountNumber}">${account.accountNumber}</form:option>
+											</c:forEach>
+										</form:select>
 									 </td>
 							
 								</tr>
@@ -51,7 +56,7 @@
 									<td></td>
 									
 									<td>
-										<form:input type="text" class="form-control" path="benificiaryName" placeholder="Reciever Name" size="10" requried="true"/><br>
+										<form:input type="text" class="form-control" path="benificiaryName" placeholder="RecieverName" requried="true"/><br>
 									</td>
 								</tr>
 								
@@ -65,7 +70,7 @@
 									<td></td>
 									
 									<td>
-										<form:input type="text" class="form-control" path="benificiaryName" placeholder="Account Number" size="10" requried="true"/><br>
+										<form:input type="text" class="form-control" path="benificiaryAccNo" placeholder="AccountNumber" size="10" requried="true"/><br>
 									</td>
 								</tr>
 								
@@ -73,13 +78,13 @@
 									<td></td>
 									
 									<td>
-										<label>Mobile Number:</label>
+										<label>Benificiary IFSC code:</label>
 									</td>
 									
 									<td></td>
 									
 									<td>
-										<form:input type="number" class="form-control" path="benificiaryAccNo" placeholder="Account No" size="10" requried="true"/><br>
+										<form:input type="text" class="form-control" path="ifscCode" placeholder="IFSC code" size="10" requried="true"/><br>
 									</td>
 								</tr>
 								

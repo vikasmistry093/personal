@@ -21,6 +21,7 @@
 			<div class="col-sm-4">
 				<div class="panel panel-primary">
 					<div class="panel-heading" align="center">WELCOME</div>
+				</div>
 			            	<table>
 			            	
 								<tr>
@@ -36,7 +37,7 @@
 								</tr>
 							
 			            	</table>			
-						</div>
+						
 				    </div>
 			<div class="col-sm-4">
 				<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advertisement.jpg" width="100%" height="500px"/>
