@@ -30,6 +30,5 @@ function getPassbookByAccount(){
 }
 
 $(document).ready(function(){
-	console.log("Ready")
     $('#transactionSummary').DataTable();
 });

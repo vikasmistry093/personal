@@ -24,8 +24,8 @@
 					<div class="panel-heading">Account Setting</div>
 					<table>
 						<tr>
-							<td align="center" colspan="3"><a href="${pageContext.request.contextPath}/notificationsetting"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg"  class="img-rounded" alt="notification" width="70%" height="41%"/></a></td>
-							<td align="center" colspan="3"><a href="${pageContext.request.contextPath}/generalsetting"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="general" width="70%" height="41%"/></a></td>
+							<td align="center" colspan="3"><a href="${pageContext.request.contextPath}/notificationsetting"><img src="${pageContext.request.contextPath}/resources/images/notificationsetting.png"  class="img-rounded" alt="notification" width="70%" height="41%"/></a></td>
+							<td align="center" colspan="3"><a href="${pageContext.request.contextPath}/generalsetting"><img src="${pageContext.request.contextPath}/resources/images/generalsetting.png" class="img-rounded" alt="general" width="70%" height="41%"/></a></td>
 							
 						</tr>
 						<tr>

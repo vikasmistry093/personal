@@ -24,8 +24,8 @@
 					<div class="panel-heading">General Setting</div>
 					<table>
 						<tr>
-							<td align="center" colspan="3"><a href="${pageContext.request.contextPath}/passwordsetting"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg"  class="img-rounded" alt="password" width="70%" height="41%"/></a></td>
-							<td align="center" colspan="3"><a href="${pageContext.request.contextPath}/addresssetting"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="address" width="70%" height="41%"/></a></td>
+							<td align="center" colspan="3"><a href="${pageContext.request.contextPath}/passwordsetting"><img src="${pageContext.request.contextPath}/resources/images/passwordsetting.png"  class="img-rounded" alt="password" width="70%" height="41%"/></a></td>
+							<td align="center" colspan="3"><a href="${pageContext.request.contextPath}/addresssetting"><img src="${pageContext.request.contextPath}/resources/images/addresssetting.png" class="img-rounded" alt="address" width="70%" height="41%"/></a></td>
 						</tr>
 						<tr>
 							<td align="center" colspan="3"><h3>Password Setting</h3></td>

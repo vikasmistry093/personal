@@ -47,9 +47,9 @@
 					
 					<table>
 						<tr>
-							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/myprofile"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg"  class="img-rounded" alt="MyProfile" width="38%" height="30%"/></a></td>
-							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/transaction"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="Transaction" width="38%" height="30%"/></a></td>
-							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/setting"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="EditAccount" width="38%" height="30%"/></a></td>
+							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/myprofile"><img src="${pageContext.request.contextPath}/resources/images/myprofile.png"  class="img-rounded" alt="MyProfile" width="38%" height="30%"/></a></td>
+							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/transaction"><img src="${pageContext.request.contextPath}/resources/images/transaction.png" class="img-rounded" alt="Transaction" width="38%" height="30%"/></a></td>
+							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/setting"><img src="${pageContext.request.contextPath}/resources/images/settings.png" class="img-rounded" alt="EditAccount" width="38%" height="30%"/></a></td>
 						</tr>
 						<tr>
 							<td align="center" colspan="2"><h3>My Profile</h3></td>
@@ -58,9 +58,9 @@
 						</tr>
 						
 						<tr>	
-							 <td align="center" colspan="2"><a href="${pageContext.request.contextPath}/mobilerecharge"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="MobileRecharge" width="38%" height="30%"/></a></td>
-							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/dthrecharge"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="DTHRecharge" width="38%" height="30%"/></a></td>
-							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/gasrecharge"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="OtherRecharge" width="38%" height="30%"/></a></td>
+							 <td align="center" colspan="2"><a href="${pageContext.request.contextPath}/mobilerecharge"><img src="${pageContext.request.contextPath}/resources/images/mobilerecharge.png" class="img-rounded" alt="MobileRecharge" width="38%" height="30%"/></a></td>
+							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/dthrecharge"><img src="${pageContext.request.contextPath}/resources/images/dthrecharge.png" class="img-rounded" alt="DTHRecharge" width="38%" height="30%"/></a></td>
+							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/electricityrecharge"><img src="${pageContext.request.contextPath}/resources/images/electricityrecharge.png" class="img-rounded" alt="OtherRecharge" width="38%" height="30%"/></a></td>
 						</tr>
 						<tr>
 							<td align="center" colspan="2"><h3>Mobile Recharge</h3></td>

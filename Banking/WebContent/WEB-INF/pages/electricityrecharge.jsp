@@ -20,7 +20,7 @@
 			</div>
 			<div class="col-sm-7">
 				<div class="panel panel-primary">
-					<div class="panel-heading" align="center">Gas Recharge</div>
+					<div class="panel-heading" align="center">Electricity Recharge</div>
 				</div>
 						<form:form action="${pageContext.request.contextPath}/completegasrecharge" method="post" modelAttribute="transaction">
 			            	<table>
@@ -48,7 +48,7 @@
 									<td></td>
 									
 									<td>
-										<label>Gas Provider Name:</label>
+										<label>Electricity Provider Name:</label>
 									</td>
 									
 									<td></td>
@@ -76,7 +76,7 @@
 									<td></td>
 									
 									<td>
-										<label>Gas Provider Description:</label>
+										<label>Electricity Provider Description:</label>
 									</td>
 									
 									<td></td>

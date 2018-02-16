@@ -29,7 +29,7 @@
 					
 					<table>						
 						<tr>
-							<td style="padding-left: 160px;">
+							<td style="padding-left: 250px;">
 								<div class="panel panel-primary">
 									<div class="panel-heading">Select The Type Of Account</div>
 								</div>	
@@ -37,7 +37,7 @@
 						</tr>
 						
 						<tr>
-							<td style="padding-left: 160px;">
+							<td style="padding-left: 250px;">
 								<form:radiobutton path = "accountType"  value = "saving" /><label>Saving Account</label><br>
 								
                   				<form:radiobutton path = "accountType" value = "current"/><label>Current Account</label><br>

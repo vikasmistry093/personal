@@ -24,8 +24,8 @@
 					<div class="panel-heading">Notification Setting</div>
 					<table>
 						<tr>
-							<td align="center" colspan="3"><a href="${pageContext.request.contextPath}/emailsetting"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg"  class="img-rounded" alt="email" width="70%" height="41%"/></a></td>
-							<td align="center" colspan="3"><a href="${pageContext.request.contextPath}/mobilesetting"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="img-rounded" alt="mobile" width="70%" height="41%"/></a></td>
+							<td align="center" colspan="3"><a href="${pageContext.request.contextPath}/emailsetting"><img src="${pageContext.request.contextPath}/resources/images/emailsetting.png"  class="img-rounded" alt="email" width="70%" height="41%"/></a></td>
+							<td align="center" colspan="3"><a href="${pageContext.request.contextPath}/mobilesetting"><img src="${pageContext.request.contextPath}/resources/images/mobilesetting" class="img-rounded" alt="mobile" width="70%" height="41%"/></a></td>
 						</tr>
 						<tr>
 							<td align="center" colspan="3"><h3>Email Setting</h3></td>

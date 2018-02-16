@@ -16,23 +16,21 @@
 	<div class="bodyContent">
 		<div class="row">
 			<div class="col-sm-4">
-				<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advertisement.jpg" width="100%" height="500px"/>
+				<%-- <img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advertisement.jpg" width="100%" height="500px"/> --%>
 			</div>
 			<div class="col-sm-4">
-				<div class="panel panel-primary">
-					<div class="panel-heading" align="center">WELCOME</div>
-				</div>
-			            	<table>
-			            	
+				        	<table>
 								<tr>
 									<td align="center">
-									 	<a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg"  class="img-rounded" alt="notification" width="70%" height="41%"/></a>
+									 	<a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/resources/images/successfull.png"  class="img-rounded" alt="notification" width="70%" height="41%"/></a>
 									</td>
 								</tr>
 								
 								<tr>	 
 									 <td >
-										<h3>Welcome,You have Successfully Logged In</h3><br>
+									 	<div class="panel panel-primary">
+											<div class="panel-heading" align="center"><h3>Welcome,You have Successfully Logged In</h3><br></div>
+										</div>
 									 </td>
 								</tr>
 							
@@ -40,7 +38,7 @@
 						
 				    </div>
 			<div class="col-sm-4">
-				<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advertisement.jpg" width="100%" height="500px"/>
+				<%-- <img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advertisement.jpg" width="100%" height="500px"/> --%>
 			</div>
 		</div>	
 	</div>

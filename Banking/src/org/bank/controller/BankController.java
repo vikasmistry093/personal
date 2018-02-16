@@ -224,15 +224,15 @@ public class BankController {
 		return model;
 	}
 	
-	@RequestMapping("/gasrecharge")
-	public ModelAndView gasrecharge() {
-		System.out.println("in Gas transaction");
+	@RequestMapping("/electricityrecharge")
+	public ModelAndView electricityrecharge() {
+		System.out.println("in electricity transaction");
 		BankTransaction transaction = new BankTransaction();
 		User user = (User) session.getAttribute("user");
 		ModelAndView model = new ModelAndView("login");
 		
 		if(user != null) {
-			model=new ModelAndView("gasrecharge");
+			model=new ModelAndView("electricityrecharge");
 			
 			Customer customer = bankService.getCustomerByUser(user);
 			model.addObject("customer", customer);
