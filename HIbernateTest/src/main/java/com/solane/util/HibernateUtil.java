@@ -1,4 +1,4 @@
-package com.solaane.util;
+package com.solane.util;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

@@ -1,4 +1,4 @@
-package com.solaane.model;
+package com.solane.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -1,4 +1,4 @@
-package com.solaane.model;
+package com.solane.model;
 
 import java.util.Date;
 

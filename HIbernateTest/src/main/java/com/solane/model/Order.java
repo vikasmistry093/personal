@@ -1,4 +1,4 @@
-package com.solaane.model;
+package com.solane.model;
 
 import java.sql.Timestamp;
 import java.util.List;
