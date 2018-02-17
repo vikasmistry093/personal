@@ -15,13 +15,14 @@
 	<%@include file="includes/logoutheader.jsp"%>
 	
 	<div class="bodyContent">
+	<h2>Welcome,${customer.firstName} ${customer.middleName} ${customer.lastName}.</h2>
 		<div class="row">
 			<div class="col-sm-3">
 				<%@include file="includes/menu.html"%>
 			</div>
 			<div class="col-sm-7">
-					<h2>Welcome,${customer.firstName} ${customer.middleName} ${customer.lastName}.</h2><br>
-				<div class="panel panel-primary">
+				
+					<div class="panel panel-primary">
 					<div class="panel-heading">Account Details</div>
 				</div>	
 					<table width="100%" border="2px;">
@@ -40,16 +41,16 @@
 						</tr>
 						</c:forEach>
 					</table>
-				
-				<div class="panel panel-primary">
-					<div class="panel-heading">Quick Access</div>
-				</div>	
+					<br>
+					<div class="panel panel-primary">
+						<div class="panel-heading">Quick Access</div>
+					</div>	
 					
 					<table>
 						<tr>
-							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/myprofile"><img src="${pageContext.request.contextPath}/resources/images/myprofile.png"  class="img-rounded" alt="MyProfile" width="38%" height="30%"/></a></td>
-							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/transaction"><img src="${pageContext.request.contextPath}/resources/images/transaction.png" class="img-rounded" alt="Transaction" width="38%" height="30%"/></a></td>
-							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/setting"><img src="${pageContext.request.contextPath}/resources/images/settings.png" class="img-rounded" alt="EditAccount" width="38%" height="30%"/></a></td>
+							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/myprofile"><img src="${pageContext.request.contextPath}/resources/images/myprofile.jpg"  class="img-rounded" alt="MyProfile" width="38%" height="30%"/></a></td>
+							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/transaction"><img src="${pageContext.request.contextPath}/resources/images/transaction.jpg" class="img-rounded" alt="Transaction" width="38%" height="30%"/></a></td>
+							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/setting"><img src="${pageContext.request.contextPath}/resources/images/settings.jpg" class="img-rounded" alt="EditAccount" width="38%" height="30%"/></a></td>
 						</tr>
 						<tr>
 							<td align="center" colspan="2"><h3>My Profile</h3></td>
@@ -58,9 +59,9 @@
 						</tr>
 						
 						<tr>	
-							 <td align="center" colspan="2"><a href="${pageContext.request.contextPath}/mobilerecharge"><img src="${pageContext.request.contextPath}/resources/images/mobilerecharge.png" class="img-rounded" alt="MobileRecharge" width="38%" height="30%"/></a></td>
-							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/dthrecharge"><img src="${pageContext.request.contextPath}/resources/images/dthrecharge.png" class="img-rounded" alt="DTHRecharge" width="38%" height="30%"/></a></td>
-							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/electricityrecharge"><img src="${pageContext.request.contextPath}/resources/images/electricityrecharge.png" class="img-rounded" alt="OtherRecharge" width="38%" height="30%"/></a></td>
+							 <td align="center" colspan="2"><a href="${pageContext.request.contextPath}/mobilerecharge"><img src="${pageContext.request.contextPath}/resources/images/mobilerecharge.jpg" class="img-rounded" alt="MobileRecharge" width="38%" height="30%"/></a></td>
+							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/dthrecharge.png"><img src="${pageContext.request.contextPath}/resources/images/Dthrecharge.jpg" class="img-rounded" alt="DTHRecharge" width="36%" height="30%"/></a></td>
+							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/electricityrecharge"><img src="${pageContext.request.contextPath}/resources/images/electricityrechrge.jpg" class="img-rounded" alt="OtherRecharge" width="38%" height="30%"/></a></td>
 						</tr>
 						<tr>
 							<td align="center" colspan="2"><h3>Mobile Recharge</h3></td>
@@ -70,8 +71,7 @@
 						
 						
 					</table>
-
-				
+					
 			</div>
 
 			<div class="col-sm-2">
