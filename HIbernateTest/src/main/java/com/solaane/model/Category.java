@@ -1,4 +1,4 @@
-package model;
+package com.solaane.model;
 
 import java.sql.Timestamp;
 
@@ -86,4 +86,10 @@ public class Category {
 		this.updatedTimestamp = updatedTimestamp;
 	}
 
+	@Override
+	public String toString() {
+		return "Category [categoryId=" + categoryId + ", name=" + name + ", status=" + status + ", createdTimestamp="
+				+ createdTimestamp + ", updatedTimestamp=" + updatedTimestamp + "]";
+	}
+	
 }

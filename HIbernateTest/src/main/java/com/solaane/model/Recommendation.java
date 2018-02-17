@@ -1,4 +1,4 @@
-package model;
+package com.solaane.model;
 
 import java.util.List;
 
@@ -25,5 +25,35 @@ public class Recommendation {
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="RECOMMENDED_PRODUCT", joinColumns={@JoinColumn(name="RECOMMENDATION_ID")}, inverseJoinColumns={@JoinColumn(name="PRODUCT_ID")})
 	private List<Product> recommendedProduct;
+	
+	public Recommendation() {}
 
+	public Recommendation(long recommendationId, List<Product> recommendedProduct) {
+		super();
+		this.recommendationId = recommendationId;
+		this.recommendedProduct = recommendedProduct;
+	}
+
+	public long getRecommendationId() {
+		return recommendationId;
+	}
+
+	public void setRecommendationId(long recommendationId) {
+		this.recommendationId = recommendationId;
+	}
+
+	public List<Product> getRecommendedProduct() {
+		return recommendedProduct;
+	}
+
+	public void setRecommendedProduct(List<Product> recommendedProduct) {
+		this.recommendedProduct = recommendedProduct;
+	}
+
+	@Override
+	public String toString() {
+		return "Recommendation [recommendationId=" + recommendationId + ", recommendedProduct=" + recommendedProduct
+				+ "]";
+	}
+	
 }

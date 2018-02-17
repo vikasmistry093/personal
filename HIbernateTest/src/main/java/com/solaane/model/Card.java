@@ -1,4 +1,4 @@
-package model;
+package com.solaane.model;
 
 import java.util.Date;
 
@@ -67,6 +67,12 @@ public class Card {
 
 	public void setExpiryDate(Date expiryDate) {
 		this.expiryDate = expiryDate;
+	}
+
+	@Override
+	public String toString() {
+		return "Card [cardId=" + cardId + ", cardNumber=" + cardNumber + ", ownerName=" + ownerName + ", expiryDate="
+				+ expiryDate + "]";
 	}
 	
 }

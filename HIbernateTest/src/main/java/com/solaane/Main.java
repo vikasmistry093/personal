@@ -1,10 +1,12 @@
-package main;
+package com.solaane;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import util.HibernateUtil;
+import com.solaane.util.HibernateUtil;
 
+@SpringBootApplication
 public class Main {
 
 	public static void main(String[] args) {

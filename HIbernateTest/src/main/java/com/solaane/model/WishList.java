@@ -1,4 +1,4 @@
-package model;
+package com.solaane.model;
 
 import java.util.List;
 
@@ -25,5 +25,34 @@ public class WishList {
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="WISHED_PRODUCTS", joinColumns={@JoinColumn(name="WISHLIST_ID")}, inverseJoinColumns={@JoinColumn(name="PRODUCT_ID")})
 	private List<Product> products;
+	
+	public WishList() {}
 
+	public WishList(long wishListId, List<Product> products) {
+		super();
+		this.wishListId = wishListId;
+		this.products = products;
+	}
+
+	public long getWishListId() {
+		return wishListId;
+	}
+
+	public void setWishListId(long wishListId) {
+		this.wishListId = wishListId;
+	}
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+
+	@Override
+	public String toString() {
+		return "WishList [wishListId=" + wishListId + ", products=" + products + "]";
+	}
+	
 }

@@ -1,4 +1,4 @@
-package model;
+package com.solaane.model;
 
 import java.sql.Timestamp;
 
@@ -123,5 +123,11 @@ public class Address {
 		this.udatedTimeStamp = udatedTimeStamp;
 	}
 
+	@Override
+	public String toString() {
+		return "Address [addressId=" + addressId + ", street=" + street + ", landMark=" + landMark + ", city=" + city
+				+ ", pin=" + pin + ", state=" + state + ", createdTimestamp=" + createdTimestamp + ", udatedTimeStamp="
+				+ udatedTimeStamp + "]";
+	}
 	
 }
