@@ -1,23 +1,25 @@
 package com.solane.util;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
 	
-	private static SessionFactory sessionFactory = buildSessionFactory();
+	private SessionFactory sessionFactory;
+	public Session session = buildSessionFactory().getCurrentSession();
 	
-	public static SessionFactory buildSessionFactory() {
+	public SessionFactory buildSessionFactory() {
 		Configuration configuration = new Configuration();
 		sessionFactory = configuration.configure().buildSessionFactory();
 		return sessionFactory;
 	}
 
-	public static SessionFactory getSessionFactory() {
+	public SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
 	
-	public static void shutDown() {
+	public void shutDown() {
 		sessionFactory.close();;
 	}
 }

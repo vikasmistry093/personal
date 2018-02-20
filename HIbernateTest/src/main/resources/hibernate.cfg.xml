@@ -10,19 +10,19 @@
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
 		<property name="hibernate.show_sql">true</property>
-		<property name="hibernate.hbm2ddl.auto">create</property>
+		<!-- <property name="hibernate.hbm2ddl.auto">create</property> -->
 
 
-		<mapping class="model.Address" />
-		<mapping class="model.Card" />
-		<mapping class="model.Category" />
-		<mapping class="model.Image" />
-		<mapping class="model.Order" />
-		<mapping class="model.Payment" />
-		<mapping class="model.Product" />
-		<mapping class="model.Purchase" />
-		<mapping class="model.Recommendation" />
-		<mapping class="model.User" />
-		<mapping class="model.WishList" />
+		<mapping class="com.solane.model.Address" />
+		<mapping class="com.solane.model.Card" />
+		<mapping class="com.solane.model.Category" />
+		<mapping class="com.solane.model.Image" />
+		<mapping class="com.solane.model.Order" />
+		<mapping class="com.solane.model.Payment" />
+		<mapping class="com.solane.model.Product" />
+		<mapping class="com.solane.model.Purchase" />
+		<mapping class="com.solane.model.Recommendation" />
+		<mapping class="com.solane.model.User" />
+		<mapping class="com.solane.model.WishList" />
 	</session-factory>
 </hibernate-configuration>
