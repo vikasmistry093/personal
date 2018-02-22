@@ -23,7 +23,7 @@
 				<div class="panel panel-primary">
 					<div class="panel-heading">Address Setting</div>
 				</div>	
-					<form:form action="${pageContext.request.contextPath}/setting" method="post" modelAttribute="customer" >
+					<form:form action="${pageContext.request.contextPath}/updateaddress" method="post" modelAttribute="customer" >
 					<table>
 						
 						<tr>

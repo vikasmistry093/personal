@@ -43,7 +43,7 @@ public class BankServices implements IBankServices {
 		List<Account> accs = new ArrayList<>();
 		Account acc = customer.getAccount();
 		acc.setAccountNumber(ThreadLocalRandom.current().nextLong(1000,5000));
-		acc.setBalance(0);
+		acc.setBalance(100);
 		accs.add(acc);
 		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 		customer.setCreatedTimestamp(currentTime);
@@ -175,4 +175,24 @@ public class BankServices implements IBankServices {
 		List<BankTransaction> transaction = dao.getTrasactionByAccountNumber(accountNumber);
 		return transaction;
 	}
+
+	@Override
+	public boolean checkBalanceByAccount(BankTransaction transactions) {
+		// TODO Auto-generated method stub
+		long accountNumber = transactions.getAccount().getAccountNumber();
+		Account account = dao.getAccountByAccountNumber(accountNumber); 
+		double accountBalance = account.getBalance(); 
+		double transactionBalance = transactions.getTransactionAmount();
+		
+		if(accountBalance > transactionBalance) {
+			double closingBalance = accountBalance - transactionBalance;
+			account.setBalance(closingBalance);
+			return true;
+		}
+		
+		else
+			return false;
+	}
+
+	
 }

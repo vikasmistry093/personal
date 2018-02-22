@@ -27,8 +27,12 @@ public interface IBankServices {
 
 	boolean performgasrecharge(BankTransaction transactions);
 
-	boolean performmobilerecharge(BankTransaction transaction);
+	boolean performmobilerecharge(BankTransaction transactions);
 
 	List<BankTransaction> getTrasactionByAccountNumber(String accountNumber);
+
+	boolean checkBalanceByAccount(BankTransaction transaction);
+
+
 
 }

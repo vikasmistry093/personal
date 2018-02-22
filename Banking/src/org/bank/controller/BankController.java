@@ -126,8 +126,14 @@ public class BankController {
 		
 		if(user != null) {
 			model = new ModelAndView("redirect:/home");
-			boolean donetransaction = bankService.performtransaction(transaction);
-				if(donetransaction == false)
+			
+			boolean checkBalance = bankService.checkBalanceByAccount(transaction);
+				if(checkBalance == true) {
+					boolean donetransaction = bankService.performtransaction(transaction);
+						if(donetransaction == false)
+							model = new ModelAndView("redirect:/error");
+				}
+				else 
 					model = new ModelAndView("redirect:/error");
 					
 		}
@@ -143,10 +149,15 @@ public class BankController {
 	 
 	if(user != null){
 		model = new ModelAndView("redirect:/home");
-		boolean donedthrecharge = bankService.performdthrecharge(transaction);
-			if(donedthrecharge == false)
-				model = new ModelAndView("redirect:/error");
 		
+			boolean checkBalance = bankService.checkBalanceByAccount(transaction);
+			if (checkBalance == true) {
+				boolean donetransaction = bankService.performdthrecharge(transaction);
+				if (donetransaction == false)
+					model = new ModelAndView("redirect:/error");
+			} else
+				model = new ModelAndView("redirect:/error");
+
 		}
 		return model;
 	}
@@ -159,10 +170,16 @@ public class BankController {
 	 
 	if(user != null){
 		model = new ModelAndView("redirect:/home");
-		boolean donegasrecharge = bankService.performgasrecharge(transaction);
-			if(donegasrecharge == false)
-				model = new ModelAndView("redirect:/error");
+			
 		
+		boolean checkBalance = bankService.checkBalanceByAccount(transaction);
+			if (checkBalance == true) {
+				boolean donetransaction = bankService.performgasrecharge(transaction);
+				if (donetransaction == false)
+					model = new ModelAndView("redirect:/error");
+			} else
+				model = new ModelAndView("redirect:/error");
+
 		}
 		return model;
 	}
@@ -175,10 +192,16 @@ public class BankController {
 	 
 	if(user != null){
 		model = new ModelAndView("redirect:/home");
-		boolean donemobilerecharge = bankService.performmobilerecharge(transaction);
-			if(donemobilerecharge == false)
-				model = new ModelAndView("redirect:/error");
 		
+		
+			boolean checkBalance = bankService.checkBalanceByAccount(transaction);
+			if (checkBalance == true) {
+				boolean donetransaction = bankService.performmobilerecharge(transaction);
+				if (donetransaction == false)
+					model = new ModelAndView("redirect:/error");
+			} else
+				model = new ModelAndView("redirect:/error");
+
 		}
 		return model;
 	}
@@ -249,6 +272,27 @@ public class BankController {
 		model.addObject("customer", customer);
 		return model;
 	}
+	
+	@RequestMapping("/updateaddress")
+	public ModelAndView updateaddress(@ModelAttribute("customer") Customer customer,HttpServletRequest request) {
+		
+		System.out.println("in update address");
+		User user = (User) session.getAttribute("user");
+		ModelAndView model = new ModelAndView("redirect:/login");
+		
+		if(user != null) {
+			model = new ModelAndView("redirect:/home");
+			
+			/*boolean isUpdateSuccessfull = bankService.updateAddress(user,customer.getAddress());*/
+			
+			Customer oldCustomer = bankService.getCustomerByUser(user);
+			oldCustomer.setAddress(customer.getAddress());
+		}
+		
+		
+		return model;
+	}
+	
 	
 	@RequestMapping("/emailsetting")
 	public ModelAndView emailsetting() {

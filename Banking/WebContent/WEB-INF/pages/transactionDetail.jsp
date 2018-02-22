@@ -23,14 +23,6 @@
 				<td>${trans.transactionType }</td>
 				<td>${trans.transactionAmount }</td>
 			</tr>
-			<tr>
-				<td>${trans.transactionDate}</td>
-				<td>${trans.benificiaryAccNo }</td>
-				<td>${trans.benificiaryName }</td>
-				<td>${trans.description }</td>
-				<td>${trans.transactionType }</td>
-				<td>${trans.transactionAmount }</td>
-			</tr>
 		</c:forEach>
 	</tbody>
 </table>
