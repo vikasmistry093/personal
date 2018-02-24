@@ -16,7 +16,7 @@ public class Card {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="CARD_ID")
-	private long cardId;
+	private Long cardId;
 	
 	@Column(name="CARD_NUMBER")
 	private long cardNumber;

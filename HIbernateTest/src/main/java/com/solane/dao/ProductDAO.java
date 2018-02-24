@@ -15,7 +15,7 @@ public class ProductDAO extends HibernateUtil {
 	@SuppressWarnings("unchecked")
 	public List<Product> getTopProducts() {
 		Query query = session.createQuery("from Product");
-		query.setMaxResults(10);
+		query.setMaxResults(9);
 		
 		return (List<Product>)query.list();
 	}

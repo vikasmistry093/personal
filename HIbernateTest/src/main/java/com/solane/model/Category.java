@@ -18,7 +18,7 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="CATEGORY_ID")
-	private long categoryId;
+	private Long categoryId;
 
 	@Column(name="CATEGORY_NAME")
 	private String name;

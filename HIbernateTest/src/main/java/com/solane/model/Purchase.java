@@ -21,7 +21,7 @@ public class Purchase {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PURCHASE_ID")
-	private long purchaseId;
+	private Long purchaseId;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	private User user;

@@ -20,7 +20,7 @@ public class WishList {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="WISHLIST_ID")
-	private long wishListId;
+	private Long wishListId;
 	
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="WISHED_PRODUCTS", joinColumns={@JoinColumn(name="WISHLIST_ID")}, inverseJoinColumns={@JoinColumn(name="PRODUCT_ID")})

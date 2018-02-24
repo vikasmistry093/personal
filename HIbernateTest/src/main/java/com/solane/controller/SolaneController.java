@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.solane.model.Product;
@@ -22,9 +23,20 @@ public class SolaneController {
 	@RequestMapping("/")
 	public ModelAndView indexPage() {
 		ModelAndView model = new ModelAndView("index");
-		List<Product> products = productService.getTopProducts();
+		List<Product> productList = productService.getTopProducts();
+		System.out.println(productList.size());
 		
-		model.addObject("products", products);
+		model.addObject("productList", productList);
+		return model;
+	}
+	
+	@RequestMapping("/product")
+	public ModelAndView viewProduct(@RequestParam("id") String product_id) {
+		ModelAndView model = new ModelAndView("product-info");
+//		List<Product> productList = productService.getTopProducts();
+//		System.out.println(productList.size());
+		
+//		model.addObject("productList", productList);
 		return model;
 	}
 

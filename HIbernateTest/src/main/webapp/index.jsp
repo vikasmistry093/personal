@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -128,65 +129,20 @@
             <div class="col-sm-9">
                 <div class="row">
                   <div class="col-xs-12">
-                    <ul class="nav navbar-nav product-section">
-                        <li>
-                            <a href="#" class="text-center"> 
-                                <img src="images/mob-image.jpeg" class="img-responsive" />
-                                <div class="m-t-20 m-b-10">
-                                    <span>vivo  v7(Matte Black,)</span>
-                                </div>
-                                <label class="f-bold">₹10,000</label>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-center">
-                                <img src="images/mob-image.jpeg" class="img-responsive" />
-                                <div class="m-t-20 m-b-10">
-                                    <span>vivo  v7(Matte Black,)</span>
-                                </div>
-                                <label class="f-bold">₹10,000</label>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-center">
-                                <img src="images/mob-image.jpeg" class="img-responsive" />
-                                <div class="m-t-20 m-b-10">
-                                    <span>vivo  v7(Matte Black,)</span>
-                                </div>
-                                <label class="f-bold">₹10,000</label>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-center">
-                                <img src="images/mob-image.jpeg" class="img-responsive" />
-                                <div class="m-t-20 m-b-10">
-                                    <span>vivo  v7(Matte Black,)</span>
-                                </div>
-                                <label class="f-bold">₹10,000</label>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-center">
-                                <img src="images/mob-image.jpeg" class="img-responsive" />
-                                <div class="m-t-20 m-b-10">
-                                    <span>vivo  v7(Matte Black,)</span>
-                                </div>
-                                <label class="f-bold">₹10,000</label>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-center">
-                                <img src="images/mob-image.jpeg" class="img-responsive" />
-                                <div class="m-t-20 m-b-10">
-                                    <span>vivo  v7(Matte Black,)</span>
-                                </div>
-                                <label class="f-bold">₹10,000</label>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="pagination demo">
+						<ul class="nav navbar-nav product-section">
+							<c:forEach var="product" items="${productList}">
+								<li><a href="/product?id=${product.productId}" class="text-center"> 
+									<img src="images/${product.prouctImages[0].imageURL}" class="img-responsive" />
+									<div class="m-t-20 m-b-10">
+										<span>${product.productTitle}</span>
+									</div> 
+									<label class="f-bold">&#8377 ${product.price}</label>
+								</a></li>
+							</c:forEach>
+						</ul>
+						<ul class="pagination demo">
                         
-                    </ul>
+                    	</ul>
                 </div>
             </div>
             </div>

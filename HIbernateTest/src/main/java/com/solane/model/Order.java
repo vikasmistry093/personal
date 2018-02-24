@@ -25,7 +25,7 @@ public class Order {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ORDER_ID")
-	private long orderId;
+	private Long orderId;
 
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="ORDERED_PRODUCT", joinColumns={@JoinColumn(name="ORDER_ID")}, inverseJoinColumns={@JoinColumn(name="PRODUCT_ID")})

@@ -22,7 +22,7 @@ public class SolaneLauncher {
     }
 
 	
-	public void setProduct() {
+	public static void setProduct() {
 		Timestamp timeStamp = new Timestamp(System.currentTimeMillis());
 		
 		List<Category> categoryList = new ArrayList<>();
@@ -233,18 +233,18 @@ public class SolaneLauncher {
 		p10.setUpdatedTimestamp(timeStamp);
 		p10.setStatus("ACTIVE");
 	
-		Session session = new HibernateUtil().getSessionFactory().openSession();
+		Session session = new HibernateUtil().session;
 		Transaction tran = session.beginTransaction();
-		session.save(p10);
-		session.save(p9);
-		session.save(p8);
-		session.save(p7);
-		session.save(p6);
-		session.save(p5);
-		session.save(p4);
-		session.save(p3);
+//		session.save(p1);
 		session.save(p2);
-		session.save(p1);
+		session.save(p3);
+		session.save(p4);
+		session.save(p5);
+		session.save(p6);
+		session.save(p7);
+		session.save(p8);
+		session.save(p9);
+		session.save(p10);
 		
 		tran.commit();
 	}

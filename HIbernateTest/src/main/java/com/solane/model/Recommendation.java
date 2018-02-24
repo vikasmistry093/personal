@@ -20,7 +20,7 @@ public class Recommendation {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="RECOMMENDATION_ID")
-	private long recommendationId;
+	private Long recommendationId;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="RECOMMENDED_PRODUCT", joinColumns={@JoinColumn(name="RECOMMENDATION_ID")}, inverseJoinColumns={@JoinColumn(name="PRODUCT_ID")})

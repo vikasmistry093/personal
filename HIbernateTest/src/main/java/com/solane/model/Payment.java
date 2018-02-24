@@ -19,7 +19,7 @@ public class Payment {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PAYMENT_ID")
-	private long paymentId;
+	private Long paymentId;
 
 	@Column(name="PAYMENT_TYPE")
 	private String paymentType;

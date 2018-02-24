@@ -14,7 +14,7 @@ public class Image {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="IMAGE_ID")
-	private long imageId;
+	private Long imageId;
 	
 	@Column(name="IMAGE_TITLE")
 	private String imageTitle;

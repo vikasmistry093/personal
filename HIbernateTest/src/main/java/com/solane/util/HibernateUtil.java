@@ -7,7 +7,7 @@ import org.hibernate.cfg.Configuration;
 public class HibernateUtil {
 	
 	private SessionFactory sessionFactory;
-	public Session session = buildSessionFactory().getCurrentSession();
+	public Session session = buildSessionFactory().openSession();
 	
 	public SessionFactory buildSessionFactory() {
 		Configuration configuration = new Configuration();
