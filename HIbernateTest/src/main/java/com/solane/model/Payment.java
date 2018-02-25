@@ -1,5 +1,6 @@
 package com.solane.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -14,8 +15,10 @@ import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name="PAYMENT")
-public class Payment {
+public class Payment implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PAYMENT_ID")
@@ -33,7 +36,7 @@ public class Payment {
 	
 	public Payment() {}
 
-	public Payment(long paymentId, String paymentType, double amount, Timestamp createdTimestamp) {
+	public Payment(Long paymentId, String paymentType, double amount, Timestamp createdTimestamp) {
 		super();
 		this.paymentId = paymentId;
 		this.paymentType = paymentType;
@@ -41,11 +44,11 @@ public class Payment {
 		this.createdTimestamp = createdTimestamp;
 	}
 
-	public long getPaymentId() {
+	public Long getPaymentId() {
 		return paymentId;
 	}
 
-	public void setPaymentId(long paymentId) {
+	public void setPaymentId(Long paymentId) {
 		this.paymentId = paymentId;
 	}
 
@@ -78,5 +81,5 @@ public class Payment {
 		return "Payment [paymentId=" + paymentId + ", paymentType=" + paymentType + ", amount=" + amount
 				+ ", createdTimestamp=" + createdTimestamp + "]";
 	}
-	
+
 }

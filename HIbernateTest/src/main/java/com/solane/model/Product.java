@@ -1,5 +1,6 @@
 package com.solane.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -20,8 +21,10 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name="PRODUCT")
-public class Product {
-	
+public class Product implements Serializable{
+ 
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PRODUCT_ID")
@@ -66,7 +69,7 @@ public class Product {
 	
 	public Product() {}
 
-	public Product(long productId, String productTitle, double price, double discount, String description,
+	public Product(Long productId, String productTitle, double price, double discount, String description,
 			String features, int rating, List<Category> productCategory, List<Image> prouctImages, String status,
 			Timestamp createdTimestamp, Timestamp updatedTimestamp) {
 		super();
@@ -84,11 +87,11 @@ public class Product {
 		this.updatedTimestamp = updatedTimestamp;
 	}
 
-	public long getProductId() {
+	public Long getProductId() {
 		return productId;
 	}
 
-	public void setProductId(long productId) {
+	public void setProductId(Long productId) {
 		this.productId = productId;
 	}
 
@@ -187,5 +190,5 @@ public class Product {
 				+ ", productCategory=" + productCategory + ", prouctImages=" + prouctImages + ", status=" + status
 				+ ", createdTimestamp=" + createdTimestamp + ", updatedTimestamp=" + updatedTimestamp + "]";
 	}
-	
+
 }

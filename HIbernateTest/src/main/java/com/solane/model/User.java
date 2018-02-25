@@ -1,5 +1,6 @@
 package com.solane.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -20,8 +21,10 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name="USERS")
-public class User {
+public class User implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="USER_ID")
@@ -72,7 +75,7 @@ public class User {
 	
 	public User() {}
 
-	public User(long userId, String name, String contact, String email, String password, String status,
+	public User(Long userId, String name, String contact, String email, String password, String status,
 			List<Card> cardDetails, List<Address> userAddress, Recommendation recommendation, List<Order> orders,
 			WishList wishList, Timestamp createdTimestamp, Timestamp updatedTimestamp) {
 		super();
@@ -91,11 +94,11 @@ public class User {
 		this.updatedTimestamp = updatedTimestamp;
 	}
 
-	public long getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(long userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
@@ -202,5 +205,5 @@ public class User {
 				+ ", recommendation=" + recommendation + ", orders=" + orders + ", wishList=" + wishList
 				+ ", createdTimestamp=" + createdTimestamp + ", updatedTimestamp=" + updatedTimestamp + "]";
 	}
-	
+
 }

@@ -1,5 +1,6 @@
 package com.solane.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -11,7 +12,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="CARD")
-public class Card {
+public class Card implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -28,8 +31,8 @@ public class Card {
 	private Date expiryDate;
 
 	public Card() {}
-	
-	public Card(long cardId, long cardNumber, String ownerName, Date expiryDate) {
+
+	public Card(Long cardId, long cardNumber, String ownerName, Date expiryDate) {
 		super();
 		this.cardId = cardId;
 		this.cardNumber = cardNumber;
@@ -37,11 +40,11 @@ public class Card {
 		this.expiryDate = expiryDate;
 	}
 
-	public long getCardId() {
+	public Long getCardId() {
 		return cardId;
 	}
 
-	public void setCardId(long cardId) {
+	public void setCardId(Long cardId) {
 		this.cardId = cardId;
 	}
 

@@ -1,5 +1,6 @@
 package com.solane.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -14,7 +15,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name="ADDRESS")
-public class Address {
+public class Address implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -45,8 +48,8 @@ public class Address {
 	private Timestamp udatedTimeStamp;
 
 	public Address() {}
-	
-	public Address(long addressId, String street, String landMark, String city, String pin, String state,
+
+	public Address(Long addressId, String street, String landMark, String city, String pin, String state,
 			Timestamp createdTimestamp, Timestamp udatedTimeStamp) {
 		super();
 		this.addressId = addressId;
@@ -59,11 +62,11 @@ public class Address {
 		this.udatedTimeStamp = udatedTimeStamp;
 	}
 
-	public long getAddressId() {
+	public Long getAddressId() {
 		return addressId;
 	}
 
-	public void setAddressId(long addressId) {
+	public void setAddressId(Long addressId) {
 		this.addressId = addressId;
 	}
 
@@ -129,5 +132,5 @@ public class Address {
 				+ ", pin=" + pin + ", state=" + state + ", createdTimestamp=" + createdTimestamp + ", udatedTimeStamp="
 				+ udatedTimeStamp + "]";
 	}
-	
+
 }

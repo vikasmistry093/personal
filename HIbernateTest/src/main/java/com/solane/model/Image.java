@@ -1,5 +1,7 @@
 package com.solane.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +11,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="IMAGE")
-public class Image {
+public class Image implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="IMAGE_ID")
@@ -27,7 +31,7 @@ public class Image {
 	
 	public Image() {}
 
-	public Image(long imageId, String imageTitle, String imageURL, String status) {
+	public Image(Long imageId, String imageTitle, String imageURL, String status) {
 		super();
 		this.imageId = imageId;
 		this.imageTitle = imageTitle;
@@ -35,11 +39,11 @@ public class Image {
 		this.status = status;
 	}
 
-	public long getImageId() {
+	public Long getImageId() {
 		return imageId;
 	}
 
-	public void setImageId(long imageId) {
+	public void setImageId(Long imageId) {
 		this.imageId = imageId;
 	}
 
@@ -72,5 +76,5 @@ public class Image {
 		return "Image [imageId=" + imageId + ", imageTitle=" + imageTitle + ", imageURL=" + imageURL + ", status="
 				+ status + "]";
 	}
-	
+
 }

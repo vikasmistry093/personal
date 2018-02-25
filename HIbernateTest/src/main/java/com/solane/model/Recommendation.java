@@ -1,5 +1,6 @@
 package com.solane.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,8 +16,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="RECOMMENDATION")
-public class Recommendation {
+public class Recommendation implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="RECOMMENDATION_ID")
@@ -28,17 +31,17 @@ public class Recommendation {
 	
 	public Recommendation() {}
 
-	public Recommendation(long recommendationId, List<Product> recommendedProduct) {
+	public Recommendation(Long recommendationId, List<Product> recommendedProduct) {
 		super();
 		this.recommendationId = recommendationId;
 		this.recommendedProduct = recommendedProduct;
 	}
 
-	public long getRecommendationId() {
+	public Long getRecommendationId() {
 		return recommendationId;
 	}
 
-	public void setRecommendationId(long recommendationId) {
+	public void setRecommendationId(Long recommendationId) {
 		this.recommendationId = recommendationId;
 	}
 
@@ -55,5 +58,5 @@ public class Recommendation {
 		return "Recommendation [recommendationId=" + recommendationId + ", recommendedProduct=" + recommendedProduct
 				+ "]";
 	}
-	
+
 }

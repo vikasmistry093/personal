@@ -1,5 +1,6 @@
 package com.solane.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -20,7 +21,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name="ORDERS")
-public class Order {
+public class Order implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -48,7 +51,7 @@ public class Order {
 	
 	public Order() {}
 
-	public Order(long orderId, List<Product> orderedProduct, Payment payment, String status, Timestamp createdTimestamp,
+	public Order(Long orderId, List<Product> orderedProduct, Payment payment, String status, Timestamp createdTimestamp,
 			Timestamp updatedTimestamp) {
 		super();
 		this.orderId = orderId;
@@ -59,11 +62,11 @@ public class Order {
 		this.updatedTimestamp = updatedTimestamp;
 	}
 
-	public long getOrderId() {
+	public Long getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(long orderId) {
+	public void setOrderId(Long orderId) {
 		this.orderId = orderId;
 	}
 
@@ -112,5 +115,5 @@ public class Order {
 		return "Order [orderId=" + orderId + ", orderedProduct=" + orderedProduct + ", payment=" + payment + ", status="
 				+ status + ", createdTimestamp=" + createdTimestamp + ", updatedTimestamp=" + updatedTimestamp + "]";
 	}
-	
+
 }

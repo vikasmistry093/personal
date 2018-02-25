@@ -1,5 +1,6 @@
 package com.solane.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -16,7 +17,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="PURCHASE")
-public class Purchase {
+public class Purchase implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -32,18 +35,18 @@ public class Purchase {
 	
 	public Purchase() {}
 
-	public Purchase(long purchaseId, User user, List<Product> products) {
+	public Purchase(Long purchaseId, User user, List<Product> products) {
 		super();
 		this.purchaseId = purchaseId;
 		this.user = user;
 		this.products = products;
 	}
 
-	public long getPurchaseId() {
+	public Long getPurchaseId() {
 		return purchaseId;
 	}
 
-	public void setPurchaseId(long purchaseId) {
+	public void setPurchaseId(Long purchaseId) {
 		this.purchaseId = purchaseId;
 	}
 
@@ -67,5 +70,5 @@ public class Purchase {
 	public String toString() {
 		return "Purchase [purchaseId=" + purchaseId + ", user=" + user + ", products=" + products + "]";
 	}
-	
+
 }

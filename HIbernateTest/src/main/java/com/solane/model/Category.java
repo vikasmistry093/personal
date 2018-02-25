@@ -1,5 +1,6 @@
 package com.solane.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -13,8 +14,10 @@ import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name="CATEGORY")
-public class Category {
+public class Category implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="CATEGORY_ID")
@@ -35,8 +38,8 @@ public class Category {
 	private Timestamp updatedTimestamp;
 
 	public Category() {}
-	
-	public Category(long categoryId, String name, String status, Timestamp createdTimestamp,
+
+	public Category(Long categoryId, String name, String status, Timestamp createdTimestamp,
 			Timestamp updatedTimestamp) {
 		super();
 		this.categoryId = categoryId;
@@ -46,11 +49,11 @@ public class Category {
 		this.updatedTimestamp = updatedTimestamp;
 	}
 
-	public long getCategoryId() {
+	public Long getCategoryId() {
 		return categoryId;
 	}
 
-	public void setCategoryId(long categoryId) {
+	public void setCategoryId(Long categoryId) {
 		this.categoryId = categoryId;
 	}
 

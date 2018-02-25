@@ -1,5 +1,6 @@
 package com.solane.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,7 +16,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="WISHLIST")
-public class WishList {
+public class WishList implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -28,17 +31,17 @@ public class WishList {
 	
 	public WishList() {}
 
-	public WishList(long wishListId, List<Product> products) {
+	public WishList(Long wishListId, List<Product> products) {
 		super();
 		this.wishListId = wishListId;
 		this.products = products;
 	}
 
-	public long getWishListId() {
+	public Long getWishListId() {
 		return wishListId;
 	}
 
-	public void setWishListId(long wishListId) {
+	public void setWishListId(Long wishListId) {
 		this.wishListId = wishListId;
 	}
 
@@ -54,5 +57,5 @@ public class WishList {
 	public String toString() {
 		return "WishList [wishListId=" + wishListId + ", products=" + products + "]";
 	}
-	
+
 }
