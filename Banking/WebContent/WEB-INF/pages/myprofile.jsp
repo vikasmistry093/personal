@@ -56,7 +56,7 @@
 							</td>
 							
 							<td >
-								<input type="text" class="form-control" name="address" value="${customer.address}" readonly="readonly">
+								<textarea rows="2" cols="30" class="form-control" readonly="readonly"> ${customer.address} </textarea><br>
 							</td>
 							
 							<td></td>

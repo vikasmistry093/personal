@@ -26,6 +26,9 @@ public class User {
 	@Column(name="USER_PASSWORD",nullable=false)
 	private String userPassword;
 	
+	@Column(name="OLD_USER_PASSWORD")
+	private String oldUserPassword; 
+	
 	@Column(name="USER_TYPE",nullable=false)
 	private String userType;
 	
@@ -52,6 +55,14 @@ public class User {
 
 	public String getUserPassword() {
 		return userPassword;
+	}
+	
+	public void setOldUserPassword(String oldUserPassword) {
+		this.oldUserPassword = oldUserPassword;
+	}
+	
+	public String getOldUserPassword() {
+		return oldUserPassword;
 	}
 
 	public void setUserPassword(String userPassword) {

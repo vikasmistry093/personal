@@ -23,7 +23,7 @@
 				<div class="panel panel-primary">
 					<div class="panel-heading">Password Setting</div>
 				</div>	
-					<form:form action="${pageContext.request.contextPath}/setting" method="post" modelAttribute="user" >
+					<form:form action="${pageContext.request.contextPath}/updatepassword" method="post" modelAttribute="user" >
 					<table>
 						<tr>
 						
@@ -36,7 +36,7 @@
 						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 						<td>
 						
-							<form:input type="password" class="form-control" path="userPassword" name="userPassword" placeholder="Current Password"/><br>
+							<form:input type="password" class="form-control" path="oldUserPassword"  placeholder="Current Password"/><br>
 						</td>
 						</tr>
 						
@@ -51,7 +51,7 @@
 						<td></td>
 						
 						<td>
-							<form:input type="password" class="form-control" path="userPassword" name="userPassword" placeholder="New Password"/><br>
+							<input type="password" class="form-control"  placeholder="New Password"/><br>
 						</td>
 						</tr>
 						
@@ -66,7 +66,7 @@
 						<td></td>
 						
 						<td>
-							<form:input type="password" class="form-control" path="userPassword" name="userPassword" placeholder="Re-Enter Password"/><br>
+							<form:input type="password" class="form-control" path="userPassword"  placeholder="Re-Enter Password"/><br>
 						</td>
 						</tr>
 						

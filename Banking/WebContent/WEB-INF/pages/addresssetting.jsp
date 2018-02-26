@@ -31,13 +31,13 @@
 						<td style="padding-left: 160px;"></td>
 						
 						<td>
-							<label>Enter Current Address: </label>
+							<label>Current Address: </label>
 						</td>
 						
 						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 						
 						<td>
-							<form:textarea type="text" class="form-control" path="address" placeholder="Current Address" requried="true"/><br>
+							<textarea rows="4" cols="40" class="form-control" readonly="readonly"> ${customer.address} </textarea><br>
 						</td>
 						</tr>
 						
@@ -47,21 +47,6 @@
 						
 						<td>
 							<label>Enter New Address: </label>
-						</td>
-						
-						<td></td>
-						
-						<td>
-							<form:textarea type="text" class="form-control" path="address" placeholder="New Address" requried="true"/><br>
-						</td>
-						</tr>
-						
-						<tr>
-						
-						<td></td>
-						
-						<td>
-							<label>Re-Enter New Address: </label>
 						</td>
 						
 						<td></td>

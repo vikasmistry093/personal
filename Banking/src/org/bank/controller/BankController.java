@@ -15,6 +15,7 @@ import org.bank.service.BankServices;
 import org.bank.service.IBankServices;
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -74,9 +75,10 @@ public class BankController {
 		ModelAndView model=new ModelAndView("login");
 		
 		if(user != null){
+			model=new ModelAndView("myprofile");
+			
 			Customer customer = bankService.getCustomerByUser(user);
 			System.out.println(customer.getFirstName());
-			model=new ModelAndView("myprofile");
 			model.addObject("customer",customer);
 		}
 
@@ -265,11 +267,17 @@ public class BankController {
 	}
 	
 	@RequestMapping("/addresssetting")
-	public ModelAndView addresssetting() {
+	public ModelAndView addresssetting(HttpServletRequest request) {
 		System.out.println("in address setting");
-		Customer customer=new Customer();
-		ModelAndView model=new ModelAndView("addresssetting");
+		User user = (User) session.getAttribute("user");
+		ModelAndView model=new ModelAndView("login");
+		
+		if(user != null) {
+		model=new ModelAndView("addresssetting");
+		
+		Customer customer = bankService.getCustomerByUser(user);
 		model.addObject("customer", customer);
+		}
 		return model;
 	}
 	
@@ -282,9 +290,7 @@ public class BankController {
 		
 		if(user != null) {
 			model = new ModelAndView("redirect:/home");
-			
-			/*boolean isUpdateSuccessfull = bankService.updateAddress(user,customer.getAddress());*/
-			
+
 			Customer oldCustomer = bankService.getCustomerByUser(user);
 			oldCustomer.setAddress(customer.getAddress());
 		}
@@ -295,22 +301,64 @@ public class BankController {
 	
 	
 	@RequestMapping("/emailsetting")
-	public ModelAndView emailsetting() {
+	public ModelAndView emailsetting(HttpServletRequest request) {
 		System.out.println("in email setting");
-		Customer customer=new Customer();
-		ModelAndView model=new ModelAndView("emailsetting");
-		model.addObject("customer", customer);
+		User user = (User) session.getAttribute("user");
+		ModelAndView model = new ModelAndView("login");
+		if(user != null) {
+		
+			model=new ModelAndView("emailsetting");
+			Customer customer = bankService.getCustomerByUser(user);
+			model.addObject("customer", customer);
+		}
 		return model;
 	}
 	
-	@RequestMapping("/mobilesetting")
-	public ModelAndView mobilesetting() {
-		System.out.println("in moblie number setting");
-		Customer customer=new Customer();
-		ModelAndView model=new ModelAndView("mobilesetting");
-		model.addObject("customer", customer);
+	@RequestMapping("/updateemail")
+	public ModelAndView upadateemail(@ModelAttribute("customer") Customer customers , HttpServletRequest request) {
+		System.out.println("in update email");
+		User user = (User) session.getAttribute("user");
+		ModelAndView model = new ModelAndView("redirect:/login");
+		
+		if(user != null) {
+			model = new ModelAndView("redirect:/home");
+			Customer customer = bankService.getCustomerByUser(user);
+			customer.setEmail(customers.getEmail());
+		}
+		
 		return model;
 	}
+	
+	
+	
+	
+	@RequestMapping("/mobilesetting")
+	public ModelAndView mobilesetting(HttpServletRequest request) {
+		System.out.println("in moblie number setting");
+		ModelAndView model = new ModelAndView("redirect:/login");
+		User user = (User) session.getAttribute("user");
+		
+		if(user != null) {
+		model = new ModelAndView("mobilesetting");
+		Customer customer=new Customer();
+		model.addObject("customer", customer);
+		}
+		return model;
+	}
+	
+	@RequestMapping("/updatemobilenumber")
+	public ModelAndView updatemobilenumber(@ModelAttribute("customer") Customer customers , HttpServletRequest request) {
+		System.out.println("in update mobile number");
+		User user = (User) session.getAttribute("user");
+		ModelAndView model = new ModelAndView("redirect:/login"); 
+		if(user != null) {
+			model = new ModelAndView("redirect:/home");
+			Customer customer = bankService.getCustomerByUser(user);
+			customer.setMobileNumber(customers.getMobileNumber());
+		 }
+		return model;
+	}
+	
 	
 	@RequestMapping("/passwordsetting")
 	public ModelAndView passwordsetting() {
@@ -320,6 +368,29 @@ public class BankController {
 		model.addObject("user", user);
 		return model;
 	}
+	
+	@RequestMapping("/updatepassword")
+	public ModelAndView updatepassword(@ModelAttribute("user") User users , HttpServletRequest request) {
+		System.out.println("in update password");
+		ModelAndView model = new ModelAndView("redirect:/login");
+		
+		User user = (User) session.getAttribute("user");
+		
+		if(user != null) {
+			model = new ModelAndView("redirect:/error");
+			User newUser = bankService.isValideOldUser(user , users);
+					if(newUser != null) {
+						model = new ModelAndView("redirect:/home");
+						user.setOldUserPassword(user.getUserPassword());
+						user.setUserPassword(users.getUserPassword());
+						System.out.println("user NEW password" + user.getUserPassword() +"      " + "users OLD passowrd" + user.getOldUserPassword());
+					}
+		}
+		return model;
+	}
+	
+	
+	
 	
 	@RequestMapping("/generalsetting")
 	public ModelAndView generalsetting() {

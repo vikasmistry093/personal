@@ -33,6 +33,8 @@ public interface IBankServices {
 
 	boolean checkBalanceByAccount(BankTransaction transaction);
 
+	User isValideOldUser(User user, User users);
+
 
 
 }
