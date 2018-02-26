@@ -2,23 +2,25 @@ package com.solane.dao;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.solane.model.Product;
 
 @Repository
+@Transactional
 public class ProductDAO {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
 	
 	private Session getSession() {
-        return sessionFactory.openSession();
+        return sessionFactory.getCurrentSession();
     }
 	
 	@SuppressWarnings("unchecked")
@@ -35,12 +37,8 @@ public class ProductDAO {
 	}
 
 	public void saveDummyProducts(List<Product> productList) {
-		Session session = getSession();
-		Transaction t = session.beginTransaction();
 		for(Product p: productList)
-			session.save(p);
-		
-		t.commit();
+			getSession().save(p);
 	}
 
 }
