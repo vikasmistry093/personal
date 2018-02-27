@@ -26,15 +26,18 @@
 				</div>
 				
 				 	<form:form action="${pageContext.request.contextPath}/home" modelAttribute="user" commandName="user" method="post" >
-					
+					<div>
 					<label>User name:</label>
-					<form:input type="text" class="form-control" path="userName" name="userName" placeholder="User Name" />
-					<%-- <form:errors path="userName"></form:errors><br> --%>
+					<form:input type="text" class="form-control" path="userName" name="userName" placeholder="User Name" /><br>
+					<form:errors path="userName" cssClass="error"/><br>
+					</div>
 					
+					<div>
 					<label>Password:</label>
 					<form:input type="password" class="form-control" path="userPassword" name="userPassword" placeholder="Password"/><br>
-					<%-- <form:errors path="userPassword"></form:errors><br> --%>
-				     
+					<form:errors path="userPassword" cssClass="error" /><br>
+				    </div>
+				    
 					<form:button type="button" class="btn btn-default" style="float: left;" onclick="getSignUpPage();">Sign Up</form:button> 
 			    	<form:button type="submit" class="btn btn-default" style="float: right;">Login</form:button>
 				</form:form><br>
