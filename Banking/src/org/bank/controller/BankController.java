@@ -45,38 +45,54 @@ public class BankController {
 		return model;
 	}
 	
-	@RequestMapping("/home")
-	public ModelAndView home(@ModelAttribute("user") @Valid User user ,BindingResult result, HttpServletRequest request){
-		System.out.println("In Home");
-		System.out.println("In Controller: " + user.getUserName());
+	@RequestMapping("/checkuser")
+	public ModelAndView checkuser(@ModelAttribute("user") @Valid User user , BindingResult result , HttpServletRequest request) {
+		
+		System.out.println("Validate User Login :" + user.getUserName());
 		ModelAndView model = new ModelAndView("login");
 		
 		session = request.getSession();
-		if(user.getUserName() != null)
-			session.setAttribute("user", user);
-		else
-			user = (User) session.getAttribute("user");
-			
-		if(result.hasErrors()) {
-			model = new ModelAndView("login");
-			return model;
-			}
-		
 		User userDetail = bankService.isValidUser(user);
-		if(userDetail != null) {
-			model = new  ModelAndView("home");
+		
+		if(result.hasErrors() || userDetail == null ){
+			return model;
+		}
+			model = new ModelAndView("redirect:/home");
+
+			if (user.getUserName() != null)
+				session.setAttribute("user", user);
+			else
+				user = (User) session.getAttribute("user");
+
 			session.setAttribute("user", userDetail);
-			
-			Customer customer = bankService.getCustomerByUser(userDetail);
-			model.addObject("customer", customer);
-			}
 		
 		
 		return model;
 	}
 	
+	@RequestMapping("/home")
+	public ModelAndView home(){
+		System.out.println("In Home");
+		
+		User user = (User) session.getAttribute("user");
+		
+		System.out.println("In Controller: " + user.getUserName());
+		ModelAndView model = new ModelAndView("login");
+	
+		User userDetail = bankService.isValidUser(user);
+		
+		if (userDetail != null) {
+			model = new ModelAndView("home");
+
+			Customer customer = bankService.getCustomerByUser(userDetail);
+			model.addObject("customer", customer);
+		}
+
+		return model;
+	}
+	
 	@RequestMapping("/myprofile")
-	public ModelAndView myprofile( HttpServletRequest request) {
+	public ModelAndView myprofile() {
 		System.out.println("in myprofile");
 		User user = (User) session.getAttribute("user");
 		
@@ -96,25 +112,28 @@ public class BankController {
 	@RequestMapping("/error")
 	public ModelAndView error() {
 		System.out.println("in error ");
-		ModelAndView model=new ModelAndView("error");
+		
+		 ModelAndView model=new ModelAndView("error");
+		
 		return model;
 	}
 
 	@RequestMapping("/signup")
 	public ModelAndView newtable() {
 		System.out.println("in signup");
-		Customer customer = new Customer();
-		ModelAndView model=new ModelAndView("signup");
-		model.addObject("customer", customer);
+			Customer customer = new Customer();
+			ModelAndView model=new ModelAndView("signup");
+			model.addObject("customer", customer);
 		return model;
 	}
 	
 	
 	
 	@RequestMapping("/transaction")
-	public ModelAndView transaction(HttpServletRequest request) {
+	public ModelAndView transaction() {
 		System.out.println("in transaction");
 		BankTransaction transaction = new BankTransaction();
+		
 		User user = (User) session.getAttribute("user");
 		ModelAndView model = new ModelAndView("login");
 		
@@ -132,7 +151,7 @@ public class BankController {
 	public ModelAndView completetransaction( @ModelAttribute("transaction") BankTransaction transaction , HttpServletRequest request) {
 		System.out.println("completetransaction ");
 		User user = (User) session.getAttribute("user");
-		ModelAndView model = new ModelAndView("redirect:/login");
+		ModelAndView model = new ModelAndView("login");
 		
 		if(user != null) {
 			model = new ModelAndView("redirect:/home");
@@ -155,7 +174,7 @@ public class BankController {
 	public ModelAndView completedthrecharge(@ModelAttribute("transaction") BankTransaction transaction , HttpServletRequest request) {
 	System.out.println("complete dth recharge");
 	User user = (User) session.getAttribute("user");
-	ModelAndView model = new ModelAndView("redirect:/login");
+	ModelAndView model = new ModelAndView("login");
 	 
 	if(user != null){
 		model = new ModelAndView("redirect:/home");
@@ -176,7 +195,7 @@ public class BankController {
 	public ModelAndView completegasrecharge(@ModelAttribute("transaction") BankTransaction transaction , HttpServletRequest request) {
 	System.out.println("complete gas recharge");
 	User user = (User) session.getAttribute("user");
-	ModelAndView model = new ModelAndView("redirect:/login");
+	ModelAndView model = new ModelAndView("login");
 	 
 	if(user != null){
 		model = new ModelAndView("redirect:/home");
@@ -198,7 +217,7 @@ public class BankController {
 	public ModelAndView completemobilerecharge(@ModelAttribute("transaction") BankTransaction transaction , HttpServletRequest request) {
 	System.out.println("complete gas recharge");
 	User user = (User) session.getAttribute("user");
-	ModelAndView model = new ModelAndView("redirect:/login");
+	ModelAndView model = new ModelAndView("login");
 	 
 	if(user != null){
 		model = new ModelAndView("redirect:/home");
@@ -219,64 +238,76 @@ public class BankController {
 	@RequestMapping("/recharge")
 	public ModelAndView recharge() {
 		System.out.println("in recharge");
-		ModelAndView model=new ModelAndView();
+		ModelAndView model = new ModelAndView("login");
+		
+		User user = (User) session.getAttribute("user");
+		
+		if(user != null) {
+		model=new ModelAndView("recharge");
+		}
 		return model;
 	}
 	
 	@RequestMapping("/dthrecharge")
 	public ModelAndView dthrecharge() {
 		System.out.println("in DTH transaction");
-		BankTransaction transaction = new BankTransaction();
+	
 		User user = (User) session.getAttribute("user");
 		ModelAndView model = new ModelAndView("login");
 		
 		if(user != null) {
 			model=new ModelAndView("dthrecharge");
-			
+			BankTransaction transaction = new BankTransaction();
 			Customer customer = bankService.getCustomerByUser(user);
 			model.addObject("customer", customer);
+			model.addObject("transaction" , transaction);
 		}
-		model.addObject("transaction",transaction);
+		
 		return model;
 	}
 	
 	@RequestMapping("/mobilerecharge")
 	public ModelAndView mobilerecharge() {
 		System.out.println("in mobile transaction");
-		BankTransaction transaction = new BankTransaction();
+		
+		
 		User user = (User) session.getAttribute("user");
 		ModelAndView model = new ModelAndView("login");
 		
 		if(user != null) {
+			BankTransaction transaction = new BankTransaction();
 			model=new ModelAndView("mobilerecharge");
-			
 			Customer customer = bankService.getCustomerByUser(user);
 			model.addObject("customer", customer);
+			model.addObject("transaction",transaction);
 		}
-		model.addObject("transaction",transaction);
+		
 		return model;
 	}
 	
 	@RequestMapping("/electricityrecharge")
 	public ModelAndView electricityrecharge() {
 		System.out.println("in electricity transaction");
-		BankTransaction transaction = new BankTransaction();
+		
 		User user = (User) session.getAttribute("user");
 		ModelAndView model = new ModelAndView("login");
 		
 		if(user != null) {
+			BankTransaction transaction = new BankTransaction();
 			model=new ModelAndView("electricityrecharge");
-			
 			Customer customer = bankService.getCustomerByUser(user);
 			model.addObject("customer", customer);
+			model.addObject("transaction",transaction);
 		}
-		model.addObject("transaction",transaction);
+		
 		return model;
 	}
 	
+	
 	@RequestMapping("/addresssetting")
-	public ModelAndView addresssetting(HttpServletRequest request) {
+	public ModelAndView addresssetting() {
 		System.out.println("in address setting");
+		
 		User user = (User) session.getAttribute("user");
 		ModelAndView model=new ModelAndView("login");
 		
@@ -311,6 +342,7 @@ public class BankController {
 	@RequestMapping("/emailsetting")
 	public ModelAndView emailsetting(HttpServletRequest request) {
 		System.out.println("in email setting");
+		
 		User user = (User) session.getAttribute("user");
 		ModelAndView model = new ModelAndView("login");
 		if(user != null) {
@@ -338,11 +370,10 @@ public class BankController {
 	}
 	
 	
-	
-	
 	@RequestMapping("/mobilesetting")
-	public ModelAndView mobilesetting(HttpServletRequest request) {
+	public ModelAndView mobilesetting() {
 		System.out.println("in moblie number setting");
+		
 		ModelAndView model = new ModelAndView("redirect:/login");
 		User user = (User) session.getAttribute("user");
 		
@@ -354,11 +385,12 @@ public class BankController {
 		return model;
 	}
 	
+	
 	@RequestMapping("/updatemobilenumber")
 	public ModelAndView updatemobilenumber(@ModelAttribute("customer") Customer customers , HttpServletRequest request) {
 		System.out.println("in update mobile number");
 		User user = (User) session.getAttribute("user");
-		ModelAndView model = new ModelAndView("redirect:/login"); 
+		ModelAndView model = new ModelAndView("login"); 
 		if(user != null) {
 			model = new ModelAndView("redirect:/home");
 			Customer customer = bankService.getCustomerByUser(user);
@@ -371,9 +403,16 @@ public class BankController {
 	@RequestMapping("/passwordsetting")
 	public ModelAndView passwordsetting() {
 		System.out.println("in password setting");
-		User user=new User();
-		ModelAndView model=new ModelAndView("passwordsetting");
-		model.addObject("user", user);
+		
+		User user = (User) session.getAttribute("user");
+		ModelAndView model = new ModelAndView("login"); 
+		
+		if(user != null) {
+			
+			model=new ModelAndView("passwordsetting");
+			model.addObject("user", user);
+		 }
+		
 		return model;
 	}
 	
@@ -391,8 +430,7 @@ public class BankController {
 				model = new ModelAndView("redirect:/home");
 				user.setOldUserPassword(user.getUserPassword());
 				user.setUserPassword(users.getUserPassword());
-				System.out.println("user NEW password" + user.getUserPassword() + "      " + "users OLD passowrd"
-						+ user.getOldUserPassword());
+				
 			}
 		}
 		return model;
@@ -402,39 +440,39 @@ public class BankController {
 	
 	
 	@RequestMapping("/generalsetting")
-	public ModelAndView generalsetting( HttpServletRequest request) {
+	public ModelAndView generalsetting() {
 		System.out.println("in general setting");
 		
 		User user = (User) session.getAttribute("user");
-		ModelAndView model = new ModelAndView("redirect:/login");
+		ModelAndView model = new ModelAndView("login");
 		if(user != null) {
-			model=new ModelAndView("redirect:/generalsetting");	
+			model=new ModelAndView("generalsetting");	
 		}
 		
 		return model;
 	}
 	
 	@RequestMapping("/notificationsetting")
-	public ModelAndView notificationsetting(HttpServletRequest request) {
+	public ModelAndView notificationsetting() {
 		System.out.println("in notification setting");
 
 		User user = (User) session.getAttribute("user");
-		ModelAndView model = new ModelAndView("redirect:/login");
+		ModelAndView model = new ModelAndView("login");
 		if (user != null) {
-			model = new ModelAndView("redirect:/notificationsetting");
+			model = new ModelAndView("notificationsetting");
 		}
 		return model;
 	}
 	
 	@RequestMapping("/setting")
-	public ModelAndView setting(HttpServletRequest request) {
+	public ModelAndView setting() {
 		System.out.println("in setting");
 		
 		User user = (User) session.getAttribute("user");
+		ModelAndView model = new ModelAndView("login");
 		
-		ModelAndView model = new ModelAndView("redirect:/login");
 		if(user != null) {
-			model=new ModelAndView("redirect:/setting");	
+			model=new ModelAndView("setting");	
 		}
 		
 			return model;
@@ -474,37 +512,52 @@ public class BankController {
 	@RequestMapping("/loan")
 	public ModelAndView loan() {
 		System.out.println("in loan");
-		Loan loan=new Loan();
-		ModelAndView model=new ModelAndView("loan");
-		model.addObject("loan",loan);
+		ModelAndView model = new ModelAndView("login");
+		User user = (User) session.getAttribute("user");
+		
+		if (user != null) {
+			Loan loan = new Loan();
+			model = new ModelAndView("loan");
+			model.addObject("loan", loan);
+		}
 		return model;
 	}
 	
+	
+	
 	@RequestMapping("/registration")
-	public ModelAndView registration(@ModelAttribute("customer") Customer customer) {
+	public ModelAndView registration(@ModelAttribute("customer") @Valid Customer customer , BindingResult result ) {
 		System.out.println("in registration");
 		System.out.println(customer.getFirstName());
 		ModelAndView model;
 		
+		if(result.hasErrors()) {
+			model = new ModelAndView("signup");
+		}
+		
 		boolean isSuccess = bankService.registerNewCustomer(customer);
-		System.out.println(isSuccess);
+		System.out.println("user sign up successfully "+isSuccess);
 		if(isSuccess)
-			model = new ModelAndView("succ_registration");
+			model = new ModelAndView("redirect:/succ_registration");
 		else
-			model = new ModelAndView("error");
+			model = new ModelAndView("redirect:/error");
+		
 		return model;
 	}
 	
 	@RequestMapping("/succ_registration")
 	public ModelAndView succ_registration(){
 		System.out.println("in succ_registration");
-		ModelAndView model = new ModelAndView("succ_registration");
+		
+       ModelAndView	model = new ModelAndView("succ_registration");
+		
 		return model;
 	}
 	
 	@RequestMapping("/createaccount")
-	public ModelAndView createaccount(HttpServletRequest request) {
+	public ModelAndView createaccount() {
 		System.out.println("in create account");
+		
 		User user = (User) session.getAttribute("user");
 		ModelAndView model = new ModelAndView("login");
 
