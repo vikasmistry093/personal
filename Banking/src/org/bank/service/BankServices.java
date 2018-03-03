@@ -84,7 +84,7 @@ public class BankServices implements IBankServices {
 		 if (newUser == null) {
 			return newUserName;
 		} else {
-			customer.getUser().setUserName(newUserName + customer.getAadharcard().substring(0, 3));
+			  customer.getUser().setUserName(newUserName + customer.getAadharcard().substring(0, 3));
 			isNewUserName(customer);
 		}
 		
@@ -192,6 +192,19 @@ public class BankServices implements IBankServices {
 		
 		else
 			return false;
+	}
+
+	@Override
+	public User isValideOldUser(User user, User users) {
+		// TODO Auto-generated method stub
+		User newUserDetail = dao.getUserByUserNameAndPassword(user.getUserName() , users.getOldUserPassword());
+		
+		if(newUserDetail != null) {
+			return newUserDetail;
+		}
+		
+		return null;
+		
 	}
 
 	

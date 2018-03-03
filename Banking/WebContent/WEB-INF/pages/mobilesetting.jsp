@@ -23,7 +23,7 @@
 				<div class="panel panel-primary">
 					<div class="panel-heading">Mobile Number Setting</div>
 				</div>	
-					<form:form action="${pageContext.request.contextPath}/setting" method="post" modelAttribute="customer" >
+					<form:form action="${pageContext.request.contextPath}/updatemobilenumber" method="post" modelAttribute="customer" >
 					<table>
 						<tr>
 						 	<td style="padding-left: 160px;"></td>
@@ -35,7 +35,7 @@
 							 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 							 
 							<td>
-								<form:input type="number" class="form-control" path="mobileNumber" placeholder="Current Mobile Number" requried="true"/><br>
+								<input type="text" class="form-control" value="${customer.mobileNumber}" placeholder="Current Mobile Number" readonly="readonly"/><br>
 							</td>
 						</tr>
 						
@@ -48,7 +48,7 @@
 							<td></td>
 							
 							<td>
-								<form:input type="number" class="form-control" path="mobileNumber" placeholder="New Mobile Number" requried="true"/><br>
+								<input type="number" class="form-control" placeholder="New Mobile Number" requried="true"/><br>
 							</td>
 						</tr>
 						

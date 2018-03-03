@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="USERS")
@@ -20,11 +21,16 @@ public class User {
 	@Column(name="USER_ID")
 	private long userID;
 	
-	@Column(name="USER_NAME", unique=true)
+	@Column(name="USER_NAME", unique=true )
+	@NotEmpty(message="* Invalid User Name")
 	private String userName;
 	
 	@Column(name="USER_PASSWORD",nullable=false)
+	@NotEmpty(message="* Invalid User Password")
 	private String userPassword;
+	
+	@Column(name="OLD_USER_PASSWORD")
+	private String oldUserPassword; 
 	
 	@Column(name="USER_TYPE",nullable=false)
 	private String userType;
@@ -52,6 +58,14 @@ public class User {
 
 	public String getUserPassword() {
 		return userPassword;
+	}
+	
+	public void setOldUserPassword(String oldUserPassword) {
+		this.oldUserPassword = oldUserPassword;
+	}
+	
+	public String getOldUserPassword() {
+		return oldUserPassword;
 	}
 
 	public void setUserPassword(String userPassword) {

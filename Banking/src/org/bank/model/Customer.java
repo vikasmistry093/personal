@@ -5,7 +5,6 @@ import java.util.*;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,9 +14,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.Constraint;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import java.sql.Timestamp;
 
@@ -31,39 +35,56 @@ public class Customer {
 	private long customerID;
 
 	@Column(name = "SALUTATION", nullable = false)
+	@NotBlank(message="Invalid Salutation")
 	private String salutatn;
+	
+	@Column(name = "GENDER" , nullable= false)
+	@NotBlank(message="Invalid Gender")
+	private String gender;
 
 	@Column(name = "FIRST_NAME", nullable = false)
+	@NotBlank(message="Invalid First Name")
 	private String firstName;
 
 	@Column(name = "MIDDLE_NAME", nullable = false)
+	@NotBlank(message="Invalid Middel Name")
 	private String middleName;
 
 	@Column(name = "LAST_NAME", nullable = false)
+	@NotBlank(message="Invalid Last Name")
 	private String lastName;
 
 	@Column(name = "ADDRESS", nullable = false)
+	@NotBlank(message="Invalid Address")
 	private String address;
 
 	@Column(name = "DOB", nullable = false)
+//	@NotBlank(message="Invalid DOB")
 	private Date dob;
 
 	@Column(name = "EMAIL_ID", nullable = false)
+	@NotBlank(message="Invalid Email")
+	@Email(message="Invalid Email")
 	private String email;
 
 	@Column(name = "MOBILE_NUMBER", nullable = false)
+//	@NotEmpty(message="Invalid DOB")
 	private long mobileNumber;
 
 	@Column(name = "PANCARD", nullable = false)
+	@NotBlank(message="Invalid Pancard")
 	private String pancard;
 
 	@Column(name = "AADHAR_CARD", nullable = false)
+	@NotBlank(message="Invalid Aadharcard")
 	private String aadharcard;
 
 	@Column(name = "NOMINEE_NAME")
+	@NotBlank(message="Invalid Nominee Name")
 	private String nomineeName;
 
 	@Column(name = "NOMINEE_RELATION")
+	@NotBlank(message="Enter Nominee Relation")
 	private String nomineeRelation;
 
 	@CreationTimestamp
@@ -89,6 +110,7 @@ public class Customer {
 	private List<Loan> loans;
 	
 	@Transient
+//	@NotBlank(message="Invalid Account")
 	private Account account;
 
 	
@@ -106,6 +128,14 @@ public class Customer {
 
 	public void setSalutatn(String salutatn) {
 		this.salutatn = salutatn;
+	}
+	
+	public String getGender() {
+		return gender;
+	}
+	
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 	public String getFirstName() {

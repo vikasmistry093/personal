@@ -22,7 +22,7 @@
 				        	<table>
 								<tr>
 									<td align="center">
-									 	<a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/resources/images/successfull.png"  class="img-rounded" alt="notification" width="70%" height="41%"/></a>
+									 	<a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/resources/images/successfull.jpg"  class="img-rounded" alt="notification" width="70%" height="41%"/></a>
 									</td>
 								</tr>
 								

@@ -23,20 +23,20 @@
 				<div class="panel panel-primary">
 					<div class="panel-heading">Email Setting</div>
 				</div>	
-					<form:form action="${pageContext.request.contextPath}/setting" method="post" modelAttribute="customer" >
+					<form:form action="${pageContext.request.contextPath}/updateemail" method="post" modelAttribute="customer" >
 					<table>
 						
 						<tr>
 						 	<td style="padding-left: 160px;"></td>
 							
 							<td>
-								<label>Enter Current Email Address: </label>
+								<label>Current Email Address: </label>
 							</td>
 							
 							 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 							 
 							<td>
-								<form:input type="email" class="form-control" path="email" placeholder="Current Email Address" requried="true"/><br>
+								<input type="text" class="form-control"  value="${customer.email}" readonly="readonly" /><br>
 							</td>
 						</tr>
 						
@@ -49,7 +49,7 @@
 							<td></td>
 							
 							<td>
-								<form:input type="email" class="form-control" path="email" placeholder="New Email Address" requried="true"/><br>
+								<input type="text" class="form-control"  placeholder="New Email Address" /><br>
 							</td>
 						</tr>
 						

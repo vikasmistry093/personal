@@ -24,14 +24,14 @@
 					<div class="panel-heading">Recharge</div>
 					<table>
 						<tr>	
-							 <td align="center" colspan="2"><a href="${pageContext.request.contextPath}/mobilerecharge"><img src="${pageContext.request.contextPath}/resources/images/mobilerecharge.png" class="img-rounded" alt="MobileRecharge" width="35%" height="30%"/></a></td>
-							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/dthrecharge.png"><img src="${pageContext.request.contextPath}/resources/images/Dthrecharge.png" class="img-rounded" alt="DTHRecharge" width="55%" height="30%"/></a></td>
-							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/electricityrecharge"><img src="${pageContext.request.contextPath}/resources/images/electricityrechrge.png" class="img-rounded" alt="OtherRecharge" width="55%" height="30%"/></a></td>
+							 <td align="center" colspan="2"><a href="${pageContext.request.contextPath}/mobilerecharge"><img src="${pageContext.request.contextPath}/resources/images/mobilerecharge.jpg" class="img-rounded" alt="MobileRecharge" width="35%" height="30%"/></a></td>
+							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/dthrecharge.png"><img src="${pageContext.request.contextPath}/resources/images/Dthrecharge.jpg" class="img-rounded" alt="DTHRecharge" width="55%" height="30%"/></a></td>
+							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/electricityrecharge"><img src="${pageContext.request.contextPath}/resources/images/electricityrechrge.jpg" class="img-rounded" alt="OtherRecharge" width="55%" height="30%"/></a></td>
 						</tr>
 						<tr>
 							<td align="center" colspan="2"><h3>Mobile Recharge</h3></td>
 							<td align="center" colspan="2"><h3>DTH Recharge</h3></td>
-							<td align="center" colspan="2"><h3>Gas Recharge</h3></td>
+							<td align="center" colspan="2"><h3>Electricity Recharge</h3></td>
 						</tr>
 						
 					</table>
