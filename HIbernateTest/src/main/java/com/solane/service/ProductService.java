@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.solane.dao.ProductDAO;
+import com.solane.mapper.ProductMapper;
+import com.solane.mapper.model.ProductInfo;
 import com.solane.model.Product;
 
 @Service
@@ -14,17 +16,17 @@ public class ProductService {
 	@Autowired
 	private ProductDAO productDao;
 	
-	public ProductService() {
-	}
+	@Autowired
+	private ProductMapper productMapper;
 	
-	public List<Product> getTopProducts() {
-		List<Product> topProducts = productDao.getTopProducts();
+	public List<ProductInfo> getTopProducts() {
+		List<ProductInfo> topProducts = productMapper.getTopProducts();
 		return topProducts;
 	}
 
-	public Product getProductById(long parseLong) {
-		Product product = productDao.getProductById(parseLong);
-		return product;
+	public ProductInfo getProductById(Long productId) {
+		ProductInfo productInfo = productMapper.getProductById(productId);
+		return productInfo;
 	}
 
 	public void saveDummyProducts(List<Product> productList) {
