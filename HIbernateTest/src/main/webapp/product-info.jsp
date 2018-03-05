@@ -16,7 +16,7 @@
 		<div class="row">
 			<div class="col-sm-4">
 				<div class="sticky-gallery">
-					<img class="img-responsive" src="images/mob-image.jpeg" />
+					<img class="img-responsive" src="images/${product.prouctImages[0].imageURL }" />
 				</div>
 				<div class="m-t-20 text-center">
 					<button type="button"
