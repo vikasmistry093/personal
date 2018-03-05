@@ -1,7 +1,9 @@
 package org.bank.controller;
 
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -554,8 +556,8 @@ public class BankController {
 		return model;
 	}
 	
-	@RequestMapping("/createaccount")
-	public ModelAndView createaccount() {
+	@RequestMapping("/newaccount")
+	public ModelAndView newaccount() {
 		System.out.println("in create account");
 		
 		User user = (User) session.getAttribute("user");
@@ -564,12 +566,36 @@ public class BankController {
 		if(user != null){
 			Customer customer = bankService.getCustomerByUser(user);
 			System.out.println(customer.getFirstName());
-			model=new ModelAndView("createaccount");
+			model=new ModelAndView("newaccount");
 			model.addObject("customer",customer);
 			Account account = new Account();
 			model.addObject("account", account);
+			
 		}
 		return model;
+	}
+	
+	
+	@RequestMapping("/createaccount")
+	public ModelAndView createaccount(@ModelAttribute("account") Account account) {
+		System.out.println("Creating new account of existing user");
+		ModelAndView model = new ModelAndView("login");
+		
+		User user = (User) session.getAttribute("user");
+		
+		if(user != null) {
+			
+			Customer customer = bankService.getCustomerByUser(user);
+			boolean isCreatedNewAccount = bankService.isCreateNewAccount(customer , account);
+			if(isCreatedNewAccount)
+				model = new ModelAndView("redirect:/home");
+			else
+				model = new ModelAndView("redirect:/error");
+		}
+		
+		
+		return model;
+		
 	}
 	
 }

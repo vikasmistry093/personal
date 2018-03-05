@@ -42,7 +42,7 @@ public class BankServices implements IBankServices {
 		// TODO Auto-generated method stub
 		List<Account> accs = new ArrayList<>();
 		Account acc = customer.getAccount();
-		acc.setAccountNumber(ThreadLocalRandom.current().nextLong(1000,5000));
+		acc.setAccountNumber(ThreadLocalRandom.current().nextLong(1000,9999));
 		acc.setBalance(100);
 		accs.add(acc);
 		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
@@ -205,6 +205,29 @@ public class BankServices implements IBankServices {
 		
 		return null;
 		
+	}
+
+	@Override
+	public boolean isCreateNewAccount(Customer customer , Account account) {
+		// TODO Auto-generated method stub
+		List<Account> accounts = customer.getAccounts();
+		
+		Account newAccount = new Account();
+		newAccount.setAccountNumber(ThreadLocalRandom.current().nextLong(1000,9999));
+		newAccount.setBalance(100);
+		newAccount.setAccountType(account.getAccountType());
+		accounts.add(newAccount);
+		customer.setAccounts(accounts);
+		
+		
+		/*List<Account> accs = new ArrayList<>();
+		Account acc = customer.getAccount();
+		acc.setAccountNumber(ThreadLocalRandom.current().nextLong(1000,9999));
+		acc.setBalance(100);
+		accs.add(acc);*/
+		
+		boolean isSuccess = dao.saveCustomer(customer);
+		return isSuccess;
 	}
 
 	

@@ -23,7 +23,7 @@
 					<div class="panel-heading">Apply for account</div>
 				</div>
 				<div class="panel-body">
-					<form:form action="${pageContext.request.contextPath}/home" modelAttribute="account" commandName="account" method="post" >
+					<form:form action="${pageContext.request.contextPath}/createaccount" modelAttribute="account" commandName="account" method="post" >
 						
 						<h3>Welcome,${customer.firstName} ${customer.middleName} ${customer.lastName}</h3><br>
 					
@@ -38,13 +38,14 @@
 						
 						<tr>
 							<td style="padding-left: 250px;">
-								<form:radiobutton path = "accountType"  value = "saving" /><label>Saving Account</label><br>
+								<form:radiobutton path = "accountType" name="accountType" value = "saving" /><label>Saving Account</label><br>
 								
-                  				<form:radiobutton path = "accountType" value = "current"/><label>Current Account</label><br>
+                  				<form:radiobutton path = "accountType" name="accountType" value = "current"/><label>Current Account</label><br>
 							</td>
 						</tr>
 						
 						<tr>
+							<td style="padding-left: 160px;"><form:button type="reset" class="btn btn-default"  style="float: leftt;">Reset</form:button></td>
 							<td style="padding-left: 160px;"><form:button type="submit" class="btn btn-default" onclick="mysuccessalert();" style="float: right;">submit</form:button></td>
 						</tr>			
 							

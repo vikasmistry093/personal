@@ -35,6 +35,8 @@ public interface IBankServices {
 
 	User isValideOldUser(User user, User users);
 
+	boolean isCreateNewAccount(Customer customer , Account account);
+
 
 
 }
