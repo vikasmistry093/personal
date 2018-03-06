@@ -16,7 +16,7 @@ import org.bank.util.BankUtil;
 public class BankServices implements IBankServices {
 	
 	private IBankDao dao = new BankDao();
-	private BankUtil bankUtil = new BankUtil();
+//	private BankUtil bankUtil = new BankUtil();
 	
 	@Override
 	public User isValidUser(User user) {
