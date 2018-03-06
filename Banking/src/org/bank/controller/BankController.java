@@ -331,12 +331,10 @@ public class BankController {
 		
 		if(user != null) {
 			model = new ModelAndView("redirect:/home");
-
-			Customer oldCustomer = bankService.getCustomerByUser(user);
-			oldCustomer.setAddress(customer.getAddress());
+			boolean isAddressUpadated = bankService.isAddressUpdated(user , customer); 
+			if(isAddressUpadated == false) 
+				model = new ModelAndView("redirect:/error");
 		}
-		
-		
 		return model;
 	}
 	
@@ -364,10 +362,10 @@ public class BankController {
 		
 		if(user != null) {
 			model = new ModelAndView("redirect:/home");
-			Customer customer = bankService.getCustomerByUser(user);
-			customer.setEmail(customers.getEmail());
+			boolean isEmailUpadated = bankService.isEmailUpdated(user , customers); 
+			if(isEmailUpadated == false) 
+				model = new ModelAndView("redirect:/error");
 		}
-		
 		return model;
 	}
 	
@@ -381,7 +379,7 @@ public class BankController {
 		
 		if(user != null) {
 		model = new ModelAndView("mobilesetting");
-		Customer customer=new Customer();
+		Customer customer = bankService.getCustomerByUser(user);
 		model.addObject("customer", customer);
 		}
 		return model;
@@ -395,9 +393,10 @@ public class BankController {
 		ModelAndView model = new ModelAndView("login"); 
 		if(user != null) {
 			model = new ModelAndView("redirect:/home");
-			Customer customer = bankService.getCustomerByUser(user);
-			customer.setMobileNumber(customers.getMobileNumber());
-		 }
+			boolean isMobileUpadated = bankService.isMobileUpadated(user , customers); 
+			if(isMobileUpadated == false) 
+				model = new ModelAndView("redirect:/error");
+		}
 		return model;
 	}
 	
@@ -430,16 +429,14 @@ public class BankController {
 			User newUser = bankService.isValideOldUser(user, users);
 			if (newUser != null) {
 				model = new ModelAndView("redirect:/home");
-				user.setOldUserPassword(user.getUserPassword());
-				user.setUserPassword(users.getUserPassword());
-				
+				boolean isPasswordUpadted = bankService.isPasswordUpdated(user , users);
+				if(isPasswordUpadted == false)
+					model = new ModelAndView("redirect:/error");
 			}
 		}
 		return model;
+		
 	}
-	
-	
-	
 	
 	@RequestMapping("/generalsetting")
 	public ModelAndView generalsetting() {
@@ -586,8 +583,8 @@ public class BankController {
 		if(user != null) {
 			
 			Customer customer = bankService.getCustomerByUser(user);
-			boolean isCreatedNewAccount = bankService.isCreateNewAccount(customer , account);
-			if(isCreatedNewAccount)
+			boolean isNewAccountCreated = bankService.isNewAccountCreated(customer , account);
+			if(isNewAccountCreated)
 				model = new ModelAndView("redirect:/home");
 			else
 				model = new ModelAndView("redirect:/error");

@@ -76,7 +76,7 @@
 							</td>
 							
 							<td>
-								<input type="text" class="form-control" name="email" value="${customer.email}" readonly="readonly">
+								<input type="text" class="form-control" name="email" value="${customer.email}" readonly="readonly"><br>
 							</td>
 							
 						</tr>
@@ -92,7 +92,7 @@
 							</td>
 							
 							<td>
-								<input type="text" class="form-control" name="aadharcard" value="${customer.aadharcard}" readonly="readonly">
+								<input type="text" class="form-control" name="aadharcard" value="${customer.aadharcard}" readonly="readonly"><br>
 							</td>
 							
 							<td></td>
@@ -102,7 +102,7 @@
 							</td>
 							
 							<td>
-								<input type="text" class="form-control" name="pancard" value="${customer.pancard}" readonly="readonly">
+								<input type="text" class="form-control" name="pancard" value="${customer.pancard}" readonly="readonly"><br>
 							</td>
 						</tr>
 						
@@ -116,7 +116,7 @@
 							</td>
 							
 							<td>
-								<input type="text" class="form-control" name="nomineeName" value="${customer.nomineeName}" readonly="readonly">
+								<input type="text" class="form-control" name="nomineeName" value="${customer.nomineeName}" readonly="readonly"><br>
 							</td>
 							
 							<td></td>
