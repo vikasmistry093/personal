@@ -2,30 +2,36 @@ package org.bank.util;
 
 
 import javax.mail.internet.MimeMessage;
-import javax.servlet.http.HttpServletRequest;
 
 import org.bank.model.Customer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
-
+import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 public class BankUtil {
+	
+	/*static String emailToRecipient ="akashmistry097@gmailcom", emailSubject ="testing" , emailMessage ="hey ! the mail is send";
+	static final String emailFromRecipient = "mistrykaushal097@gmail.com";
+*/
+	@Autowired
+	static JavaMailSender mailSenderObj;
+	
+	public static boolean isMailSendToCustomer(Customer customer) {
+		// TODO Auto-generated method stub
+		final String emailToRecipient ="akashmistry097@gmailcom", emailSubject ="testing" , emailMessage ="hey ! the mail is send";
+		 final String emailFromRecipient = "mistrykaushal097@gmail.com";
 
-	@SuppressWarnings("null")
-	public static void sendEmailToCustomer(Customer customer) {
+	
+//		 final JavaMailSender mailSenderObj;
+
 		
-		final String emailToRecipient = customer.getEmail();
-		final String emailSubject="Validation";
-		final String emailMessage="hi this is test";
-		final String emailFromRecipient = "akashmistry097@gmail.com";
-
-		JavaMailSender mailSenderObj = null;
-		// Reading Email Form Input Parameters
-//		emailSubject = request.getParameter("subject");
-//		emailMessage = request.getParameter("message");
-//		emailToRecipient = request.getParameter("mailTo");
-
-		// Logging The Email Form Parameters For Debugging Purpose
+		
 		System.out.println("\nReceipient?= " + emailToRecipient + ", Subject?= " + emailSubject + ", Message?= "
 				+ emailMessage + "\n");
 
@@ -36,23 +42,15 @@ public class BankUtil {
 				mimeMsgHelperObj.setFrom(emailFromRecipient);
 				mimeMsgHelperObj.setText(emailMessage);
 				mimeMsgHelperObj.setSubject(emailSubject);
-
-				// Determine If There Is An File Upload. If Yes, Attach It To The Client Email
-				/*
-				 * if ((attachFileObj != null) && (attachFileObj.getSize() > 0) &&
-				 * (!attachFileObj.equals(""))) { System.out.println("\nAttachment Name?= " +
-				 * attachFileObj.getOriginalFilename() + "\n");
-				 * mimeMsgHelperObj.addAttachment(attachFileObj.getOriginalFilename(), new
-				 * InputStreamSource() { public InputStream getInputStream() throws IOException
-				 * { return attachFileObj.getInputStream(); } }); } else { System.out.
-				 * println("\nNo Attachment Is Selected By The User. Sending Text Email!\n"); }
-				 */
+				
 			}
 		});
 		System.out.println("\nMessage Send Successfully.... Hurrey!\n");
-		// modelViewObj = new ModelAndView("home", "messageObj", "Thank You! Your Email
-		// Has Been Sent!");
-		// return modelViewObj;
+		
+		return true;
 	}
+
+	
+
 
 }

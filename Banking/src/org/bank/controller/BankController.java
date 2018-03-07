@@ -1,19 +1,13 @@
 package org.bank.controller;
 
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
-import javax.mail.internet.MimeMessage;
-import javax.servlet.RequestDispatcher;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.apache.catalina.connector.Request;
 import org.bank.model.Account;
 import org.bank.model.Customer;
 import org.bank.model.Loan;
@@ -22,20 +16,12 @@ import org.bank.model.User;
 import org.bank.service.BankServices;
 import org.bank.service.IBankServices;
 import org.bank.util.BankUtil;
-import org.hibernate.Hibernate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamSource;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.mail.javamail.MimeMessagePreparator;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -101,7 +87,11 @@ public class BankController {
 			model = new ModelAndView("home");
 			Customer customer = bankService.getCustomerByUser(userDetail);
 			
-			BankUtil.sendEmailToCustomer(customer);
+			boolean isMailSend = BankUtil.isMailSendToCustomer(customer);
+			
+			if(isMailSend)
+				System.out.println("----Mail send to customer----");
+			
 			model.addObject("customer", customer);
 		}
 
@@ -610,57 +600,7 @@ public class BankController {
 		
 	}
 	
-    /*@RequestMapping("/sendEmailToClient")
     
-    public ModelAndView sendEmailToClient(HttpServletRequest request, final @RequestParam CommonsMultipartFile attachFileObj) {
-    	
-		final String emailToRecipient;
-		final String emailSubject;
-		final String emailMessage;
-		final String emailFromRecipient = "<!-- Source Email Address -->";
-
-		ModelAndView modelViewObj;
-
-		JavaMailSender mailSenderObj = null;
-		// Reading Email Form Input Parameters
-		emailSubject = request.getParameter("subject");
-		emailMessage = request.getParameter("message");
-		emailToRecipient = request.getParameter("mailTo");
-
-		// Logging The Email Form Parameters For Debugging Purpose
-		System.out.println("\nReceipient?= " + emailToRecipient + ", Subject?= " + emailSubject + ", Message?= "
-				+ emailMessage + "\n");
-
-		mailSenderObj.send(new MimeMessagePreparator() {
-			public void prepare(MimeMessage mimeMessage) throws Exception {
-				MimeMessageHelper mimeMsgHelperObj = new MimeMessageHelper(mimeMessage, true, "UTF-8");
-				mimeMsgHelperObj.setTo(emailToRecipient);
-				mimeMsgHelperObj.setFrom(emailFromRecipient);
-				mimeMsgHelperObj.setText(emailMessage);
-				mimeMsgHelperObj.setSubject(emailSubject);
-
-				// Determine If There Is An File Upload. If Yes, Attach It To The Client Email
-				if ((attachFileObj != null) && (attachFileObj.getSize() > 0) && (!attachFileObj.equals(""))) {
-					System.out.println("\nAttachment Name?= " + attachFileObj.getOriginalFilename() + "\n");
-					mimeMsgHelperObj.addAttachment(attachFileObj.getOriginalFilename(), new InputStreamSource() {
-						public InputStream getInputStream() throws IOException {
-							return attachFileObj.getInputStream();
-						}
-					});
-				} else {
-					System.out.println("\nNo Attachment Is Selected By The User. Sending Text Email!\n");
-				}
-			}
-		});
-		System.out.println("\nMessage Send Successfully.... Hurrey!\n");
-		modelViewObj = new ModelAndView("home", "messageObj", "Thank You! Your Email Has Been Sent!");
-		return modelViewObj;
-	   }
-	
-	
-	
-	*/
-	
 }
 	
 
