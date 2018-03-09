@@ -21,32 +21,30 @@ public class Loan {
 	@Column(name="LOAN_ID")
 	private long loanId;
 	
-	@Column(name="LOAN_AMOUNT",nullable=false)
+	@Column(name="LOAN_AMOUNT")
 	private Double loanAmount;
 	
-	@Column(name="LOAN_TYPE", nullable=false)
+	@Column(name="LOAN_TYPE")
 	private String loanType;
 	
-	@Column(name="LOAN_PERIOD", nullable=false )
+	@Column(name="LOAN_PERIOD" )
 	private int loanPeriod;
 	
-	@Column(name="LOAN_DOCUMENT" ,nullable=false)
+	@Column(name="LOAN_DOCUMENT")
 	private String loanDocument;
 	
-	@Column(name="LOAN_STATUS", nullable=false)
+	@Column(name="LOAN_STATUS")
 	private String loanStatus;
 	
-	@Column(name="LOAN_EMI", nullable=false )
+	@Column(name="LOAN_EMI" )
 	private float loanEmi;
 	
-	@Column(name="STATUS", nullable=false)
+	@Column(name="STATUS")
 	private String status;
 	
 	@CreationTimestamp
 	@Column(name="CREATED_LOAN_TS")
 	private Timestamp createdTimestamp;
-	
-	public Loan() { }
 
 	public long getLoanId() {
 		return loanId;
@@ -119,5 +117,8 @@ public class Loan {
 	public void setCreatedTimestamp(Timestamp createdTimestamp) {
 		this.createdTimestamp = createdTimestamp;
 	}
-
+	
+	
+	
+	
 }

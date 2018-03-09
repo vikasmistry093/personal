@@ -9,14 +9,12 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.bank.model.Account;
+import org.bank.model.BankTransaction;
 import org.bank.model.Customer;
 import org.bank.model.Loan;
-import org.bank.model.BankTransaction;
 import org.bank.model.User;
 import org.bank.service.BankServices;
 import org.bank.service.IBankServices;
-import org.bank.util.BankUtil;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -87,10 +85,10 @@ public class BankController {
 			model = new ModelAndView("home");
 			Customer customer = bankService.getCustomerByUser(userDetail);
 			
-			boolean isMailSend = BankUtil.isMailSendToCustomer(customer);
+			//boolean isMailSend = BankUtil.isMailSendToCustomer(customer);
 			
-			if(isMailSend)
-				System.out.println("----Mail send to customer----");
+//			if(isMailSend)
+//				System.out.println("----Mail send to customer----");
 			
 			model.addObject("customer", customer);
 		}
@@ -594,12 +592,17 @@ public class BankController {
 			else
 				model = new ModelAndView("redirect:/error");
 		}
-		
-		
 		return model;
-		
 	}
 	
+	@RequestMapping("/forgetpassword")
+	public ModelAndView forgetpassword() {
+		System.out.println("In forget Password");
+		User user = new User();
+		ModelAndView model = new ModelAndView("forgetpassword");
+		model.addObject("user", user);
+		return model;
+	}
     
 }
 	

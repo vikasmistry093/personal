@@ -22,30 +22,26 @@
 				
 			<div class="col-sm-4">
 				<div class="panel panel-primary">
-					<div class="panel-heading">USER LOGIN </div>
+					<div class="panel-heading">Forget Password ?</div>
 				</div>
 				
-				 	<form:form action="${pageContext.request.contextPath}/checkuser" modelAttribute="user" commandName="user" method="post" >
+				 	<form:form action="${pageContext.request.contextPath}/" modelAttribute="user" commandName="user" method="post" >
 					
-     					 <label>User name:</label>
-						 <form:input type="text" class="form-control" path="userName"  placeholder="User Name" />
+     					 <label>Enter User name:</label>
+						 <form:input type="text" class="form-control" path="userName" name="userName" placeholder="User Name" />
 						 <form:errors path="userName" cssClass="error"/>
 					
 					<br>
 					
-      					<label>Password:</label>
-						<form:input type="password" class="form-control" path="userPassword"  placeholder="Password"/>
+      					<label>Enter Email Address</label>
+						<form:input type="email" class="form-control" path="userPassword" name="userPassword" placeholder="Registered Email Address"/>
 						<form:errors path="userPassword" cssClass="error" />
 					
 					<br>
 					
-					<a href="${pageContext.request.contextPath}/forgetpassword" >Forget Password ?</a><br>
-					
-					
-					
 				    
-					<form:button type="button" class="btn btn-default" style="float: left;" onclick="getSignUpPage();">Sign Up</form:button> 
-			    	<form:button type="submit" class="btn btn-default" style="float: right;"  >Login</form:button>
+					<form:button type="reset" class="btn btn-default" style="float: left;">Reset</form:button> 
+			    	<form:button type="submit" class="btn btn-default" style="float: right;">Submit</form:button>
 				</form:form>
 	 		</div>
 			<div class="col-sm-4">

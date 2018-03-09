@@ -1,6 +1,8 @@
 package org.bank.model;
 
-import java.util.*;
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,17 +15,16 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-import javax.validation.Constraint;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
-
-import java.sql.Timestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "CUSTOMER")
@@ -57,7 +58,10 @@ public class Customer {
 	@Column(name = "ADDRESS", nullable = false)
 	@NotBlank(message="Invalid Address")
 	private String address;
-
+	
+//	@Type(type="date")
+//	@Temporal(TemporalType.DATE)
+//	@DateTimeFormat(pattern = "mm/dd/yyyy")
 	@Column(name = "DOB", nullable = false)
 //	@NotBlank(message="Invalid DOB")
 	private Date dob;

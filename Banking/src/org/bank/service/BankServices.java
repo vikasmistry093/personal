@@ -42,7 +42,8 @@ public class BankServices implements IBankServices {
 		// TODO Auto-generated method stub
 		List<Account> accs = new ArrayList<>();
 		Account acc = customer.getAccount();
-		acc.setAccountNumber(ThreadLocalRandom.current().nextLong(1000,9999));
+//		acc.setAccountNumber(ThreadLocalRandom.current().nextLong(1000,9999));
+		acc.setAccountNumber(isNewAccount());
 		acc.setBalance(100);
 		accs.add(acc);
 		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
@@ -213,7 +214,8 @@ public class BankServices implements IBankServices {
 		List<Account> accounts = customer.getAccounts();
 		
 		Account newAccount = new Account();
-		newAccount.setAccountNumber(ThreadLocalRandom.current().nextLong(1000,9999));
+//		newAccount.setAccountNumber(ThreadLocalRandom.current().nextLong(1000,9999));
+		newAccount.setAccountNumber(isNewAccount());
 		newAccount.setBalance(100);
 		newAccount.setAccountType(account.getAccountType());
 		accounts.add(newAccount);
@@ -221,6 +223,20 @@ public class BankServices implements IBankServices {
 		
 		boolean isSuccess = dao.saveCustomer(customer);
 		return isSuccess;
+	}
+
+	private long isNewAccount() {
+		// TODO Auto-generated method stub
+		long newAccountNumber;
+		while(true) {
+			 newAccountNumber = ThreadLocalRandom.current().nextLong(1000,9999);
+			boolean isValidAccountNumber = dao.isValidAccountNumber(newAccountNumber);
+			if(isValidAccountNumber == false) {
+				break;
+			}
+		}
+		
+		return newAccountNumber;
 	}
 
 	@Override

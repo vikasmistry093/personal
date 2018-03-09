@@ -12,8 +12,7 @@
 
 		</div>
 		<ul class="nav navbar-nav" style="float: right;">
-			<li style="color: white;">Welcome, Akash Mistry<br />Last Login: 27th Dec 2017,
-				5:30pm
+			<li style="color: white;">Welcome,${customer.firstName} ${customer.middleName} ${customer.lastName}.<br />${customer.updateTimestamp }
 			</li>
 			<li class="active"><a href="${pageContext.request.contextPath}/">Logout</a></li>
 		</ul>

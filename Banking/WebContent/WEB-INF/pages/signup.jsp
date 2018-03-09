@@ -32,7 +32,7 @@
 							</td>
 							<td>	
 			  					<form:radiobutton path="salutatn" name="salutation" value="Mr"/> Mr &nbsp;
-			  					<form:radiobutton path="salutatn" name="salutation" value="Ms"/> Ms <br>
+			  					<form:radiobutton path="salutatn" name="salutation" value="Ms"/> Ms 
 			  					<form:errors path="salutatn" cssClass="error"/>
 			  				</td>
 			  				
@@ -41,8 +41,8 @@
 			  				</td>
 			  				<td>
 			  					<form:radiobutton path="gender" name="gender" value="Mr"/>Male &nbsp;
-			  					<form:radiobutton path="gender" name="gender" value="Ms"/>Female <br>
-			  					<form:errors path="gender" cssClass="error"/>
+			  					<form:radiobutton path="gender" name="gender" value="Ms"/>Female 
+			  					<form:errors path="gender" cssClass="error"/><br>
 			  				</td>
 						</tr>
 
@@ -52,8 +52,8 @@
 							</td>
 							<td colspan="3">
 								<form:radiobutton path="account.accountType" name="accountType" value="current"/> Current &nbsp;
-								<form:radiobutton path="account.accountType" name="accountType" value="saving"/> Saving<br>
-								<form:errors path="account.accountType" cssClass="error"/>
+								<form:radiobutton path="account.accountType" name="accountType" value="saving"/> Saving
+								<form:errors path="account.accountType" cssClass="error"/><br>
 							</td>
 						</tr>
 											
@@ -81,7 +81,7 @@
 								<label>Mobile No: </label>
 							</td>
 							<td colspan="3">
-								<form:input type="number" class="form-control" path="mobileNumber" placeholder="Mobile Number" requried="true"/>
+								<form:input type="tel" class="form-control" path="mobileNumber" placeholder="Mobile Number" requried="true"/>
 								<form:errors path="mobileNumber" cssClass="error"/><br>
 							</td>
 						</tr>
@@ -91,7 +91,7 @@
 								<label>Date Of Birth: </label>
 							</td>
 							<td colspan="3">
-								<form:input class="form-control" path="dob" placeholder="Date Of Birth" requried="true"/>
+								<form:input  class="form-control" path="dob" placeholder="Date Of Birth" requried="true"/>
 								<form:errors path="dob" cssClass="error"/><br>
 							</td>
 						</tr>
