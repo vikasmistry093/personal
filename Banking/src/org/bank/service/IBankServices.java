@@ -35,7 +35,15 @@ public interface IBankServices {
 
 	User isValideOldUser(User user, User users);
 
-	boolean isCreateNewAccount(Customer customer , Account account);
+	boolean isNewAccountCreated(Customer customer , Account account);
+
+	boolean isAddressUpdated(User user, Customer customer);
+
+	boolean isEmailUpdated(User user, Customer customers);
+
+	boolean isMobileUpadated(User user, Customer customers);
+
+	boolean isPasswordUpdated(User user, User users);
 
 
 

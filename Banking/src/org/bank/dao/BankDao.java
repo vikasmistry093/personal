@@ -154,5 +154,24 @@ public class BankDao implements IBankDao {
 		return transactionDetails;
 	}
 
+	@Override
+	public boolean isValidAccountNumber(long nextLong) {
+		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSession();
+		transaction = session.beginTransaction();
+		Account newAccountNUmber = null;
+		Query query = session.createQuery("from Account where accountNumber=:accountNumber");
+		query.setLong("accountNumber", nextLong);
+		newAccountNUmber = (Account) query.uniqueResult();
+		
+		if(newAccountNUmber !=null) {
+			transaction.commit();
+			return true;
+		}
+		
+		transaction.commit();
+		return false;
+	}
+
 
 }

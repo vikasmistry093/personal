@@ -35,7 +35,7 @@
 							 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 							 
 							<td>
-								<input type="text" class="form-control" value="${customer.mobileNumber}" placeholder="Current Mobile Number" readonly="readonly"/><br>
+								<input type="text" class="form-control"  value="${customer.mobileNumber}" readonly="readonly" /><br>
 							</td>
 						</tr>
 						

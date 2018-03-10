@@ -29,6 +29,8 @@ public interface IBankDao {
 
 	List<BankTransaction> getTrasactionByAccountNumber(String accountNumber);
 
+	boolean isValidAccountNumber(long nextLong);
+
 	
 
 

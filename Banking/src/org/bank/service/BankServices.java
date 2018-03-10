@@ -16,7 +16,7 @@ import org.bank.util.BankUtil;
 public class BankServices implements IBankServices {
 	
 	private IBankDao dao = new BankDao();
-	private BankUtil bankUtil = new BankUtil();
+//	private BankUtil bankUtil = new BankUtil();
 	
 	@Override
 	public User isValidUser(User user) {
@@ -42,7 +42,8 @@ public class BankServices implements IBankServices {
 		// TODO Auto-generated method stub
 		List<Account> accs = new ArrayList<>();
 		Account acc = customer.getAccount();
-		acc.setAccountNumber(ThreadLocalRandom.current().nextLong(1000,9999));
+//		acc.setAccountNumber(ThreadLocalRandom.current().nextLong(1000,9999));
+		acc.setAccountNumber(isNewAccount());
 		acc.setBalance(100);
 		accs.add(acc);
 		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
@@ -208,27 +209,78 @@ public class BankServices implements IBankServices {
 	}
 
 	@Override
-	public boolean isCreateNewAccount(Customer customer , Account account) {
+	public boolean isNewAccountCreated(Customer customer , Account account) {
 		// TODO Auto-generated method stub
 		List<Account> accounts = customer.getAccounts();
 		
 		Account newAccount = new Account();
-		newAccount.setAccountNumber(ThreadLocalRandom.current().nextLong(1000,9999));
+//		newAccount.setAccountNumber(ThreadLocalRandom.current().nextLong(1000,9999));
+		newAccount.setAccountNumber(isNewAccount());
 		newAccount.setBalance(100);
 		newAccount.setAccountType(account.getAccountType());
 		accounts.add(newAccount);
 		customer.setAccounts(accounts);
 		
-		
-		/*List<Account> accs = new ArrayList<>();
-		Account acc = customer.getAccount();
-		acc.setAccountNumber(ThreadLocalRandom.current().nextLong(1000,9999));
-		acc.setBalance(100);
-		accs.add(acc);*/
-		
 		boolean isSuccess = dao.saveCustomer(customer);
 		return isSuccess;
 	}
 
+	private long isNewAccount() {
+		// TODO Auto-generated method stub
+		long newAccountNumber;
+		while(true) {
+			 newAccountNumber = ThreadLocalRandom.current().nextLong(1000,9999);
+			boolean isValidAccountNumber = dao.isValidAccountNumber(newAccountNumber);
+			if(isValidAccountNumber == false) {
+				break;
+			}
+		}
+		
+		return newAccountNumber;
+	}
+
+	@Override
+	public boolean isAddressUpdated(User user, Customer customer) {
+		// TODO Auto-generated method stub
+		Customer oldCustomer = getCustomerByUser(user);
+		if(oldCustomer != null) {
+			oldCustomer.setAddress(customer.getAddress());
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean isEmailUpdated(User user, Customer customers) {
+		// TODO Auto-generated method stub
+		Customer oldCustomer = getCustomerByUser(user);
+		if(oldCustomer != null) {
+			oldCustomer.setEmail(customers.getEmail());
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean isMobileUpadated(User user, Customer customers) {
+		// TODO Auto-generated method stub
+		Customer oldCustomer = getCustomerByUser(user);
+		if(oldCustomer != null) {
+			oldCustomer.setMobileNumber(customers.getMobileNumber());
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean isPasswordUpdated(User user, User users) {
+		// TODO Auto-generated method stub
+		user.setOldUserPassword(user.getUserPassword());
+		user.setUserPassword(users.getUserPassword());
+		return true;
+	}
+	
+	
+	
 	
 }

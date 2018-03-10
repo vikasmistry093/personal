@@ -51,12 +51,7 @@
 		
 		<!-- dependency to send email -->
 		
-		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.4.7</version>
-		</dependency>
-
+		
 		<!-- Servlet JSP Dependencies -->
 		<dependency>
 			<groupId>javax.servlet</groupId>

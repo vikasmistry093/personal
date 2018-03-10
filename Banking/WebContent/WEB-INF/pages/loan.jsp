@@ -28,67 +28,73 @@
 						<tr>
 							<td style="padding-left: 160px;"></td>
 
-							<td><label> Loan Type:</label></td>
+							<td><label> Loan Type:</label><br><br></td>
 
 							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 
 							<td>
-							<form:select path="loantype">
+							<form:select path="loanType">
+								<form:option value="default" selected="selected">--- Select ---</form:option>
 								<form:option value="personalloan">Personal Loan</form:option>
-								<form:option value="carloan">Car Loan</form:option>
-							</form:select><br>
+								<form:option value="carloan">Car Loan</form:option>			
+							</form:select><br><br>
 							</td>
 
 						</tr>
-
+						
 						<tr>
 							<td></td>
 
-							<td><label>Loan Amount:</label></td>
+							<td><label>Loan Amount:</label><br><br></td>
 
 							<td></td>
 
 							<td><form:input type="number" class="form-control"
-									path="loanamount" placeholder="Amount" size="10"
-									requried="true" /><br>
+									path="loanAmount" placeholder="Amount" size="10"
+									requried="true" /><br><br>
 							</td>
 						</tr>
 
 						<tr>
 							<td></td>
 
-							<td><label>Loan Period:</label></td>
+							<td><label>Loan Period:</label><br><br></td>
 
 							<td></td>
 
 							<td>
-							<form:select path="loanperiod">
+							<form:select path="loanPeriod">
+								<form:option value="0" selected="selected">--- Select ---</form:option>
 								<form:option value="1">1</form:option>
 								<form:option value="2">2</form:option>
 								<form:option value="5">5</form:option>
 								<form:option value="10">10</form:option>
-								<form:option value="15">15</form:option>
-							</form:select><br>
+								<form:option value="15">15</form:option>		
+							</form:select><br><br>
 							</td>
 						</tr>
 
 						<tr>
 							<td></td>
 
-							<td><label>Upload Document:</label></td>
+							<td><label>Upload Document:</label><br><br></td>
 
 							<td></td>
 
 							<td>
-							<form:input type="file"  name="loandocument" accept="images/*"  path="loandocument"/><br>
+							<form:input type="file"  name="loanDocument" accept="images/*"  path="loanDocument"/><span class="glyphicon glyphicon-search"></span> Search<br><br>
+													
+    
 							</td>
 						</tr>
 
 						<tr>
 							<td></td>
+							
 							<td align="center"><input type="reset"
 								class="btn btn-default" value="RESET" /></td>
 							<td></td>
+							
 							<td align="center"><input type="submit"
 								class="btn btn-default" onclick="mysuccessalert();"
 								value="SUBMIT" /></td>
