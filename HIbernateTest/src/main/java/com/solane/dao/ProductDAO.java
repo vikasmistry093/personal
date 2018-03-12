@@ -41,4 +41,8 @@ public class ProductDAO {
 			getSession().save(p);
 	}
 
+	public void save(Product product) {
+		getSession().save(product);
+	}
+
 }

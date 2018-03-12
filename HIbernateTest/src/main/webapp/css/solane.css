@@ -1,0 +1,59 @@
+@CHARSET "ISO-8859-1";
+html, body {
+	height: 100%;
+}
+
+.main-container {
+	height: 100%;
+	padding: 40px 0px;
+	margin-top: -70px;
+}
+
+.uploadProductForm {
+	width: 100%;
+	padding: 0px 190px;
+	line-height: 2;
+}
+
+.admin-sidebar {
+	min-height: 100%;
+	float: left;
+	width: 15%;
+	margin-bottom: 50px;
+}
+
+.admin-main-body {
+	min-height: 100%;
+	float: right;
+	width: 85%;
+}
+
+.logoImage {
+	width: 100%;
+	height: 100%;
+	padding: 20px 20px;
+}
+
+.admin-header, .admin-footer{
+	width: 100%;
+	position: fixed;        
+	background: #333;
+	padding: 10px 0;
+	text-align: center;
+	color: #fff;
+	z-index: 10;
+}
+
+.admin-header > h4, .admin-footer > h4 {
+	display: inline;
+}
+
+.admin-header{
+	top: 0;
+	height: 50px;
+}
+
+.admin-footer{
+	bottom: 0;
+	height: 50px;
+}

@@ -13,6 +13,7 @@ public class ProductInfo {
 	private String features;
 	private Integer rating;
 	private List<CategoryInfo> productCategory;
+	private String[] category;
 	private List<ImageInfo> prouctImages;
 	private String status;
 	private Timestamp createdTimestamp;
@@ -20,8 +21,8 @@ public class ProductInfo {
 	
 	public ProductInfo(){}
 	
-	public ProductInfo(Long productId, String productTitle, double price, double discount, String description,
-			String features, int rating, List<CategoryInfo> productCategory, List<ImageInfo> prouctImages, String status,
+	public ProductInfo(Long productId, String productTitle, Double price, Double discount, String description,
+			String features, Integer rating, List<CategoryInfo> productCategory, String[] category, List<ImageInfo> prouctImages, String status,
 			Timestamp createdTimestamp, Timestamp updatedTimestamp) {
 		super();
 		this.productId = productId;
@@ -32,6 +33,7 @@ public class ProductInfo {
 		this.features = features;
 		this.rating = rating;
 		this.productCategory = productCategory;
+		this.category = category;
 		this.prouctImages = prouctImages;
 		this.status = status;
 		this.createdTimestamp = createdTimestamp;
@@ -54,7 +56,7 @@ public class ProductInfo {
 		this.productTitle = productTitle;
 	}
 
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
@@ -62,7 +64,7 @@ public class ProductInfo {
 		this.price = price;
 	}
 
-	public double getDiscount() {
+	public Double getDiscount() {
 		return discount;
 	}
 
@@ -86,11 +88,11 @@ public class ProductInfo {
 		this.features = features;
 	}
 
-	public int getRating() {
+	public Integer getRating() {
 		return rating;
 	}
 
-	public void setRating(int rating) {
+	public void setRating(Integer rating) {
 		this.rating = rating;
 	}
 
@@ -100,6 +102,14 @@ public class ProductInfo {
 
 	public void setProductCategory(List<CategoryInfo> productCategory) {
 		this.productCategory = productCategory;
+	}
+	
+	public String[] getCategory() {
+		return category;
+	}
+	
+	public void setCategory(String[] category) {
+		this.category = category;
 	}
 
 	public List<ImageInfo> getProuctImages() {

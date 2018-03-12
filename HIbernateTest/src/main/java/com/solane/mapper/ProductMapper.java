@@ -31,15 +31,37 @@ public class ProductMapper {
 		productInfo.setStatus(product.getStatus());
 		productInfo.setCreatedTimestamp(product.getCreatedTimestamp());
 		productInfo.setUpdatedTimestamp(product.getUpdatedTimestamp());
-		product.getProductCategory();
 		productInfo.setProductCategory(CategoryMapper.convertIntoCategoryInfoList(product.getProductCategory()));
 		productInfo.setProuctImages(ImageMapper.convertIntoImageInfoList(product.getProuctImages()));
 		return productInfo;
 	}
 	
+	public static Product convertIntoProduct(ProductInfo productInfo) {
+		Product product = new Product();
+		product.setProductId(productInfo.getProductId());
+		product.setProductTitle(productInfo.getProductTitle());
+		product.setPrice(productInfo.getPrice());
+		product.setDiscount(productInfo.getDiscount() != null ? productInfo.getDiscount() : 0D);
+		product.setDescription(productInfo.getDescription());
+		product.setFeatures(productInfo.getFeatures());
+		product.setRating(productInfo.getRating() != null ? productInfo.getRating() : 0);
+		product.setStatus(productInfo.getStatus());
+		product.setCreatedTimestamp(productInfo.getCreatedTimestamp());
+		product.setUpdatedTimestamp(productInfo.getUpdatedTimestamp());
+		product.setProductCategory(CategoryMapper.convertIntoCategoryList(productInfo.getProductCategory()));
+		product.setProuctImages(ImageMapper.convertIntoImageList(productInfo.getProuctImages()));
+		return product;
+	}
+	
 	public List<ProductInfo> convertIntoProductInfoList(List<Product> products) {
 		return products.stream()
 				.map(ProductMapper::convertIntoProductInfo)
+				.collect(Collectors.toList());
+	}
+	
+	public List<Product> convertIntoProductList(List<ProductInfo> products) {
+		return products.stream()
+				.map(ProductMapper::convertIntoProduct)
 				.collect(Collectors.toList());
 	}
 	
@@ -51,6 +73,12 @@ public class ProductMapper {
 	public ProductInfo getProductById(Long productId) {
 		Product product = productDao.getProductById(productId);
 		return convertIntoProductInfo(product);
+	}
+
+	public void saveProductInfo(ProductInfo productInfo) {
+		Product product = convertIntoProduct(productInfo);
+		productDao.save(product);
+		
 	}
 
 }

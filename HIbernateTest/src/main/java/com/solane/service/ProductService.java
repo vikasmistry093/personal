@@ -1,14 +1,22 @@
 package com.solane.service;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.solane.constants.SolaneConstants;
 import com.solane.dao.ProductDAO;
+import com.solane.mapper.CategoryMapper;
 import com.solane.mapper.ProductMapper;
+import com.solane.mapper.model.CategoryInfo;
+import com.solane.mapper.model.ImageInfo;
 import com.solane.mapper.model.ProductInfo;
 import com.solane.model.Product;
+import com.solane.util.SolaneUtils;
 
 @Service
 public class ProductService {
@@ -18,6 +26,9 @@ public class ProductService {
 	
 	@Autowired
 	private ProductMapper productMapper;
+	
+	@Autowired
+	private CategoryMapper categoryMapper;
 	
 	public List<ProductInfo> getTopProducts() {
 		List<ProductInfo> topProducts = productMapper.getTopProducts();
@@ -31,6 +42,34 @@ public class ProductService {
 
 	public void saveDummyProducts(List<Product> productList) {
 		productDao.saveDummyProducts(productList);
+	}
+
+	public void saveUploadedProduct(ProductInfo productInfo, MultipartFile[] files) throws IOException {
+		productInfo.setStatus(SolaneConstants.REGISTERED);
+		productInfo.setCreatedTimestamp(SolaneConstants.TIMESTAMP);
+		productInfo.setUpdatedTimestamp(SolaneConstants.TIMESTAMP);
+		
+		List<CategoryInfo> categoryInfos = categoryMapper.getCategoriesByNames(productInfo.getCategory());
+		productInfo.setProductCategory(categoryInfos);
+		
+		List<ImageInfo> images = new ArrayList<>();
+		for(MultipartFile file: files) {
+			if(!file.getOriginalFilename().isEmpty()) {
+				SolaneUtils.uploadImageFile(file);
+				ImageInfo image = new ImageInfo();
+				image.setImageTitle(file.getName());
+				image.setImageURL(file.getOriginalFilename());
+				image.setStatus(SolaneConstants.REGISTERED);
+				images.add(image);
+			}
+		}
+		productInfo.setProuctImages(images);
+		productMapper.saveProductInfo(productInfo);
+	}
+
+	public List<CategoryInfo> getAllCategoryInfoList() {
+		List<CategoryInfo> categories = categoryMapper.getAllCategory();
+		return categories;
 	}
 
 }

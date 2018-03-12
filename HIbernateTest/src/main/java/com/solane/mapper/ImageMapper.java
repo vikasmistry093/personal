@@ -26,5 +26,21 @@ public class ImageMapper {
 		
 		return imageInfo;
 	}
+	
+	public static Image convertIntoImage(ImageInfo imageInfo) {
+		Image image = new Image();
+		image.setImageId(imageInfo.getImageId());
+		image.setImageTitle(imageInfo.getImageTitle());
+		image.setImageURL(imageInfo.getImageURL());
+		image.setStatus(imageInfo.getStatus());
+		
+		return image;
+	}
+
+	public static List<Image> convertIntoImageList(List<ImageInfo> prouctImages) {
+		return prouctImages.stream()
+				.map(ImageMapper::convertIntoImage)
+				.collect(Collectors.toList());
+	}
 
 }

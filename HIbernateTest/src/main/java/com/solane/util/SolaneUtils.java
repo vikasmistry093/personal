@@ -1,18 +1,38 @@
 package com.solane.util;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.solane.constants.SolaneConstants;
 import com.solane.model.Category;
 import com.solane.model.Image;
 import com.solane.model.Product;
 
 public class SolaneUtils {
+	
+	
+	public static void uploadImageFile(MultipartFile file) throws IOException {
+		byte[] bytes = file.getBytes();
+
+		File dir = new File(SolaneConstants.ROOT_DIR);
+		if (!dir.exists())
+			dir.mkdirs();
+
+		File serverFile = new File(dir.getAbsolutePath()
+				+ SolaneConstants.FILE_SEPARATOR + file.getOriginalFilename());
+		BufferedOutputStream stream = new BufferedOutputStream(
+				new FileOutputStream(serverFile));
+		stream.write(bytes);
+		stream.close();
+
+	}
 	
 	public static List<Product> setProduct() {
 		Timestamp timeStamp = new Timestamp(System.currentTimeMillis());

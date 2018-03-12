@@ -16,7 +16,8 @@
 		<div class="row">
 			<div class="col-sm-4">
 				<div class="sticky-gallery">
-					<img class="img-responsive" src="images/${product.prouctImages[0].imageURL }" />
+					<img class="img-responsive"
+						src="images/${product.prouctImages[0].imageURL }" />
 				</div>
 				<div class="m-t-20 text-center">
 					<button type="button"
@@ -41,7 +42,7 @@
 				<div class="form-group">
 					<label class="f-bold f-gray productSpec-title">Highlights</label>
 					<div class="product-feature">
-						<ul>${product.features}</ul>
+						<span>${product.features}</span>
 					</div>
 					<div class="clear-float"></div>
 				</div>
@@ -54,7 +55,6 @@
 				</div>
 
 				<!-- about product -->
-
 				<div class="wrapper center-block m-t-30">
 					<div class="panel-group" id="accordion">
 						<div class="panel panel-default">
@@ -90,7 +90,7 @@
 								<h4 class="panel-title">
 									<a class="collapsed" role="button" data-toggle="collapse"
 										data-parent="#accordion" href="#collapseThree"
-										aria-expanded="false" aria-controls="collapseThree"> Os &
+										aria-expanded="false" aria-controls="collapseThree"> OS and
 										Processor Features </a>
 								</h4>
 							</div>
@@ -105,7 +105,7 @@
 									<a class="collapsed" role="button" data-toggle="collapse"
 										data-parent="#accordion" href="#collapsefour"
 										aria-expanded="false" aria-controls="collapseThree">
-										Memory & Storage Features </a>
+										Memory and Storage Features </a>
 								</h4>
 							</div>
 							<div id="collapsefour" class="panel-collapse collapse"
@@ -122,37 +122,7 @@
 	<!-- main content end-->
 
 	<!-- footer start -->
-	<%@ include file="footer.jsp" %>
+	<%@ include file="footer.jsp"%>
 	<!-- footer start end-->
 </body>
-
-<script>
-    
-$(document).ready(function(){
-    $('.demo').bootpag({
-        total: 5
-            }).on("page", function(event, num){
-        $(".product-section").html("Page " + num); // or some ajax content loading...
-     
-        // ... after content load -> change total to 10
-        $(this).bootpag({total: 10, maxVisible: 10});
-     
-    });
-
-    
-
-
-    // sticky header
-    // $(window).scroll(function(){
-    //     if ($(window).scrollTop() >= 0) {
-    //     $('header').addClass('navbar-fixed-top');
-    //     }
-    //     else {
-    //     $('header').removeClass('navbar-fixed-top');
-    //     }
-    // });
-
-});
-</script>
-
 </html>
