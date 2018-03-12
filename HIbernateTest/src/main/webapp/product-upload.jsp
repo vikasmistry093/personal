@@ -6,7 +6,7 @@
 <title>Product Upload</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<%@ include file="importer.jsp"%>
+<%@ include file="admin-importer.jsp"%>
 </head>
 <body>
 	<!-- header section -->
