@@ -23,7 +23,7 @@
 					<div class="panel-heading">Apply For Loan</div>
 				</div>
 				<div class="panel-body">
-					<form:form action="${pageContext.request.contextPath}/home" modelAttribute="loan" method="post" >
+					<form:form action="${pageContext.request.contextPath}/applyforloan" modelAttribute="loan" method="post" >
 					<table>
 						<tr>
 							<td style="padding-left: 160px;"></td>
@@ -50,7 +50,7 @@
 							<td></td>
 
 							<td><form:input type="number" class="form-control"
-									path="loanAmount" placeholder="Amount" size="10"
+									path="loanAmount" placeholder="Amount"
 									requried="true" /><br><br>
 							</td>
 						</tr>
@@ -82,7 +82,7 @@
 							<td></td>
 
 							<td>
-							<form:input type="file"  name="loanDocument" accept="images/*"  path="loanDocument"/><span class="glyphicon glyphicon-search"></span> Search<br><br>
+							<form:input type="file"  name="loanDocument" accept="images/*"  path="loanDocument"/><br><br>
 													
     
 							</td>

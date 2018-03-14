@@ -9,6 +9,7 @@ import org.bank.dao.BankDao;
 import org.bank.dao.IBankDao;
 import org.bank.model.Account;
 import org.bank.model.Customer;
+import org.bank.model.Loan;
 import org.bank.model.BankTransaction;
 import org.bank.model.User;
 import org.bank.util.BankUtil;
@@ -42,7 +43,6 @@ public class BankServices implements IBankServices {
 		// TODO Auto-generated method stub
 		List<Account> accs = new ArrayList<>();
 		Account acc = customer.getAccount();
-//		acc.setAccountNumber(ThreadLocalRandom.current().nextLong(1000,9999));
 		acc.setAccountNumber(isNewAccount());
 		acc.setBalance(100);
 		accs.add(acc);
@@ -224,6 +224,23 @@ public class BankServices implements IBankServices {
 		boolean isSuccess = dao.saveCustomer(customer);
 		return isSuccess;
 	}
+	
+	
+	@Override
+	public boolean isRequestedForLoan(Customer customer, Loan loan) {
+		// TODO Auto-generated method stub
+		List<Loan> loans = new ArrayList<>();
+		Loan newLoan = new Loan();
+		newLoan.setLoanStatus("Requested");
+		newLoan.setStatus("false");
+		loans.add(newLoan);
+		customer.setLoans(loans);
+		boolean isSuccess = dao.saveCustomer(customer);
+		
+		return isSuccess;
+	}
+	
+	
 
 	private long isNewAccount() {
 		// TODO Auto-generated method stub
@@ -279,7 +296,7 @@ public class BankServices implements IBankServices {
 		user.setUserPassword(users.getUserPassword());
 		return true;
 	}
-	
+
 	
 	
 	

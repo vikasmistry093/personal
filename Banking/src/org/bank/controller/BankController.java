@@ -85,11 +85,6 @@ public class BankController {
 			model = new ModelAndView("home");
 			Customer customer = bankService.getCustomerByUser(userDetail);
 			
-			//boolean isMailSend = BankUtil.isMailSendToCustomer(customer);
-			
-//			if(isMailSend)
-//				System.out.println("----Mail send to customer----");
-			
 			model.addObject("customer", customer);
 		}
 
@@ -525,6 +520,30 @@ public class BankController {
 		return model;
 	}
 	
+	@RequestMapping("/applyforloan")
+	public ModelAndView applyforloan(@ModelAttribute("loan") Loan loan) {
+		System.out.println("In Apply for loan");
+		ModelAndView model = new ModelAndView("login");
+		
+		User user = (User) session.getAttribute("user");
+		if(user != null) {
+		
+		Customer customer = bankService.getCustomerByUser(user);
+		boolean isRequestedForLoan = bankService.isRequestedForLoan(customer , loan);	
+		
+		if(isRequestedForLoan)
+			model = new ModelAndView("redirect:/home");
+		else
+			model = new ModelAndView("redirect:/error");
+			
+			
+		}
+		
+		return model;
+	}
+	
+	
+	
 	
 	
 	@RequestMapping("/registration")
@@ -558,7 +577,7 @@ public class BankController {
 	
 	@RequestMapping("/newaccount")
 	public ModelAndView newaccount() {
-		System.out.println("in create account");
+		System.out.println("in create account for new user");
 		
 		User user = (User) session.getAttribute("user");
 		ModelAndView model = new ModelAndView("login");

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.bank.model.Account;
 import org.bank.model.Customer;
+import org.bank.model.Loan;
 import org.bank.model.BankTransaction;
 import org.bank.model.User;
 
@@ -44,6 +45,8 @@ public interface IBankServices {
 	boolean isMobileUpadated(User user, Customer customers);
 
 	boolean isPasswordUpdated(User user, User users);
+
+	boolean isRequestedForLoan(Customer customer, Loan loan);
 
 
 
