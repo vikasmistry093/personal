@@ -4,8 +4,8 @@ html, body {
 }
 
 .main-container {
-	height: 100%;
-	padding-top: 50px;	
+	min-height: 100%;
+	padding-top: 50px;
 }
 
 .uploadProductForm {
@@ -19,7 +19,6 @@ html, body {
 	float: left;
 	width: 15%;
 	margin-bottom: 70px;
-	background-color: rgb(255, 134, 10);
 }
 
 .navbar	{
@@ -32,12 +31,37 @@ html, body {
 	min-height: 100%;
 	float: right;
 	width: 85%;
+	padding: 20px 20px;
 	margin-bottom: 70px;
+}
+.row {
+	margin-left: 0px !important;
+	margin-right: 0px !important;
+}
+
+.menus {
+	list-style: none;
+	line-height: 3;
+}
+.menus > li {
+	text-align: center;
+	margin-left: -40px;
+}
+.menus > li:hover {
+	background-color: orange;
+}
+.menus > a:active, a:hover {
+    text-decoration: none;
+}
+
+.sidebarList {
+	display: block;
 }
 
 .footerLogoImage {
 	width: 30%;
 	height: 100%;
+	padding: 10px 20px;
 }
 
 .logoImage {

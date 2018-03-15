@@ -1,6 +1,10 @@
 /**
  * 
  */
+$(document).ready(function() {
+    $('#userTable').dataTable();
+} );
+
 // Buy Product
 $(document).ready(function() {
 	$('.demo').bootpag({
@@ -16,7 +20,3 @@ $(document).ready(function() {
 
 	});
 });
-
-$(document).ready(function() {
-    $('#userTable').dataTable();
-} );

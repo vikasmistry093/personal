@@ -11,7 +11,9 @@
 	<%@ include file="admin-header.jsp" %>
 	
 	<div class="main-container">
-		<%@ include file="admin-sidebar.jsp" %>
+		<div class="admin-sidebar">
+			<%@ include file="admin-sidebar.jsp" %>
+		</div>
 		
 		<div class="admin-main-body">
 			<h4>MAIN BODY</h4>
