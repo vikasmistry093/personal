@@ -9,12 +9,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.solane.constants.SolaneConstants;
+import com.solane.dao.AdminUserDAO;
 import com.solane.dao.ProductDAO;
 import com.solane.mapper.CategoryMapper;
 import com.solane.mapper.ProductMapper;
 import com.solane.mapper.model.CategoryInfo;
 import com.solane.mapper.model.ImageInfo;
 import com.solane.mapper.model.ProductInfo;
+import com.solane.model.AdminUser;
 import com.solane.model.Product;
 import com.solane.util.SolaneUtils;
 
@@ -23,6 +25,9 @@ public class ProductService {
 	
 	@Autowired
 	private ProductDAO productDao;
+	
+	@Autowired
+	private AdminUserDAO adminUserDAO;
 	
 	@Autowired
 	private ProductMapper productMapper;
@@ -42,6 +47,13 @@ public class ProductService {
 
 	public void saveDummyProducts(List<Product> productList) {
 		productDao.saveDummyProducts(productList);
+		AdminUser adminUser = new AdminUser();
+		adminUser.setName("Vikas");
+		adminUser.setContact("9594349005");
+		adminUser.setEmail("vikasmistry9@gmail.com");
+		adminUser.setStatus("FREE");
+	
+		adminUserDAO.saveDummyUsers(adminUser);
 	}
 
 	public void saveUploadedProduct(ProductInfo productInfo, MultipartFile[] files) throws IOException {
@@ -67,9 +79,9 @@ public class ProductService {
 		productMapper.saveProductInfo(productInfo);
 	}
 
-	public List<CategoryInfo> getAllCategoryInfoList() {
-		List<CategoryInfo> categories = categoryMapper.getAllCategory();
-		return categories;
+	public List<ProductInfo> getProductByStatus(String registered) {
+		List<ProductInfo> productInfos = productMapper.getProductInfoByStatus(registered);
+		return productInfos;
 	}
 
 }

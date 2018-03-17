@@ -4,9 +4,12 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -43,6 +46,14 @@ public class ProductDAO {
 
 	public void save(Product product) {
 		getSession().save(product);
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Product> getProductByStatus(String registered) {
+		Criteria critreia = getSession().createCriteria(Product.class);
+		critreia.add(Restrictions.eq("status", registered));
+		critreia.addOrder(Order.asc("createdTimestamp"));
+		return critreia.list();
 	}
 
 }

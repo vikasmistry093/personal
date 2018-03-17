@@ -13,15 +13,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.solane.mapper.model.CategoryInfo;
 import com.solane.mapper.model.ProductInfo;
-import com.solane.model.Product;
+import com.solane.service.CategoryService;
 import com.solane.service.ProductService;
-import com.solane.util.SolaneUtils;
 
 @Controller
 public class SolaneController {
 	
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private CategoryService categoryService;
 	
 	@RequestMapping("/")
 	public ModelAndView indexPage() {
@@ -37,7 +39,6 @@ public class SolaneController {
 		ModelAndView model = new ModelAndView("product-info");
 		ProductInfo productInfo = productService.getProductById(Long.parseLong(product_id));
 		model.addObject("product", productInfo);
-		
 		return model;
 	}
 	
@@ -45,7 +46,7 @@ public class SolaneController {
 	public ModelAndView uploadProduct() {
 		ModelAndView model = new ModelAndView("product-upload");
 		ProductInfo productInfo = new ProductInfo();
-		List<CategoryInfo> categories = productService.getAllCategoryInfoList();
+		List<CategoryInfo> categories = categoryService.getAllCategoryInfoList();
 		model.addObject("productInfo", productInfo);
 		model.addObject("categories", categories);
 		return model;
@@ -57,18 +58,4 @@ public class SolaneController {
 			productService.saveUploadedProduct(productInfo, files);
 	}
 	
-	@RequestMapping("/saveDummy")
-	public ModelAndView saveDummy() {
-		ModelAndView model = new ModelAndView("redirect:/");
-		List<Product> productList = SolaneUtils.setProduct();
-		productService.saveDummyProducts(productList);
-		return model;
-	}
-	
-	@RequestMapping("/admin")
-	public ModelAndView adminPanel() {
-		ModelAndView model = new ModelAndView("admin-index");
-		return model;
-	}
-
 }

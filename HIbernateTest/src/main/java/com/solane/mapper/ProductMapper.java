@@ -81,4 +81,9 @@ public class ProductMapper {
 		
 	}
 
+	public List<ProductInfo> getProductInfoByStatus(String registered) {
+		List<Product> products = productDao.getProductByStatus(registered);
+		return convertIntoProductInfoList(products);
+	}
+
 }

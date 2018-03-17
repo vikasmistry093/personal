@@ -64,6 +64,9 @@ public class User implements Serializable{
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="WISHLIST")
 	private WishList wishList;
+	
+	@Column(name="TYPE")
+	private String type;
 
 	@Column(name="CREATED_TIMESTAMP")
 	@CreationTimestamp
@@ -77,7 +80,7 @@ public class User implements Serializable{
 
 	public User(Long userId, String name, String contact, String email, String password, String status,
 			List<Card> cardDetails, List<Address> userAddress, Recommendation recommendation, List<Order> orders,
-			WishList wishList, Timestamp createdTimestamp, Timestamp updatedTimestamp) {
+			WishList wishList, String type, Timestamp createdTimestamp, Timestamp updatedTimestamp) {
 		super();
 		this.userId = userId;
 		this.name = name;
@@ -90,6 +93,7 @@ public class User implements Serializable{
 		this.recommendation = recommendation;
 		this.orders = orders;
 		this.wishList = wishList;
+		this.type = type;
 		this.createdTimestamp = createdTimestamp;
 		this.updatedTimestamp = updatedTimestamp;
 	}
@@ -181,6 +185,14 @@ public class User implements Serializable{
 	public void setWishList(WishList wishList) {
 		this.wishList = wishList;
 	}
+	
+	public String getType() {
+		return type;
+	}
+	
+	public void setType(String type) {
+		this.type = type;
+	}
 
 	public Timestamp getCreatedTimestamp() {
 		return createdTimestamp;
@@ -202,8 +214,8 @@ public class User implements Serializable{
 	public String toString() {
 		return "User [userId=" + userId + ", name=" + name + ", contact=" + contact + ", email=" + email + ", password="
 				+ password + ", status=" + status + ", cardDetails=" + cardDetails + ", userAddress=" + userAddress
-				+ ", recommendation=" + recommendation + ", orders=" + orders + ", wishList=" + wishList
-				+ ", createdTimestamp=" + createdTimestamp + ", updatedTimestamp=" + updatedTimestamp + "]";
+				+ ", recommendation=" + recommendation + ", orders=" + orders + ", wishList=" + wishList + ", type="
+				+ type + ", createdTimestamp=" + createdTimestamp + ", updatedTimestamp=" + updatedTimestamp + "]";
 	}
 
 }
