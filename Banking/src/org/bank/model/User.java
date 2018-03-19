@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -22,11 +23,13 @@ public class User {
 	private long userID;
 	
 	@Column(name="USER_NAME", unique=true )
-	@NotEmpty(message="* Invalid User Name")
+	@NotEmpty(message="User Name cannot be empty")
+	@NotNull(message="Enter User Name")
 	private String userName;
 	
 	@Column(name="USER_PASSWORD",nullable=false)
-	@NotEmpty(message="* Invalid User Password")
+	@NotEmpty(message="Password cannot be empty")
+	@NotNull(message="Enter Password")
 	private String userPassword;
 	
 	@Column(name="OLD_USER_PASSWORD")

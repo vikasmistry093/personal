@@ -117,6 +117,23 @@ public class BankDao implements IBankDao {
 	}
 
 	@Override
+	public Customer getCustomerByAccount(Account benificiaryAccount) {
+		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSession();
+		transaction = session.beginTransaction();
+		Customer customer = null ;
+		
+		Query query = session.createQuery("from customer where Account=:benificiaryAccount");
+		query.setEntity("Account", benificiaryAccount);
+		customer = (Customer) query.uniqueResult();
+		transaction.commit();
+		return customer;
+	}
+
+
+	
+	
+	@Override
 	public Account getAccountByAccountNumber(long accountNumber) {
 		// TODO Auto-generated method stub
 		Session session = HibernateUtil.getSession();
@@ -168,7 +185,6 @@ public class BankDao implements IBankDao {
 			transaction.commit();
 			return true;
 		}
-		
 		transaction.commit();
 		return false;
 	}

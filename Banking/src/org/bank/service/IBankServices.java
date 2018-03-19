@@ -48,6 +48,8 @@ public interface IBankServices {
 
 	boolean isRequestedForLoan(Customer customer, Loan loan);
 
+	boolean getCustomerByAccountNumber(BankTransaction transactions);
+
 
 
 }

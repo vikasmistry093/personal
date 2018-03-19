@@ -31,6 +31,8 @@ public interface IBankDao {
 
 	boolean isValidAccountNumber(long nextLong);
 
+	Customer getCustomerByAccount(Account benificiaryAccount);
+
 	
 
 

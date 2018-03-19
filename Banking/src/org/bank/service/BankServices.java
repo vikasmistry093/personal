@@ -88,7 +88,6 @@ public class BankServices implements IBankServices {
 			  customer.getUser().setUserName(newUserName + customer.getAadharcard().substring(0, 3));
 			isNewUserName(customer);
 		}
-		
 		return newUserName;
 	}
 
@@ -106,18 +105,71 @@ public class BankServices implements IBankServices {
 	@Override
 	public boolean performtransaction(BankTransaction transactions) {
 		// TODO Auto-generated method stub
-		 
-		long accountNumber = transactions.getAccount().getAccountNumber();
+		
+		long senderAccountNumber = transactions.getAccount().getAccountNumber();
+		String senderDescription = transactions.getDescription();
+		double senderTransactionAmount = transactions.getTransactionAmount();
+		
+		boolean isMoneyTransferedToCustomer = isMoneyTransferedToCustomer(transactions);
+		
+		if(isMoneyTransferedToCustomer) {
+			
+			BankTransaction transaction = new BankTransaction();
+			Account account = dao.getAccountByAccountNumber(senderAccountNumber);
+			transaction.setAccount(account);
+			
+			Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+			transaction.setTransactionDate(currentTime);
+			transaction.setTransactionTimestamp(currentTime);
+			transaction.setBenificiaryName(transactions.getBenificiaryName());
+			transaction.setBenificiaryAccNo(senderAccountNumber);
+			transaction.setDescription(senderDescription);
+			transaction.setTransactionAmount(senderTransactionAmount);
+			transaction.setBenificiaryType("transaction");
+			transaction.setTransactionType("debit");
+			
+		boolean isCompleteTransaction = dao.isCompleteTransaction(transaction);
+		
+		System.out.println("money transfered from customers account ="+isCompleteTransaction);
+		
+		return isCompleteTransaction;
+		}
+		return false;
+	}
+	
+	private boolean isMoneyTransferedToCustomer(BankTransaction transactions) {
+		// TODO Auto-generated method stub
+		long accountNumber = transactions.getBenificiaryAccNo();
 		Account account = dao.getAccountByAccountNumber(accountNumber);
+		
+		double closingAccount = account.getBalance() + transactions.getTransactionAmount();
+		account.setBalance(closingAccount);
+		
 		transactions.setAccount(account);
 		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 		transactions.setTransactionDate(currentTime);
 		transactions.setTransactionTimestamp(currentTime);
-		
 		transactions.setBenificiaryType("transaction");
-		transactions.setTransactionType("debit");
+		transactions.setTransactionType("credit");
+		
 		boolean isCompleteTransaction = dao.isCompleteTransaction(transactions);
+		
+		System.out.println("money transfered to Benificiary customer account ="+isCompleteTransaction);
+		
 		return isCompleteTransaction;
+		
+	}
+
+	@Override
+	public boolean getCustomerByAccountNumber(BankTransaction transactions) {
+		// TODO Auto-generated method stub
+		long benificiaryAccountNumber = transactions.getBenificiaryAccNo();
+		Account benificiaryAccount = dao.getAccountByAccountNumber(benificiaryAccountNumber);
+		
+		if(benificiaryAccount != null)
+			return true;
+		else
+			return false;
 	}
 
 	@Override
@@ -186,11 +238,11 @@ public class BankServices implements IBankServices {
 		double transactionBalance = transactions.getTransactionAmount();
 		
 		if(accountBalance > transactionBalance) {
+			
 			double closingBalance = accountBalance - transactionBalance;
 			account.setBalance(closingBalance);
 			return true;
 		}
-		
 		else
 			return false;
 	}
@@ -212,9 +264,7 @@ public class BankServices implements IBankServices {
 	public boolean isNewAccountCreated(Customer customer , Account account) {
 		// TODO Auto-generated method stub
 		List<Account> accounts = customer.getAccounts();
-		
 		Account newAccount = new Account();
-//		newAccount.setAccountNumber(ThreadLocalRandom.current().nextLong(1000,9999));
 		newAccount.setAccountNumber(isNewAccount());
 		newAccount.setBalance(100);
 		newAccount.setAccountType(account.getAccountType());
@@ -297,7 +347,6 @@ public class BankServices implements IBankServices {
 		return true;
 	}
 
-	
 	
 	
 }
