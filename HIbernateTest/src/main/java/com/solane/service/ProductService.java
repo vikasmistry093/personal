@@ -67,7 +67,7 @@ public class ProductService {
 		List<ImageInfo> images = new ArrayList<>();
 		for(MultipartFile file: files) {
 			if(!file.getOriginalFilename().isEmpty()) {
-				SolaneUtils.uploadImageFile(file);
+				SolaneUtils.uploadImageFile(productInfo, file);
 				ImageInfo image = new ImageInfo();
 				image.setImageTitle(file.getName());
 				image.setImageURL(file.getOriginalFilename());

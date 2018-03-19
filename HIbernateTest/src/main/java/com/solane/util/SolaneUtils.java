@@ -11,6 +11,7 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.solane.constants.SolaneConstants;
+import com.solane.mapper.model.ProductInfo;
 import com.solane.model.Category;
 import com.solane.model.Image;
 import com.solane.model.Product;
@@ -18,7 +19,7 @@ import com.solane.model.Product;
 public class SolaneUtils {
 	
 	
-	public static void uploadImageFile(MultipartFile file) throws IOException {
+	public static void uploadImageFile(ProductInfo productInfo, MultipartFile file) throws IOException {
 		byte[] bytes = file.getBytes();
 
 		File dir = new File(SolaneConstants.ROOT_DIR);
