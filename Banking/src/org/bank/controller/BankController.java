@@ -64,9 +64,6 @@ public class BankController {
 				user = (User) session.getAttribute("user");
 
 			session.setAttribute("user", userDetail);
-		
-			
-		
 		return model;
 	}
 	
@@ -153,18 +150,21 @@ public class BankController {
 		User user = (User) session.getAttribute("user");
 		ModelAndView model = new ModelAndView("login");
 		
-		if(user != null) {
+		if (user != null) {
 			model = new ModelAndView("redirect:/home");
-			
-			boolean checkBalance = bankService.checkBalanceByAccount(transaction);
-				if(checkBalance == true) {
+
+			boolean checkCustomerByAccountNumber = bankService.getCustomerByAccountNumber(transaction);
+			if (checkCustomerByAccountNumber) {
+				boolean checkBalance = bankService.checkBalanceByAccount(transaction);
+				if (checkBalance) {
 					boolean donetransaction = bankService.performtransaction(transaction);
-						if(donetransaction == false)
-							model = new ModelAndView("redirect:/error");
-				}
-				else 
+					if (donetransaction == false)
+						model = new ModelAndView("redirect:/error");
+				} else
 					model = new ModelAndView("redirect:/error");
-					
+			} else
+				model = new ModelAndView("redirect:/error");
+
 		}
 		return model;
 	
