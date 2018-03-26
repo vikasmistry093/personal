@@ -45,7 +45,6 @@
 						</tr>
 						
 						<tr>
-							<td style="padding-left: 160px;"><form:button type="reset" class="btn btn-default"  style="float: leftt;">Reset</form:button></td>
 							<td style="padding-left: 160px;"><form:button type="submit" class="btn btn-default" onclick="mysuccessalert();" style="float: right;">submit</form:button></td>
 						</tr>			
 							

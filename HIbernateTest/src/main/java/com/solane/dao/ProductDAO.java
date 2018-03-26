@@ -56,4 +56,8 @@ public class ProductDAO {
 		return critreia.list();
 	}
 
+	public void saveorUpdate(Product product) {
+		getSession().saveOrUpdate(product);
+	}
+
 }

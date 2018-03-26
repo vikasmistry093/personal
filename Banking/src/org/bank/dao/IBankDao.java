@@ -21,7 +21,7 @@ public interface IBankDao {
 
 	User getNewUserName(String newUserName);
 
-	Account getAccountByCustomer(Customer customer);
+	List<Account> getAccountByCustomer(Customer customer);
 
 	Account getAccountByAccountNumber(long accountNumber);
 

@@ -20,7 +20,7 @@ public interface IBankServices {
 
 	String isNewUserName(Customer customer);
 
-	Account getAccountByCustomer(Customer customer);
+	 List<Account> getAccountByCustomer(Customer customer);
 
 	boolean performtransaction(BankTransaction transactions);
 
@@ -49,6 +49,8 @@ public interface IBankServices {
 	boolean isRequestedForLoan(Customer customer, Loan loan);
 
 	boolean getCustomerByAccountNumber(BankTransaction transactions);
+
+	boolean isUserValideToCreateAccount(Customer customer);
 
 
 

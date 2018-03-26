@@ -59,4 +59,13 @@ public class AdminUserMapper {
 		return convertIntoAdminUserInfoList(adminUsers);
 	}
 
+	public AdminUserInfo getAdminUserInfoById(String adminUserId) {
+		AdminUser user = adminUserDAO.getAdminUserInfoById(adminUserId);
+		return convertIntoAdminUserInfo(user);
+	}
+
+	public void saveorUpdate(AdminUserInfo userInfo) {
+		adminUserDAO.saveorUpdate(convertIntoAdminUser(userInfo));
+	}
+
 }

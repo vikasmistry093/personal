@@ -53,9 +53,11 @@ public class SolaneController {
 	}
 	
 	@RequestMapping("/saveUploadProduct")
-	public void saveUploadProduct(@RequestParam(value="imageFile") MultipartFile[] files,
+	public ModelAndView saveUploadProduct(@RequestParam(value="imageFile") MultipartFile[] files,
 			@ModelAttribute ProductInfo productInfo) throws IOException {
-			productService.saveUploadedProduct(productInfo, files);
+		ModelAndView model = new ModelAndView("redirect:/");
+		productService.saveUploadedProduct(productInfo, files);
+		return model;
 	}
 	
 }

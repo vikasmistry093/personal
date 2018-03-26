@@ -38,7 +38,7 @@ public class ProductMapper {
 	
 	public static Product convertIntoProduct(ProductInfo productInfo) {
 		Product product = new Product();
-		product.setProductId(productInfo.getProductId());
+		product.setProductId(productInfo.getProductId() != null ? productInfo.getProductId() : null);
 		product.setProductTitle(productInfo.getProductTitle());
 		product.setPrice(productInfo.getPrice());
 		product.setDiscount(productInfo.getDiscount() != null ? productInfo.getDiscount() : 0D);
@@ -75,15 +75,19 @@ public class ProductMapper {
 		return convertIntoProductInfo(product);
 	}
 
-	public void saveProductInfo(ProductInfo productInfo) {
+	public void save(ProductInfo productInfo) {
 		Product product = convertIntoProduct(productInfo);
 		productDao.save(product);
-		
 	}
 
 	public List<ProductInfo> getProductInfoByStatus(String registered) {
 		List<Product> products = productDao.getProductByStatus(registered);
 		return convertIntoProductInfoList(products);
+	}
+
+	public void saveorUpdate(ProductInfo productInfo) {
+		Product product = convertIntoProduct(productInfo);
+		productDao.saveorUpdate(product);
 	}
 
 }

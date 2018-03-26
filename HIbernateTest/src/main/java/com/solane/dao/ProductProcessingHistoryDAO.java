@@ -7,6 +7,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.solane.model.ProductProcessingHistory;
+
 @Repository
 @Transactional
 public class ProductProcessingHistoryDAO {
@@ -17,5 +19,9 @@ public class ProductProcessingHistoryDAO {
 	private Session getSession() {
         return sessionFactory.getCurrentSession();
     }
+
+	public void saveorUpdate(ProductProcessingHistory productProcessingHistory) {
+		getSession().saveOrUpdate(productProcessingHistory);
+	}
 
 }

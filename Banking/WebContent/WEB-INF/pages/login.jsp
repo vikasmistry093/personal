@@ -26,17 +26,20 @@
 				</div>
 				
 				 	<form:form action="${pageContext.request.contextPath}/checkuser" modelAttribute="user" commandName="user" method="post" >
-					
+						
+						<div class="form-group">
      					 <label>User name:</label>
-						 <form:input type="text" class="form-control" path="userName"  placeholder="User Name" />
+						 <form:input type="text" class="form-control" path="userName"   placeholder="User Name"  />
 						 <form:errors path="userName" cssClass="error"/>
-					
+						</div>
 					<br>
 					
+					   <div class="form-group">
       					<label>Password:</label>
 						<form:input type="password" class="form-control" path="userPassword"  placeholder="Password"/>
 						<form:errors path="userPassword" cssClass="error" />
-					
+					   </div>
+					   
 					<br>
 					
 					<a href="${pageContext.request.contextPath}/forgetpassword" >Forget Password ?</a><br>
@@ -44,8 +47,8 @@
 					
 					
 				    
-					<form:button type="button" class="btn btn-default" style="float: left;" onclick="getSignUpPage();">Sign Up</form:button> 
-			    	<form:button type="submit" class="btn btn-default" style="float: right;"  >Login</form:button>
+					<form:button type="button" class="btn btn-primary" style="float: left;" onclick="getSignUpPage();">Sign Up</form:button> 
+			    	<form:button type="submit" class="btn btn-primary" style="float: right;"  >Login</form:button>
 				</form:form>
 	 		</div>
 			<div class="col-sm-4">

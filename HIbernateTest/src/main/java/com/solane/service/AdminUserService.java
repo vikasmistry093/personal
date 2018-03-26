@@ -18,4 +18,12 @@ public class AdminUserService {
 		return adminUserMapper.getAdminUserInfoByStatus(free);
 	}
 
+	public AdminUserInfo getAdminUserById(String adminUserId) {
+		return adminUserMapper.getAdminUserInfoById(adminUserId);
+	}
+
+	public void saveorupdate(AdminUserInfo userInfo) {
+		adminUserMapper.saveorUpdate(userInfo);
+	}
+
 }

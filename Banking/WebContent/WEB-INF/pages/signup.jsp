@@ -31,7 +31,7 @@
 								<label>Salutation: </label>
 							</td>
 							<td>	
-			  					<form:radiobutton path="salutatn" name="salutation" value="Mr"/> Mr &nbsp;
+			  					<form:radiobutton path="salutatn" name="salutation" value="Mr" /> Mr &nbsp;
 			  					<form:radiobutton path="salutatn" name="salutation" value="Ms"/> Ms 
 			  					<form:errors path="salutatn" cssClass="error"/>
 			  				</td>
@@ -91,7 +91,7 @@
 								<label>Date Of Birth: </label>
 							</td>
 							<td colspan="3">
-								<form:input  class="form-control" path="dob" placeholder="Date Of Birth" requried="true"/>
+								<form:input  class="form-control" path="dob" placeholder="Date Of Birth (DD/MM/YYYY)" requried="true"/>
 								<form:errors path="dob" cssClass="error"/><br>
 							</td>
 						</tr>

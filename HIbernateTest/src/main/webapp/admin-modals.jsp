@@ -7,7 +7,20 @@
 </div>
 <c:if test="${type == 'product'}">
 	<div class="modal-body">
-		<form:form action="" method="POST" modelAttribute="productProcess">
+		<form:form action="assignProduct" method="POST" modelAttribute="productProcess">
+			
+			<div class="row form-group">
+					<label class="control-label col-sm-2">Product ID</label>
+					<div class="col-sm-10">
+						<form:input class="form-control" path="product.productId" value="${product.productId}" />
+					</div>
+			</div>
+			<div class="row form-group">
+					<label class="control-label col-sm-2">Product ID</label>
+					<div class="col-sm-10">
+						<form:input class="form-control" path="product.productTitle" value="${product.productTitle}" />
+					</div>
+			</div>
 			<div class="row form-group">
 					<label class="control-label col-sm-2">Previous Description</label>
 					<div class="col-sm-10">
@@ -23,9 +36,9 @@
 			<div class="row form-group">
 					<label class="control-label col-sm-2">Assign To</label>
 					<div class="col-sm-8">
-						<form:select class="form-control" path="user">
+						<form:select class="form-control" path="adminUserId">
 							<c:forEach var="user" items="${adminUsers}">
-								<form:option class="form-control" value="${user}">${user.name}</form:option>
+								<form:option class="form-control" value="${user.userId}">${user.name}</form:option>
 							</c:forEach>
 						</form:select>
 					</div>

@@ -14,7 +14,7 @@
 		<ul class="nav navbar-nav" style="float: right;">
 			<li style="color: white;">Welcome,${customer.firstName} ${customer.middleName} ${customer.lastName}.<br />${customer.updateTimestamp }
 			</li>
-			<li class="active"><a href="${pageContext.request.contextPath}/">Logout</a></li>
+			<li class="active"><a href="${pageContext.request.contextPath}/"><input type="button" class="btn btn-danger btn-sm"  value="Logout"></a></li>
 		</ul>
 	</div>
 </nav>

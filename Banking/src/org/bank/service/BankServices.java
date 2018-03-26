@@ -8,11 +8,10 @@ import java.util.concurrent.ThreadLocalRandom;
 import org.bank.dao.BankDao;
 import org.bank.dao.IBankDao;
 import org.bank.model.Account;
+import org.bank.model.BankTransaction;
 import org.bank.model.Customer;
 import org.bank.model.Loan;
-import org.bank.model.BankTransaction;
 import org.bank.model.User;
-import org.bank.util.BankUtil;
 
 public class BankServices implements IBankServices {
 	
@@ -92,9 +91,9 @@ public class BankServices implements IBankServices {
 	}
 
 	@Override
-	public Account getAccountByCustomer(Customer customer) {
+	public List<Account> getAccountByCustomer(Customer customer) {
 		// TODO Auto-generated method stub
-	Account accountDetails = dao.getAccountByCustomer(customer);
+		 List<Account> accountDetails = dao.getAccountByCustomer(customer);
 		
 	if(accountDetails != null)
 			return accountDetails;
@@ -345,6 +344,18 @@ public class BankServices implements IBankServices {
 		user.setOldUserPassword(user.getUserPassword());
 		user.setUserPassword(users.getUserPassword());
 		return true;
+	}
+
+	@Override
+	public boolean isUserValideToCreateAccount(Customer customer) {
+		// TODO Auto-generated method stub
+		List<Account> Accounts = customer.getAccounts();
+		int numberOfAccount = Accounts.size();
+		
+		if(numberOfAccount<3)
+			return true;
+		
+		return false;
 	}
 
 	

@@ -9,7 +9,7 @@ function getModal(id, type) {
       document.getElementById("modal-content").innerHTML = this.responseText;
       }
     };
-    xhttp.open("GET", "/assignProduct?id=" + id + "&type=" + type, true);
+    xhttp.open("GET", "/productAssignment?id=" + id + "&type=" + type, true);
     xhttp.send();
 }
 

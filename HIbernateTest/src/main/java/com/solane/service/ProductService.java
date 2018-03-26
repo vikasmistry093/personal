@@ -76,12 +76,20 @@ public class ProductService {
 			}
 		}
 		productInfo.setProuctImages(images);
-		productMapper.saveProductInfo(productInfo);
+		productMapper.save(productInfo);
 	}
 
 	public List<ProductInfo> getProductByStatus(String registered) {
 		List<ProductInfo> productInfos = productMapper.getProductInfoByStatus(registered);
 		return productInfos;
+	}
+	
+	public void save(ProductInfo product) {
+		productMapper.save(product);
+	}
+
+	public void saveorUpdate(ProductInfo product) {
+		productMapper.saveorUpdate(product);
 	}
 
 }

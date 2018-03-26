@@ -35,4 +35,12 @@ public class AdminUserDAO {
 		getSession().save(adminUser);
 	}
 
+	public AdminUser getAdminUserInfoById(String adminUserId) {
+		return getSession().get(AdminUser.class, Long.parseLong(adminUserId));
+	}
+
+	public void saveorUpdate(AdminUser adminUser) {
+		getSession().saveOrUpdate(adminUser);
+	}
+
 }

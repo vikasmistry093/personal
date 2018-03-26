@@ -535,16 +535,10 @@ public class BankController {
 			model = new ModelAndView("redirect:/home");
 		else
 			model = new ModelAndView("redirect:/error");
-			
-			
 		}
 		
 		return model;
 	}
-	
-	
-	
-	
 	
 	@RequestMapping("/registration")
 	public ModelAndView registration(@ModelAttribute("customer") @Valid Customer customer , BindingResult result ) {
@@ -605,12 +599,19 @@ public class BankController {
 		if(user != null) {
 			
 			Customer customer = bankService.getCustomerByUser(user);
+			boolean isUserValideToCreateAccount = bankService.isUserValideToCreateAccount(customer);
+			
+			if(isUserValideToCreateAccount) {
 			boolean isNewAccountCreated = bankService.isNewAccountCreated(customer , account);
 			if(isNewAccountCreated)
 				model = new ModelAndView("redirect:/home");
 			else
 				model = new ModelAndView("redirect:/error");
+			}else
+				model = new ModelAndView("redirect:/error");
+			
 		}
+		
 		return model;
 	}
 	
