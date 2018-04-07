@@ -15,7 +15,7 @@
 	<%@include file="includes/logoutheader.jsp"%>
 	
 	<div class="bodyContent">
-	<h2>Welcome,${customer.firstName} ${customer.middleName} ${customer.lastName}.</h2>
+	<h3 class="userTitle">Welcome, ${customer.firstName} ${customer.middleName} ${customer.lastName}.</h3>
 		<div class="row">
 			<div class="col-sm-3">
 				<%@include file="includes/menu.html"%>

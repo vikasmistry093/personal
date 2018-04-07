@@ -40,8 +40,8 @@
 			  					<label>Gender: </label>
 			  				</td>
 			  				<td>
-			  					<form:radiobutton path="gender" name="gender" value="Mr"/>Male &nbsp;
-			  					<form:radiobutton path="gender" name="gender" value="Ms"/>Female 
+			  					<form:radiobutton path="gender" name="gender" value="male"/>Male &nbsp;
+			  					<form:radiobutton path="gender" name="gender" value="female"/>Female 
 			  					<form:errors path="gender" cssClass="error"/><br>
 			  				</td>
 						</tr>

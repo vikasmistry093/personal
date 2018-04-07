@@ -13,6 +13,7 @@
 </head>
 <body>
 	<%@include file="includes/logoutheader.jsp"%>
+	
 	<div class="bodyContent">
 		<div class="row">
 			<div class="col-sm-3">

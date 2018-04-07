@@ -20,7 +20,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
-@Table(name="USERS")
+@Table(name="SOLANEUSERS")
 public class User implements Serializable{
 	
 	private static final long serialVersionUID = 1L;

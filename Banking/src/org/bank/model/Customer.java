@@ -110,7 +110,6 @@ public class Customer {
 	private List<Loan> loans;
 	
 	@Transient
-//	@NotBlank(message="Invalid Account")
 	private Account account;
 
 	

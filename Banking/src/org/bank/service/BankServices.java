@@ -11,6 +11,7 @@ import org.bank.model.Account;
 import org.bank.model.BankTransaction;
 import org.bank.model.Customer;
 import org.bank.model.Loan;
+import org.bank.model.RateOfInterest;
 import org.bank.model.User;
 
 public class BankServices implements IBankServices {
@@ -41,8 +42,20 @@ public class BankServices implements IBankServices {
 	public boolean registerNewCustomer(Customer customer) {
 		// TODO Auto-generated method stub
 		List<Account> accs = new ArrayList<>();
+		RateOfInterest roi = new RateOfInterest();
+		roi.setDescription("The type of account user is holding is : " + customer.getAccount().getAccountType() );
+		roi.setName(customer.getAccount().getAccountType());
+		
+		if(customer.getAccount().getAccountType() == "saving")
+			roi.setInterestRate(7);
+		else
+			roi.setInterestRate(5);
+			
 		Account acc = customer.getAccount();
 		acc.setAccountNumber(isNewAccount());
+		
+		
+		acc.setRateOfInterest(roi);
 		acc.setBalance(100);
 		accs.add(acc);
 		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
@@ -164,11 +177,15 @@ public class BankServices implements IBankServices {
 		// TODO Auto-generated method stub
 		long benificiaryAccountNumber = transactions.getBenificiaryAccNo();
 		Account benificiaryAccount = dao.getAccountByAccountNumber(benificiaryAccountNumber);
+		long senderAccountNumber = transactions.getAccount().getAccountNumber();
 		
-		if(benificiaryAccount != null)
+		if( senderAccountNumber != benificiaryAccountNumber)
+			if(benificiaryAccount != null )
 			return true;
 		else
 			return false;
+		
+		return false;
 	}
 
 	@Override
@@ -288,7 +305,6 @@ public class BankServices implements IBankServices {
 		
 		return isSuccess;
 	}
-	
 	
 
 	private long isNewAccount() {

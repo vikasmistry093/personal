@@ -441,9 +441,12 @@ public class BankController {
 		System.out.println("in general setting");
 		
 		User user = (User) session.getAttribute("user");
+		Customer customer = bankService.getCustomerByUser(user);
 		ModelAndView model = new ModelAndView("login");
+		
 		if(user != null) {
 			model=new ModelAndView("generalsetting");	
+			model.addObject("customer", customer);
 		}
 		
 		return model;
@@ -454,9 +457,12 @@ public class BankController {
 		System.out.println("in notification setting");
 
 		User user = (User) session.getAttribute("user");
+		Customer customer = bankService.getCustomerByUser(user);
 		ModelAndView model = new ModelAndView("login");
+		
 		if (user != null) {
 			model = new ModelAndView("notificationsetting");
+			model.addObject("customer", customer);
 		}
 		return model;
 	}
@@ -466,12 +472,13 @@ public class BankController {
 		System.out.println("in setting");
 		
 		User user = (User) session.getAttribute("user");
+		Customer customer = bankService.getCustomerByUser(user);
 		ModelAndView model = new ModelAndView("login");
 		
 		if(user != null) {
-			model=new ModelAndView("setting");	
+			model = new ModelAndView("setting");
+			model.addObject("customer", customer);
 		}
-		
 			return model;
 	}
 	
@@ -488,7 +495,6 @@ public class BankController {
 			model=new ModelAndView("transactionsummary");
 			Customer customer = bankService.getCustomerByUser(user);
 			System.out.println(customer.getFirstName());
-			
 			model.addObject("customer",customer);
 		}
 		return model;
@@ -511,11 +517,13 @@ public class BankController {
 		System.out.println("in loan");
 		ModelAndView model = new ModelAndView("login");
 		User user = (User) session.getAttribute("user");
+		Customer customer = bankService.getCustomerByUser(user);
 		
 		if (user != null) {
 			Loan loan = new Loan();
 			model = new ModelAndView("loan");
 			model.addObject("loan", loan);
+			model.addObject("customer", customer);
 		}
 		return model;
 	}

@@ -32,7 +32,7 @@
 						 <form:input type="text" class="form-control" path="userName"   placeholder="User Name"  />
 						 <form:errors path="userName" cssClass="error"/>
 						</div>
-					<br>
+					
 					
 					   <div class="form-group">
       					<label>Password:</label>
@@ -40,12 +40,9 @@
 						<form:errors path="userPassword" cssClass="error" />
 					   </div>
 					   
-					<br>
-					
-					<a href="${pageContext.request.contextPath}/forgetpassword" >Forget Password ?</a><br>
-					
-					
-					
+					<div class="form-group">
+					<a href="${pageContext.request.contextPath}/forgetpassword" >Forget Password ?</a>
+					</div>
 				    
 					<form:button type="button" class="btn btn-primary" style="float: left;" onclick="getSignUpPage();">Sign Up</form:button> 
 			    	<form:button type="submit" class="btn btn-primary" style="float: right;"  >Login</form:button>

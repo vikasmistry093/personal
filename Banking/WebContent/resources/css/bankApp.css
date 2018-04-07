@@ -1,6 +1,23 @@
 .bodyContent{
-	padding-top: 60px; 
+	padding-top: 80px; 
 	padding-bottom: 60px;
+}
+.userInfoOnHeader{
+	padding-top: 10px;
+}
+
+.imgLogo{
+	padding-top: 10px;
+}
+
+.navbar-brand {
+	margin-left: 0px !important;
+}
+
+.userTitle{
+	margin-top: 0px !important;
+	margin-bottom: 10px !important;
+	padding-left: 10px;
 }
 
 body {

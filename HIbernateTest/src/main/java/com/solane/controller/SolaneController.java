@@ -1,7 +1,11 @@
 package com.solane.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,8 +17,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.solane.mapper.model.CategoryInfo;
 import com.solane.mapper.model.ProductInfo;
+import com.solane.mapper.model.RecommendationInfo;
+import com.solane.mapper.model.UserInfo;
+import com.solane.model.User;
 import com.solane.service.CategoryService;
 import com.solane.service.ProductService;
+import com.solane.service.RecommendationService;
+import com.solane.service.UserService;
+import com.solane.service.WishListService;
 
 @Controller
 public class SolaneController {
@@ -24,6 +34,17 @@ public class SolaneController {
 	
 	@Autowired
 	private CategoryService categoryService;
+	
+	@Autowired
+	private UserService userService;
+	
+	@Autowired
+	private RecommendationService recommendationService;
+	
+	@Autowired
+	private WishListService wishListService;
+	
+	private HttpSession session;
 	
 	@RequestMapping("/")
 	public ModelAndView indexPage() {
@@ -35,9 +56,13 @@ public class SolaneController {
 	}
 	
 	@RequestMapping("/product")
-	public ModelAndView viewProduct(@RequestParam("id") String product_id) {
+	public ModelAndView viewProduct(@RequestParam("id") String product_id, HttpServletRequest request) {
+		UserInfo user = (UserInfo) request.getSession().getAttribute("user");
 		ModelAndView model = new ModelAndView("product-info");
 		ProductInfo productInfo = productService.getProductById(Long.parseLong(product_id));
+		
+		userService.updateRecommendationForUser(user, productInfo);
+		
 		model.addObject("product", productInfo);
 		return model;
 	}

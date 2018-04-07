@@ -15,7 +15,6 @@ import com.solane.mapper.model.ProductInfo;
 import com.solane.mapper.model.ProductProcessingHistoryInfo;
 import com.solane.model.Product;
 import com.solane.service.AdminUserService;
-import com.solane.service.CategoryService;
 import com.solane.service.ProductProcessHistoryService;
 import com.solane.service.ProductService;
 import com.solane.util.SolaneUtils;
@@ -40,7 +39,7 @@ public class SolaneAdminController {
 		return model;
 	}
 	
-	@RequestMapping(value= {"/registeredProduct","/adminPanel"})
+	@RequestMapping(value= {"/registeredProduct", "/admin"})
 	public ModelAndView registeredProducts() {
 		ModelAndView model = new ModelAndView("admin-registered-product");
 		List<ProductInfo> products = productService.getProductByStatus(SolaneConstants.REGISTERED);
