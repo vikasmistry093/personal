@@ -15,6 +15,7 @@ import org.bank.model.Loan;
 import org.bank.model.User;
 import org.bank.service.BankServices;
 import org.bank.service.IBankServices;
+import org.bank.util.BankUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,7 +28,7 @@ public class BankController {
 	
 	private static HttpSession session;
 	private IBankServices bankService = new BankServices();
-	
+	private BankUtil bankutility = new BankUtil();
 	
 	public BankController() {
 		//bankService = new BankServices();
@@ -409,6 +410,8 @@ public class BankController {
 		if(user != null) {
 			
 			model=new ModelAndView("passwordsetting");
+			Customer customer = bankService.getCustomerByUser(user);
+			model.addObject("customer", customer);
 			model.addObject("user", user);
 		 }
 		
@@ -560,8 +563,10 @@ public class BankController {
 		
 		boolean isSuccess = bankService.registerNewCustomer(customer);
 		System.out.println("user sign up successfully "+isSuccess);
-		if(isSuccess)
+		if(isSuccess) {
+			bankutility.sendCustomerEmail(customer);
 			model = new ModelAndView("redirect:/succ_registration");
+		}
 		else
 			model = new ModelAndView("redirect:/error");
 		
@@ -611,7 +616,9 @@ public class BankController {
 			
 			if(isUserValideToCreateAccount) {
 			boolean isNewAccountCreated = bankService.isNewAccountCreated(customer , account);
+		
 			if(isNewAccountCreated)
+				
 				model = new ModelAndView("redirect:/home");
 			else
 				model = new ModelAndView("redirect:/error");

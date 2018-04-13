@@ -51,6 +51,12 @@
 		
 		<!-- dependency to send email -->
 		
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.5.5</version>
+		</dependency>
+		
 		
 		<!-- Servlet JSP Dependencies -->
 		<dependency>
@@ -65,11 +71,12 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>oracle</groupId>
-			<artifactId>ojdbc6</artifactId>
-			<version>11.2.0.3</version>
-		</dependency>
+
+	<dependency>
+	<groupId>oracle</groupId>
+		<artifactId>ojdbc6</artifactId>
+		<version>11.2.0.3</version>
+	</dependency>
 
 		<!-- Form Validation -->
 		<dependency>
