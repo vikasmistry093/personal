@@ -25,23 +25,23 @@
 					<div class="panel-heading">Forget Password ?</div>
 				</div>
 				
-				 	<form:form action="${pageContext.request.contextPath}/" modelAttribute="user" commandName="user" method="post" >
+				 	<form:form action="${pageContext.request.contextPath}/forgottenUser" modelAttribute="user" commandName="user" method="post" >
 					
      					 <label>Enter User name:</label>
-						 <form:input type="text" class="form-control" path="userName" name="userName" placeholder="User Name" />
+						 <form:input type="text" class="form-control" path="userName" name="userName" placeholder="User Name" required="required"/>
 						 <form:errors path="userName" cssClass="error"/>
 					
 					<br>
 					
       					<label>Enter Email Address</label>
-						<form:input type="email" class="form-control" path="userPassword" name="userPassword" placeholder="Registered Email Address"/>
+						<form:input type="email" class="form-control" path="forgetEmail" name="userPassword" placeholder="Registered Email Address" required="required"/>
 						<form:errors path="userPassword" cssClass="error" />
 					
 					<br>
 					
 				    
 					<form:button type="reset" class="btn btn-default" style="float: left;">Reset</form:button> 
-			    	<form:button type="submit" class="btn btn-default" style="float: right;">Submit</form:button>
+			    	<form:button type="submit" class="btn btn-default" style="float: right;" onclick="getSuccessfullwindow();">Submit</form:button>
 				</form:form>
 	 		</div>
 			<div class="col-sm-4">

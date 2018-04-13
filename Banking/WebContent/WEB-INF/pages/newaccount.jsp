@@ -38,9 +38,9 @@
 						
 						<tr>
 							<td style="padding-left: 250px;">
-								<form:radiobutton path = "accountType" name="accountType" value = "saving" /><label>Saving Account</label><br>
+								<form:radiobutton path = "accountType" name="accountType" value = "saving" required="required"/><label>Saving Account</label><br>
 								
-                  				<form:radiobutton path = "accountType" name="accountType" value = "current"/><label>Current Account</label><br>
+                  				<form:radiobutton path = "accountType" name="accountType" value = "current" required="required"/><label>Current Account</label><br>
 							</td>
 						</tr>
 						

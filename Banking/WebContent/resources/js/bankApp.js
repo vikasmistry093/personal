@@ -6,9 +6,14 @@ function getSignUpPage() {
 	console.log("in getSignUpPage methd")
 	 window.location.href = "http://localhost:9090/Banking/signup";
 }
+
+function getSuccessfullwindow() {
+	console.log("in getSuccessfullwindow methd")
+	 window.location.href = "http://localhost:9090/Banking/succ_registration";
+}
 //success prompt window
 function mysuccessalert() {
-    alert("Successfully Done");
+    alert("Request Processed");
 }
 
 //successfully-registration

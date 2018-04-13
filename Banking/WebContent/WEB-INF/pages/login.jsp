@@ -29,14 +29,14 @@
 						
 						<div class="form-group">
      					 <label>User name:</label>
-						 <form:input type="text" class="form-control" path="userName"   placeholder="User Name"  />
+						 <form:input type="text" class="form-control" path="userName"   placeholder="User Name" required="required" />
 						 <form:errors path="userName" cssClass="error"/>
 						</div>
 					
 					
 					   <div class="form-group">
       					<label>Password:</label>
-						<form:input type="password" class="form-control" path="userPassword"  placeholder="Password"/>
+						<form:input type="password" class="form-control" path="userPassword"  placeholder="Password" required="required"/>
 						<form:errors path="userPassword" cssClass="error" />
 					   </div>
 					   

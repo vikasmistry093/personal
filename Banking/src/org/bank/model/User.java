@@ -23,17 +23,18 @@ public class User {
 	private long userID;
 	
 	@Column(name="USER_NAME", unique=true )
-	@NotEmpty(message="User Name cannot be empty")
-	@NotNull(message="Enter User Name")
+	@NotEmpty(message="Invalid User Name")
 	private String userName;
 	
 	@Column(name="USER_PASSWORD",nullable=false)
-	@NotEmpty(message="Password cannot be empty")
-	@NotNull(message="Enter Password")
+	@NotEmpty(message="Invalid Password")
 	private String userPassword;
 	
 	@Column(name="OLD_USER_PASSWORD")
 	private String oldUserPassword; 
+	
+	@Column(name="FORGOTTEN_EMAIL")
+	private String forgetEmail;
 	
 	@Column(name="USER_TYPE",nullable=false)
 	private String userType;
@@ -71,6 +72,14 @@ public class User {
 		return oldUserPassword;
 	}
 
+	public String getForgetEmail() {
+		return forgetEmail;
+	}
+	
+	public void setForgetEmail(String forgetEmail) {
+		this.forgetEmail = forgetEmail;
+	}
+	
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}

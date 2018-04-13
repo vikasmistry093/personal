@@ -22,70 +22,67 @@
 			<div class="col-sm-7">
 				<div class="panel panel-primary">
 					<div class="panel-heading">Email Setting</div>
-				</div>	
-					<form:form action="${pageContext.request.contextPath}/updateemail" method="post" modelAttribute="customer" >
+				</div>
+				<form:form action="${pageContext.request.contextPath}/updateemail"
+					method="post" modelAttribute="customer">
 					<table>
-						
+
 						<tr>
-						 	<td style="padding-left: 160px;"></td>
-							
-							<td>
-								<label>Current Email Address: </label>
-							</td>
-							
-							 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-							 
-							<td>
-								<input type="text" class="form-control"  value="${customer.email}" readonly="readonly" /><br>
-							</td>
+							<td style="padding-left: 160px;"></td>
+
+							<td><label>Current Email Address: </label></td>
+
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+							<td><input type="text" class="form-control"
+								value="${customer.email}" readonly="readonly" /><br></td>
 						</tr>
-						
+
 						<tr>
 							<td></td>
-							<td>
-								<label>Enter New Email Address: </label>
-							</td>
-							
+							<td><label>Enter New Email Address: </label></td>
+
 							<td></td>
-							
-							<td>
-								<input type="text" class="form-control"  placeholder="New Email Address" /><br>
-							</td>
+
+							<td><input type="text" class="form-control"
+								placeholder="New Email Address" /><br></td>
 						</tr>
-						
+
 						<tr>
-						
+
 							<td></td>
-							
-							<td>
-								<label>Re-Enter New Email Address: </label>
-							</td>
-							
+
+							<td><label>Re-Enter New Email Address: </label></td>
+
 							<td></td>
-							
-							<td>
-								<form:input type="email" class="form-control" path="email" placeholder="Re-Enter Email Address" requried="true"/><br>
-							</td>
+
+							<td><form:input type="email" class="form-control"
+									path="email" placeholder="Re-Enter Email Address"
+									required="required" /><br></td>
 						</tr>
-						
+
 						<tr>
 							<td></td>
-							<td align="center"><input type="reset" class="btn btn-default"  value="RESET"/></td>
+							<td align="center"><input type="reset"
+								class="btn btn-default" value="RESET" /></td>
 							<td></td>
-			    			<td align="center"><input type="submit" class="btn btn-default" onclick="mysuccessalert()" value="SUBMIT"/></td>
+							<td align="center"><input type="submit"
+								class="btn btn-default" onclick="mysuccessalert()"
+								value="SUBMIT" /></td>
 						</tr>
 					</table>
 				</form:form>
-				
+
 			</div>
 
 			<div class="col-sm-2">
-				<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advertisement.jpg"  width="100%" height="510px"/>
+				<img alt="advertise"
+					src="${pageContext.request.contextPath}/resources/images/advertisement.jpg"
+					width="100%" height="510px" />
 			</div>
 		</div>
 	</div>
 	<%@include file="includes/footer.html"%>
-	</body>
+</body>
 </html>
-						
-						
+

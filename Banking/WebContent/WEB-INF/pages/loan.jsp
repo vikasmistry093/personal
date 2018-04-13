@@ -34,7 +34,7 @@
 							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 
 							<td>
-							<form:select path="loanType">
+							<form:select path="loanType" required="required">
 								<form:option value="default" selected="selected">--- Select ---</form:option>
 								<form:option value="personalloan">Personal Loan</form:option>
 								<form:option value="carloan">Car Loan</form:option>			
@@ -52,7 +52,7 @@
 
 							<td><form:input type="number" class="form-control"
 									path="loanAmount" placeholder="Amount"
-									requried="true" /><br><br>
+									required="required" /><br><br>
 							</td>
 						</tr>
 
@@ -65,7 +65,7 @@
 
 							<td>
 							<form:select path="loanPeriod">
-								<form:option value="0" selected="selected">--- Select ---</form:option>
+								<form:option value="0" selected="selected" required="required">--- Select ---</form:option>
 								<form:option value="1">1</form:option>
 								<form:option value="2">2</form:option>
 								<form:option value="5">5</form:option>

@@ -66,6 +66,7 @@ public class BankServices implements IBankServices {
 		user.setUserName(isNewUserName(customer));
 		user.setUserPassword("newUser");
 		user.setUserType("user");
+		user.setForgetEmail(customer.getEmail());
 		
 		customer.setUser(user);
 		
@@ -370,6 +371,21 @@ public class BankServices implements IBankServices {
 		
 		if(numberOfAccount<3)
 			return true;
+		
+		return false;
+	}
+
+	@Override
+	public boolean isPasswordRegained(User user) {
+		// TODO Auto-generated method stub
+		User isValidForgottenUser = dao.isValidForgottenUser(user.getUserName() , user.getForgetEmail()); 
+		
+		if(isValidForgottenUser != null) {
+			isValidForgottenUser.setOldUserPassword(user.getUserPassword());
+			isValidForgottenUser.setUserPassword("newPassword");
+			return true;
+		}
+			
 		
 		return false;
 	}

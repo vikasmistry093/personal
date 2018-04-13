@@ -31,8 +31,8 @@
 								<label>Salutation: </label>
 							</td>
 							<td>	
-			  					<form:radiobutton path="salutatn" name="salutation" value="Mr" /> Mr &nbsp;
-			  					<form:radiobutton path="salutatn" name="salutation" value="Ms"/> Ms 
+			  					<form:radiobutton path="salutatn" name="salutation" value="Mr" required="required" /> Mr &nbsp;
+			  					<form:radiobutton path="salutatn" name="salutation" value="Ms" required="required"/> Ms 
 			  					<form:errors path="salutatn" cssClass="error"/>
 			  				</td>
 			  				
@@ -40,8 +40,8 @@
 			  					<label>Gender: </label>
 			  				</td>
 			  				<td>
-			  					<form:radiobutton path="gender" name="gender" value="male"/>Male &nbsp;
-			  					<form:radiobutton path="gender" name="gender" value="female"/>Female 
+			  					<form:radiobutton path="gender" name="gender" value="male" required="required"/>Male &nbsp;
+			  					<form:radiobutton path="gender" name="gender" value="female" required="required"/>Female 
 			  					<form:errors path="gender" cssClass="error"/><br>
 			  				</td>
 						</tr>
@@ -51,8 +51,8 @@
 								<label>Account Type: </label>
 							</td>
 							<td colspan="3">
-								<form:radiobutton path="account.accountType" name="accountType" value="current"/> Current &nbsp;
-								<form:radiobutton path="account.accountType" name="accountType" value="saving"/> Saving
+								<form:radiobutton path="account.accountType" name="accountType" value="current" required="required"/> Current &nbsp;
+								<form:radiobutton path="account.accountType" name="accountType" value="saving" required="required"/> Saving
 								<form:errors path="account.accountType" cssClass="error"/><br>
 							</td>
 						</tr>
@@ -62,15 +62,15 @@
 								<label>Name: </label>
 							</td>
 							<td>
-								<form:input path="firstName" type="text" class="form-control" placeholder="First Name"/>
+								<form:input path="firstName" type="text" class="form-control" placeholder="First Name" required="required"/>
 								<form:errors path="firstName" cssClass="error"/><br>
 							</td>
 							<td>
-								<form:input path="middleName" type="text" class="form-control" placeholder="Middle Name"/>
+								<form:input path="middleName" type="text" class="form-control" placeholder="Middle Name" required="required"/>
 								<form:errors path="middleName" cssClass="error"/><br>
 							</td>
 							<td>
-								<form:input path="lastName" type="text" class="form-control" placeholder="Last Name"/>
+								<form:input path="lastName" type="text" class="form-control" placeholder="Last Name" required="required"/>
 								<form:errors path="lastName" cssClass="error"/><br>
 								
 							</td>
@@ -81,7 +81,7 @@
 								<label>Mobile No: </label>
 							</td>
 							<td colspan="3">
-								<form:input type="tel" class="form-control" path="mobileNumber" placeholder="Mobile Number" requried="true"/>
+								<form:input type="tel" class="form-control" path="mobileNumber" placeholder="Mobile Number" required="required"/>
 								<form:errors path="mobileNumber" cssClass="error"/><br>
 							</td>
 						</tr>
@@ -91,7 +91,7 @@
 								<label>Date Of Birth: </label>
 							</td>
 							<td colspan="3">
-								<form:input  class="form-control" path="dob" placeholder="Date Of Birth (DD/MM/YYYY)" requried="true"/>
+								<form:input  class="form-control" path="dob" placeholder="Date Of Birth (DD/MM/YYYY)" required="required"/>
 								<form:errors path="dob" cssClass="error"/><br>
 							</td>
 						</tr>
@@ -101,7 +101,7 @@
 								<label>Address:</label>
 							</td>
 							<td colspan="3">	
-								<form:textarea type="text" class="form-control" path="address" placeholder="Address" requried="true"/>
+								<form:textarea type="text" class="form-control" path="address" placeholder="Address" required="required"/>
 								<form:errors path="address" cssClass="error"/><br>
 							</td>
 						</tr>
@@ -115,7 +115,7 @@
 								<label>Email Address:</label>
 							</td>
 							<td colspan="3">
-								<form:input type="email" class="form-control" path="email" placeholder="Email Address" requried="true"/>
+								<form:input type="email" class="form-control" path="email" placeholder="Email Address" required="required"/>
 								<form:errors path="email" cssClass="error"/><br>
 							</td>
 						</tr>	
@@ -125,7 +125,7 @@
 								<label>Aadhaar Number:</label>
 							</td>
 							<td colspan="3">
-								<form:input type="text" class="form-control" path="aadharcard" placeholder="Adhaar Card No" requried="true"/>
+								<form:input type="text" class="form-control" path="aadharcard" placeholder="Adhaar Card No" required="required"/>
 								<form:errors path="aadharcard" cssClass="error"/><br>					
 							</td>
 						</tr>	
@@ -135,7 +135,7 @@
 								<label>Pan Card Number:</label>
 							</td>
 							<td colspan="3">
-								<form:input type="text" class="form-control" path="pancard" placeholder="Pan Card No" requried="true"/>
+								<form:input type="text" class="form-control" path="pancard" placeholder="Pan Card No" required="required"/>
 								<form:errors path="pancard" cssClass="error"/><br>
 							</td>
 						</tr>
@@ -149,7 +149,7 @@
 								<label>Nominee Name:</label>
 							</td>
 							<td colspan="3">
-								<form:input type="text" class="form-control" path="nomineeName" placeholder="Nominee Name" requried="true"/>
+								<form:input type="text" class="form-control" path="nomineeName" placeholder="Nominee Name" required="required"/>
 								<form:errors path="nomineeName" cssClass="error" /><br>
 							</td>
 						</tr>
@@ -159,7 +159,7 @@
 								<label>Nominee Relation:</label>
 							</td>
 							<td colspan="3">		
-								<form:input type="text" class="form-control" path="nomineeRelation" placeholder="Nominee Relation" requried="true"/>
+								<form:input type="text" class="form-control" path="nomineeRelation" placeholder="Nominee Relation" required="required"/>
 								<form:errors path="nomineeRelation" cssClass="error" /><br>
 							</td>
 						</tr>

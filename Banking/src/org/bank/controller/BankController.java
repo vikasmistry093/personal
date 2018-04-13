@@ -54,7 +54,8 @@ public class BankController {
 		session = request.getSession();
 		User userDetail = bankService.isValidUser(user);
 		
-		if(result.hasErrors() || userDetail == null ){
+		if(userDetail == null ){
+			result.hasErrors();
 			return model;
 		}
 			model = new ModelAndView("redirect:/home");
@@ -564,7 +565,7 @@ public class BankController {
 		boolean isSuccess = bankService.registerNewCustomer(customer);
 		System.out.println("user sign up successfully "+isSuccess);
 		if(isSuccess) {
-			bankutility.sendCustomerEmail(customer);
+			//bankutility.sendCustomerEmail(customer);
 			model = new ModelAndView("redirect:/succ_registration");
 		}
 		else
@@ -638,6 +639,22 @@ public class BankController {
 		model.addObject("user", user);
 		return model;
 	}
+	
+	@RequestMapping("/forgottenUser")
+	public ModelAndView forgottenUser(@ModelAttribute("user") User user) {
+		System.out.println("In forgotten Password");
+		ModelAndView model = new ModelAndView("login");
+		
+		boolean isPasswordRegained = bankService.isPasswordRegained(user);
+		if(isPasswordRegained)
+			model = new ModelAndView("redirect:/succ_registration");
+		else 
+			model = new ModelAndView("redirect:/error");
+		
+		return model;
+		
+	}
+	
     
 }
 	

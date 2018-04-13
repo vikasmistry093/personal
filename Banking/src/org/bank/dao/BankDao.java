@@ -189,5 +189,22 @@ public class BankDao implements IBankDao {
 		return false;
 	}
 
+	@Override
+	public User isValidForgottenUser(String userName, String forgetEmail) {
+		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSession();
+		transaction = session.beginTransaction();
+		User forgottenUser = null;
+		Query query = session.createQuery("from User where userName=:userName and forgetEmail=:forgetEmail");
+		query.setString("userName", userName);
+		query.setString("forgetEmail", forgetEmail);
+		
+		forgottenUser = (User) query.uniqueResult();
+		
+		transaction.commit();
+		
+		return forgottenUser;
+	}
+
 
 }

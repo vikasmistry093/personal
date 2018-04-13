@@ -33,6 +33,8 @@ public interface IBankDao {
 
 	Customer getCustomerByAccount(Account benificiaryAccount);
 
+	User isValidForgottenUser(String userName, String forgetEmail);
+
 	
 
 

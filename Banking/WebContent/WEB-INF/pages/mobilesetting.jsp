@@ -22,69 +22,68 @@
 			<div class="col-sm-7">
 				<div class="panel panel-primary">
 					<div class="panel-heading">Mobile Number Setting</div>
-				</div>	
-					<form:form action="${pageContext.request.contextPath}/updatemobilenumber" method="post" modelAttribute="customer" >
+				</div>
+				<form:form
+					action="${pageContext.request.contextPath}/updatemobilenumber"
+					method="post" modelAttribute="customer">
 					<table>
 						<tr>
-						 	<td style="padding-left: 160px;"></td>
-							
-							<td>
-								<label>Enter Current Mobile Number: </label>
-							</td>
-							
-							 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-							 
-							<td>
-								<input type="text" class="form-control"  value="${customer.mobileNumber}" readonly="readonly" /><br>
+							<td style="padding-left: 160px;"></td>
+
+							<td><label>Enter Current Mobile Number: </label></td>
+
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+							<td><input type="text" class="form-control"
+								value="${customer.mobileNumber}" readonly="readonly" /><br>
 							</td>
 						</tr>
-						
+
 						<tr>
 							<td></td>
-							<td>
-								<label>Enter New Mobile Number: </label>
-							</td>
-							
+							<td><label>Enter New Mobile Number: </label></td>
+
 							<td></td>
-							
-							<td>
-								<input type="number" class="form-control" placeholder="New Mobile Number" requried="true"/><br>
-							</td>
+
+							<td><input type="number" class="form-control"
+								placeholder="New Mobile Number" /><br></td>
 						</tr>
-						
+
 						<tr>
-						
+
 							<td></td>
-							
-							<td>
-								<label>Re-Enter New Mobile Number: </label>
-							</td>
-							
+
+							<td><label>Re-Enter New Mobile Number: </label></td>
+
 							<td></td>
-							
-							<td>
-								<form:input type="number" class="form-control" path="mobileNumber" placeholder="Re-Enter mobile Number" requried="true"/><br>
-							</td>
+
+							<td><form:input type="number" class="form-control"
+									path="mobileNumber" placeholder="Re-Enter mobile Number"
+									required="required"/><br></td>
 						</tr>
-						
+
 						<tr>
 							<td></td>
-							<td align="center"><input type="reset" class="btn btn-default"  value="RESET"/></td>
+							<td align="center"><input type="reset"
+								class="btn btn-default" value="RESET" /></td>
 							<td></td>
-			    			<td align="center"><input type="submit" class="btn btn-default" onclick="mysuccessalert()" value="SUBMIT"/></td>
+							<td align="center"><input type="submit"
+								class="btn btn-default" onclick="mysuccessalert()"
+								value="SUBMIT" /></td>
 						</tr>
 					</table>
-					</form:form>
-				
+				</form:form>
+
 			</div>
 
 			<div class="col-sm-2">
-				<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advertisement.jpg"  width="100%" height="510px"/>
+				<img alt="advertise"
+					src="${pageContext.request.contextPath}/resources/images/advertisement.jpg"
+					width="100%" height="510px" />
 			</div>
 		</div>
 	</div>
 	<%@include file="includes/footer.html"%>
-	</body>
+</body>
 </html>
-						
-						
+

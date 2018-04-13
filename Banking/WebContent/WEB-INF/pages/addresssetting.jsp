@@ -52,7 +52,7 @@
 						<td></td>
 						
 						<td>
-							<form:textarea type="text" class="form-control" path="address" placeholder="Re-Enter New Address" requried="true"/><br>
+							<form:textarea type="text" class="form-control" path="address" placeholder="Re-Enter New Address" required="required"/><br>
 						</td>
 						</tr>
 						
