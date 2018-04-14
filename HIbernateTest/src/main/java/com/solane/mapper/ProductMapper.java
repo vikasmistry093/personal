@@ -53,13 +53,13 @@ public class ProductMapper {
 		return product;
 	}
 	
-	public List<ProductInfo> convertIntoProductInfoList(List<Product> products) {
+	public static List<ProductInfo> convertIntoProductInfoList(List<Product> products) {
 		return products.stream()
 				.map(ProductMapper::convertIntoProductInfo)
 				.collect(Collectors.toList());
 	}
 	
-	public List<Product> convertIntoProductList(List<ProductInfo> products) {
+	public static List<Product> convertIntoProductList(List<ProductInfo> products) {
 		return products.stream()
 				.map(ProductMapper::convertIntoProduct)
 				.collect(Collectors.toList());

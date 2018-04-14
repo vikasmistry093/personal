@@ -37,14 +37,32 @@ public class SolaneController {
 	
 	@Autowired
 	private UserService userService;
-	
-	@Autowired
-	private RecommendationService recommendationService;
-	
-	@Autowired
-	private WishListService wishListService;
-	
+		
 	private HttpSession session;
+	
+	@RequestMapping("/login")
+	public ModelAndView login(@RequestParam(value="url", required=false) String redirectURL) {
+		ModelAndView model = new ModelAndView("login");
+		UserInfo user = new UserInfo();
+		model.addObject("user",user);
+		if(!redirectURL.isEmpty())
+			model.addObject("url", redirectURL);
+		
+		return model;
+	}
+	
+	@RequestMapping("/validateLoggedUser")
+	public ModelAndView validateLoggedUser(@ModelAttribute(value="user") UserInfo user, 
+			@RequestParam(value="url", required=false) String redirectURL) {
+		String finalURL = "index";
+		if(redirectURL.length() > 0)
+			finalURL = redirectURL;
+		
+		boolean isSuccess = userService.validateLoogedUser(user);
+		
+		ModelAndView model = new ModelAndView(finalURL);
+		return model;
+	}
 	
 	@RequestMapping("/")
 	public ModelAndView indexPage() {

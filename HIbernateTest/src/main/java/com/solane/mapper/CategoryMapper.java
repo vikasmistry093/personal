@@ -16,12 +16,6 @@ public class CategoryMapper {
 	@Autowired
 	private CategoryDAO categoryDAO;
 
-	public static List<CategoryInfo> convertIntoCategoryInfoList(List<Category> categories) {
-		return categories.stream()
-				.map(CategoryMapper::convertIntoCategoryInfo)
-				.collect(Collectors.toList());
-	}
-	
 	public static CategoryInfo convertIntoCategoryInfo(Category category) {
 		CategoryInfo categoryInfo = new CategoryInfo();
 		categoryInfo.setCategoryId(category.getCategoryId());
@@ -46,6 +40,12 @@ public class CategoryMapper {
 	public static List<Category> convertIntoCategoryList(List<CategoryInfo> productCategories) {
 		return productCategories.stream()
 				.map(CategoryMapper::convertIntoCategory)
+				.collect(Collectors.toList());
+	}
+	
+	public static List<CategoryInfo> convertIntoCategoryInfoList(List<Category> categories) {
+		return categories.stream()
+				.map(CategoryMapper::convertIntoCategoryInfo)
 				.collect(Collectors.toList());
 	}
 

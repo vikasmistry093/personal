@@ -26,4 +26,8 @@ public class UserDAO {
 		return null;
 	}
 
+	public void saveOrUpdate(User user) {
+		getSession().saveOrUpdate(user);
+	}
+
 }

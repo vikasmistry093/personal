@@ -10,13 +10,14 @@ import org.bank.model.Customer;
 
 public class BankUtil {
 	
-	public void sendCustomerEmail(Customer customer) {
+	public void sendCustomerEmail(Customer customer , String msg) {
 		
 		
 		final String fromEmail = "akashmistry097@gmail.com"; //requires valid gmail id
 		final String password = "cout<<\"Akash\";"; // correct password for gmail id
 		final String toEmail = customer.getEmail();
 		//final String toEmail = "vikasmistry93@gmail.com"; // can be any email id 
+		String emailMsg = null;
 		
 		System.out.println("TLSEmail Start");
 		Properties props = new Properties();
@@ -33,12 +34,21 @@ public class BankUtil {
 			}
 		};
 		Session session = Session.getInstance(props, auth);
+
+		switch (msg) {
+		case "successfullyRegistered":
+			emailMsg = "welcome to AAPKA BANK,"
+					+ "Your is successfully registered to our bank."
+					+ "Your Login details are given below:"
+					+ "Your User Name :" + customer.getUser().getUserName() 
+					+ "Your Password :" + customer.getUser().getUserPassword();
+			break;
+
+		default:System.out.println("---- Default in switch case ----");
+			break;
+		}
 		
-		EmailUtil.sendEmail(session, toEmail,"TLSEmail Testing Subject", "welcome to AAPKA BANK,"
-				+ "Your is successfully registered to our bank."
-				+ "Your Login details are given below:"
-				+ "Your User Name :" + customer.getUser().getUserName() 
-				+ "Your Password :" + customer.getUser().getUserPassword());
+		EmailUtil.sendEmail(session, toEmail,"TLSEmail Testing Subject", emailMsg );
 		
 		
 	}

@@ -565,7 +565,8 @@ public class BankController {
 		boolean isSuccess = bankService.registerNewCustomer(customer);
 		System.out.println("user sign up successfully "+isSuccess);
 		if(isSuccess) {
-			//bankutility.sendCustomerEmail(customer);
+			final String msg ="successfullyRegistered";
+			bankutility.sendCustomerEmail(customer , msg);
 			model = new ModelAndView("redirect:/succ_registration");
 		}
 		else

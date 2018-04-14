@@ -1,4 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,48 +99,7 @@
 	<%@ include file="footer.jsp"%>
 	<!-- footer start end-->
 </body>
-<!-- popup login -->
-<div class="modal fade" id="login-popup" role="dialog">
-	<div class="modal-dialog">
-		<!-- Modal content-->
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Login</h4>
-			</div>
-			<div class="modal-body">
-				<div class="form-group">
-					<div class="row">
-						<label for="email" class="col-sm-2 control-label"> Email</label>
-						<div class="col-sm-10">
-							<input type="email" class="form-control" id="email1"
-								placeholder="Email" />
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="row">
-						<label for="exampleInputPassword1" class="col-sm-2 control-label">
-							Password</label>
-						<div class="col-sm-10">
-							<input type="email" class="form-control"
-								id="exampleInputPassword1" placeholder="password" />
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-2"></div>
-					<div class="col-sm-10">
-						<button type="submit" class="btn primary-btn btn-sm">
-							Submit</button>
-						<a href="javascript:;">Forgot your password?</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- popup login end -->
+
 <!-- popup signup -->
 <div class="modal fade" id="signup-popup" role="dialog">
 	<div class="modal-dialog">

@@ -11,12 +11,6 @@ import com.solane.model.Image;
 @Component
 public class ImageMapper {
 	
-	public static List<ImageInfo> convertIntoImageInfoList(List<Image> images) {
-		return images.stream()
-				.map(ImageMapper::convertIntoImageInfo)
-				.collect(Collectors.toList());
-	}
-	
 	public static ImageInfo convertIntoImageInfo(Image image) {
 		ImageInfo imageInfo = new ImageInfo();
 		imageInfo.setImageId(image.getImageId());
@@ -37,9 +31,15 @@ public class ImageMapper {
 		return image;
 	}
 
-	public static List<Image> convertIntoImageList(List<ImageInfo> prouctImages) {
-		return prouctImages.stream()
+	public static List<Image> convertIntoImageList(List<ImageInfo> prouctImagesInfo) {
+		return prouctImagesInfo.stream()
 				.map(ImageMapper::convertIntoImage)
+				.collect(Collectors.toList());
+	}
+	
+	public static List<ImageInfo> convertIntoImageInfoList(List<Image> productImages) {
+		return productImages.stream()
+				.map(ImageMapper::convertIntoImageInfo)
 				.collect(Collectors.toList());
 	}
 
