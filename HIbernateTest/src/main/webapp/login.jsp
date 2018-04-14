@@ -16,7 +16,20 @@
 <div class="col-md-4"></div>
 <div class="col-md-4">
 	<form:form action="/validateLoggedUser?url=${url}" modelAttribute="user">
-		
+		<table>
+			<tr>
+				<th><label>Email :</label></th>
+				<th><form:input class="form-control" path="email"/></th>
+			</tr>
+			<tr>
+				<th><label>Password :</label></th>
+				<th><form:input type="password" class="form-control" path="password"/></th>
+			</tr>
+			<tr>
+				<th></th>
+				<th><form:button class="form-control" value="Log In"/></th>
+			</tr>
+		</table>
 	</form:form>
 </div>
 <div class="col-md-4"></div>

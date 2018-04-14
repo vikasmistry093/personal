@@ -41,7 +41,7 @@ public class SolaneController {
 	private HttpSession session;
 	
 	@RequestMapping("/login")
-	public ModelAndView login(@RequestParam(value="url", required=false) String redirectURL) {
+	public ModelAndView login(@RequestParam(value="url", defaultValue="") String redirectURL) {
 		ModelAndView model = new ModelAndView("login");
 		UserInfo user = new UserInfo();
 		model.addObject("user",user);
@@ -54,13 +54,13 @@ public class SolaneController {
 	@RequestMapping("/validateLoggedUser")
 	public ModelAndView validateLoggedUser(@ModelAttribute(value="user") UserInfo user, 
 			@RequestParam(value="url", required=false) String redirectURL) {
-		String finalURL = "index";
+		String finalURL = "";
 		if(redirectURL.length() > 0)
 			finalURL = redirectURL;
 		
 		boolean isSuccess = userService.validateLoogedUser(user);
-		
-		ModelAndView model = new ModelAndView(finalURL);
+		System.out.println(isSuccess);
+		ModelAndView model = new ModelAndView("redirect:/"+finalURL);
 		return model;
 	}
 	
