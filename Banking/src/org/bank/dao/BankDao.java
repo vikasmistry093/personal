@@ -153,7 +153,6 @@ public class BankDao implements IBankDao {
 		Session session = HibernateUtil.getSession();
 		transaction = session.beginTransaction();
 		session.save(transactions);
-		
 		transaction.commit();
 		return true;
 	}

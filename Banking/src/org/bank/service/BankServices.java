@@ -376,18 +376,18 @@ public class BankServices implements IBankServices {
 	}
 
 	@Override
-	public boolean isPasswordRegained(User user) {
+	public User isPasswordRegained(User user) {
 		// TODO Auto-generated method stub
 		User isValidForgottenUser = dao.isValidForgottenUser(user.getUserName() , user.getForgetEmail()); 
 		
 		if(isValidForgottenUser != null) {
 			isValidForgottenUser.setOldUserPassword(user.getUserPassword());
 			isValidForgottenUser.setUserPassword("newPassword");
-			return true;
+			return isValidForgottenUser;
 		}
 			
 		
-		return false;
+		return null;
 	}
 
 	

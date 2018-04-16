@@ -24,7 +24,7 @@
 						Recharge</div>
 				</div>
 				<form:form
-					action="${pageContext.request.contextPath}/completegasrecharge"
+					action="${pageContext.request.contextPath}/completeelectricrecharge"
 					method="post" modelAttribute="transaction">
 					<table>
 						<tr>

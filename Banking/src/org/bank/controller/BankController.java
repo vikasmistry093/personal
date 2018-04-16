@@ -29,6 +29,7 @@ public class BankController {
 	private static HttpSession session;
 	private IBankServices bankService = new BankServices();
 	private BankUtil bankutility = new BankUtil();
+	final String msg = null;
 	
 	public BankController() {
 		//bankService = new BankServices();
@@ -160,6 +161,7 @@ public class BankController {
 				boolean checkBalance = bankService.checkBalanceByAccount(transaction);
 				if (checkBalance) {
 					boolean donetransaction = bankService.performtransaction(transaction);
+					
 					if (donetransaction == false)
 						model = new ModelAndView("redirect:/error");
 				} else
@@ -176,6 +178,7 @@ public class BankController {
 	public ModelAndView completedthrecharge(@ModelAttribute("transaction") BankTransaction transaction , HttpServletRequest request) {
 	System.out.println("complete dth recharge");
 	User user = (User) session.getAttribute("user");
+	Customer customer = bankService.getCustomerByUser(user);
 	ModelAndView model = new ModelAndView("login");
 	 
 	if(user != null){
@@ -184,6 +187,8 @@ public class BankController {
 			boolean checkBalance = bankService.checkBalanceByAccount(transaction);
 			if (checkBalance == true) {
 				boolean donetransaction = bankService.performdthrecharge(transaction);
+				String msg ="dthrecharge";
+				bankutility.sendCustomerEmail(customer , transaction , msg);
 				if (donetransaction == false)
 					model = new ModelAndView("redirect:/error");
 			} else
@@ -193,18 +198,20 @@ public class BankController {
 		return model;
 	}
 	
-	@RequestMapping("/completegasrecharge")
-	public ModelAndView completegasrecharge(@ModelAttribute("transaction") BankTransaction transaction , HttpServletRequest request) {
+	@RequestMapping("/completeelectricrecharge")
+	public ModelAndView completeelectricrecharge(@ModelAttribute("transaction") BankTransaction transaction , HttpServletRequest request) {
 	System.out.println("complete gas recharge");
 	User user = (User) session.getAttribute("user");
+	Customer customer = bankService.getCustomerByUser(user);
+	
 	ModelAndView model = new ModelAndView("login");
 	 
 	if(user != null){
 		model = new ModelAndView("redirect:/home");
-			
-		
 		boolean checkBalance = bankService.checkBalanceByAccount(transaction);
 			if (checkBalance == true) {
+				String msg ="electricityrecharge";
+				bankutility.sendCustomerEmail(customer, transaction, msg);
 				boolean donetransaction = bankService.performgasrecharge(transaction);
 				if (donetransaction == false)
 					model = new ModelAndView("redirect:/error");
@@ -217,8 +224,9 @@ public class BankController {
 	
 	@RequestMapping("/completemobilerecharge")
 	public ModelAndView completemobilerecharge(@ModelAttribute("transaction") BankTransaction transaction , HttpServletRequest request) {
-	System.out.println("complete gas recharge");
+	System.out.println("complete mobile recharge");
 	User user = (User) session.getAttribute("user");
+	Customer customer = bankService.getCustomerByUser(user);
 	ModelAndView model = new ModelAndView("login");
 	 
 	if(user != null){
@@ -227,6 +235,8 @@ public class BankController {
 		
 			boolean checkBalance = bankService.checkBalanceByAccount(transaction);
 			if (checkBalance == true) {
+				String msg ="mobilerecharge";
+				bankutility.sendCustomerEmail(customer, transaction, msg);
 				boolean donetransaction = bankService.performmobilerecharge(transaction);
 				if (donetransaction == false)
 					model = new ModelAndView("redirect:/error");
@@ -331,7 +341,9 @@ public class BankController {
 		
 		if(user != null) {
 			model = new ModelAndView("redirect:/home");
-			boolean isAddressUpadated = bankService.isAddressUpdated(user , customer); 
+			boolean isAddressUpadated = bankService.isAddressUpdated(user , customer);
+			String msg = "addressupdated";
+			bankutility.sendCustomerEmail(customer, msg);
 			if(isAddressUpadated == false) 
 				model = new ModelAndView("redirect:/error");
 		}
@@ -363,6 +375,8 @@ public class BankController {
 		if(user != null) {
 			model = new ModelAndView("redirect:/home");
 			boolean isEmailUpadated = bankService.isEmailUpdated(user , customers); 
+			String msg = "emailupdated";
+			bankutility.sendCustomerEmail(customers, msg);
 			if(isEmailUpadated == false) 
 				model = new ModelAndView("redirect:/error");
 		}
@@ -393,7 +407,9 @@ public class BankController {
 		ModelAndView model = new ModelAndView("login"); 
 		if(user != null) {
 			model = new ModelAndView("redirect:/home");
-			boolean isMobileUpadated = bankService.isMobileUpadated(user , customers); 
+			boolean isMobileUpadated = bankService.isMobileUpadated(user , customers);
+			String msg = "mobilenoupdate";
+			bankutility.sendCustomerEmail(customers, msg);
 			if(isMobileUpadated == false) 
 				model = new ModelAndView("redirect:/error");
 		}
@@ -425,6 +441,7 @@ public class BankController {
 		ModelAndView model = new ModelAndView("redirect:/login");
 		
 		User user = (User) session.getAttribute("user");
+		Customer customer = bankService.getCustomerByUser(user);
 		
 		if (user != null) {
 			model = new ModelAndView("redirect:/error");
@@ -432,6 +449,8 @@ public class BankController {
 			if (newUser != null) {
 				model = new ModelAndView("redirect:/home");
 				boolean isPasswordUpadted = bankService.isPasswordUpdated(user , users);
+				String msg = "passwordupdate";
+				bankutility.sendCustomerEmail(customer, msg);
 				if(isPasswordUpadted == false)
 					model = new ModelAndView("redirect:/error");
 			}
@@ -565,7 +584,7 @@ public class BankController {
 		boolean isSuccess = bankService.registerNewCustomer(customer);
 		System.out.println("user sign up successfully "+isSuccess);
 		if(isSuccess) {
-			final String msg ="successfullyRegistered";
+			String msg ="successfullyRegistered";
 			bankutility.sendCustomerEmail(customer , msg);
 			model = new ModelAndView("redirect:/succ_registration");
 		}
@@ -619,9 +638,11 @@ public class BankController {
 			if(isUserValideToCreateAccount) {
 			boolean isNewAccountCreated = bankService.isNewAccountCreated(customer , account);
 		
-			if(isNewAccountCreated)
-				
+			if(isNewAccountCreated) {
 				model = new ModelAndView("redirect:/home");
+				String msg = "createnewacc";
+				bankutility.sendCustomerEmail(customer, account , msg);
+			}
 			else
 				model = new ModelAndView("redirect:/error");
 			}else
@@ -646,9 +667,13 @@ public class BankController {
 		System.out.println("In forgotten Password");
 		ModelAndView model = new ModelAndView("login");
 		
-		boolean isPasswordRegained = bankService.isPasswordRegained(user);
-		if(isPasswordRegained)
+		User isPasswordRegained = bankService.isPasswordRegained(user);
+		Customer customer = bankService.getCustomerByUser(isPasswordRegained);
+		if(isPasswordRegained != null) {
+			String msg ="forgotuser";
+			bankutility.sendCustomerEmail(customer , msg);
 			model = new ModelAndView("redirect:/succ_registration");
+		}
 		else 
 			model = new ModelAndView("redirect:/error");
 		

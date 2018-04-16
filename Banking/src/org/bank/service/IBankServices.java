@@ -52,7 +52,7 @@ public interface IBankServices {
 
 	boolean isUserValideToCreateAccount(Customer customer);
 
-	boolean isPasswordRegained(User user);
+	User isPasswordRegained(User user);
 
 
 
