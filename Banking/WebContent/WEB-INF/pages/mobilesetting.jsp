@@ -45,7 +45,7 @@
 
 							<td></td>
 
-							<td><input type="number" class="form-control"
+							<td><input type="number" class="form-control" 
 								placeholder="New Mobile Number" /><br></td>
 						</tr>
 
@@ -57,8 +57,8 @@
 
 							<td></td>
 
-							<td><form:input type="number" class="form-control"
-									path="mobileNumber" placeholder="Re-Enter mobile Number"
+							<td><form:input type="text" class="form-control"
+									path="mobileNumber" placeholder="Re-Enter mobile Number" pattern="[789][0-9]{9}" maxlength="10"
 									required="required"/><br></td>
 						</tr>
 

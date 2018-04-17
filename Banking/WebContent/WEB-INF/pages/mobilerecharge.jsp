@@ -63,7 +63,7 @@
 							<td></td>
 
 							<td><form:input type="number" class="form-control"
-									path="benificiaryAccNo" placeholder="Account No" size="10"
+									path="benificiaryAccNo"  placeholder="Mobile Number" pattern="[789][0-9]{9}" maxlength="10"
 									required="required" /><br></td>
 						</tr>
 

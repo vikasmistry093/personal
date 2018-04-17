@@ -80,7 +80,8 @@
 									path="ifscCode" placeholder="IFSC code" size="10"
 									requried="true" /><br></td>
 						</tr>
- --%>
+ 						--%>
+						
 						<tr>
 							<td></td>
 

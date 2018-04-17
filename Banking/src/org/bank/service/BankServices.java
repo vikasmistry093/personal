@@ -298,8 +298,22 @@ public class BankServices implements IBankServices {
 		// TODO Auto-generated method stub
 		List<Loan> loans = new ArrayList<>();
 		Loan newLoan = new Loan();
+		RateOfInterest roi = new RateOfInterest();
+		roi.setDescription("Type of loan : " + loan.getLoanType());
+		roi.setName(loan.getLoanType());
+		
+		if(loan.getLoanType() == "personalloan")
+			roi.setInterestRate(8);
+		else 
+			if(loan.getLoanType() == "carloan")
+				roi.setInterestRate(9);
+		
+		newLoan.setLoanEmi(roi.getInterestRate());
+		newLoan.setLoanType(loan.getLoanType());
 		newLoan.setLoanStatus("Requested");
 		newLoan.setStatus("false");
+		newLoan.setLoanAmount(loan.getLoanAmount());
+		newLoan.setLoanPeriod(loan.getLoanPeriod());
 		loans.add(newLoan);
 		customer.setLoans(loans);
 		boolean isSuccess = dao.saveCustomer(customer);
