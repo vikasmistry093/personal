@@ -20,7 +20,7 @@
 			
 			<div class="col-sm-6">
 				<div class="panel panel-primary">
-					<div class="panel-heading">SIGN UP <label style="align : left ; color: red;">(*) Mandatory</label></div>
+					<div class="panel-heading">SIGN UP </div>
 				</div>
 				<form:form action="${pageContext.request.contextPath}/registration" method="post" modelAttribute="customer" >
 					<table>
@@ -81,7 +81,7 @@
 								<label>Mobile No: </label>
 							</td>
 							<td colspan="3">
-								<form:input type="tel" class="form-control" path="mobileNumber" placeholder="Mobile Number" required="required"/>
+								<form:input type="text" class="form-control" path="mobileNumber" placeholder="Mobile Number" pattern="[789][0-9]{9}" maxlength="10" required="required"/>
 								<form:errors path="mobileNumber" cssClass="error"/><br>
 							</td>
 						</tr>
@@ -91,7 +91,7 @@
 								<label>Date Of Birth: </label>
 							</td>
 							<td colspan="3">
-								<form:input  class="form-control" path="dob" placeholder="Date Of Birth (DD/MM/YYYY)" required="required"/>
+								<form:input type="text" class="form-control" path="dob" placeholder="Date Of Birth (DD/MM/YYYY)" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" required="required"/>
 								<form:errors path="dob" cssClass="error"/><br>
 							</td>
 						</tr>
@@ -125,7 +125,7 @@
 								<label>Aadhaar Number:</label>
 							</td>
 							<td colspan="3">
-								<form:input type="text" class="form-control" path="aadharcard" placeholder="Adhaar Card No" required="required"/>
+								<form:input type="text" class="form-control" path="aadharcard" placeholder="Adhaar Card No" maxlength="12" required="required"/>
 								<form:errors path="aadharcard" cssClass="error"/><br>					
 							</td>
 						</tr>	
@@ -135,7 +135,7 @@
 								<label>Pan Card Number:</label>
 							</td>
 							<td colspan="3">
-								<form:input type="text" class="form-control" path="pancard" placeholder="Pan Card No" required="required"/>
+								<form:input type="text" class="form-control" path="pancard" placeholder="Pan Card No" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" maxlength="10" required="required"/>
 								<form:errors path="pancard" cssClass="error"/><br>
 							</td>
 						</tr>

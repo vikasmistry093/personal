@@ -404,12 +404,13 @@ public class BankController {
 	public ModelAndView updatemobilenumber(@ModelAttribute("customer") Customer customers , HttpServletRequest request) {
 		System.out.println("in update mobile number");
 		User user = (User) session.getAttribute("user");
+		Customer customer = bankService.getCustomerByUser(user);
 		ModelAndView model = new ModelAndView("login"); 
 		if(user != null) {
 			model = new ModelAndView("redirect:/home");
 			boolean isMobileUpadated = bankService.isMobileUpadated(user , customers);
 			String msg = "mobilenoupdate";
-			bankutility.sendCustomerEmail(customers, msg);
+			bankutility.sendCustomerEmail(customer, msg);
 			if(isMobileUpadated == false) 
 				model = new ModelAndView("redirect:/error");
 		}
