@@ -61,7 +61,6 @@ public class BankServices implements IBankServices {
 		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 		customer.setCreatedTimestamp(currentTime);
 		customer.setUpdateTimestamp(currentTime);
-		
 		User user = new User();
 		user.setUserName(isNewUserName(customer));
 		user.setUserPassword("newUser");
@@ -90,18 +89,24 @@ public class BankServices implements IBankServices {
 	public String isNewUserName(Customer customer) {
 		// TODO Auto-generated method stub
 		String newUserName = "";
+		int firstletter = 3 , lastletter = 3, aadharno =3;
 		
-		if(customer.getFirstName().length() > 3 && customer.getLastName().length() > 3)
-		newUserName = customer.getFirstName().substring(0, 3).toLowerCase() + customer.getLastName().substring(0, 3).toLowerCase();
-		 
-		User newUser = dao.getNewUserName(newUserName);
-		 if (newUser == null) {
-			return newUserName;
-		} else {
-			  customer.getUser().setUserName(newUserName + customer.getAadharcard().substring(0, 3));
-			isNewUserName(customer);
+		while(true) {
+			if(customer.getFirstName().length() > 2 && customer.getLastName().length() > 2)
+				newUserName = customer.getFirstName().substring(0, firstletter).toLowerCase() + customer.getLastName().substring(0, lastletter).toLowerCase();
+			
+			User newUser = dao.getNewUserName(newUserName);
+			if(newUser == null) {
+				return newUserName;
+			}else {
+				newUserName = customer.getFirstName().substring(0, firstletter).toLowerCase() + customer.getLastName().substring(0, lastletter).toLowerCase()
+						+ customer.getAadharcard().substring(0, aadharno);
+				return newUserName;
+			}
+		
 		}
-		return newUserName;
+		
+		
 	}
 
 	@Override

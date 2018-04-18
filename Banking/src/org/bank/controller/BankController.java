@@ -585,8 +585,8 @@ public class BankController {
 		boolean isSuccess = bankService.registerNewCustomer(customer);
 		System.out.println("user sign up successfully "+isSuccess);
 		if(isSuccess) {
-			String msg ="successfullyRegistered";
-			bankutility.sendCustomerEmail(customer , msg);
+			//String msg ="successfullyRegistered";
+			//bankutility.sendCustomerEmail(customer , msg);
 			model = new ModelAndView("redirect:/succ_registration");
 		}
 		else
@@ -682,6 +682,56 @@ public class BankController {
 		
 	}
 	
+	@RequestMapping("/whatsnew")
+	public ModelAndView whatsnew() {
+		System.out.println("In whats new");
+		ModelAndView model = new ModelAndView("login");
+		
+		User user = (User) session.getAttribute("user");
+		Customer customer = bankService.getCustomerByUser(user);
+		
+		
+		if(user != null) {
+			model = new ModelAndView("whatsnew");
+			model.addObject("customer", customer);
+		}
+		
+		return model;
+		}
+    
+	@RequestMapping("/help")
+	public ModelAndView help() {
+		System.out.println("In help");
+		ModelAndView model = new ModelAndView("login");
+		
+		User user = (User) session.getAttribute("user");
+		Customer customer = bankService.getCustomerByUser(user);
+		
+		
+		if(user != null) {
+			model = new ModelAndView("help");
+			model.addObject("customer", customer);
+		}
+		
+		return model;
+		}
+    
+	@RequestMapping("/aboutus")
+	public ModelAndView aboutus() {
+		System.out.println("In aboutus");
+		ModelAndView model = new ModelAndView("login");
+		
+		User user = (User) session.getAttribute("user");
+		Customer customer = bankService.getCustomerByUser(user);
+		
+		
+		if(user != null) {
+			model = new ModelAndView("aboutus");
+			model.addObject("customer", customer);
+		}
+		
+		return model;
+		}
     
 }
 	

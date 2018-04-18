@@ -4,7 +4,7 @@
 		<div class="navbar-header">
 			<div class="nav navbar-nav">
 				<a href="${pageContext.request.contextPath}/home"><img
-					src="${pageContext.request.contextPath}/resources/images/chase.jpg"
+					src="${pageContext.request.contextPath}/resources/images/logo.jpg"
 					class="imgLogo" alt="logo" width="50" height="50"></a>
 			</div>
 			<a class="navbar-brand"

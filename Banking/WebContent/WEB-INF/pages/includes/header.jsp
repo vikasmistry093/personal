@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <div class="navbar-header">
  <div class="nav navbar-nav" >
- <a href="#"><img src="${pageContext.request.contextPath}/resources/images/chase.jpg" class="withoutlogoutlogo" alt="logo" width="50" height="50"></a> 
+ <a href="#"><img src="${pageContext.request.contextPath}/resources/images/logo.jpg" class="withoutlogoutlogo" alt="logo" width="50" height="50"></a> 
  </div>
   <a class="navbar-brand" href="#">MyBank</a>
     </div>
