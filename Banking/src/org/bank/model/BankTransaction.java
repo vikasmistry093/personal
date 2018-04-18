@@ -35,8 +35,8 @@ public class BankTransaction {
 	@Column(name="TRANSACTION_TMSTMP",nullable=false)
 	private Timestamp transactionTimestamp;
 	
-	@Column(name="IFSC_CODE",nullable=false)
-	private long ifscCode;
+	/*@Column(name="IFSC_CODE")
+	private long ifscCode;*/
 	
 	@Column(name="BENIFICIARY_ACC_NO",nullable=false)
 	private long benificiaryAccNo;
@@ -51,7 +51,7 @@ public class BankTransaction {
 	private String description;
 	
 	@Column(name="TRANSACTION_AMT",nullable=false)
-	private double transactionAmount;
+	private float transactionAmount;
 	
 	@Column(name="TRANSACTION_TYPE")
 	private String transactionType;
@@ -94,7 +94,7 @@ public class BankTransaction {
 		this.transactionTimestamp = transactionTimestamp;
 	}
 
-
+/*
 	public long getIfscCode() {
 		return ifscCode;
 	}
@@ -103,7 +103,7 @@ public class BankTransaction {
 	public void setIfscCode(long ifscCode) {
 		this.ifscCode = ifscCode;
 	}
-
+*/
 
 	public long getBenificiaryAccNo() {
 		return benificiaryAccNo;
@@ -145,12 +145,12 @@ public class BankTransaction {
 	}
 
 
-	public double getTransactionAmount() {
+	public float getTransactionAmount() {
 		return transactionAmount;
 	}
 
 
-	public void setTransactionAmount(double transactionAmount) {
+	public void setTransactionAmount(float transactionAmount) {
 		this.transactionAmount = transactionAmount;
 	}
 

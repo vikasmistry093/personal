@@ -22,7 +22,7 @@ public class Loan {
 	private long loanId;
 	
 	@Column(name="LOAN_AMOUNT")
-	private Double loanAmount;
+	private float loanAmount;
 	
 	@Column(name="LOAN_TYPE")
 	private String loanType;
@@ -54,11 +54,11 @@ public class Loan {
 		this.loanId = loanId;
 	}
 
-	public Double getLoanAmount() {
+	public float getLoanAmount() {
 		return loanAmount;
 	}
 
-	public void setLoanAmount(Double loanAmount) {
+	public void setLoanAmount(float loanAmount) {
 		this.loanAmount = loanAmount;
 	}
 

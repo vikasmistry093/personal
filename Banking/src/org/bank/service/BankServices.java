@@ -126,7 +126,7 @@ public class BankServices implements IBankServices {
 		
 		long senderAccountNumber = transactions.getAccount().getAccountNumber();
 		String senderDescription = transactions.getDescription();
-		double senderTransactionAmount = transactions.getTransactionAmount();
+		float senderTransactionAmount = transactions.getTransactionAmount();
 		
 		boolean isMoneyTransferedToCustomer = isMoneyTransferedToCustomer(transactions);
 		
@@ -160,7 +160,7 @@ public class BankServices implements IBankServices {
 		long accountNumber = transactions.getBenificiaryAccNo();
 		Account account = dao.getAccountByAccountNumber(accountNumber);
 		
-		double closingAccount = account.getBalance() + transactions.getTransactionAmount();
+		float closingAccount = account.getBalance() + transactions.getTransactionAmount();
 		account.setBalance(closingAccount);
 		
 		transactions.setAccount(account);
@@ -256,12 +256,12 @@ public class BankServices implements IBankServices {
 		// TODO Auto-generated method stub
 		long accountNumber = transactions.getAccount().getAccountNumber();
 		Account account = dao.getAccountByAccountNumber(accountNumber); 
-		double accountBalance = account.getBalance(); 
-		double transactionBalance = transactions.getTransactionAmount();
+		float accountBalance = account.getBalance(); 
+		float transactionBalance = transactions.getTransactionAmount();
 		
 		if(accountBalance > transactionBalance) {
 			
-			double closingBalance = accountBalance - transactionBalance;
+			float closingBalance = accountBalance - transactionBalance;
 			account.setBalance(closingBalance);
 			return true;
 		}

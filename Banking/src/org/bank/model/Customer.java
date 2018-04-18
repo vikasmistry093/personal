@@ -55,11 +55,7 @@ public class Customer {
 	@NotBlank(message="Invalid Address")
 	private String address;
 	
-//	@Type(type="date")
-//	@Temporal(TemporalType.DATE)
-//	@DateTimeFormat(pattern = "mm/dd/yyyy")
 	@Column(name = "DOB", nullable = false)
-//	@NotBlank(message="Invalid DOB")
 	private Date dob;
 
 	@Column(name = "EMAIL_ID", nullable = false)
@@ -68,23 +64,18 @@ public class Customer {
 	private String email;
 
 	@Column(name = "MOBILE_NUMBER", nullable = false)
-//	@NotEmpty(message="Invalid DOB")
 	private long mobileNumber;
 
 	@Column(name = "PANCARD", nullable = false)
-	@NotBlank(message="Invalid Pancard")
 	private String pancard;
 
 	@Column(name = "AADHAR_CARD", nullable = false)
-	@NotBlank(message="Invalid Aadharcard")
 	private String aadharcard;
 
 	@Column(name = "NOMINEE_NAME")
-	@NotBlank(message="Invalid Nominee Name")
 	private String nomineeName;
 
 	@Column(name = "NOMINEE_RELATION")
-	@NotBlank(message="Enter Nominee Relation")
 	private String nomineeRelation;
 
 	@CreationTimestamp

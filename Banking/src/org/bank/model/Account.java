@@ -42,15 +42,15 @@ public class Account
 	private Timestamp updateTimestamp;
 	
 	@Column(name="BALANCE",columnDefinition = "int default 0",nullable=false)
-	private double balance;
+	private Float balance;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="RATE_OF_INTEREST")
 	private RateOfInterest rateOfInterest;
 	
-	@OneToMany(cascade= CascadeType.ALL)
+	/*@OneToMany(cascade= CascadeType.ALL)
 	@JoinTable(name="ACCOUNT_CARD_DETAILS", joinColumns = {@JoinColumn(name="ACCOUNT_ID") }, inverseJoinColumns = { @JoinColumn(name="CARD_ID")})
-	private List<Cards> cardDetails;
+	private List<Cards> cardDetails;*/
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="ACCOUNT_TRANSACTION_DETAILS", joinColumns = {@JoinColumn(name="ACCOUNT_ID") }, inverseJoinColumns = { @JoinColumn(name="TRASACTION_ID")})
@@ -97,11 +97,11 @@ public class Account
 		this.updateTimestamp = updateTimestamp;
 	}
 
-	public double getBalance() {
+	public float getBalance() {
 		return balance;
 	}
 
-	public void setBalance(double balance) {
+	public void setBalance(float balance) {
 		this.balance = balance;
 	}
 
@@ -113,13 +113,13 @@ public class Account
 		this.rateOfInterest = rateOfInterest;
 	}
 
-	public List<Cards> getCardDetails() {
+/*	public List<Cards> getCardDetails() {
 		return cardDetails;
 	}
 
 	public void setCardDetails(List<Cards> cardDetails) {
 		this.cardDetails = cardDetails;
-	}
+	}*/
 
 	public List<BankTransaction> getTransactionDetails() {
 		return transactionDetails;
