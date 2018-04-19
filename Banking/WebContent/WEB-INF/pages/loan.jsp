@@ -24,7 +24,7 @@
 					<div class="panel-heading">Apply For Loan</div>
 				</div>
 				<div class="panel-body">
-					<form:form action="${pageContext.request.contextPath}/applyforloan" modelAttribute="loan" method="post" >
+					<form:form action="${pageContext.request.contextPath}/applyforloan" modelAttribute="applyLoan" method="post" >
 					<table>
 						<tr>
 							<td style="padding-left: 160px;"></td>

@@ -161,6 +161,17 @@ public class BankController {
 				boolean checkBalance = bankService.checkBalanceByAccount(transaction);
 				if (checkBalance) {
 					boolean donetransaction = bankService.performtransaction(transaction);
+					/*
+					Customer senderCustomer = bankService.getCustomerByAccountNumber(transaction.getAccount().getAccountNumber());
+					
+					Customer recieverCustomer = bankService.getCustomerByAccountNumber(transaction.getBenificiaryAccNo());
+					
+					String msg = "sendermail";
+					bankutility.sendCustomerEmail(senderCustomer,recieverCustomer, transaction, msg);
+					
+					msg = "receiverMail";
+					bankutility.sendCustomerEmail(senderCustomer, recieverCustomer, transaction, msg);
+					*/
 					
 					if (donetransaction == false)
 						model = new ModelAndView("redirect:/error");
@@ -212,7 +223,7 @@ public class BankController {
 			if (checkBalance == true) {
 				String msg ="electricityrecharge";
 				bankutility.sendCustomerEmail(customer, transaction, msg);
-				boolean donetransaction = bankService.performgasrecharge(transaction);
+				boolean donetransaction = bankService.performelectrirecharge(transaction);
 				if (donetransaction == false)
 					model = new ModelAndView("redirect:/error");
 			} else
@@ -372,11 +383,13 @@ public class BankController {
 		User user = (User) session.getAttribute("user");
 		ModelAndView model = new ModelAndView("redirect:/login");
 		
+		Customer customer = bankService.getCustomerByUser(user);
+		
 		if(user != null) {
 			model = new ModelAndView("redirect:/home");
 			boolean isEmailUpadated = bankService.isEmailUpdated(user , customers); 
 			String msg = "emailupdated";
-			bankutility.sendCustomerEmail(customers, msg);
+			bankutility.sendCustomerEmail(customer, msg);
 			if(isEmailUpadated == false) 
 				model = new ModelAndView("redirect:/error");
 		}
@@ -546,14 +559,14 @@ public class BankController {
 		if (user != null) {
 			Loan loan = new Loan();
 			model = new ModelAndView("loan");
-			model.addObject("loan", loan);
+			model.addObject("applyLoan", loan);
 			model.addObject("customer", customer);
 		}
 		return model;
 	}
 	
 	@RequestMapping("/applyforloan")
-	public ModelAndView applyforloan(@ModelAttribute("loan") Loan loan) {
+	public ModelAndView applyforloan(@ModelAttribute("loan") Loan applyLoan) {
 		System.out.println("In Apply for loan");
 		ModelAndView model = new ModelAndView("login");
 		
@@ -561,14 +574,17 @@ public class BankController {
 		if(user != null) {
 		
 		Customer customer = bankService.getCustomerByUser(user);
-		boolean isRequestedForLoan = bankService.isRequestedForLoan(customer , loan);	
 		
-		if(isRequestedForLoan)
-			model = new ModelAndView("redirect:/home");
-		else
-			model = new ModelAndView("redirect:/error");
-		}
-		
+		boolean isRequestedForLoan = bankService.isRequestedForLoan(customer , applyLoan);	
+			if(isRequestedForLoan) {
+				
+				String msg = "appliedForLoan";
+				bankutility.sendCustomerEmail(customer , applyLoan , msg);
+				model = new ModelAndView("redirect:/home");
+			}
+			else
+				model = new ModelAndView("redirect:/error");
+			}
 		return model;
 	}
 	
@@ -585,8 +601,8 @@ public class BankController {
 		boolean isSuccess = bankService.registerNewCustomer(customer);
 		System.out.println("user sign up successfully "+isSuccess);
 		if(isSuccess) {
-			//String msg ="successfullyRegistered";
-			//bankutility.sendCustomerEmail(customer , msg);
+			String msg ="successfullyRegistered";
+			bankutility.sendCustomerEmail(customer , msg);
 			model = new ModelAndView("redirect:/succ_registration");
 		}
 		else

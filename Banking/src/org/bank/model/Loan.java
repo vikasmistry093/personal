@@ -2,11 +2,14 @@ package org.bank.model;
 
 import java.sql.Timestamp;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -45,6 +48,10 @@ public class Loan {
 	@CreationTimestamp
 	@Column(name="CREATED_LOAN_TS")
 	private Timestamp createdTimestamp;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="RATE_OF_INTEREST")
+	private RateOfInterest rateOfInterest;
 
 	public long getLoanId() {
 		return loanId;
@@ -118,7 +125,13 @@ public class Loan {
 		this.createdTimestamp = createdTimestamp;
 	}
 	
+	public RateOfInterest getRateOfInterest() {
+		return rateOfInterest;
+	}
 	
+	public void setRateOfInterest(RateOfInterest rateOfInterest) {
+		this.rateOfInterest = rateOfInterest;
+	}
 	
 	
 }

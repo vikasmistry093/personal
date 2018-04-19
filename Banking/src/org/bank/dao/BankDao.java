@@ -4,12 +4,16 @@ import java.util.List;
 
 import org.bank.model.Account;
 import org.bank.model.Customer;
+import org.bank.model.RateOfInterest;
 import org.bank.model.User;
 import org.bank.model.BankTransaction;
 import org.bank.util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import oracle.net.aso.q;
+import oracle.net.aso.s;
 
 @SuppressWarnings("unchecked")
 public class BankDao implements IBankDao {
@@ -117,15 +121,16 @@ public class BankDao implements IBankDao {
 	}
 
 	@Override
-	public Customer getCustomerByAccount(Account benificiaryAccount) {
+	public Customer getCustomerByAccount(Account account) {
 		// TODO Auto-generated method stub
 		Session session = HibernateUtil.getSession();
 		transaction = session.beginTransaction();
 		Customer customer = null ;
 		
-		Query query = session.createQuery("from customer where Account=:benificiaryAccount");
-		query.setEntity("Account", benificiaryAccount);
+		Query query = session.createQuery("from Customer where account=:account");
+		query.setEntity("account", account);
 		customer = (Customer) query.uniqueResult();
+		
 		transaction.commit();
 		return customer;
 	}
@@ -170,6 +175,22 @@ public class BankDao implements IBankDao {
 		return transactionDetails;
 	}
 
+	
+	@Override
+	public Customer getCustomerByAccountNumber(long accountNumber) {
+		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSession();
+		transaction =session.beginTransaction();
+		Customer customer =null;
+		
+		Query query = session.createQuery("from customer where account=:accountNumber");
+		query.setLong("accountNumber", accountNumber);
+		customer = (Customer) query.uniqueResult();
+		if(customer != null)
+			return customer;
+		
+		return null;
+	}
 	@Override
 	public boolean isValidAccountNumber(long nextLong) {
 		// TODO Auto-generated method stub
@@ -204,6 +225,32 @@ public class BankDao implements IBankDao {
 		
 		return forgottenUser;
 	}
+
+
+
+	@Override
+	public RateOfInterest getRateofInterestByType(String accountType) {
+		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSession();
+		transaction = session.beginTransaction();
+		
+		RateOfInterest roi = null;
+		Query query = session.createQuery("from RateOfInterest where name=:accountType");
+		query.setString("accountType", accountType);
+		
+		roi = (RateOfInterest) query.uniqueResult();
+		
+		if(roi != null) {
+			transaction.commit();
+			return roi;
+		}
+		transaction.commit();
+		
+		
+		return null;
+	}
+
+	
 
 
 }

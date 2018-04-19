@@ -68,19 +68,25 @@
 									path="benificiaryAccNo" placeholder="AccountNumber" size="10"
 									required="required" /><br></td>
 						</tr>
-
-						<%-- <tr>
+<%-- 
+						<tr>
 							<td></td>
 
-							<td><label>Benificiary IFSC code:</label></td>
+							<td><label>Transaction Type:</label></td>
 
 							<td></td>
 
-							<td><form:input type="text" class="form-control"
-									path="ifscCode" placeholder="IFSC code" size="10"
-									requried="true" /><br></td>
+							<td>
+									
+							<form:select path="transactionType">
+								<form:option value="0" selected="selected" required="required">--- Select ---</form:option>
+								<form:option value="neft">NEFT</form:option>
+								<form:option value="rtgs">RTGS</form:option>
+										
+							</form:select><br>
+							</td>
 						</tr>
- 						--%>
+ 						 --%>
 						
 						<tr>
 							<td></td>

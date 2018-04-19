@@ -26,7 +26,7 @@ public interface IBankServices {
 
 	boolean performdthrecharge(BankTransaction transactions);
 
-	boolean performgasrecharge(BankTransaction transactions);
+	boolean performelectrirecharge(BankTransaction transactions);
 
 	boolean performmobilerecharge(BankTransaction transactions);
 
@@ -53,6 +53,12 @@ public interface IBankServices {
 	boolean isUserValideToCreateAccount(Customer customer);
 
 	User isPasswordRegained(User user);
+
+	boolean isValidToApplyForLoan(Customer customer);
+
+	Customer getCustomerByAccountNumber(long accountNumber);
+
+
 
 
 

@@ -13,11 +13,12 @@ import org.bank.model.Customer;
 import org.bank.model.Loan;
 import org.bank.model.RateOfInterest;
 import org.bank.model.User;
+import org.bank.util.BankUtil;
 
 public class BankServices implements IBankServices {
 	
 	private IBankDao dao = new BankDao();
-//	private BankUtil bankUtil = new BankUtil();
+	private BankUtil bankUtility = new BankUtil();
 	
 	@Override
 	public User isValidUser(User user) {
@@ -42,20 +43,16 @@ public class BankServices implements IBankServices {
 	public boolean registerNewCustomer(Customer customer) {
 		// TODO Auto-generated method stub
 		List<Account> accs = new ArrayList<>();
-		RateOfInterest roi = new RateOfInterest();
-		roi.setDescription("The type of account user is holding is : " + customer.getAccount().getAccountType() );
-		roi.setName(customer.getAccount().getAccountType());
 		
-		if(customer.getAccount().getAccountType() == "saving")
-			roi.setInterestRate(7);
-		else
-			roi.setInterestRate(5);
-			
+		
+		
 		Account acc = customer.getAccount();
 		acc.setAccountNumber(isNewAccount());
 		
-		
+		RateOfInterest roi = getRateOfInterestByType(customer.getAccount().getAccountType());
 		acc.setRateOfInterest(roi);
+		
+
 		acc.setBalance(100);
 		accs.add(acc);
 		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
@@ -72,6 +69,14 @@ public class BankServices implements IBankServices {
 		customer.setAccounts(accs);
 		boolean isSuccess = dao.saveCustomer(customer);
 		return isSuccess;
+	}
+
+	private RateOfInterest getRateOfInterestByType(String accountType) {
+		// TODO Auto-generated method stub
+		
+		RateOfInterest roi = dao.getRateofInterestByType(accountType);
+		return roi;
+		
 	}
 
 	@Override
@@ -127,14 +132,14 @@ public class BankServices implements IBankServices {
 		long senderAccountNumber = transactions.getAccount().getAccountNumber();
 		String senderDescription = transactions.getDescription();
 		float senderTransactionAmount = transactions.getTransactionAmount();
-		
-		boolean isMoneyTransferedToCustomer = isMoneyTransferedToCustomer(transactions);
+		boolean isMoneyTransferedToCustomer = isMoneyTransferedToCustomer(transactions ,senderAccountNumber);
 		
 		if(isMoneyTransferedToCustomer) {
 			
 			BankTransaction transaction = new BankTransaction();
-			Account account = dao.getAccountByAccountNumber(senderAccountNumber);
-			transaction.setAccount(account);
+			Account senderAccount = dao.getAccountByAccountNumber(senderAccountNumber);
+			transaction.setAccount(senderAccount);
+			
 			
 			Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 			transaction.setTransactionDate(currentTime);
@@ -155,15 +160,15 @@ public class BankServices implements IBankServices {
 		return false;
 	}
 	
-	private boolean isMoneyTransferedToCustomer(BankTransaction transactions) {
+	private boolean isMoneyTransferedToCustomer(BankTransaction transactions, long senderAccountNumber ) {
 		// TODO Auto-generated method stub
-		long accountNumber = transactions.getBenificiaryAccNo();
-		Account account = dao.getAccountByAccountNumber(accountNumber);
+		long receiverAccountNumber = transactions.getBenificiaryAccNo();
+		Account receiverAccount = dao.getAccountByAccountNumber(receiverAccountNumber);
 		
-		float closingAccount = account.getBalance() + transactions.getTransactionAmount();
-		account.setBalance(closingAccount);
+		float closingAccount = receiverAccount.getBalance() + transactions.getTransactionAmount();
+		receiverAccount.setBalance(closingAccount);
 		
-		transactions.setAccount(account);
+		transactions.setAccount(receiverAccount);
 		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 		transactions.setTransactionDate(currentTime);
 		transactions.setTransactionTimestamp(currentTime);
@@ -173,7 +178,6 @@ public class BankServices implements IBankServices {
 		boolean isCompleteTransaction = dao.isCompleteTransaction(transactions);
 		
 		System.out.println("money transfered to Benificiary customer account ="+isCompleteTransaction);
-		
 		return isCompleteTransaction;
 		
 	}
@@ -193,6 +197,25 @@ public class BankServices implements IBankServices {
 		
 		return false;
 	}
+	
+	@Override
+	public Customer getCustomerByAccountNumber(long accountNumber) {
+		// TODO Auto-generated method stub
+		
+		
+		Account account = dao.getAccountByAccountNumber(accountNumber);
+		
+		
+		Customer customer = dao.getCustomerByAccount(account);
+		
+		if(customer != null)
+			return customer;
+		
+		return null;
+	}
+
+	
+	
 
 	@Override
 	public boolean performdthrecharge(BankTransaction transactions) {
@@ -212,7 +235,7 @@ public class BankServices implements IBankServices {
 	}
 
 	@Override
-	public boolean performgasrecharge(BankTransaction transactions) {
+	public boolean performelectrirecharge(BankTransaction transactions) {
 		// TODO Auto-generated method stub
 		long accountNumber = transactions.getAccount().getAccountNumber();
 		Account account = dao.getAccountByAccountNumber(accountNumber);
@@ -287,6 +310,10 @@ public class BankServices implements IBankServices {
 		// TODO Auto-generated method stub
 		List<Account> accounts = customer.getAccounts();
 		Account newAccount = new Account();
+		
+		RateOfInterest roi = getRateOfInterestByType(account.getAccountType());
+
+		newAccount.setRateOfInterest(roi);
 		newAccount.setAccountNumber(isNewAccount());
 		newAccount.setBalance(100);
 		newAccount.setAccountType(account.getAccountType());
@@ -302,24 +329,15 @@ public class BankServices implements IBankServices {
 	public boolean isRequestedForLoan(Customer customer, Loan loan) {
 		// TODO Auto-generated method stub
 		List<Loan> loans = new ArrayList<>();
-		Loan newLoan = new Loan();
-		RateOfInterest roi = new RateOfInterest();
-		roi.setDescription("Type of loan : " + loan.getLoanType());
-		roi.setName(loan.getLoanType());
 		
-		if(loan.getLoanType() == "personalloan")
-			roi.setInterestRate(8);
-		else 
-			if(loan.getLoanType() == "carloan")
-				roi.setInterestRate(9);
-		
-		newLoan.setLoanEmi(roi.getInterestRate());
-		newLoan.setLoanType(loan.getLoanType());
-		newLoan.setLoanStatus("Requested");
-		newLoan.setStatus("false");
-		newLoan.setLoanAmount(loan.getLoanAmount());
-		newLoan.setLoanPeriod(loan.getLoanPeriod());
-		loans.add(newLoan);
+		RateOfInterest roi = getRateOfInterestByType(loan.getLoanType());
+		float loanEMI = bankUtility.getloanEMI(loan.getLoanAmount() , roi.getInterestRate() , loan.getLoanPeriod());
+
+		loan.setRateOfInterest(roi);
+		loan.setLoanEmi(loanEMI);
+		loan.setLoanStatus("Applied");
+		loan.setStatus("false");
+		loans.add(loan);
 		customer.setLoans(loans);
 		boolean isSuccess = dao.saveCustomer(customer);
 		
@@ -393,6 +411,18 @@ public class BankServices implements IBankServices {
 		
 		return false;
 	}
+	
+	@Override
+	public boolean isValidToApplyForLoan(Customer customer) {
+		// TODO Auto-generated method stub
+		List<Loan> loans = customer.getLoans();
+		
+		if(loans.size()<1)
+			return true;
+		
+		return false;
+	}
+
 
 	@Override
 	public User isPasswordRegained(User user) {
@@ -408,6 +438,9 @@ public class BankServices implements IBankServices {
 		
 		return null;
 	}
+
+	
+	
 
 	
 	
