@@ -264,9 +264,11 @@ public class BankController {
 		ModelAndView model = new ModelAndView("login");
 		
 		User user = (User) session.getAttribute("user");
+		Customer customer = bankService.getCustomerByUser(user);
 		
 		if(user != null) {
 		model=new ModelAndView("recharge");
+		model.addObject("customer", customer);
 		}
 		return model;
 	}
@@ -388,8 +390,8 @@ public class BankController {
 		if(user != null) {
 			model = new ModelAndView("redirect:/home");
 			boolean isEmailUpadated = bankService.isEmailUpdated(user , customers); 
-			String msg = "emailupdated";
-			bankutility.sendCustomerEmail(customer, msg);
+			//String msg = "emailupdated";
+			//bankutility.sendCustomerEmail(customer, msg);
 			if(isEmailUpadated == false) 
 				model = new ModelAndView("redirect:/error");
 		}
@@ -510,6 +512,7 @@ public class BankController {
 		
 		User user = (User) session.getAttribute("user");
 		Customer customer = bankService.getCustomerByUser(user);
+		
 		ModelAndView model = new ModelAndView("login");
 		
 		if(user != null) {

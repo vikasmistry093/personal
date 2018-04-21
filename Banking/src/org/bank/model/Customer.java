@@ -56,7 +56,7 @@ public class Customer {
 	private String address;
 	
 	@Column(name = "DOB", nullable = false)
-	private Date dob;
+	private String dob;
 
 	@Column(name = "EMAIL_ID", nullable = false)
 	@NotBlank(message="Invalid Email")
@@ -160,11 +160,11 @@ public class Customer {
 		this.address = address;
 	}
 
-	public Date getDob() {
+	public String getDob() {
 		return dob;
 	}
 
-	public void setDob(Date dob) {
+	public void setDob(String dob) {
 		this.dob = dob;
 	}
 

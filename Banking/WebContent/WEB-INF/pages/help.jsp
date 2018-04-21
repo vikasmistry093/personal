@@ -68,7 +68,7 @@
 				</div>
 	 			</div>
 			<div class="col-sm-4">
-			<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/bankbannerad.jpg" width="100%" height="500px"/>
+			<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/adverAbu.jpg" width="100%" height="500px"/>
 			</div>
 		</div>
   </div>

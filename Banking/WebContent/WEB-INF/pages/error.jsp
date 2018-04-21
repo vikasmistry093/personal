@@ -22,14 +22,14 @@
 				        	<table>
 								<tr>
 									<td align="center">
-									 	<a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/resources/images/successfull.jpg"  class="img-rounded" alt="notification" width="70%" height="41%"/></a>
+									 	<a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/resources/images/errorad.jpg"  class="img-rounded" alt="notification" width="70%" height="41%"/></a>
 									</td>
 								</tr>
 								
 								<tr>	 
 									 <td >
 									 	<div class="panel panel-primary">
-											<div class="panel-heading" align="center"><h3>OPPS!Something Went Wrong. </h3><br></div>
+											<div class="panel-heading" align="center"><h3>OPPS!Something went wrong. </h3><br></div>
 										</div>
 									 </td>
 								</tr>

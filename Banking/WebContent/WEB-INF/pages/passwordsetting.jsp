@@ -31,13 +31,14 @@
 
 							<td style="padding-left: 160px;"></td>
 
-							<td><label>Enter Current Password: </label></td>
+							<td><label>Current Password: </label></td>
 
 							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 							<td><form:input type="password" class="form-control"
 									path="oldUserPassword" placeholder="Current Password" required="required"/><br>
 							</td>
 						</tr>
+
 
 						<tr>
 
@@ -47,20 +48,8 @@
 
 							<td></td>
 
-							<td><input type="password" class="form-control"
-								placeholder="New Password" /><br></td>
-						</tr>
-
-						<tr>
-
-							<td></td>
-
-							<td><label>Re-Enter New Password: </label></td>
-
-							<td></td>
-
 							<td><form:input type="password" class="form-control"
-									path="userPassword" placeholder="Re-Enter Password" required="required"/><br>
+									path="userPassword" placeholder="Enter New Password" required="required"/><br>
 							</td>
 						</tr>
 

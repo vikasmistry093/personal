@@ -62,7 +62,7 @@
 							<td></td>
 							
 							<td>
-								<label>DOb:</label>
+								<label>DOB:</label>
 							</td>
 							
 							<td >

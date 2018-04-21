@@ -7,6 +7,7 @@ function getSignUpPage() {
 	 window.location.href = "http://localhost:9090/Banking/signup";
 }
 
+
 function getSuccessfullwindow() {
 	console.log("in getSuccessfullwindow methd")
 	 window.location.href = "http://localhost:9090/Banking/succ_registration";

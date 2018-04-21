@@ -24,7 +24,7 @@
 					<div class="panel-heading">Recharge</div>
 					<table>
 						<tr>	
-							 <td align="center" colspan="2"><a href="${pageContext.request.contextPath}/mobilerecharge"><img src="${pageContext.request.contextPath}/resources/images/mobilerecharge.jpg" class="img-rounded" alt="MobileRecharge" width="35%" height="30%"/></a></td>
+							 <td align="center" colspan="2"><a href="${pageContext.request.contextPath}/mobilerecharge"><img src="${pageContext.request.contextPath}/resources/images/mobilerecharge.jpg" class="img-rounded" alt="MobileRecharge" width="60%" height="30%"/></a></td>
 							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/dthrecharge.png"><img src="${pageContext.request.contextPath}/resources/images/Dthrecharge.jpg" class="img-rounded" alt="DTHRecharge" width="55%" height="30%"/></a></td>
 							<td align="center" colspan="2"><a href="${pageContext.request.contextPath}/electricityrecharge"><img src="${pageContext.request.contextPath}/resources/images/electricityrechrge.jpg" class="img-rounded" alt="OtherRecharge" width="55%" height="30%"/></a></td>
 						</tr>
@@ -38,7 +38,7 @@
 				</div>
 				
 				<div>
-					<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advertisement.jpg"  width="100%" height="240px"/>
+					<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advert.jpg"  width="100%" height="210px"/>
 				</div>
 			</div>
 

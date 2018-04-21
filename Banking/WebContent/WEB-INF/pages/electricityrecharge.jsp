@@ -39,7 +39,7 @@
 									<c:forEach var="account" items="${customer.accounts}">
 										<form:option value="${account.accountNumber}">${account.accountNumber}</form:option>
 									</c:forEach>
-								</form:select></td>
+								</form:select><br></td>
 
 						</tr>
 

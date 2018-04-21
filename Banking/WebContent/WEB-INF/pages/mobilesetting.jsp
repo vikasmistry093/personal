@@ -30,7 +30,7 @@
 						<tr>
 							<td style="padding-left: 160px;"></td>
 
-							<td><label>Enter Current Mobile Number: </label></td>
+							<td><label>Current Mobile Number: </label></td>
 
 							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 
@@ -40,25 +40,15 @@
 						</tr>
 
 						<tr>
+
 							<td></td>
+
 							<td><label>Enter New Mobile Number: </label></td>
 
 							<td></td>
 
-							<td><input type="number" class="form-control" 
-								placeholder="New Mobile Number" /><br></td>
-						</tr>
-
-						<tr>
-
-							<td></td>
-
-							<td><label>Re-Enter New Mobile Number: </label></td>
-
-							<td></td>
-
 							<td><form:input type="text" class="form-control"
-									path="mobileNumber" placeholder="Re-Enter mobile Number" pattern="[789][0-9]{9}" maxlength="10"
+									path="mobileNumber" placeholder="Enter mobile Number" pattern="[789][0-9]{9}" maxlength="10"
 									required="required"/><br></td>
 						</tr>
 

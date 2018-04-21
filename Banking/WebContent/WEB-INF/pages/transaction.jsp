@@ -41,7 +41,7 @@
 									<c:forEach var="account" items="${customer.accounts}">
 										<form:option value="${account.accountNumber}">${account.accountNumber}</form:option>
 									</c:forEach>
-								</form:select></td>
+								</form:select><br></td>
 
 						</tr>
 
@@ -65,7 +65,7 @@
 							<td></td>
 
 							<td><form:input type="text" class="form-control"
-									path="benificiaryAccNo" placeholder="AccountNumber" size="10"
+									path="benificiaryAccNo" placeholder="AccountNumber" maxlength="4"
 									required="required" /><br></td>
 						</tr>
 <%-- 

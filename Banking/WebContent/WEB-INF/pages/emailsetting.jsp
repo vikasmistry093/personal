@@ -11,6 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Welcome to DBS Bank: Notification Setting</title>
 </head>
+
 <body>
 	<%@include file="includes/logoutheader.jsp"%>
 	<div class="bodyContent">
@@ -24,7 +25,7 @@
 					<div class="panel-heading">Email Setting</div>
 				</div>
 				<form:form action="${pageContext.request.contextPath}/updateemail"
-					method="post" modelAttribute="customer">
+					method="post"  modelAttribute="customer">
 					<table>
 
 						<tr>
@@ -39,25 +40,15 @@
 						</tr>
 
 						<tr>
+
 							<td></td>
+
 							<td><label>Enter New Email Address: </label></td>
 
 							<td></td>
 
-							<td><input type="text" class="form-control"
-								placeholder="New Email Address" /><br></td>
-						</tr>
-
-						<tr>
-
-							<td></td>
-
-							<td><label>Re-Enter New Email Address: </label></td>
-
-							<td></td>
-
-							<td><form:input type="email" class="form-control"
-									path="email" placeholder="Re-Enter Email Address"
+							<td><form:input type="email" class="form-control" id="second"
+									path="email" placeholder="Enter Email Address"
 									required="required" /><br></td>
 						</tr>
 
