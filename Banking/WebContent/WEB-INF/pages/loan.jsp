@@ -21,7 +21,7 @@
 			</div>
 			<div class="col-sm-7">
 				<div class="panel panel-primary">
-					<div class="panel-heading">Apply For Loan</div>
+					<div class="panel-heading" align="center">Apply For Loan</div>
 				</div>
 				<div class="panel-body">
 					<form:form action="${pageContext.request.contextPath}/applyforloan" modelAttribute="applyLoan" method="post" >

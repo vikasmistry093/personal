@@ -156,22 +156,25 @@ public class BankController {
 		if (user != null) {
 			model = new ModelAndView("redirect:/home");
 
-			boolean checkCustomerByAccountNumber = bankService.getCustomerByAccountNumber(transaction);
+			boolean checkCustomerByAccountNumber = bankService.isValidAccountNumber(transaction);
 			if (checkCustomerByAccountNumber) {
 				boolean checkBalance = bankService.checkBalanceByAccount(transaction);
 				if (checkBalance) {
+					
+					Account senderAccount = bankService.getAccountByAccountNumber(transaction.getAccount().getAccountNumber());
+					Customer senderCustomer = senderAccount.getCustomer();
+					
 					boolean donetransaction = bankService.performtransaction(transaction);
-					/*
-					Customer senderCustomer = bankService.getCustomerByAccountNumber(transaction.getAccount().getAccountNumber());
 					
-					Customer recieverCustomer = bankService.getCustomerByAccountNumber(transaction.getBenificiaryAccNo());
+					Account recieverAccount = bankService.getAccountByAccountNumber(transaction.getBenificiaryAccNo());
+					Customer recieverCustomer = recieverAccount.getCustomer(); 
 					
-					String msg = "sendermail";
+					String msg = "senderMail";
 					bankutility.sendCustomerEmail(senderCustomer,recieverCustomer, transaction, msg);
 					
 					msg = "receiverMail";
 					bankutility.sendCustomerEmail(senderCustomer, recieverCustomer, transaction, msg);
-					*/
+					
 					
 					if (donetransaction == false)
 						model = new ModelAndView("redirect:/error");

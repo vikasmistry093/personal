@@ -66,7 +66,7 @@
 						<tr>
 							<td align="center" colspan="2"><h3>Mobile Recharge</h3></td>
 							<td align="center" colspan="2"><h3>DTH Recharge</h3></td>
-							<td align="center" colspan="2"><h3>Gas Recharge</h3></td>
+							<td align="center" colspan="2"><h3>Electricity Recharge</h3></td>
 						</tr>
 						
 						

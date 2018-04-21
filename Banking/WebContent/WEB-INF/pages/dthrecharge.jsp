@@ -39,20 +39,25 @@
 									<c:forEach var="account" items="${customer.accounts}">
 										<form:option value="${account.accountNumber}">${account.accountNumber}</form:option>
 									</c:forEach>
-								</form:select><br></td>
+								</form:select><br><br></td>
 
 						</tr>
 
 						<tr>
 							<td></td>
 
-							<td><label>DTH Provider Name:</label></td>
+							<td><label>Provider Name:</label></td>
 
 							<td></td>
 
-							<td><form:input type="text" class="form-control"
-									path="benificiaryName" placeholder="Provider Name" size="10"
-									required="required" /><br></td>
+							<td><form:select path="benificiaryName" required="required">
+								<form:option value="default" selected="selected">--- Select ---</form:option>
+								<form:option value="Dish TV">Dish TV</form:option>
+								<form:option value="Sun TV">Sun TV</form:option>
+								<form:option value="Tata Sky">Tata Sky</form:option>
+								</form:select>
+								<br><br>
+								</td>
 						</tr>
 
 						<tr>

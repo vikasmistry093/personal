@@ -51,7 +51,7 @@ public class BankServices implements IBankServices {
 		
 		RateOfInterest roi = getRateOfInterestByType(customer.getAccount().getAccountType());
 		acc.setRateOfInterest(roi);
-		
+		acc.setCustomer(customer);
 
 		acc.setBalance(100);
 		accs.add(acc);
@@ -183,7 +183,7 @@ public class BankServices implements IBankServices {
 	}
 
 	@Override
-	public boolean getCustomerByAccountNumber(BankTransaction transactions) {
+	public boolean isValidAccountNumber(BankTransaction transactions) {
 		// TODO Auto-generated method stub
 		long benificiaryAccountNumber = transactions.getBenificiaryAccNo();
 		Account benificiaryAccount = dao.getAccountByAccountNumber(benificiaryAccountNumber);
@@ -199,17 +199,13 @@ public class BankServices implements IBankServices {
 	}
 	
 	@Override
-	public Customer getCustomerByAccountNumber(long accountNumber) {
+	public Account getAccountByAccountNumber(long accountNumber) {
 		// TODO Auto-generated method stub
 		
+			Account account = dao.getAccountByAccountNumber(accountNumber);
 		
-		Account account = dao.getAccountByAccountNumber(accountNumber);
-		
-		
-		Customer customer = dao.getCustomerByAccount(account);
-		
-		if(customer != null)
-			return customer;
+		if(account != null)
+			return account;
 		
 		return null;
 	}
@@ -317,6 +313,7 @@ public class BankServices implements IBankServices {
 		newAccount.setAccountNumber(isNewAccount());
 		newAccount.setBalance(100);
 		newAccount.setAccountType(account.getAccountType());
+		newAccount.setCustomer(customer);
 		accounts.add(newAccount);
 		customer.setAccounts(accounts);
 		

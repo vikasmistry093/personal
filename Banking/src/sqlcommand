@@ -1,0 +1,1 @@
+insert into RATE_OF_INTEREST values(hibernate_sequence.nextval,'This is Car Loan type',9.5,'CAR');

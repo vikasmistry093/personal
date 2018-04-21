@@ -10,16 +10,14 @@ import org.bank.model.Account;
 import org.bank.model.BankTransaction;
 import org.bank.model.Customer;
 import org.bank.model.Loan;
-import org.bank.model.RateOfInterest;
-import org.hibernate.loader.custom.Return;
 
 public class BankUtil {
 	
 	public void sendCustomerEmail(Customer customer , String msg ) {
 		
 		
-		final String fromEmail = "akashmistry097@gmail.com"; //requires valid gmail id
-		final String password = "cout<<\"Akash\";"; // correct password for gmail id
+		final String fromEmail = "mybank710@gmail.com"; //requires valid gmail id
+		final String password = "M031333mybank"; // correct password for gmail id
 		final String toEmail = customer.getEmail();
 		String emailMsg = null;
 		
@@ -88,15 +86,15 @@ public class BankUtil {
 			break;
 		}
 		
-		EmailUtil.sendEmail(session, toEmail,"TLSEmail Testing Subject", emailMsg );
+		EmailUtil.sendEmail(session, toEmail,"MyBank Testing Mail ", emailMsg );
 		
 		
 	}
 
 	public void sendCustomerEmail(Customer customer, BankTransaction transaction, String msg) {
 		// TODO Auto-generated method stub
-		final String fromEmail = "akashmistry097@gmail.com"; //requires valid gmail id
-		final String password = "cout<<\"Akash\";"; // correct password for gmail id
+		final String fromEmail = "mybank710@gmail.com"; //requires valid gmail id
+		final String password = "M031333mybank"; // correct password for gmail id
 		final String toEmail = customer.getEmail();
 		String emailMsg = null;
 		
@@ -165,15 +163,15 @@ public class BankUtil {
 			break;
 		}
 		
-		EmailUtil.sendEmail(session, toEmail,"TLSEmail Testing Subject", emailMsg );
+		EmailUtil.sendEmail(session, toEmail,"MyBank Testing Mail ", emailMsg );
 	}
 
 	
 	
 	public void sendCustomerEmail(Customer customer, Account account, String msg) {
 		// TODO Auto-generated method stub
-		final String fromEmail = "akashmistry097@gmail.com"; //requires valid gmail id
-		final String password = "cout<<\"Akash\";"; // correct password for gmail id
+		final String fromEmail = "mybank710@gmail.com"; //requires valid gmail id
+		final String password = "M031333mybank"; // correct password for gmail id
 		final String toEmail = customer.getEmail();
 		//final String toEmail = "vikasmistry93@gmail.com"; // can be any email id 
 		String emailMsg = null;
@@ -207,19 +205,20 @@ public class BankUtil {
 			break;
 		}
 		
-		EmailUtil.sendEmail(session, toEmail,"TLSEmail Testing Subject", emailMsg );
+		EmailUtil.sendEmail(session, toEmail,"MyBank Testing Mail ", emailMsg );
 	}
 
 	public void sendCustomerEmail(Customer senderCustomer, Customer recieverCustomer, BankTransaction transaction,
 			String msg) {
 		// TODO Auto-generated method stub
 		
-		final String fromEmail = "akashmistry097@gmail.com"; //requires valid gmail id
-		final String password = "cout<<\"Akash\";"; // correct password for gmail id
-		final String toEmail;
-		if(msg=="sendermail") {
+		final String fromEmail = "mybank710@gmail.com"; //requires valid gmail id
+		final String password = "M031333mybank"; // correct password for gmail id
+		String toEmail = null;
+		if(msg=="senderMail") {
 			 toEmail = senderCustomer.getEmail();
-		}else {
+		}else 
+		if(msg=="receiverMail"){
 			 toEmail = recieverCustomer.getEmail();
 		}
 		
@@ -273,7 +272,7 @@ public class BankUtil {
 			break;
 		}
 		
-		EmailUtil.sendEmail(session, toEmail,"TLSEmail Testing Subject", emailMsg );
+		EmailUtil.sendEmail(session, toEmail,"MyBank Testing Mail ", emailMsg );
 		
 	}
 
@@ -294,8 +293,8 @@ public class BankUtil {
 	public void sendCustomerEmail(Customer customer, Loan applyLoan, String msg) {
 		// TODO Auto-generated method stub
 		
-		final String fromEmail = "akashmistry097@gmail.com"; //requires valid gmail id
-		final String password = "cout<<\"Akash\";"; // correct password for gmail id
+		final String fromEmail = "mybank710@gmail.com"; //requires valid gmail id
+		final String password = "M031333mybank"; // correct password for gmail id
 		final String toEmail = customer.getEmail();
 		String emailMsg = null;
 		
@@ -335,7 +334,7 @@ public class BankUtil {
 			break;
 		}
 		
-		EmailUtil.sendEmail(session, toEmail,"TLSEmail Testing Subject", emailMsg );
+		EmailUtil.sendEmail(session, toEmail,"MyBank Testing Mail ", emailMsg );
 		
 		
 	}

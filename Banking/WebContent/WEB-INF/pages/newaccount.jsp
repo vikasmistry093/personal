@@ -9,7 +9,7 @@
 <%@include file="includes/includer.html"%>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Welcome to DBS Bank: Apply Loan</title>
+<title>Welcome to DBS Bank: create new account</title>
 </head>
 <body>
 	<%@include file="includes/logoutheader.jsp"%>
@@ -20,7 +20,7 @@
 			</div>
 			<div class="col-sm-7">
 				<div class="panel panel-primary">
-					<div class="panel-heading">Apply for account</div>
+					<div class="panel-heading" align="center">Create new account</div>
 				</div>
 				<div class="panel-body">
 					<form:form action="${pageContext.request.contextPath}/createaccount" modelAttribute="account" commandName="account" method="post" >
@@ -31,7 +31,7 @@
 						<tr>
 							<td style="padding-left: 250px;">
 								<div class="panel panel-primary">
-									<div class="panel-heading">Select The Type Of Account</div>
+									<div class="panel-heading" align="center">Select The Type Of Account</div>
 								</div>	
 							</td>
 						</tr>

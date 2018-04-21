@@ -32,7 +32,7 @@ public interface IBankDao {
 
 	boolean isValidAccountNumber(long nextLong);
 
-	Customer getCustomerByAccount(Account account);
+	String getCustomerByAccount(Account account);
 
 	User isValidForgottenUser(String userName, String forgetEmail);
 

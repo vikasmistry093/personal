@@ -20,7 +20,7 @@
 			</div>
 			<div class="col-sm-7">
 				<div class="panel panel-primary">
-					<div class="panel-heading">Mobile Recharge</div>
+					<div class="panel-heading" align="center">Mobile Recharge</div>
 				</div>
 				<form:form
 					action="${pageContext.request.contextPath}/completemobilerecharge"
@@ -38,9 +38,9 @@
 									<c:forEach var="account" items="${customer.accounts}">
 										<form:option value="${account.accountNumber}">${account.accountNumber}</form:option>
 									</c:forEach>
-								</form:select><br></td>
-
-
+								</form:select>
+							<br><br>	
+							</td>
 						</tr>
 
 						<tr>
@@ -50,9 +50,17 @@
 
 							<td></td>
 
-							<td><form:input type="text" class="form-control"
-									path="benificiaryName" placeholder="Reciever Name" size="10"
-									required="required"/><br></td>
+							<td><form:select path="benificiaryName" required="required">
+								<form:option value="default" selected="selected">--- Select ---</form:option>
+								<form:option value="Vodafone">Vodafone</form:option>
+								<form:option value="Airtel">Airtel</form:option>
+								<form:option value="Idea">Idea</form:option>
+								<form:option value="RelienceJio">Relience Jio</form:option>
+								<form:option value="MTNL">MTNL</form:option>
+								<form:option value="BSNL">BSNL</form:option>
+								</form:select>
+								<br><br>
+								</td>
 						</tr>
 
 						<tr>

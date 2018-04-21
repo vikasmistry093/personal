@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -55,6 +56,11 @@ public class Account
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="ACCOUNT_TRANSACTION_DETAILS", joinColumns = {@JoinColumn(name="ACCOUNT_ID") }, inverseJoinColumns = { @JoinColumn(name="TRASACTION_ID")})
 	private List<BankTransaction> transactionDetails;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinTable(name = "ACCOUNT_CUSTOMER_DETAILS", joinColumns = {
+			@JoinColumn(name = "CUSTOMER_ID") }, inverseJoinColumns = { @JoinColumn(name = "ACCOUNT_ID") })
+	private Customer customer;
 
 
 	public long getAccountID() {
@@ -127,6 +133,14 @@ public class Account
 
 	public void setTransactionDetails(List<BankTransaction> transactionDetails) {
 		this.transactionDetails = transactionDetails;
+	}
+	
+	public Customer getCustomer() {
+		return customer;
+	}
+	
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 }
