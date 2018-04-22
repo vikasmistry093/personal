@@ -25,8 +25,8 @@
 					<div class="panel-heading">Account Setting</div>
 					<table>
 						<tr>
-							<td align="center" colspan="3"><a href="${pageContext.request.contextPath}/notificationsetting"><img src="${pageContext.request.contextPath}/resources/images/notificationsetting.jpg"  class="img-rounded" alt="notification" width="50%" height="41%"/></a></td>
-							<td align="center" colspan="3"><a href="${pageContext.request.contextPath}/generalsetting"><img src="${pageContext.request.contextPath}/resources/images/generalsetting.jpg" class="img-rounded" alt="general" width="35%" height="41%"/></a></td>
+							<td align="center" colspan="3"><a href="${pageContext.request.contextPath}/notificationsetting"><img src="${pageContext.request.contextPath}/resources/images/notificationsetting.jpg"  class="img-rounded" alt="notification" width="42%" height="41%"/></a></td>
+							<td align="center" colspan="3"><a href="${pageContext.request.contextPath}/generalsetting"><img src="${pageContext.request.contextPath}/resources/images/generalsetting.jpg" class="img-rounded" alt="general" width="30%" height="41%"/></a></td>
 							
 						</tr>
 						<tr>
@@ -36,7 +36,7 @@
 					</table>
 				</div>
 				<div>
-					<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advertisement.jpg"  width="100%" height="240px"/>
+					<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advert.jpg"  width="100%" height="210px"/>
 				</div>
 			</div>
 

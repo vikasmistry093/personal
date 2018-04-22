@@ -34,7 +34,7 @@
 			       	</table>			
 			    </div>
 			    <div>
-					<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advertisement.jpg"  width="100%" height="240px"/>
+				<img alt="advertise" src="${pageContext.request.contextPath}/resources/images/advert.jpg"  width="100%" height="220px"/>
 				</div>
 		   </div>
 		
