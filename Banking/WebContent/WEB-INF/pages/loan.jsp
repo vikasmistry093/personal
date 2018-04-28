@@ -13,7 +13,7 @@
 </head>
 <body>
 	<%@include file="includes/logoutheader.jsp"%>
-	
+
 	<div class="bodyContent">
 		<div class="row">
 			<div class="col-sm-3">
@@ -24,84 +24,84 @@
 					<div class="panel-heading" align="center">Apply For Loan</div>
 				</div>
 				<div class="panel-body">
-					<form:form action="${pageContext.request.contextPath}/applyforloan" modelAttribute="applyLoan" method="post" >
-					<table>
-						<tr>
-							<td style="padding-left: 160px;"></td>
+					<form:form action="${pageContext.request.contextPath}/applyforloan"
+						modelAttribute="applyLoan" method="post">
+						<table>
+							<tr>
+								<td style="padding-left: 160px;"></td>
 
-							<td><label> Loan Type:</label><br><br></td>
+								<td><label> Loan Type:</label><br>
+								<br></td>
 
-							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 
-							<td>
-							<form:select path="loanType" required="required">
-								<form:option value="default" selected="selected">--- Select ---</form:option>
-								<form:option value="personalloan">Personal Loan</form:option>
-								<form:option value="carloan">Car Loan</form:option>			
-							</form:select><br><br>
-							</td>
+								<td><form:select path="loanType" required="required">
+										<form:option value="default" selected="selected">--- Select ---</form:option>
+										<form:option value="personalloan">Personal Loan</form:option>
+										<form:option value="carloan">Car Loan</form:option>
+									</form:select><br>
+								<br></td>
 
-						</tr>
-						
-						<tr>
-							<td></td>
+							</tr>
 
-							<td><label>Loan Amount:</label><br><br></td>
+							<tr>
+								<td></td>
 
-							<td></td>
+								<td><label>Loan Amount:</label><br>
+								<br></td>
 
-							<td><form:input type="number" class="form-control"
-									path="loanAmount" placeholder="Amount"
-									required="required" /><br><br>
-							</td>
-						</tr>
+								<td></td>
 
-						<tr>
-							<td></td>
+								<td><form:input type="text" class="form-control"
+										path="loanAmount" placeholder="Amount" required="required" maxlength="7" /><br>
+								<br></td>
+							</tr>
 
-							<td><label>Loan Period:</label><br><br></td>
+							<tr>
+								<td></td>
 
-							<td></td>
+								<td><label>Loan Period:</label><br>
+								<br></td>
 
-							<td>
-							<form:select path="loanPeriod">
-								<form:option value="0" selected="selected" required="required">--- Select ---</form:option>
-								<form:option value="1">1</form:option>
-								<form:option value="2">2</form:option>
-								<form:option value="5">5</form:option>
-								<form:option value="10">10</form:option>
-								<form:option value="15">15</form:option>		
-							</form:select><br><br>
-							</td>
-						</tr>
+								<td></td>
 
-						<tr>
-							<td></td>
+								<td><form:select path="loanPeriod">
+										<form:option value="0" selected="selected" required="required">--- Select ---</form:option>
+										<form:option value="1">1</form:option>
+										<form:option value="2">2</form:option>
+										<form:option value="5">5</form:option>
+										<form:option value="10">10</form:option>
+										<form:option value="15">15</form:option>
+									</form:select><br>
+								<br></td>
+							</tr>
 
-							<td><label>Upload Document:</label><br><br></td>
+							<tr>
+								<td></td>
 
-							<td></td>
+								<td><label>Upload Document:</label><br>
+								<br></td>
 
-							<td>
-							<form:input type="file"  name="loanDocument" accept="images/*"  path="loanDocument"/><br><br>
-													
-    
-							</td>
-						</tr>
+								<td></td>
 
-						<tr>
-							<td></td>
-							
-							<td align="center"><input type="reset"
-								class="btn btn-default" value="RESET" /></td>
-							<td></td>
-							
-							<td align="center"><input type="submit"
-								class="btn btn-default" onclick="mysuccessalert();"
-								value="SUBMIT" /></td>
-						</tr>
-					</table>
-				</form:form>
+								<td><form:input type="file" name="loanDocument"
+										accept="images/*" path="loanDocument" /><br>
+								<br></td>
+							</tr>
+
+							<tr>
+								<td></td>
+
+								<td align="center"><input type="reset"
+									class="btn btn-default" value="RESET" /></td>
+								<td></td>
+
+								<td align="center"><input type="submit"
+									class="btn btn-default" onclick="mysuccessalert();"
+									value="SUBMIT" /></td>
+							</tr>
+						</table>
+					</form:form>
 				</div>
 			</div>
 
