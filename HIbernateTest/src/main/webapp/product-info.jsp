@@ -21,10 +21,10 @@
 				</div>
 				<div class="m-t-20 text-center">
 					<button type="button"
-						class="btn primary-btn btn-lg btn-block pull-left">Add To
+						class="btn primary-btn btn-lg btn-block pull-left" onclick="addtoCart(${product.productId})">Add To
 						Cart</button>
 					<button type="button"
-						class="btn btn-orange btn-lg btn-block pull-right">Buy
+						class="btn btn-orange btn-lg btn-block pull-right" onclick="buyNow(${product.productId})">Buy
 						Now</button>
 					<div class="clear-float"></div>
 				</div>

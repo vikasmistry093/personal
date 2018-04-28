@@ -28,3 +28,11 @@ $(document).ready(function() {
 
 	});
 });
+
+function addtoCart(productId) {
+	location.href = '/addtoCart?id=' + productId;
+}
+
+function buyNow(productId) {
+	location.href = '/buyNow?id=' + productId;
+}

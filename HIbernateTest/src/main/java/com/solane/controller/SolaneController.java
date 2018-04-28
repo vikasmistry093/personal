@@ -1,7 +1,6 @@
 package com.solane.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,14 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.solane.mapper.model.CategoryInfo;
 import com.solane.mapper.model.ProductInfo;
-import com.solane.mapper.model.RecommendationInfo;
 import com.solane.mapper.model.UserInfo;
-import com.solane.model.User;
 import com.solane.service.CategoryService;
 import com.solane.service.ProductService;
-import com.solane.service.RecommendationService;
 import com.solane.service.UserService;
-import com.solane.service.WishListService;
 
 @Controller
 public class SolaneController {
@@ -60,6 +55,9 @@ public class SolaneController {
 		
 		boolean isSuccess = userService.validateLoogedUser(user);
 		System.out.println(isSuccess);
+		if(isSuccess) {
+			session.setAttribute("user", user);
+		}
 		ModelAndView model = new ModelAndView("redirect:/"+finalURL);
 		return model;
 	}
@@ -82,6 +80,26 @@ public class SolaneController {
 		userService.updateRecommendationForUser(user, productInfo);
 		
 		model.addObject("product", productInfo);
+		return model;
+	}
+	
+	@RequestMapping("/addtoCart")
+	public ModelAndView addtoCart(@RequestParam("id") String product_id, HttpServletRequest request) {
+		UserInfo user = (UserInfo) request.getSession().getAttribute("user");
+		ModelAndView model = new ModelAndView("redirect:/login");
+		if(user != null) {
+			model = new ModelAndView("redirect:/index");
+		}
+		return model;
+	}
+	
+	@RequestMapping("/buyNow")
+	public ModelAndView buyNow(@RequestParam("id") String product_id, HttpServletRequest request) {
+		UserInfo user = (UserInfo) request.getSession().getAttribute("user");
+		ModelAndView model = new ModelAndView("redirect:/login?url=buy-product");
+		if(user != null) {
+			model = new ModelAndView("buy-product");
+		}
 		return model;
 	}
 	

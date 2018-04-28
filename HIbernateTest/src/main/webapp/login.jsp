@@ -26,7 +26,7 @@
 				<th><form:input type="password" class="form-control" path="password"/></th>
 			</tr>
 			<tr>
-				<th></th>
+				<th><form:button class="form-control" value="Sign Up"/></th>
 				<th><form:button class="form-control" value="Log In"/></th>
 			</tr>
 		</table>
