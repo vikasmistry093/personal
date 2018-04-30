@@ -33,11 +33,33 @@ public class SolaneController {
 	@Autowired
 	private UserService userService;
 		
+	@Autowired
 	private HttpSession session;
 	
+	@RequestMapping("/")
+	public ModelAndView indexPage(HttpServletRequest request) {
+		session.invalidate();
+		ModelAndView model = new ModelAndView("index");
+		List<ProductInfo> productList = productService.getTopProducts();
+		
+		model.addObject("productList", productList);
+		return model;
+	}
+	
 	@RequestMapping("/login")
-	public ModelAndView login(@RequestParam(value="url", defaultValue="") String redirectURL) {
+	public ModelAndView login(@RequestParam(value="url", defaultValue="") String redirectURL, HttpServletRequest request) {
 		ModelAndView model = new ModelAndView("login");
+		UserInfo user = new UserInfo();
+		model.addObject("user",user);
+		if(!redirectURL.isEmpty())
+			model.addObject("url", redirectURL);
+		
+		return model;
+	}
+	
+	@RequestMapping("/signup")
+	public ModelAndView signup(@RequestParam(value="url", defaultValue="") String redirectURL, HttpServletRequest request) {
+		ModelAndView model = new ModelAndView("signup");
 		UserInfo user = new UserInfo();
 		model.addObject("user",user);
 		if(!redirectURL.isEmpty())
@@ -48,26 +70,29 @@ public class SolaneController {
 	
 	@RequestMapping("/validateLoggedUser")
 	public ModelAndView validateLoggedUser(@ModelAttribute(value="user") UserInfo user, 
-			@RequestParam(value="url", required=false) String redirectURL) {
+			@RequestParam(value="url", required=false) String redirectURL, HttpServletRequest request) {
 		String finalURL = "";
 		if(redirectURL.length() > 0)
 			finalURL = redirectURL;
 		
-		boolean isSuccess = userService.validateLoogedUser(user);
-		System.out.println(isSuccess);
-		if(isSuccess) {
-			session.setAttribute("user", user);
+		UserInfo userInfo = userService.getUserByLoggedUser(user);
+		if(userInfo != null) {
+			session.setAttribute("user", userInfo);
 		}
 		ModelAndView model = new ModelAndView("redirect:/"+finalURL);
 		return model;
 	}
 	
-	@RequestMapping("/")
-	public ModelAndView indexPage() {
-		ModelAndView model = new ModelAndView("index");
-		List<ProductInfo> productList = productService.getTopProducts();
+	@RequestMapping("/registerUser")
+	public ModelAndView registerUser(@ModelAttribute(value="user") UserInfo user, 
+			@RequestParam(value="url", required=false) String redirectURL, HttpServletRequest request) {
+		String finalURL = "";
+		if(redirectURL.length() > 0)
+			finalURL = redirectURL;
 		
-		model.addObject("productList", productList);
+		userService.registerNewUser(user);
+		
+		ModelAndView model = new ModelAndView("redirect:/"+finalURL);
 		return model;
 	}
 	
@@ -96,15 +121,18 @@ public class SolaneController {
 	@RequestMapping("/buyNow")
 	public ModelAndView buyNow(@RequestParam("id") String product_id, HttpServletRequest request) {
 		UserInfo user = (UserInfo) request.getSession().getAttribute("user");
-		ModelAndView model = new ModelAndView("redirect:/login?url=buy-product");
+		ModelAndView model = new ModelAndView("redirect:/login?url=buyNow?id="+product_id);
 		if(user != null) {
 			model = new ModelAndView("buy-product");
+			ProductInfo sproduct = productService.getProductById(Long.parseLong(product_id));
+			model.addObject("sproduct", sproduct);
+			model.addObject("user",user);
 		}
 		return model;
 	}
 	
 	@RequestMapping("/upload")
-	public ModelAndView uploadProduct() {
+	public ModelAndView uploadProduct(HttpServletRequest request) {
 		ModelAndView model = new ModelAndView("product-upload");
 		ProductInfo productInfo = new ProductInfo();
 		List<CategoryInfo> categories = categoryService.getAllCategoryInfoList();
@@ -115,7 +143,7 @@ public class SolaneController {
 	
 	@RequestMapping("/saveUploadProduct")
 	public ModelAndView saveUploadProduct(@RequestParam(value="imageFile") MultipartFile[] files,
-			@ModelAttribute ProductInfo productInfo) throws IOException {
+			@ModelAttribute ProductInfo productInfo, HttpServletRequest request) throws IOException {
 		ModelAndView model = new ModelAndView("redirect:/");
 		productService.saveUploadedProduct(productInfo, files);
 		return model;

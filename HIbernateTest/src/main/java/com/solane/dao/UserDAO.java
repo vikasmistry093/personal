@@ -4,11 +4,15 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.solane.mapper.model.UserInfo;
 import com.solane.model.User;
 
 @Repository
@@ -22,12 +26,31 @@ public class UserDAO {
         return sessionFactory.getCurrentSession();
     }
 	
+	@SuppressWarnings("unchecked")
 	public List<User> getAllUsers() {
-		return null;
+		Query query = getSession().createQuery("from User");
+		query.setMaxResults(9);
+		
+		return (List<User>)query.list();
 	}
 
 	public void saveOrUpdate(User user) {
 		getSession().saveOrUpdate(user);
 	}
+
+	public boolean validateUserByEmailandPassword(String email, String password) {
+		Criteria critreia = getSession().createCriteria(User.class);
+		critreia.add(Restrictions.eq("email", email));
+		critreia.add(Restrictions.eq("password", password));
+		return critreia.uniqueResult() != null ? true : false;
+	}
+
+	public User getUserByEmailandPassword(String email, String password) {
+		Criteria critreia = getSession().createCriteria(User.class);
+		critreia.add(Restrictions.eq("email", email));
+		critreia.add(Restrictions.eq("password", password));
+		return (User) critreia.uniqueResult();
+	}
+
 
 }

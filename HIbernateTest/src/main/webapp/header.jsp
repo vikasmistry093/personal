@@ -28,7 +28,7 @@
                   </div>
                   <div class="col-xs-4 col-sm-2">
                   <div class="pull-right">
-                     <button type="button" class="btn primary-btn" onclick="signUp()">Singup</button>
+                     <button type="button" class="btn primary-btn" onclick="signUp()">Sing Up</button>
                      <button type="button" class="btn secondary-btn" onclick="login()">Log In</button>
                   </div>
                </div>
@@ -37,9 +37,9 @@
          </section>
          <!-- logo and search section end-->
          <!-- menu part -->
-         <nav class="navbar navbar-default custom-navbar">
+        <!--  <nav class="navbar navbar-default custom-navbar">
             <div class="container">
-               <!-- Brand and toggle get grouped for better mobile display -->
+               Brand and toggle get grouped for better mobile display
                <div class="navbar-header">
                   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
                   <span class="sr-only">Toggle navigation</span>
@@ -48,17 +48,17 @@
                   <span class="icon-bar"></span>
                   </button>
                </div>
-               <!-- Collect the nav links, forms, and other content for toggling -->
+               Collect the nav links, forms, and other content for toggling
                <div class="collapse navbar-collapse" id="navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                     <li class="active"><a href="#">Electronics</a></li>
+                     <li class="active"><a href="#">Home</a></li>
                      <li><a href="#">About</a></li>
                      <li><a href="#">Contact us</a></li>
                   </ul>
                </div>
-               <!-- /.navbar-collapse -->
+               /.navbar-collapse
             </div>
-         </nav>
+         </nav> -->
          <!-- menu part end -->
       </header>
 

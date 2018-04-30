@@ -43,6 +43,19 @@ html, body {
 	margin-right: 0px !important;
 }
 
+.login-row {
+	padding-top: 10px;
+}
+
+.login-signup {
+	float: left !important;
+}
+
+.login-signin {
+	float: right !important;
+	width:  75px !important;
+}
+
 .menus {
 	list-style: none;
 	line-height: 3;

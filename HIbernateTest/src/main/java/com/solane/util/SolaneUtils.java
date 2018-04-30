@@ -35,6 +35,10 @@ public class SolaneUtils {
 
 	}
 	
+	public static Timestamp getCurrentTimeStamp() {
+		return new Timestamp(System.currentTimeMillis());
+	}
+	
 	public static List<Product> setProduct() {
 		Timestamp timeStamp = new Timestamp(System.currentTimeMillis());
 		

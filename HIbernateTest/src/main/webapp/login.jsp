@@ -11,6 +11,14 @@
 <body>
 <%@ include file="header.jsp"%>
 
+<div class="login-row row">
+<div class="col-md-4"></div>
+<div class="col-md-4">
+	<img alt="logo" src="${pageContext.request.contextPath}/images/logo.jpg" width="250" height="125">
+</div>
+<div class="col-md-4"></div>
+</div>
+<br />
 
 <div class="row">
 <div class="col-md-4"></div>
@@ -26,8 +34,11 @@
 				<th><form:input type="password" class="form-control" path="password"/></th>
 			</tr>
 			<tr>
-				<th><form:button class="form-control" value="Sign Up"/></th>
-				<th><form:button class="form-control" value="Log In"/></th>
+				<th><button type="button" class="login-signup form-control" value="Sign Up" onclick="signUp()">Sign Up</button></th>
+				<th><button type="submit" class="login-signin form-control" value="Sign In">Sign In</button></th>
+			</tr>
+			<tr>
+				<th colspan="2"><a href="javascript:;">Forgot your password?</a></th>
 			</tr>
 		</table>
 	</form:form>

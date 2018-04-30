@@ -9,7 +9,6 @@ import com.solane.mapper.UserMapper;
 import com.solane.mapper.model.ProductInfo;
 import com.solane.mapper.model.RecommendationInfo;
 import com.solane.mapper.model.UserInfo;
-import com.solane.model.User;
 
 @Service
 public class UserService {
@@ -35,9 +34,18 @@ public class UserService {
 		
 	}
 
-	public boolean validateLoogedUser(UserInfo user) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean validateLogedUser(UserInfo user) {
+		boolean isvalid = userMapper.validateUser(user);
+		return isvalid;
+	}
+
+	public void registerNewUser(UserInfo userinfo) {
+		userMapper.saveOrUpdate(userinfo);
+	}
+
+	public UserInfo getUserByLoggedUser(UserInfo user) {
+		UserInfo userInfo = userMapper.getUserByLoggedUser(user);
+		return userInfo;
 	}
 
 }

@@ -29,6 +29,14 @@ $(document).ready(function() {
 	});
 });
 
+function signUp() {
+	location.href = '/signup';
+}
+
+function login() {
+	location.href = '/login';
+}
+
 function addtoCart(productId) {
 	location.href = '/addtoCart?id=' + productId;
 }

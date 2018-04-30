@@ -108,7 +108,7 @@ public class UserInfo implements Serializable{
 	public void setUserAddress(List<AddressInfo> userAddress) {
 		this.userAddress = userAddress;
 	}
-
+	
 	public RecommendationInfo getRecommendation() {
 		return recommendation;
 	}
