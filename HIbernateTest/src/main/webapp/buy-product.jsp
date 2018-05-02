@@ -64,7 +64,7 @@
 										<c:forEach items="${user.wishList.products}" var="product">
 											<div class="row product-summary">
 												<div class="col-sm-3 text-center">
-													<img class="" src="images/mob-image.jpeg">
+													<img class="" src="images/${product.prouctImages[0].imageURL}">
 												</div>
 												<div class="col-sm-9">
 													<p class="f-18 m-b-20 f-normal">${product.productTitle }</p>
@@ -74,7 +74,7 @@
 										</c:forEach>
 										<div class="row product-summary">
 												<div class="col-sm-3 text-center">
-													<img class="" src="images/mob-image.jpeg">
+													<img class="" src="images/${sproduct.prouctImages[0].imageURL}">
 												</div>
 												<div class="col-sm-9">
 													<p class="f-18 m-b-20 f-normal">${sproduct.productTitle }</p>
