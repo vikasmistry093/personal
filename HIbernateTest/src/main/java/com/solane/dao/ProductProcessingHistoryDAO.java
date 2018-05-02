@@ -17,7 +17,7 @@ public class ProductProcessingHistoryDAO {
 	private SessionFactory sessionFactory;
 	
 	private Session getSession() {
-        return sessionFactory.getCurrentSession();
+        return sessionFactory.openSession();
     }
 
 	public void saveorUpdate(ProductProcessingHistory productProcessingHistory) {

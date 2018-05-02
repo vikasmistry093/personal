@@ -5,7 +5,6 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.hibernate.Criteria;
-import org.hibernate.FetchMode;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -23,7 +22,7 @@ public class UserDAO {
 	private SessionFactory sessionFactory;
 	
 	private Session getSession() {
-        return sessionFactory.getCurrentSession();
+        return sessionFactory.openSession();
     }
 	
 	@SuppressWarnings("unchecked")
@@ -44,18 +43,12 @@ public class UserDAO {
 		critreia.add(Restrictions.eq("password", password));
 		return critreia.uniqueResult() != null ? true : false;
 	}
-
+	
 	public User getUserByEmailandPassword(String email, String password) {
 		Criteria critreia = getSession().createCriteria(User.class);
 		critreia.add(Restrictions.eq("email", email));
 		critreia.add(Restrictions.eq("password", password));
-//		critreia.setFetchMode("cardDetails", FetchMode.JOIN);
-//		critreia.setFetchMode("userAddress", FetchMode.JOIN);
-//		critreia.setFetchMode("recommendation", FetchMode.JOIN);
-//		critreia.setFetchMode("orders", FetchMode.JOIN);
-//		critreia.setFetchMode("wishList", FetchMode.JOIN);
 		return (User) critreia.uniqueResult();
 	}
-
 
 }

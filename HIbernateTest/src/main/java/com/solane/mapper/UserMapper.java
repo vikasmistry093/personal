@@ -3,14 +3,12 @@ package com.solane.mapper;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.solane.dao.UserDAO;
 import com.solane.mapper.model.UserInfo;
 import com.solane.model.User;
-import com.solane.util.SolaneUtils;
 
 @Component
 public class UserMapper {
@@ -25,15 +23,15 @@ public class UserMapper {
 		user.setContact(userInfo.getContact());
 		user.setEmail(userInfo.getEmail());
 		user.setPassword(userInfo.getPassword());
-		user.setStatus(userInfo.getStatus() != null ? userInfo.getStatus() : null);
+		user.setStatus(userInfo.getStatus());
 		user.setCardDetails(userInfo.getCardDetails() != null ? CardMapper.convertIntoCardList(userInfo.getCardDetails()) : null);
 		user.setUserAddress(userInfo.getUserAddress() != null ? AddressMapper.convertIntoAddressList(userInfo.getUserAddress()) : null);
 		user.setRecommendation(userInfo.getRecommendation() != null ? RecommendationMapper.convertIntoRecommendation(userInfo.getRecommendation()) : null);
 		user.setOrders(userInfo.getOrders() != null ? OrderMapper.convertIntoOrderList(userInfo.getOrders()) : null);
 		user.setWishList(userInfo.getWishList() !=null ? WishListMapper.convertIntoWishList(userInfo.getWishList()) : null);
-		user.setType(userInfo.getType() != null ? userInfo.getType() : null);
-		user.setCreatedTimestamp(userInfo.getCreatedTimestamp() != null ? userInfo.getCreatedTimestamp() : SolaneUtils.getCurrentTimeStamp());
-		user.setUpdatedTimestamp(userInfo.getUpdatedTimestamp() != null ? userInfo.getUpdatedTimestamp() : SolaneUtils.getCurrentTimeStamp());
+		user.setType(userInfo.getType());
+		user.setCreatedTimestamp(userInfo.getCreatedTimestamp());
+		user.setUpdatedTimestamp(userInfo.getUpdatedTimestamp());
 		return user;
 	}
 
@@ -44,13 +42,13 @@ public class UserMapper {
 		userInfo.setContact(user.getContact());
 		userInfo.setEmail(user.getEmail());
 		userInfo.setPassword(user.getPassword());
-		userInfo.setStatus(user.getStatus() != null ? user.getStatus() : null);
+		userInfo.setStatus(user.getStatus());
 		userInfo.setCardDetails(user.getCardDetails() != null ? CardMapper.convertIntoCardInfoList(user.getCardDetails()) : null);
 		userInfo.setUserAddress(user.getUserAddress() != null ? AddressMapper.convertIntoAddressInfoList(user.getUserAddress()) : null);
 		userInfo.setRecommendation(user.getRecommendation() != null ? RecommendationMapper.convertIntoRecommendationInfo(user.getRecommendation()) : null);
 		userInfo.setOrders(user.getOrders() != null ? OrderMapper.convertIntoOrderInfoList(user.getOrders()) : null);
 		userInfo.setWishList(user.getWishList() != null ? WishListMapper.convertIntoWishListInfo(user.getWishList()) : null);
-		userInfo.setType(user.getType() != null ? user.getType() : null);
+		userInfo.setType(user.getType());
 		userInfo.setCreatedTimestamp(user.getCreatedTimestamp());
 		userInfo.setUpdatedTimestamp(user.getUpdatedTimestamp());
 		return userInfo;

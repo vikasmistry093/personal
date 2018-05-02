@@ -7,7 +7,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,8 +17,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
@@ -50,27 +47,22 @@ public class User implements Serializable{
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="USER_CARDS", joinColumns={@JoinColumn(name="USER_ID")}, inverseJoinColumns={@JoinColumn(name="CARD_ID")})
-	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Card> cardDetails;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="USER_ADDRESS", joinColumns={@JoinColumn(name="USER_ID")}, inverseJoinColumns={@JoinColumn(name="ADDRESS_ID")})
-	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Address> userAddress;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="RECOMMENDATION")
-	@LazyCollection(LazyCollectionOption.FALSE)
 	private Recommendation recommendation;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="USER_ORDERS", joinColumns={@JoinColumn(name="USER_ID")}, inverseJoinColumns={@JoinColumn(name="ORDER_ID")})
-	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Order> orders;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="WISHLIST")
-	@LazyCollection(LazyCollectionOption.FALSE)
 	private WishList wishList;
 	
 	@Column(name="TYPE")
