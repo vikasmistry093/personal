@@ -3,12 +3,15 @@ package com.solane.mapper;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Component;
 
 import com.solane.mapper.model.RecommendationInfo;
 import com.solane.model.Recommendation;
 
 @Component
+@Transactional
 public class RecommendationMapper {
 	
 	public static Recommendation convertIntoRecommendation(RecommendationInfo recommendationInfo) {

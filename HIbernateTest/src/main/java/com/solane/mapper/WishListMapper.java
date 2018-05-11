@@ -3,12 +3,15 @@ package com.solane.mapper;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Component;
 
 import com.solane.mapper.model.WishListInfo;
 import com.solane.model.WishList;
 
 @Component
+@Transactional
 public class WishListMapper {
 	
 	public static WishList convertIntoWishList(WishListInfo wishListInfo) {

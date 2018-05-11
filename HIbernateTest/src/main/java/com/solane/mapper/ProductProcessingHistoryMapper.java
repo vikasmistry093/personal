@@ -1,5 +1,7 @@
 package com.solane.mapper;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -8,6 +10,7 @@ import com.solane.mapper.model.ProductProcessingHistoryInfo;
 import com.solane.model.ProductProcessingHistory;
 
 @Component
+@Transactional
 public class ProductProcessingHistoryMapper {
 	
 	@Autowired

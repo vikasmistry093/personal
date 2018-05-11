@@ -15,7 +15,7 @@ public class CardDAO {
 	private SessionFactory sessionFactory;
 	
 	private Session getSession() {
-        return sessionFactory.openSession();
+        return sessionFactory.getCurrentSession();
     }
 
 }

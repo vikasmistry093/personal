@@ -3,6 +3,8 @@ package com.solane.mapper;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,6 +13,7 @@ import com.solane.mapper.model.AdminUserInfo;
 import com.solane.model.AdminUser;
 
 @Component
+@Transactional
 public class AdminUserMapper {
 	
 	@Autowired

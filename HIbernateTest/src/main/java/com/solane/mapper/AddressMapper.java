@@ -3,12 +3,15 @@ package com.solane.mapper;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Component;
 
 import com.solane.mapper.model.AddressInfo;
 import com.solane.model.Address;
 
 @Component
+@Transactional
 public class AddressMapper {
 
 	public static Address convertIntoAddress(AddressInfo addressInfo) {

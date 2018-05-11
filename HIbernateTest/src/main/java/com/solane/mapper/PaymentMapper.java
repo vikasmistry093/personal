@@ -3,12 +3,15 @@ package com.solane.mapper;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Component;
 
 import com.solane.mapper.model.PaymentInfo;
 import com.solane.model.Payment;
 
 @Component
+@Transactional
 public class PaymentMapper {
 	
 	public static Payment convertIntoPayment(PaymentInfo paymentInfo) {

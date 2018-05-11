@@ -21,7 +21,7 @@ public class AdminUserDAO {
 	private SessionFactory sessionFactory;
 	
 	private Session getSession() {
-        return sessionFactory.openSession();
+        return sessionFactory.getCurrentSession();
     }
 	
 	@SuppressWarnings("unchecked")

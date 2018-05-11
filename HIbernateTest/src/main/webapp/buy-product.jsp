@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +16,7 @@
 	<!-- main content -->
 	<div class="container-fluid m-t-30">
 		<div class="row">
+			<form:form action="/placeOrder" modelAttribute="order" >
 			<div class="col-sm-8">
 				<!-- about product -->
 				<div class="wrapper center-block">
@@ -35,8 +38,8 @@
 											<div class="row">
 												<c:forEach items="${user.userAddress}" var="address">
 													<div class=" col-xs-12">
-													<label class="radio-inline m-b-10 "> <input
-														type="radio" name="optradio"><span class="f-bold">${user.name}</span>
+													<label class="radio-inline m-b-10 "> <form:radiobutton
+														name="optradio" path="addressId" value="${address}" /><span class="f-bold">${user.name}</span>
 														<p class="m-t-10">${address.street}</p>
 													</label>
 													</div>
@@ -72,15 +75,6 @@
 												</div>
 											</div>
 										</c:forEach>
-										<div class="row product-summary">
-												<div class="col-sm-3 text-center">
-													<img class="" src="images/${sproduct.prouctImages[0].imageURL}">
-												</div>
-												<div class="col-sm-9">
-													<p class="f-18 m-b-20 f-normal">${sproduct.productTitle }</p>
-													<p class="f-bold f-16">₹ ${sproduct.price }</p>
-												</div>
-											</div>
 									</div>
 									<div class="panel-footer ">
 										<button type="button" class="btn btn-orange">Next</button>
@@ -125,11 +119,13 @@
 										</div>
 									</div>
 								</div>
+								<button type="submit" value="Place Order">Place Order</button>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			</form:form>
 		</div>
 	</div>
 	<!-- main content end-->

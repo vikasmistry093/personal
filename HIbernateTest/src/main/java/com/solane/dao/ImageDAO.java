@@ -15,7 +15,7 @@ public class ImageDAO {
 	private SessionFactory sessionFactory;
 	
 	private Session getSession() {
-        return sessionFactory.openSession();
+        return sessionFactory.getCurrentSession();
     }
 
 }

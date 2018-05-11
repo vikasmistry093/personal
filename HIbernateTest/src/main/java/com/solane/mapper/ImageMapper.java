@@ -3,12 +3,15 @@ package com.solane.mapper;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Component;
 
 import com.solane.mapper.model.ImageInfo;
 import com.solane.model.Image;
 
 @Component
+@Transactional
 public class ImageMapper {
 	
 	public static ImageInfo convertIntoImageInfo(Image image) {

@@ -3,12 +3,15 @@ package com.solane.mapper;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Component;
 
 import com.solane.mapper.model.CardInfo;
 import com.solane.model.Card;
 
 @Component
+@Transactional
 public class CardMapper {
 	
 	public static Card convertIntoCard(CardInfo cardInfo) {

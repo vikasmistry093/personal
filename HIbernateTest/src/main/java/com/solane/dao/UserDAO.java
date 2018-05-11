@@ -22,7 +22,7 @@ public class UserDAO {
 	private SessionFactory sessionFactory;
 	
 	private Session getSession() {
-        return sessionFactory.openSession();
+        return sessionFactory.getCurrentSession();
     }
 	
 	@SuppressWarnings("unchecked")

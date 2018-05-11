@@ -3,6 +3,8 @@ package com.solane.mapper;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,6 +13,7 @@ import com.solane.mapper.model.UserInfo;
 import com.solane.model.User;
 
 @Component
+@Transactional
 public class UserMapper {
 	
 	@Autowired

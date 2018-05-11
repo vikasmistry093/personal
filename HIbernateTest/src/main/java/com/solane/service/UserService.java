@@ -39,7 +39,7 @@ public class UserService {
 		return isvalid;
 	}
 
-	public void registerNewUser(UserInfo userinfo) {
+	public void saveOrUpdate(UserInfo userinfo) {
 		userMapper.saveOrUpdate(userinfo);
 	}
 
