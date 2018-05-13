@@ -65,6 +65,7 @@
 									role="tabpanel" aria-labelledby="headingThree">
 									<div class="panel-body ">
 										<c:forEach items="${user.wishList.products}" var="product">
+											<form:hidden path="productIds" value="${product.productId }"/>
 											<div class="row product-summary">
 												<div class="col-sm-3 text-center">
 													<img class="" src="images/${product.prouctImages[0].imageURL}">
@@ -94,7 +95,7 @@
 									role="tabpanel" aria-labelledby="headingfour">
 									<div class="panel-body">
 										<div class="row">
-											<div class=" col-xs-12">
+											<!-- <div class=" col-xs-12">
 												<label class="radio-inline m-b-10 "> <input
 													type="radio" name="optradio"><span class="f-bold">Net
 														Banking</span>
@@ -108,10 +109,10 @@
 														card</span>
 													<p class="m-t-10">Payment mode</p>
 												</label>
-											</div>
+											</div> -->
 											<div class="col-xs-12">
-												<label class="radio-inline m-b-10 "> <input
-													type="radio" name="optradio"><span class="f-bold">Cash
+												<label class="radio-inline m-b-10 "> <form:radiobutton
+													name="optradio" path="paymentType" value="COD" /><span class="f-bold">Cash
 														on Delivery</span>
 													<p class="m-t-10">Payment mode</p>
 												</label>

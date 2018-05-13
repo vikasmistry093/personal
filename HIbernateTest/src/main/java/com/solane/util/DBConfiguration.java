@@ -63,6 +63,7 @@ public class DBConfiguration {
  
         return sessionFactory;
     }
+    
  
     @Bean
     public HibernateTransactionManager transactionManager() {
