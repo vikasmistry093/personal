@@ -35,6 +35,13 @@ public class SolaneUtils {
 
 	}
 	
+	public static Double getTotalAmountOfProducts(List<ProductInfo> orderProducts) {
+		Double amount = 0D;
+		for(ProductInfo product: orderProducts)
+			amount += product.getPrice();
+		return amount;
+	}
+	
 	public static Timestamp getCurrentTimeStamp() {
 		return new Timestamp(System.currentTimeMillis());
 	}
@@ -264,5 +271,6 @@ public class SolaneUtils {
 		
 		return products;
 	}
+
 }
  

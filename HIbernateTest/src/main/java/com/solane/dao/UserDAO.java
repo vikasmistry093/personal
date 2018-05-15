@@ -51,4 +51,9 @@ public class UserDAO {
 		return (User) critreia.uniqueResult();
 	}
 
+	public User getUserByUserId(Long userId) {
+		User user = getSession().get(User.class, userId);
+		return user;
+	}
+
 }

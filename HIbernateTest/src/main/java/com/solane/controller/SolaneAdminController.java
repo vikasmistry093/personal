@@ -11,10 +11,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.solane.constants.SolaneConstants;
 import com.solane.mapper.model.AdminUserInfo;
+import com.solane.mapper.model.OrderInfo;
 import com.solane.mapper.model.ProductInfo;
 import com.solane.mapper.model.ProductProcessingHistoryInfo;
 import com.solane.model.Product;
 import com.solane.service.AdminUserService;
+import com.solane.service.OrderService;
 import com.solane.service.ProductProcessHistoryService;
 import com.solane.service.ProductService;
 import com.solane.util.SolaneUtils;
@@ -24,6 +26,9 @@ public class SolaneAdminController {
 	
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private OrderService orderService;
 	
 	@Autowired
 	private AdminUserService adminUserService;
@@ -54,6 +59,15 @@ public class SolaneAdminController {
 		List<ProductInfo> products = productService.getProductByStatus(SolaneConstants.PICKUP);
 		model.addObject("type", SolaneConstants.ASSIGNED_PICK_UP_PRODUCTS);
 		model.addObject("productList", products);
+		return model;
+	}
+	
+	@RequestMapping("/orderPlaced")
+	public ModelAndView orderPlaced() {
+		ModelAndView model = new ModelAndView("admin-order-placed");
+		List<OrderInfo> orders = orderService.getOrdersByStatus(SolaneConstants.ORDER_PLACED);
+		model.addObject("type", SolaneConstants.ORDER_PLACED);
+		model.addObject("orderList", orders);
 		return model;
 	}
 	

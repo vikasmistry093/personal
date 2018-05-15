@@ -37,6 +37,14 @@ function login() {
 	location.href = '/login';
 }
 
+function logout() {
+	location.href = '/login';
+}
+
+function upload() {
+	location.href = '/upload';
+}
+
 function addtoCart(productId) {
 	location.href = '/addtoCart?id=' + productId;
 }

@@ -84,4 +84,10 @@ public class UserMapper {
 		return userInfos;
 	}
 
+	public UserInfo getUserByUserId(Long userId) {
+		User user = userDAO.getUserByUserId(userId);
+		UserInfo userInfos = convertIntoUserInfo(user);
+		return userInfos;
+	}
+
 }

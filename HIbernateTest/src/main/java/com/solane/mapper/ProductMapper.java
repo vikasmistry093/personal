@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.solane.constants.SolaneConstants;
 import com.solane.dao.ProductDAO;
 import com.solane.mapper.model.ProductInfo;
 import com.solane.model.Product;
@@ -88,6 +89,21 @@ public class ProductMapper {
 	public void saveorUpdate(ProductInfo productInfo) {
 		Product product = convertIntoProduct(productInfo);
 		productDao.saveorUpdate(product);
+	}
+
+	public List<ProductInfo> getProductsByIdandStatus(List<String> productIds, String active) {
+		List<Long> productIdList = productIds.stream()
+											.map(s -> Long.parseLong(s))
+											.collect(Collectors.toList());
+		List<Product> products = productDao.getProductsByIdandStatus(productIdList, active);
+		return convertIntoProductInfoList(products);
+	}
+
+	public void updateProductsStatusById(List<String> productIds, String old_status, String new_status) {
+		List<Long> productIdList = productIds.stream()
+											.map(s -> Long.parseLong(s))
+											.collect(Collectors.toList());
+		productDao.updateProductsStatusById(productIdList, old_status, new_status);
 	}
 
 }

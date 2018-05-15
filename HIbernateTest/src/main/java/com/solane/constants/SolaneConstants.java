@@ -17,5 +17,8 @@ public interface SolaneConstants {
 	public static String REGISTERED = "REGISTERED";
 	public static String FREE = "FREE";
 	public static String PICKUP = "PICKUP";
+	public static String ACTIVE = "ACTIVE";
+	public static String ORDER_PLACED = "ORDER PLACED";
+	public static String NOT_AVAILABLE = "NOT AVAILABLE";
 
 }

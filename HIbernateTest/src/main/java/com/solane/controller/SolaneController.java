@@ -21,6 +21,7 @@ import com.solane.mapper.model.UserInfo;
 import com.solane.mapper.model.WishListInfo;
 import com.solane.response.UserPlaceOrder;
 import com.solane.service.CategoryService;
+import com.solane.service.OrderService;
 import com.solane.service.ProductService;
 import com.solane.service.UserService;
 
@@ -36,6 +37,9 @@ public class SolaneController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private OrderService orderService;
 		
 	@Autowired
 	private HttpSession session;
@@ -154,7 +158,8 @@ public class SolaneController {
 	@RequestMapping("/placeOrder")
 	public void orderPlaced(@ModelAttribute("order") UserPlaceOrder orders, HttpServletRequest request) {
 		UserInfo user = (UserInfo) request.getSession().getAttribute("user");
-		System.out.println(orders);
+		boolean isOrderPlaced = orderService.placeOrder(user, orders);
+		System.out.println(isOrderPlaced);
 	}
 	
 	@RequestMapping("/upload")

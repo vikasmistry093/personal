@@ -48,7 +48,7 @@ public class Product implements Serializable{
 	@Column(name="RATING")
 	private int rating;
 	
-	@ManyToMany(cascade=CascadeType.ALL)
+	@ManyToMany
 	@JoinTable(name="PRODUCT_CATEGORY", joinColumns={@JoinColumn(name="PRODUCT_ID")}, inverseJoinColumns={@JoinColumn(name="CATEGORY_ID")})
 	private List<Category> productCategory;
 	

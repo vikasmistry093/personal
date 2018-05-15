@@ -5,14 +5,19 @@ import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.solane.dao.OrderDAO;
 import com.solane.mapper.model.OrderInfo;
 import com.solane.model.Order;
 
 @Component
 @Transactional
 public class OrderMapper {
+	
+	@Autowired
+	private OrderDAO orderDAO;
 	
 	public static Order convertIntoOrder(OrderInfo orderInfo) {
 		Order order = new Order();
@@ -46,6 +51,11 @@ public class OrderMapper {
 		return orderList.stream()
 				.map(OrderMapper::convertIntoOrderInfo)
 				.collect(Collectors.toList());
+	}
+
+	public List<OrderInfo> getOrdersByStatus(String status) {
+		List<Order> orders = orderDAO.getOrdersByStatus(status);
+		return convertIntoOrderInfoList(orders);
 	}
 
 }

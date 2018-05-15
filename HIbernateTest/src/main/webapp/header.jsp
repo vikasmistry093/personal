@@ -34,6 +34,7 @@
 							<button type="button" class="btn secondary-btn" onclick="login()">Log In</button>
 	    				</c:when>
 						<c:otherwise>
+							<button type="button" class="btn secondary-btn" onclick="upload()">Upload</button>
 							<button type="button" class="btn secondary-btn" onclick="logout()">Logout</button>
 	                    </c:otherwise>
 					</c:choose>
