@@ -29,7 +29,7 @@ public class Purchase implements Serializable{
 	@ManyToOne(cascade=CascadeType.ALL)
 	private User user;
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany
 	@JoinTable(name="PURCHASED_PRODUCT", joinColumns={@JoinColumn(name="PURCHASE_ID")}, inverseJoinColumns={@JoinColumn(name="PRODUCT_ID")})
 	private List<Product> products;
 	

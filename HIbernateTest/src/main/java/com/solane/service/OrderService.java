@@ -34,7 +34,6 @@ public class OrderService {
 		try {
 			UserInfo userInfo = userMapper.getUserByUserId(user.getUserId());
 			List<ProductInfo> orderProducts = productMapper.getProductsByIdandStatus(orders.getProductIds(), SolaneConstants.ACTIVE);
-			productMapper.updateProductsStatusById(orders.getProductIds(), SolaneConstants.ACTIVE, SolaneConstants.NOT_AVAILABLE);
 			Double amount = SolaneUtils.getTotalAmountOfProducts(orderProducts);
 			PaymentInfo paymentInfo = new PaymentInfo();
 			paymentInfo.setAmount(amount);
@@ -59,6 +58,10 @@ public class OrderService {
 			e.printStackTrace();
 		}
 		return flag;
+	}
+	
+	public void updateProductStatus(UserInfo user, UserPlaceOrder orders) {
+		productMapper.updateProductsStatusById(orders.getProductIds(), SolaneConstants.ACTIVE, SolaneConstants.NOT_AVAILABLE);
 	}
 
 	public List<OrderInfo> getOrdersByStatus(String status) {

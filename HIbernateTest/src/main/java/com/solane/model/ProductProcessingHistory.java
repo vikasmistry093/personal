@@ -1,6 +1,5 @@
 package com.solane.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +18,7 @@ public class ProductProcessingHistory {
 	@Column(name="PRODUCT_HISTORY_ID")
 	private Long productProcessingHistoryId;
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name="PRODUCT")
 	private Product product;
 	
@@ -29,7 +28,7 @@ public class ProductProcessingHistory {
 	@Column(name="DESCRIPTION")
 	private String description;
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name="ADMIN_USER")
 	private AdminUser user;
 	

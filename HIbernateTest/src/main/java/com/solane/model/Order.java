@@ -30,7 +30,7 @@ public class Order implements Serializable{
 	@Column(name="ORDER_ID")
 	private Long orderId;
 
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany
 	@JoinTable(name="ORDERED_PRODUCT", joinColumns={@JoinColumn(name="ORDER_ID")}, inverseJoinColumns={@JoinColumn(name="PRODUCT_ID")})
 	private List<Product> orderedProduct;
 	

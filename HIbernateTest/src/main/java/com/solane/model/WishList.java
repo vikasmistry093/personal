@@ -3,7 +3,6 @@ package com.solane.model;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,7 +24,7 @@ public class WishList implements Serializable{
 	@Column(name="WISHLIST_ID")
 	private Long wishListId;
 	
-	@ManyToMany(cascade=CascadeType.ALL)
+	@ManyToMany
 	@JoinTable(name="WISHED_PRODUCTS", joinColumns={@JoinColumn(name="WISHLIST_ID")}, inverseJoinColumns={@JoinColumn(name="PRODUCT_ID")})
 	private List<Product> products;
 	

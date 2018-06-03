@@ -3,7 +3,6 @@ package com.solane.model;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,7 +24,7 @@ public class Recommendation implements Serializable{
 	@Column(name="RECOMMENDATION_ID")
 	private Long recommendationId;
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@ManyToMany
 	@JoinTable(name="RECOMMENDED_PRODUCT", joinColumns={@JoinColumn(name="RECOMMENDATION_ID")}, inverseJoinColumns={@JoinColumn(name="PRODUCT_ID")})
 	private List<Product> recommendedProduct;
 	

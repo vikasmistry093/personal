@@ -121,15 +121,18 @@ public class SolaneController {
 		UserInfo user = (UserInfo) request.getSession().getAttribute("user");
 		ModelAndView model = new ModelAndView("redirect:/login?url=addtoCart?id="+product_id);
 		if(user != null) {
-			model = new ModelAndView("redirect:/index");
+			model = new ModelAndView("redirect:/");
 			model.addObject("user", user);
-			List<ProductInfo> wishedProducts = user.getWishList().getProducts();
-			if(wishedProducts == null)
-				wishedProducts = new ArrayList<>();
 			ProductInfo sproduct = productService.getProductById(Long.parseLong(product_id));
-			wishedProducts.add(sproduct);
-			
-			
+			if(user.getWishList() == null) {
+				user.setWishList(new WishListInfo());
+				user.getWishList().setProducts(new ArrayList<ProductInfo>() {{add(sproduct);}});
+			} else if (user.getWishList().getProducts() == null) {
+				user.getWishList().setProducts(new ArrayList<ProductInfo>() {{add(sproduct);}});
+			} else {
+				user.getWishList().getProducts().add(sproduct);
+			}
+			userService.saveOrUpdate(user);
 		}
 		return model;
 	}
@@ -143,6 +146,8 @@ public class SolaneController {
 			ProductInfo sproduct = productService.getProductById(Long.parseLong(product_id));
 			if(user.getWishList() == null) {
 				user.setWishList(new WishListInfo());
+				user.getWishList().setProducts(new ArrayList<ProductInfo>() {{add(sproduct);}});
+			} else if (user.getWishList().getProducts() == null) {
 				user.getWishList().setProducts(new ArrayList<ProductInfo>() {{add(sproduct);}});
 			} else {
 				user.getWishList().getProducts().add(sproduct);
@@ -159,6 +164,8 @@ public class SolaneController {
 	public void orderPlaced(@ModelAttribute("order") UserPlaceOrder orders, HttpServletRequest request) {
 		UserInfo user = (UserInfo) request.getSession().getAttribute("user");
 		boolean isOrderPlaced = orderService.placeOrder(user, orders);
+		if(isOrderPlaced)
+			orderService.updateProductStatus(user, orders);
 		System.out.println(isOrderPlaced);
 	}
 	
