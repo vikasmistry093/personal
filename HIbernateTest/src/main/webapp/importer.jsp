@@ -23,6 +23,9 @@
 <link rel="stylesheet"	href="css/bootstrap.min.css">
 <script	src="js/jquery.min.js"></script>
 <script	src="js/bootstrap.min.js"></script>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
 	
 </head>
 <body>

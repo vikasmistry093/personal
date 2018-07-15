@@ -1,5 +1,6 @@
 package com.solane.mapper;
 
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,7 +25,7 @@ public class RecommendationMapper {
 	public static RecommendationInfo convertIntoRecommendationInfo(Recommendation recommendation) {
 		RecommendationInfo recommendationInfo = new RecommendationInfo();
 		recommendationInfo.setRecommendationId(recommendation.getRecommendationId());
-		recommendationInfo.setRecommendedProduct(ProductMapper.convertIntoProductInfoList(recommendation.getRecommendedProduct()));
+		recommendationInfo.setRecommendedProduct(new LinkedHashSet<>(ProductMapper.convertIntoProductInfoList(recommendation.getRecommendedProduct())));
 		return recommendationInfo;
 	}
 	

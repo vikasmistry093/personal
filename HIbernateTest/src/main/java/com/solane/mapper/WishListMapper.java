@@ -1,5 +1,6 @@
 package com.solane.mapper;
 
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,7 +25,7 @@ public class WishListMapper {
 	public static WishListInfo convertIntoWishListInfo(WishList wishList) {
 		WishListInfo wishListInfo = new WishListInfo();
 		wishListInfo.setWishListId(wishList.getWishListId());
-		wishListInfo.setProducts(ProductMapper.convertIntoProductInfoList(wishList.getProducts()));
+		wishListInfo.setProducts(new LinkedHashSet<>(ProductMapper.convertIntoProductInfoList(wishList.getProducts())));
 		return wishListInfo;
 	}
 	

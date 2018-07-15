@@ -14,7 +14,7 @@
 	<div class="container">
 		<div class="row  p-t-10 p-b-5">
 			<div class="col-xs-4 col-sm-2">
-				<img src="images/logo.png" class="img-responsive logo" />
+				<img src="images/logo.png" class="img-responsive logo" onclick="home()" />
 			</div>
 			<div class="col-xs-4 col-sm-1 col-sm-push-7">
 				<i class="fa fa-shopping-cart m-t-20" aria-hidden="true"></i>
@@ -34,8 +34,14 @@
 							<button type="button" class="btn secondary-btn" onclick="login()">Log In</button>
 	    				</c:when>
 						<c:otherwise>
-							<button type="button" class="btn secondary-btn" onclick="upload()">Upload</button>
-							<button type="button" class="btn secondary-btn" onclick="logout()">Logout</button>
+							<c:choose>
+								<c:when test="${empty username}">
+	    						</c:when>
+							<c:otherwise>
+								<button type="button" class="btn secondary-btn" onclick="upload()">Upload</button>
+								<button type="button" class="btn secondary-btn" onclick="logout()">Logout</button>
+	                    	</c:otherwise>
+							</c:choose>
 	                    </c:otherwise>
 					</c:choose>
 				</div>

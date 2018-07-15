@@ -1,6 +1,7 @@
 package com.solane.mapper;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
@@ -8,7 +9,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.solane.constants.SolaneConstants;
 import com.solane.dao.ProductDAO;
 import com.solane.mapper.model.ProductInfo;
 import com.solane.model.Product;
@@ -60,7 +60,7 @@ public class ProductMapper {
 				.collect(Collectors.toList());
 	}
 	
-	public static List<Product> convertIntoProductList(List<ProductInfo> products) {
+	public static List<Product> convertIntoProductList(Set<ProductInfo> products) {
 		return products.stream()
 				.map(ProductMapper::convertIntoProduct)
 				.collect(Collectors.toList());

@@ -1,5 +1,6 @@
 package com.solane.mapper;
 
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,7 +19,7 @@ public class PurchaseMapper {
 		Purchase purchase = new Purchase();
 		purchase.setPurchaseId(purchaseInfo.getPurchaseId());
 		purchase.setUser(UserMapper.convertIntoUser(purchaseInfo.getUser()));
-		purchase.setProducts(ProductMapper.convertIntoProductList(purchaseInfo.getProducts()));
+		purchase.setProducts(ProductMapper.convertIntoProductList(new LinkedHashSet<>(purchaseInfo.getProducts())));
 		return purchase;
 	}
 	

@@ -1,5 +1,6 @@
 package com.solane.mapper;
 
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,7 +24,7 @@ public class OrderMapper {
 		Order order = new Order();
 		order.setOrderId(orderInfo.getOrderId());
 		order.setPayment(PaymentMapper.convertIntoPayment(orderInfo.getPayment()));
-		order.setOrderedProduct(ProductMapper.convertIntoProductList(orderInfo.getOrderedProduct()));
+		order.setOrderedProduct(ProductMapper.convertIntoProductList(new LinkedHashSet<>(orderInfo.getOrderedProduct())));
 		order.setCreatedTimestamp(orderInfo.getCreatedTimestamp());
 		order.setStatus(orderInfo.getStatus());
 		order.setUpdatedTimestamp(orderInfo.getUpdatedTimestamp());

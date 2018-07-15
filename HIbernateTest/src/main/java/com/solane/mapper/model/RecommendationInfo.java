@@ -1,18 +1,18 @@
 package com.solane.mapper.model;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 public class RecommendationInfo implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
 	private Long recommendationId;
-	private List<ProductInfo> recommendedProduct;
+	private Set<ProductInfo> recommendedProduct;
 	
 	public RecommendationInfo() {}
 
-	public RecommendationInfo(Long recommendationId, List<ProductInfo> recommendedProduct) {
+	public RecommendationInfo(Long recommendationId, Set<ProductInfo> recommendedProduct) {
 		super();
 		this.recommendationId = recommendationId;
 		this.recommendedProduct = recommendedProduct;
@@ -26,11 +26,11 @@ public class RecommendationInfo implements Serializable{
 		this.recommendationId = recommendationId;
 	}
 
-	public List<ProductInfo> getRecommendedProduct() {
+	public Set<ProductInfo> getRecommendedProduct() {
 		return recommendedProduct;
 	}
 
-	public void setRecommendedProduct(List<ProductInfo> recommendedProduct) {
+	public void setRecommendedProduct(Set<ProductInfo> recommendedProduct) {
 		this.recommendedProduct = recommendedProduct;
 	}
 

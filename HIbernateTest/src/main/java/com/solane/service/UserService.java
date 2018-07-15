@@ -1,6 +1,7 @@
 package com.solane.service;
 
-import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ public class UserService {
 				if(recommendations == null)
 					recommendations = new RecommendationInfo();
 				
-				ArrayList<ProductInfo> recommendProducts = new ArrayList<>();
+				Set<ProductInfo> recommendProducts = new LinkedHashSet<>();
 				recommendProducts.add(productInfo);
 				recommendations.setRecommendedProduct(recommendProducts);
 				

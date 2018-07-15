@@ -29,6 +29,10 @@ $(document).ready(function() {
 	});
 });
 
+function home() {
+	location.href = '/';
+}
+
 function signUp() {
 	location.href = '/signup';
 }

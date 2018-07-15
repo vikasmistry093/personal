@@ -1,17 +1,17 @@
 package com.solane.mapper.model;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 public class WishListInfo implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
 	private Long wishListId;
-	private List<ProductInfo> products;
+	private Set<ProductInfo> products;
 	public WishListInfo() {}
 
-	public WishListInfo(Long wishListId, List<ProductInfo> products) {
+	public WishListInfo(Long wishListId, Set<ProductInfo> products) {
 		super();
 		this.wishListId = wishListId;
 		this.products = products;
@@ -25,11 +25,11 @@ public class WishListInfo implements Serializable{
 		this.wishListId = wishListId;
 	}
 
-	public List<ProductInfo> getProducts() {
+	public Set<ProductInfo> getProducts() {
 		return products;
 	}
 
-	public void setProducts(List<ProductInfo> products) {
+	public void setProducts(Set<ProductInfo> products) {
 		this.products = products;
 	}
 
