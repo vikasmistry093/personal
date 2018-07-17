@@ -4,10 +4,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link href="css/font-awesome.min.css" rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"
-	rel="stylesheet">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/responsive.css">

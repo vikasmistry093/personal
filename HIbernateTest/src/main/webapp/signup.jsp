@@ -19,7 +19,7 @@
 <div class="col-md-4"></div>
 </div>
 <br />
-<form:form action="/registerUser?url=${url}" modelAttribute="user">
+<%-- <form:form action="/registerUser?url=${url}" modelAttribute="user">
 <div class="row">
 	<div class="col-md-2"></div>
 	<div class="col-md-4">
@@ -97,7 +97,79 @@
 </div>
 <div class="col-md-2"></div>
 </div>
-</form:form>
+</form:form> --%>
+
+
+
+<form:form action="/registerUser?url=${url}" modelAttribute="user">
+			<div class="container-flui">
+            <div class="row">
+                <div class="col-md-offset-4 col-md-4 text-center">
+                    <img src="images/logo.png" class="img-responsive"/>
+                </div>
+            </div>
+            
+            <div class="signup-wrapper">
+                <!-- user detail start -->
+                <p class="f-bold f-24">User Details</p>
+                <div class="row m-t-10">
+                    <div class="form-group col-sm-6">
+                        <label class="form-label">Name</label>
+                        <input class="form-control" type="text" placeholder="Enter name">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label class="form-label">Email</label>
+                        <input class="form-control" type="text" placeholder="Enter email">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label class="form-label">Contact</label>
+                        <input class="form-control" type="text" placeholder="Enter number">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label class="form-label">Password</label>
+                        <input class="form-control" type="text" placeholder="Enter password">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label class="form-label">Confirm Password</label>
+                        <input class="form-control" type="text" placeholder="Enter password">
+                    </div>
+                </div>
+                <!-- user detail end -->
+
+                <!-- Delivery address start -->
+                <p class="f-bold f-24 m-t-30">Delivered Address</p>
+                <div class="row m-t-10">
+                    <div class="form-group col-sm-6">
+                        <label class="form-label">Street</label>
+                        <input class="form-control" type="text" placeholder="">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label class="form-label">LandMark</label>
+                        <input class="form-control" type="text" placeholder="">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label class="form-label">City</label>
+                        <input class="form-control" type="text" placeholder="">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label class="form-label">State</label>
+                        <input class="form-control" type="text" placeholder="">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label class="form-label">Pin</label>
+                        <input class="form-control" type="text" placeholder="">
+                    </div>
+                    <div class="form-group col-xs-12 text-center m-t-20">
+                        <button class="btn btn-orange m-l-10" type="reset">Reset</button>
+                        <button class="btn btn-orange m-l-10" type="submit">Register</button>
+                    </div>
+                </div>
+                <!-- Delivery address end -->
+
+            </div>
+      </div>
+      </form:form>
+
 
 
 <%@ include file="footer.jsp"%>
