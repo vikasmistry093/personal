@@ -105,7 +105,7 @@
 			<div class="container-flui">
             <div class="row">
                 <div class="col-md-offset-4 col-md-4 text-center">
-                    <img src="images/logo.png" class="img-responsive"/>
+                    <img src="images/logo.png" class="img-responsive" width="250" height="125"/>
                 </div>
             </div>
             
@@ -115,23 +115,23 @@
                 <div class="row m-t-10">
                     <div class="form-group col-sm-6">
                         <label class="form-label">Name</label>
-                        <input class="form-control" type="text" placeholder="Enter name">
+                        <form:input class="form-control" path="name" placeholder="Enter name" />
                     </div>
                     <div class="form-group col-sm-6">
                         <label class="form-label">Email</label>
-                        <input class="form-control" type="text" placeholder="Enter email">
+                        <form:input class="form-control" path="email" placeholder="Enter email" />
                     </div>
                     <div class="form-group col-sm-6">
                         <label class="form-label">Contact</label>
-                        <input class="form-control" type="text" placeholder="Enter number">
+                        <form:input class="form-control" path="contact" placeholder="Enter number" />
                     </div>
                     <div class="form-group col-sm-6">
                         <label class="form-label">Password</label>
-                        <input class="form-control" type="text" placeholder="Enter password">
+                        <form:input type="password" class="form-control" path="password" placeholder="Enter password" />
                     </div>
                     <div class="form-group col-sm-6">
                         <label class="form-label">Confirm Password</label>
-                        <input class="form-control" type="text" placeholder="Enter password">
+                        <input class="form-control" type="password" placeholder="Confirm password" />
                     </div>
                 </div>
                 <!-- user detail end -->
@@ -141,23 +141,23 @@
                 <div class="row m-t-10">
                     <div class="form-group col-sm-6">
                         <label class="form-label">Street</label>
-                        <input class="form-control" type="text" placeholder="">
+                        <form:input class="form-control" path="userAddress[0].street" placeholder="Enter Street" />
                     </div>
                     <div class="form-group col-sm-6">
                         <label class="form-label">LandMark</label>
-                        <input class="form-control" type="text" placeholder="">
+                        <form:input class="form-control" path="userAddress[0].landMark" placeholder="Enter Landmark" />
                     </div>
                     <div class="form-group col-sm-6">
                         <label class="form-label">City</label>
-                        <input class="form-control" type="text" placeholder="">
+                        <form:input class="form-control" path="userAddress[0].city" placeholder="Enter City" />
                     </div>
                     <div class="form-group col-sm-6">
                         <label class="form-label">State</label>
-                        <input class="form-control" type="text" placeholder="">
+                        <form:input class="form-control" path="userAddress[0].state" placeholder="Enter State" />
                     </div>
                     <div class="form-group col-sm-6">
                         <label class="form-label">Pin</label>
-                        <input class="form-control" type="text" placeholder="">
+                        <form:input class="form-control" path="userAddress[0].pin" placeholder="Enter PIN" />
                     </div>
                     <div class="form-group col-xs-12 text-center m-t-20">
                         <button class="btn btn-orange m-l-10" type="reset">Reset</button>
