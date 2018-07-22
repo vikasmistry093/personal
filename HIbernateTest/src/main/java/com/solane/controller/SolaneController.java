@@ -51,7 +51,7 @@ public class SolaneController {
 		ModelAndView model = new ModelAndView("index");
 		List<ProductInfo> productList = productService.getTopProducts();
 		model.addObject("user", user != null? user : null);
-		model.addObject("username", user != null? user.getName() : null);
+		model.addObject("username", user != null? user.getName().substring(0, user.getName().indexOf(" ")) : null);
 		model.addObject("productList", productList);
 		return model;
 	}
@@ -65,6 +65,14 @@ public class SolaneController {
 		if(!redirectURL.isEmpty())
 			model.addObject("url", redirectURL);
 		
+		return model;
+	}
+	
+	@RequestMapping("/logout")
+	public ModelAndView logout() {
+		ModelAndView model = new ModelAndView("redirect:/");
+		session.removeAttribute("user");
+		session.invalidate();
 		return model;
 	}
 	

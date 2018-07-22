@@ -11,13 +11,13 @@
 <body>
 <%@ include file="header.jsp"%>
 
-<div class="login-row row">
+<%-- <div class="login-row row">
 <div class="col-md-4"></div>
 <div class="col-md-4">
 	<img alt="logo" src="${pageContext.request.contextPath}/images/logo.jpg" width="250" height="125">
 </div>
 <div class="col-md-4"></div>
-</div>
+</div> --%>
 <br />
 <%-- <form:form action="/registerUser?url=${url}" modelAttribute="user">
 <div class="row">
@@ -105,7 +105,7 @@
 			<div class="container-flui">
             <div class="row">
                 <div class="col-md-offset-4 col-md-4 text-center">
-                    <img src="images/logo.png" class="img-responsive" width="250" height="125"/>
+                    <img src="images/logo.png" class="img-responsive signup-image" width="250" height="125"/>
                 </div>
             </div>
             

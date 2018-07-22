@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $('#userTable').dataTable();
-} );
+} );    
 
 function getModal(id, type) {
 	var xhttp = new XMLHttpRequest();
@@ -42,7 +42,7 @@ function login() {
 }
 
 function logout() {
-	location.href = '/login';
+	location.href = '/logout';
 }
 
 function upload() {

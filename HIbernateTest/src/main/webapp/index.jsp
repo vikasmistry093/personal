@@ -65,9 +65,14 @@
 	<div class="container-fluid m-t-30">
 		<div class="row">
 			<div class="col-sm-3">
+				<h3>All Categories</h3>
 				<ul class="nav summary-list">
-					<li><a href="#">Reset</a></li>
-					<li><a href="#">Extra</a></li>
+					<li><a href="#">All</a></li>
+					<li><a href="#">Samsung Mobile</a></li>
+					<li><a href="#">Apple Mobile</a></li>
+					<li><a href="#">LG Mobile</a></li>
+					<li><a href="#">VIVO Mobile</a></li>
+					<li><a href="#">Mircomax Mobile</a></li>
 				</ul>
 			</div>
 			<div class="col-sm-9">
