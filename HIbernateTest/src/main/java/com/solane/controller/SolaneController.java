@@ -61,7 +61,7 @@ public class SolaneController {
 		ModelAndView model = new ModelAndView("login");
 		UserInfo user = new UserInfo();
 		model.addObject("user",user);
-		model.addObject("username", user != null? user.getName() : null);
+//		model.addObject("username", user != null? user.getName().substring(0, user.getName().indexOf(" ")) : null);
 		if(!redirectURL.isEmpty())
 			model.addObject("url", redirectURL);
 		
@@ -81,7 +81,7 @@ public class SolaneController {
 		ModelAndView model = new ModelAndView("signup");
 		UserInfo user = new UserInfo();
 		model.addObject("user",user);
-		model.addObject("username", user != null? user.getName() : null);
+		model.addObject("username", user != null? user.getName().substring(0, user.getName().indexOf(" ")) : null);
 		if(!redirectURL.isEmpty())
 			model.addObject("url", redirectURL);
 		
@@ -114,7 +114,7 @@ public class SolaneController {
 		userService.saveOrUpdate(user);
 		
 		ModelAndView model = new ModelAndView("redirect:/"+finalURL);
-		model.addObject("username", user != null? user.getName() : null);
+		model.addObject("username", user != null? user.getName().substring(0, user.getName().indexOf(" ")) : null);
 		return model;
 	}
 	
@@ -126,7 +126,7 @@ public class SolaneController {
 		
 		userService.updateRecommendationForUser(user, productInfo);
 		model.addObject("user", user != null ? user : null);
-		model.addObject("username", user != null? user.getName() : null);
+		model.addObject("username", user != null? user.getName().substring(0, user.getName().indexOf(" ")) : null);
 		model.addObject("product", productInfo);
 		return model;
 	}
@@ -138,7 +138,7 @@ public class SolaneController {
 		if(user != null) {
 			model = new ModelAndView("redirect:/");
 			model.addObject("user", user);
-			model.addObject("username", user != null? user.getName() : null);
+			model.addObject("username", user != null? user.getName().substring(0, user.getName().indexOf(" ")) : null);
 			ProductInfo sproduct = productService.getProductById(Long.parseLong(product_id));
 			if(user.getWishList() == null) {
 				user.setWishList(new WishListInfo());
@@ -172,7 +172,7 @@ public class SolaneController {
 			model.addObject("order", orders);
 			model.addObject("sproduct", sproduct);
 			model.addObject("user",user);
-			model.addObject("username", user != null? user.getName() : null);
+			model.addObject("username", user != null? user.getName().substring(0, user.getName().indexOf(" ")) : null);
 		}
 		return model;
 	}
@@ -190,7 +190,7 @@ public class SolaneController {
 	public ModelAndView uploadProduct(HttpServletRequest request) {
 		UserInfo user = (UserInfo) request.getSession().getAttribute("user");
 		ModelAndView model = new ModelAndView("redirect:/login?url=upload");
-		model.addObject("username", user != null? user.getName() : null);
+		model.addObject("username", user != null? user.getName().substring(0, user.getName().indexOf(" ")) : null);
 		if(user != null) {
 			model = new ModelAndView("product-upload");
 			ProductInfo productInfo = new ProductInfo();
@@ -206,7 +206,7 @@ public class SolaneController {
 			@ModelAttribute ProductInfo productInfo, HttpServletRequest request) throws IOException {
 		UserInfo user = (UserInfo) request.getSession().getAttribute("user");
 		ModelAndView model = new ModelAndView("redirect:/");
-		model.addObject("username", user != null? user.getName() : null);
+		model.addObject("username", user != null? user.getName().substring(0, user.getName().indexOf(" ")) : null);
 		productService.saveUploadedProduct(productInfo, files);
 		return model;
 	}
