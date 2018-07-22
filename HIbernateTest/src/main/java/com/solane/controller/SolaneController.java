@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.solane.mapper.model.CategoryInfo;
+import com.solane.mapper.model.OrderInfo;
 import com.solane.mapper.model.ProductInfo;
 import com.solane.mapper.model.UserInfo;
 import com.solane.mapper.model.WishListInfo;
@@ -61,7 +62,6 @@ public class SolaneController {
 		ModelAndView model = new ModelAndView("login");
 		UserInfo user = new UserInfo();
 		model.addObject("user",user);
-//		model.addObject("username", user != null? user.getName().substring(0, user.getName().indexOf(" ")) : null);
 		if(!redirectURL.isEmpty())
 			model.addObject("url", redirectURL);
 		
@@ -183,7 +183,17 @@ public class SolaneController {
 		boolean isOrderPlaced = orderService.placeOrder(user, orders);
 		if(isOrderPlaced)
 			orderService.updateProductStatus(user, orders);
-		System.out.println(isOrderPlaced);
+	}
+	
+	@RequestMapping("/orders")
+	public ModelAndView orders(HttpServletRequest request) {
+		UserInfo user = (UserInfo) request.getSession().getAttribute("user");
+		ModelAndView model = new ModelAndView("orders");
+		user = userService.getUserByLoggedUser(user);
+		List<OrderInfo> orders = user.getOrders();
+		model.addObject("user", user);
+		model.addObject("orders", orders);
+		return model;
 	}
 	
 	@RequestMapping("/upload")

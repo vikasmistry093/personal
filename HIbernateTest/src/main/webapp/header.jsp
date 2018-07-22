@@ -48,7 +48,7 @@
 										<button class="dropbtn">Hello, ${username}</button>
 										<div class="dropdown-content">
 											<a href="#">My Acount</a>
-											<a href="#">My Orders</a>
+											<a href="/orders">My Orders</a>
 											<a href="#">My Uploads</a>
 											<a href="/upload">Upload</a>
 											<a href="/logout">Logout</a>
