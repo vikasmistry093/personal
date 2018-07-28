@@ -31,7 +31,7 @@
 				<div class="pull-right">
 					<c:choose>
 						<c:when test="${empty user}">
-							<div class="dropdown">
+							<div class="dropdown" onclick="login()">
 								<button class="dropbtn">Hello, Sign In</button>
 								<div class="dropdown-content">
 									<a href="/login">Sign In</a>

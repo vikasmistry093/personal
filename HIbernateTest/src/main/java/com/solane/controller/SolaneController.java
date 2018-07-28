@@ -191,6 +191,8 @@ public class SolaneController {
 		ModelAndView model = new ModelAndView("orders");
 		user = userService.getUserByLoggedUser(user);
 		List<OrderInfo> orders = user.getOrders();
+		
+		model.addObject("username", user != null? user.getName().substring(0, user.getName().indexOf(" ")) : null);
 		model.addObject("user", user);
 		model.addObject("orders", orders);
 		return model;
