@@ -188,13 +188,17 @@ public class SolaneController {
 	@RequestMapping("/orders")
 	public ModelAndView orders(HttpServletRequest request) {
 		UserInfo user = (UserInfo) request.getSession().getAttribute("user");
-		ModelAndView model = new ModelAndView("orders");
-		user = userService.getUserByLoggedUser(user);
-		List<OrderInfo> orders = user.getOrders();
+		ModelAndView model = new ModelAndView("redirect:/");
+		if(user != null) {
+			model = new ModelAndView("orders");
+			user = userService.getUserByLoggedUser(user);
+			List<OrderInfo> orders = user.getOrders();
+			
+			model.addObject("username", user != null? user.getName().substring(0, user.getName().indexOf(" ")) : null);
+			model.addObject("user", user);
+			model.addObject("orders", orders);
+		}
 		
-		model.addObject("username", user != null? user.getName().substring(0, user.getName().indexOf(" ")) : null);
-		model.addObject("user", user);
-		model.addObject("orders", orders);
 		return model;
 	}
 	

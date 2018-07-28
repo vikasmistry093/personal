@@ -19,6 +19,19 @@
 					<img class="img-responsive"
 						src="images/${product.prouctImages[0].imageURL }" />
 				</div>
+				<c:choose>
+				<c:when test="${product.status eq 'NOT AVAILABLE' }">
+				<div class="m-t-20 text-center">
+					<button type="button" disabled="disabled"
+						class="btn primary-btn btn-lg btn-block pull-left" onclick="addtoCart(${product.productId})">Add To
+						Cart</button>
+					<button type="button" disabled="disabled"
+						class="btn btn-orange btn-lg btn-block pull-right" onclick="buyNow(${product.productId})">Buy
+						Now</button>
+					<div class="clear-float"></div>
+				</div>
+				</c:when>
+				<c:otherwise>
 				<div class="m-t-20 text-center">
 					<button type="button"
 						class="btn primary-btn btn-lg btn-block pull-left" onclick="addtoCart(${product.productId})">Add To
@@ -28,6 +41,10 @@
 						Now</button>
 					<div class="clear-float"></div>
 				</div>
+				</c:otherwise>
+				</c:choose>
+				
+				
 			</div>
 			<div class="col-sm-8">
 				<p class="f-18">${product.productTitle}</p>

@@ -34,7 +34,7 @@
 											<img src=" images/mi-redmi.jpeg" class="img-responsive" />
 										</div>
 										<div class="order-detail">
-											<span class="f-bold">${product.productTitle }</span>
+											<span class="f-bold"><a href="/product?id=${product.productId }">${product.productTitle }</a></span>
 											<p class="f-gray m-t-10">${product.description }</p>
 										</div>
 									</div>
