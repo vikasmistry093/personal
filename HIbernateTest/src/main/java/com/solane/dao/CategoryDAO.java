@@ -36,5 +36,9 @@ public class CategoryDAO {
 		critreia.add(Restrictions.in("name", category));
 		return critreia.list();
 	}
+
+	public void saveOrUpdate(Category cat) {
+		getSession().saveOrUpdate(cat);
+	}
 	
 }

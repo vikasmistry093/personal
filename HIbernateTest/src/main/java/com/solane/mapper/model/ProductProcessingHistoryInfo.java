@@ -7,18 +7,20 @@ public class ProductProcessingHistoryInfo {
 	private String previousHistory;
 	private String description;
 	private String adminUserId;
+	private UserInfo userInfo;
 	private AdminUserInfo user;
 	
 	public ProductProcessingHistoryInfo(){}
 	
 	public ProductProcessingHistoryInfo(Long productProcessingHistoryId, ProductInfo product, String previousHistory,
-			String description, String adminUserId, AdminUserInfo user) {
+			String description, String adminUserId, UserInfo userInfo, AdminUserInfo user) {
 		super();
 		this.productProcessingHistoryId = productProcessingHistoryId;
 		this.product = product;
 		this.previousHistory = previousHistory;
 		this.description = description;
 		this.adminUserId = adminUserId;
+		this.userInfo = userInfo;
 		this.user = user;
 	}
 
@@ -61,6 +63,14 @@ public class ProductProcessingHistoryInfo {
 	public void setAdminUserId(String adminUserId) {
 		this.adminUserId = adminUserId;
 	}
+	
+	public UserInfo getUserInfo() {
+		return userInfo;
+	}
+	
+	public void setUserInfo(UserInfo userInfo) {
+		this.userInfo = userInfo;
+	}
 
 	public AdminUserInfo getUser() {
 		return user;
@@ -74,7 +84,7 @@ public class ProductProcessingHistoryInfo {
 	public String toString() {
 		return "ProductProcessingHistoryInfo [productProcessingHistoryId=" + productProcessingHistoryId + ", product="
 				+ product + ", previousHistory=" + previousHistory + ", description=" + description + ", adminUserId="
-				+ adminUserId + ", user=" + user + "]";
+				+ adminUserId + ", userInfo="  + userInfo + ", user=" + user + "]";
 	}
 	
 }

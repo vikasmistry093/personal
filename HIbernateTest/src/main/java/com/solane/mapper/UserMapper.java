@@ -80,7 +80,13 @@ public class UserMapper {
 
 	public UserInfo getUserByLoggedUser(UserInfo userInfo) {
 		User user = userDAO.getUserByEmailandPassword(userInfo.getEmail(), userInfo.getPassword());
-		UserInfo userInfos = convertIntoUserInfo(user);
+		UserInfo userInfos;
+		
+		if(user != null)
+			userInfos = convertIntoUserInfo(user);
+		else
+			return null;
+		
 		return userInfos;
 	}
 

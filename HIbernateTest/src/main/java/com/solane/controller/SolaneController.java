@@ -19,11 +19,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.solane.mapper.model.CategoryInfo;
 import com.solane.mapper.model.OrderInfo;
 import com.solane.mapper.model.ProductInfo;
+import com.solane.mapper.model.ProductProcessingHistoryInfo;
 import com.solane.mapper.model.UserInfo;
 import com.solane.mapper.model.WishListInfo;
 import com.solane.response.UserPlaceOrder;
 import com.solane.service.CategoryService;
 import com.solane.service.OrderService;
+import com.solane.service.ProductProcessHistoryService;
 import com.solane.service.ProductService;
 import com.solane.service.UserService;
 
@@ -36,6 +38,9 @@ public class SolaneController {
 	
 	@Autowired
 	private CategoryService categoryService;
+	
+	@Autowired
+	private ProductProcessHistoryService productProcessHistoryService;
 	
 	@Autowired
 	private UserService userService;
@@ -81,7 +86,6 @@ public class SolaneController {
 		ModelAndView model = new ModelAndView("signup");
 		UserInfo user = new UserInfo();
 		model.addObject("user",user);
-		model.addObject("username", user != null? user.getName().substring(0, user.getName().indexOf(" ")) : null);
 		if(!redirectURL.isEmpty())
 			model.addObject("url", redirectURL);
 		
@@ -99,6 +103,8 @@ public class SolaneController {
 		ModelAndView model = new ModelAndView("redirect:/"+finalURL);
 		if(userInfo != null) {
 			session.setAttribute("user", userInfo);
+		} else {
+			model = new ModelAndView("redirect:/login");
 		}
 		
 		return model;
@@ -202,6 +208,23 @@ public class SolaneController {
 		return model;
 	}
 	
+	@RequestMapping("/myuploads")
+	public ModelAndView myUploads(HttpServletRequest request) {
+		UserInfo user = (UserInfo) request.getSession().getAttribute("user");
+		ModelAndView model = new ModelAndView("redirect:/");
+		if(user != null) {
+			model = new ModelAndView("myuploads");
+			user = userService.getUserByLoggedUser(user);
+			List<ProductProcessingHistoryInfo> products = productProcessHistoryService.getProductByUser(user);
+			
+			model.addObject("username", user != null? user.getName().substring(0, user.getName().indexOf(" ")) : null);
+			model.addObject("user", user);
+			model.addObject("products", products);
+		}
+		
+		return model;
+	}
+	
 	@RequestMapping("/upload")
 	public ModelAndView uploadProduct(HttpServletRequest request) {
 		UserInfo user = (UserInfo) request.getSession().getAttribute("user");
@@ -224,6 +247,9 @@ public class SolaneController {
 		ModelAndView model = new ModelAndView("redirect:/");
 		model.addObject("username", user != null? user.getName().substring(0, user.getName().indexOf(" ")) : null);
 		productService.saveUploadedProduct(productInfo, files);
+		productInfo = productService.getProductByProduct(productInfo);
+		
+		productProcessHistoryService.saveUploadProductHistory(user, productInfo);
 		return model;
 	}
 	

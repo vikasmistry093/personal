@@ -3,7 +3,6 @@ package com.solane.model;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +25,7 @@ public class Purchase implements Serializable{
 	@Column(name="PURCHASE_ID")
 	private Long purchaseId;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	private User user;
 	
 	@OneToMany

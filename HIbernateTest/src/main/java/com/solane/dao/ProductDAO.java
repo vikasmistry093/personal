@@ -14,6 +14,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.solane.mapper.model.ProductInfo;
 import com.solane.model.Product;
 
 @Repository
@@ -84,6 +85,17 @@ public class ProductDAO {
             	getSession().clear();
             }
         }
+	}
+
+	public Product getProductByProduct(ProductInfo productInfo) {
+		Criteria critreia = getSession().createCriteria(Product.class);
+		critreia.add(Restrictions.eq("productTitle", productInfo.getProductTitle()));
+		critreia.add(Restrictions.eq("status", "REGISTERED"));
+		critreia.add(Restrictions.eq("price", productInfo.getPrice()));
+		critreia.add(Restrictions.eq("description", productInfo.getDescription()));
+		critreia.add(Restrictions.eq("features", productInfo.getFeatures()));
+		
+		return (Product) critreia.uniqueResult();
 	}
 
 }

@@ -46,7 +46,7 @@ public class SolaneUtils {
 		return new Timestamp(System.currentTimeMillis());
 	}
 	
-	public static List<Product> setProduct() {
+	public static DummySaveObject setProduct() {
 		Timestamp timeStamp = new Timestamp(System.currentTimeMillis());
 		
 		List<Category> categoryList = new ArrayList<>();
@@ -269,7 +269,11 @@ public class SolaneUtils {
 		products.add(p9);
 		products.add(p10);
 		
-		return products;
+		DummySaveObject dummy = new  DummySaveObject();
+		dummy.setCategories(categoryList);
+		dummy.setProducts(products);
+		
+		return dummy;
 	}
 
 }

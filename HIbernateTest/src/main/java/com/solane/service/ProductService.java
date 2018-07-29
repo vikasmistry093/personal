@@ -92,4 +92,9 @@ public class ProductService {
 		productMapper.saveorUpdate(product);
 	}
 
+	public ProductInfo getProductByProduct(ProductInfo productInfo) {
+		ProductInfo product = productMapper.getProductByProduct(productInfo);
+		return product;
+	}
+
 }

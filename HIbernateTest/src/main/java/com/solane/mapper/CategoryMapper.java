@@ -61,5 +61,9 @@ public class CategoryMapper {
 		List<Category> categories = categoryDAO.getCategoriesByNames(category);
 		return convertIntoCategoryInfoList(categories);
 	}
+
+	public void save(Category cat) {
+		categoryDAO.saveOrUpdate(cat);
+	}
 	
 }

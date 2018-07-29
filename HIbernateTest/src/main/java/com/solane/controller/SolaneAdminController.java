@@ -14,11 +14,12 @@ import com.solane.mapper.model.AdminUserInfo;
 import com.solane.mapper.model.OrderInfo;
 import com.solane.mapper.model.ProductInfo;
 import com.solane.mapper.model.ProductProcessingHistoryInfo;
-import com.solane.model.Product;
 import com.solane.service.AdminUserService;
+import com.solane.service.CategoryService;
 import com.solane.service.OrderService;
 import com.solane.service.ProductProcessHistoryService;
 import com.solane.service.ProductService;
+import com.solane.util.DummySaveObject;
 import com.solane.util.SolaneUtils;
 
 @Controller
@@ -26,6 +27,9 @@ public class SolaneAdminController {
 	
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private CategoryService categoryService;
 	
 	@Autowired
 	private OrderService orderService;
@@ -39,8 +43,9 @@ public class SolaneAdminController {
 	@RequestMapping("/saveDummy")
 	public ModelAndView saveDummy() {
 		ModelAndView model = new ModelAndView("redirect:/");
-		List<Product> productList = SolaneUtils.setProduct();
-		productService.saveDummyProducts(productList);
+		DummySaveObject dummy = SolaneUtils.setProduct();
+		categoryService.saveDummyCategories(dummy.getCategories());
+		productService.saveDummyProducts(dummy.getProducts());
 		return model;
 	}
 	

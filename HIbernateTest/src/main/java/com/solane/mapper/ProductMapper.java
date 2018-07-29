@@ -106,4 +106,9 @@ public class ProductMapper {
 		productDao.updateProductsStatusById(productIdList, old_status, new_status);
 	}
 
+	public ProductInfo getProductByProduct(ProductInfo productInfo) {
+		Product product = productDao.getProductByProduct(productInfo);
+		return convertIntoProductInfo(product);
+	}
+
 }

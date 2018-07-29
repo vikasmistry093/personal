@@ -9,9 +9,6 @@ import com.solane.mapper.model.ProductInfo;
 
 public class UserPlaceOrder implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private String addressId;
