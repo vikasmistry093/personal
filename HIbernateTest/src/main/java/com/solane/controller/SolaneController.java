@@ -137,6 +137,7 @@ public class SolaneController {
 		return model;
 	}
 	
+	@SuppressWarnings("serial")
 	@RequestMapping("/addtoCart")
 	public ModelAndView addtoCart(@RequestParam("id") String product_id, HttpServletRequest request) {
 		UserInfo user = (UserInfo) request.getSession().getAttribute("user");
@@ -159,6 +160,7 @@ public class SolaneController {
 		return model;
 	}
 	
+	@SuppressWarnings("serial")
 	@RequestMapping("/buyNow")
 	public ModelAndView buyNow(@RequestParam("id") String product_id, HttpServletRequest request) {
 		UserInfo user = (UserInfo) request.getSession().getAttribute("user");
@@ -184,11 +186,14 @@ public class SolaneController {
 	}
 	
 	@RequestMapping("/placeOrder")
-	public void orderPlaced(@ModelAttribute("order") UserPlaceOrder orders, HttpServletRequest request) {
+	public ModelAndView orderPlaced(@ModelAttribute("order") UserPlaceOrder orders, HttpServletRequest request) {
 		UserInfo user = (UserInfo) request.getSession().getAttribute("user");
+		ModelAndView model = new ModelAndView("redirect:/");
 		boolean isOrderPlaced = orderService.placeOrder(user, orders);
 		if(isOrderPlaced)
 			orderService.updateProductStatus(user, orders);
+		
+		return model;
 	}
 	
 	@RequestMapping("/orders")

@@ -1,7 +1,11 @@
 package com.solane.mapper.model;
 
-public class ProductProcessingHistoryInfo {
+import java.io.Serializable;
+
+public class ProductProcessingHistoryInfo implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+
 	private Long productProcessingHistoryId;
 	private ProductInfo product;
 	private String previousHistory;

@@ -7,6 +7,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.solane.model.Purchase;
+
 @Repository
 @Transactional
 public class PurchaseDAO {
@@ -18,4 +20,7 @@ public class PurchaseDAO {
         return sessionFactory.getCurrentSession();
     }
 
+	public Purchase get(Purchase purchase) {
+		return getSession().get(Purchase.class, purchase);
+	}
 }

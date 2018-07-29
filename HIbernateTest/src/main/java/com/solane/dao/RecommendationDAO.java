@@ -7,6 +7,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.solane.model.Recommendation;
+
 @Repository
 @Transactional
 public class RecommendationDAO {
@@ -18,4 +20,7 @@ public class RecommendationDAO {
         return sessionFactory.getCurrentSession();
     }
 
+	public Recommendation get(Recommendation object) {
+		return getSession().get(Recommendation.class, object);
+	}
 }

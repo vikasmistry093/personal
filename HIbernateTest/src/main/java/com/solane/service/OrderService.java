@@ -29,6 +29,7 @@ public class OrderService {
 	@Autowired
 	private ProductMapper productMapper;
 	
+	@SuppressWarnings("serial")
 	public boolean placeOrder(UserInfo user, UserPlaceOrder orders) {
 		boolean flag = true;
 		try {

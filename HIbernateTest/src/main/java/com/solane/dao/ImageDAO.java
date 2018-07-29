@@ -7,6 +7,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.solane.model.Image;
+
 @Repository
 @Transactional
 public class ImageDAO {
@@ -17,5 +19,9 @@ public class ImageDAO {
 	private Session getSession() {
         return sessionFactory.getCurrentSession();
     }
+	
+	public Image get(Image image) {
+		return getSession().get(Image.class, image);
+	}
 
 }

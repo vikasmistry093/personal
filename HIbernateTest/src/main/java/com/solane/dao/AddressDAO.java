@@ -7,6 +7,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.solane.model.Address;
+
 @Repository
 @Transactional
 public class AddressDAO {
@@ -17,5 +19,9 @@ public class AddressDAO {
 	private Session getSession() {
         return sessionFactory.getCurrentSession();
     }
+	
+	public Address get(Address address) {
+		return getSession().get(Address.class, address);
+	}
 
 }

@@ -29,6 +29,7 @@ public class ProductProcessingHistoryDAO {
 		getSession().saveOrUpdate(productProcessingHistory);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<ProductProcessingHistory> getProductByUser(UserInfo user) {
 		Criteria criteria = getSession().createCriteria(ProductProcessingHistory.class);
 		criteria.add(Restrictions.eq("user.userId", user.getUserId()));

@@ -1,9 +1,12 @@
 package com.solane.mapper.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
-public class ProductInfo {
+public class ProductInfo implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	private Long productId;
 	private String productTitle;

@@ -7,6 +7,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.solane.model.Card;
+
 @Repository
 @Transactional
 public class CardDAO {
@@ -17,5 +19,9 @@ public class CardDAO {
 	private Session getSession() {
         return sessionFactory.getCurrentSession();
     }
+
+	public Card get(Card card) {
+		return getSession().get(Card.class, card);
+	}
 
 }
