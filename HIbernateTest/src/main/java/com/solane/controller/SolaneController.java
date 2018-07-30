@@ -160,6 +160,19 @@ public class SolaneController {
 		return model;
 	}
 	
+	@RequestMapping("/mycart")
+	public ModelAndView mycart(HttpServletRequest request) {
+		UserInfo user = (UserInfo) request.getSession().getAttribute("user");
+		ModelAndView model = new ModelAndView("mycart");
+		if(user != null) {
+			user = userService.getUserByLoggedUser(user);
+			model.addObject("user", user);
+			model.addObject("cartItem", user.getWishList());
+			model.addObject("username", user != null? user.getName().substring(0, user.getName().indexOf(" ")) : null);
+		}
+		return model;
+	}
+	
 	@SuppressWarnings("serial")
 	@RequestMapping("/buyNow")
 	public ModelAndView buyNow(@RequestParam("id") String product_id, HttpServletRequest request) {

@@ -120,7 +120,7 @@
 										</div>
 									</div>
 								</div>
-								<button type="submit" value="Place Order">Place Order</button>
+								<button class="btn btn-orange" type="submit">Place Order</button>
 							</div>
 						</div>
 					</div>

@@ -50,6 +50,7 @@
 											<!-- <a href="#">My Acount</a> -->
 											<a href="/orders">My Orders</a>
 											<a href="/myuploads">My Uploads</a>
+											<a href="/mycart">My WishList</a>
 											<a href="/upload">Upload</a>
 											<a href="/logout">Logout</a>
 										</div>

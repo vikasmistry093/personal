@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>16ane.com|Uploads</title>
+<title>16ane.com|My Cart</title>
 </head>
 <body>
 
@@ -18,9 +18,9 @@
 			<div class="col-md-12">
 
 
-				<p class="f-24 f-bold m-b-20">Upload History</p>
+				<p class="f-24 f-bold m-b-20">My Cart</p>
 				<!-- order history section -->
-				<c:forEach var="productHistory" items="${products }">
+				<c:forEach var="product" items="${cartItem.products }">
 					<div class="panel panel-default  order-product">
 						<!-- first order -->
 						<div class="panel-body">
@@ -30,12 +30,12 @@
 										<img src=" images/mi-redmi.jpeg" class="img-responsive" />
 									</div>
 									<div class="order-detail">
-										<span class="f-bold"><a href="#">${productHistory.product.productTitle }</a></span>
-										<p class="f-gray m-t-10">${productHistory.product.description }</p>
+										<span class="f-bold"><a href="#">${product.productTitle }</a></span>
+										<p class="f-gray m-t-10">${product.description }</p>
 									</div>
 								</div>
 								<div class="col-md-6 col-sm-6 text-left p-t-30">
-									<span class=" display-inline f-bold m-r-20">${productHistory.product.price }</span>
+									<span class=" display-inline f-bold m-r-20">${product.price }</span>
 								</div>
 							</div>
 						</div>
@@ -45,8 +45,7 @@
 						<div class="panel-footer">
 							<div class="row">
 								<div class="col-sm-6">
-									<span class="f-gray m-r-10">Uploaded On</span> <span>${productHistory.product.createdTimestamp }</span>
-										<span class="display-inline  f-bold">Delivery status: ${productHistory.product.status }</span>
+									<span class="f-gray m-r-10">Added On</span> <span>${product.createdTimestamp }</span>
 								</div>
 							</div>
 						</div>
@@ -54,6 +53,12 @@
 					<!-- order history section  end-->
 				</c:forEach>
 
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6"></div>
+			<div class="col-sm-6  text-right">
+				<button class="btn btn-orange">Proceed</button>
 			</div>
 		</div>
 	</div>
