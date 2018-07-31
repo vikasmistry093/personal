@@ -41,6 +41,9 @@ public class ProductService {
 	}
 
 	public ProductInfo getProductById(Long productId) {
+		if(productId == null)
+			return null;
+		
 		ProductInfo productInfo = productMapper.getProductById(productId);
 		return productInfo;
 	}

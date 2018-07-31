@@ -56,3 +56,7 @@ function addtoCart(productId) {
 function buyNow(productId) {
 	location.href = '/buyNow?id=' + productId;
 }
+
+function buyNow() {
+	location.href = '/buyNow';
+}

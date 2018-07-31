@@ -58,7 +58,7 @@
 		<div class="row">
 			<div class="col-sm-6"></div>
 			<div class="col-sm-6  text-right">
-				<button class="btn btn-orange">Proceed</button>
+				<button class="btn btn-orange" onclick="buyNow()">Proceed</button>
 			</div>
 		</div>
 	</div>

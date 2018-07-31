@@ -175,19 +175,22 @@ public class SolaneController {
 	
 	@SuppressWarnings("serial")
 	@RequestMapping("/buyNow")
-	public ModelAndView buyNow(@RequestParam("id") String product_id, HttpServletRequest request) {
+	public ModelAndView buyNow(@RequestParam(name="id", required=false) String product_id, HttpServletRequest request) {
 		UserInfo user = (UserInfo) request.getSession().getAttribute("user");
 		ModelAndView model = new ModelAndView("redirect:/login?url=buyNow?id="+product_id);
+		ProductInfo sproduct = productService.getProductById(product_id != null ? Long.parseLong(product_id) : null);
 		if(user != null) {
 			model = new ModelAndView("buy-product");
-			ProductInfo sproduct = productService.getProductById(Long.parseLong(product_id));
 			if(user.getWishList() == null) {
 				user.setWishList(new WishListInfo());
-				user.getWishList().setProducts(new LinkedHashSet<ProductInfo>() {{add(sproduct);}});
+				if(sproduct != null)
+					user.getWishList().setProducts(new LinkedHashSet<ProductInfo>() {{add(sproduct);}});
 			} else if (user.getWishList().getProducts() == null) {
-				user.getWishList().setProducts(new LinkedHashSet<ProductInfo>() {{add(sproduct);}});
+				if(sproduct != null)
+					user.getWishList().setProducts(new LinkedHashSet<ProductInfo>() {{add(sproduct);}});
 			} else {
-				user.getWishList().getProducts().add(sproduct);
+				if(sproduct != null)
+					user.getWishList().getProducts().add(sproduct);
 			}
 			UserPlaceOrder orders = new UserPlaceOrder();
 			model.addObject("order", orders);
