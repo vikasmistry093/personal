@@ -23,7 +23,7 @@ public class ProductProcessingHistory implements Serializable {
 	private Long productProcessingHistoryId;
 	
 	@OneToOne
-	@JoinColumn(name="PRODUCT")
+	@JoinColumn(name="PRODUCTS")
 	private Product product;
 	
 	@Column(name="PREVIOUS_HISTORY")

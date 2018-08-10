@@ -54,4 +54,9 @@ public class ProductProcessingHistoryMapper {
 				.collect(Collectors.toList());
 	}
 
+	public List<ProductProcessingHistoryInfo> getProductsByProductIdAndStatus(List<Long> productIds, String pickup) {
+		List<ProductProcessingHistory> productInfos = productProcessingHistoryDAO.getProductsByProductIdAndStatus(productIds, pickup);
+		return convertIntoProductProcessingHistoryInfoList(productInfos);
+	}
+
 }

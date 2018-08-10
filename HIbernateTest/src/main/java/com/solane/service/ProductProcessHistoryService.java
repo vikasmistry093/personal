@@ -37,4 +37,9 @@ public class ProductProcessHistoryService {
 		return products;
 	}
 
+	public List<ProductProcessingHistoryInfo> getProductsByProductIdAndStatus(List<Long> productIds, String pickup) {
+		List<ProductProcessingHistoryInfo> products = productProcessingHistoryMapper.getProductsByProductIdAndStatus(productIds, pickup);
+		return products;
+	}
+
 }

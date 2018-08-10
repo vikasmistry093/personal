@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%@ include file="admin-importer.jsp" %>
-<title>Welcome Admin</title>
+<title>Welcome Admin | Registered Products</title>
 </head>
 <body>
 	<%@ include file="admin-header.jsp" %>
@@ -28,6 +28,7 @@
 					<th>Price</th>
 					<th>Status</th>
 					<th></th>
+					<th></th>
 					</tr>
 				</thead>
 				<tfoot>
@@ -37,6 +38,7 @@
 					<th>Features</th>
 					<th>Price</th>
 					<th>Status</th>
+					<th></th>
 					<th></th>
 					</tr>
 				</tfoot>
@@ -48,6 +50,7 @@
 							<td>${product.features}</td>
 							<td>${product.price}</td>
 							<td>${product.status}</td>
+							<td><button id="${product.productId}" class="edit-button btn btn-info" data-toggle="modal" data-target="#myModal" onclick="getModal(this.id, 'view')">View</button></td>
 							<td><button id="${product.productId}" class="edit-button btn btn-info" data-toggle="modal" data-target="#myModal" onclick="getModal(this.id, 'product')">Assign</button></td>
 						</tr>
 					</c:forEach>
@@ -56,7 +59,7 @@
 		</div>
 	</div>
 	
-	<!-- Modal -->
+	<!-- Assign Modal -->
 	<div id="myModal" class="modal fade" role="dialog">
 	  <div class="modal-dialog">
 	

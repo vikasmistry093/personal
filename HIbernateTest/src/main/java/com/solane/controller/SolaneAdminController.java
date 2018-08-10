@@ -1,6 +1,7 @@
 package com.solane.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -61,7 +62,9 @@ public class SolaneAdminController {
 	@RequestMapping("/assignedProducts")
 	public ModelAndView assignedProducts() {
 		ModelAndView model = new ModelAndView("admin-assigned-product");
-		List<ProductInfo> products = productService.getProductByStatus(SolaneConstants.PICKUP);
+		List<ProductInfo> productInfos = productService.getProductByStatus(SolaneConstants.PICKUP);
+		List<Long> productIds = productInfos.stream().map(p -> p.getProductId()).collect(Collectors.toList());
+		List<ProductProcessingHistoryInfo> products = productProcessHistoryService.getProductsByProductIdAndStatus(productIds, SolaneConstants.PICKUP);
 		model.addObject("type", SolaneConstants.ASSIGNED_PICK_UP_PRODUCTS);
 		model.addObject("productList", products);
 		return model;

@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%@ include file="admin-importer.jsp" %>
-<title>Welcome Admin</title>
+<title>Welcome Admin | Assigned Products</title>
 </head>
 <body>
 	<%@ include file="admin-header.jsp" %>
@@ -27,6 +27,7 @@
 					<th>Features</th>
 					<th>Price</th>
 					<th>Status</th>
+					<th>Assigned To</th>
 					<th></th>
 					</tr>
 				</thead>
@@ -37,18 +38,20 @@
 					<th>Features</th>
 					<th>Price</th>
 					<th>Status</th>
+					<th>Assigned To</th>
 					<th></th>
 					</tr>
 				</tfoot>
 				<tbody>
-					<c:forEach var="product" items="${productList}">
+					<c:forEach var="prod" items="${productList}">
 						<tr>
-							<td>${product.productTitle}</td>
-							<td>${product.description}</td>
-							<td>${product.features}</td>
-							<td>${product.price}</td>
-							<td>${product.status}</td>
-							<td><button id="${product.productId}" class="edit-button btn btn-info" data-toggle="modal" data-target="#myModal" onclick="getModal(this.id, 'product')">Assign</button></td>
+							<td>${prod.product.productTitle}</td>
+							<td>${prod.product.description}</td>
+							<td>${prod.product.features}</td>
+							<td>${prod.product.price}</td>
+							<td>${prod.product.status}</td>
+							<td>${prod.user.name}</td>
+							<td><button id="${prod.product.productId}" class="edit-button btn btn-info" data-toggle="modal" data-target="#myModal" onclick="getModal(this.id, 'product')">Assign</button></td>
 						</tr>
 					</c:forEach>
 				</tbody>
