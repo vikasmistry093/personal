@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,7 +24,7 @@ public class ProductProcessingHistory implements Serializable {
 	private Long productProcessingHistoryId;
 	
 	@OneToOne
-	@JoinColumn(name="PRODUCTS")
+	@JoinColumn(name="PRODUCT")
 	private Product product;
 	
 	@Column(name="PREVIOUS_HISTORY")
@@ -32,11 +33,11 @@ public class ProductProcessingHistory implements Serializable {
 	@Column(name="DESCRIPTION")
 	private String description;
 	
-	@OneToOne
+	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="REG_USER")
 	private User user;
 	
-	@OneToOne
+	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="ADMIN_USER")
 	private AdminUser admin_user;
 	
